@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fleet.quartz.dao.QuartzJobLogDao">
+    <resultMap id="BaseResultMap" type="com.fleet.quartz.entity.QuartzJobLog">
+        <id column="id" property="id"/>
+        <result column="job_id" property="jobId"/>
+        <result column="job_name" property="jobName"/>
+        <result column="bean_name" property="beanName"/>
+        <result column="method_name" property="methodName"/>
+        <result column="param" property="param"/>
+        <result column="cron_expression" property="cronExpression"/>
+        <result column="state" property="state"/>
+        <result column="error" property="error"/>
+        <result column="millis" property="millis"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		`id`, `job_id`, `job_name`, `bean_name`, `method_name`, `param`, `cron_expression`, `state`, `error`, `millis`, `create_time`
+	</sql>
+
+    <insert id="insert" parameterType="com.fleet.quartz.entity.QuartzJobLog" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into `quartz_job_log` (
+        <trim suffixOverrides=",">
+            <if test="jobId != null">`job_id`,</if>
+            <if test="jobName != null">`job_name`,</if>
+            <if test="beanName != null">`bean_name`,</if>
+            <if test="methodName != null">`method_name`,</if>
+            <if test="param != null">`param`,</if>
+            <if test="cronExpression != null">`cron_expression`,</if>
+            <if test="state != null">`state`,</if>
+            <if test="error != null">`error`,</if>
+            <if test="millis != null">`millis`,</if>
+            <if test="createTime != null">`create_time`,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="jobId != null">#{jobId},</if>
+            <if test="jobName != null">#{jobName},</if>
+            <if test="beanName != null">#{beanName},</if>
+            <if test="methodName != null">#{methodName},</if>
+            <if test="param != null">#{param},</if>
+            <if test="cronExpression != null">#{cronExpression},</if>
+            <if test="state != null">#{state},</if>
+            <if test="error != null">#{error},</if>
+            <if test="millis != null">#{millis},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+        )
+    </insert>
+
+    <update id="delete" parameterType="com.fleet.quartz.entity.QuartzJobLog">
+        delete from `quartz_job_log`
+        <where>
+            <if test="id != null">and `id` = #{id}</if>
+            <if test="jobId != null">and `job_id` = #{jobId}</if>
+            <if test="jobName != null">and `job_name` = #{jobName}</if>
+            <if test="beanName != null">and `bean_name` = #{beanName}</if>
+            <if test="methodName != null">and `method_name` = #{methodName}</if>
+            <if test="param != null">and `param` = #{param}</if>
+            <if test="cronExpression != null">and `cron_expression` = #{cronExpression}</if>
+            <if test="state != null">and `state` = #{state}</if>
+            <if test="error != null">and `error` = #{error}</if>
+            <if test="millis != null">and `millis` = #{millis}</if>
+            <if test="createTime != null">and `create_time` = #{createTime}</if>
+        </where>
+    </update>
+
+    <update id="deletes">
+        delete from `quartz_job_log`
+        <where>
+            <foreach collection="array" item="id" open="`id` in (" separator="," close=")">
+                #{id}
+            </foreach>
+        </where>
+    </update>
+
+    <update id="update" parameterType="com.fleet.quartz.entity.QuartzJobLog">
+        update `quartz_job_log`
+        <set>
+            <if test="jobId != null">`job_id` = #{jobId},</if>
+            <if test="jobName != null">`job_name` = #{jobName},</if>
+            <if test="beanName != null">`bean_name` = #{beanName},</if>
+            <if test="methodName != null">`method_name` = #{methodName},</if>
+            <if test="param != null">`param` = #{param},</if>
+            <if test="cronExpression != null">`cron_expression` = #{cronExpression},</if>
+            <if test="state != null">`state` = #{state},</if>
+            <if test="millis != null">`millis` = #{millis},</if>
+            <if test="createTime != null">`create_time` = #{createTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="get" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `quartz_job_log`
+        <where>
+            <if test="id != null">and `id` = #{id}</if>
+            <if test="jobId != null">and `job_id` = #{jobId}</if>
+            <if test="jobName != null">and `job_name` = #{jobName}</if>
+            <if test="beanName != null">and `bean_name` = #{beanName}</if>
+            <if test="methodName != null">and `method_name` = #{methodName}</if>
+            <if test="param != null">and `param` = #{param}</if>
+            <if test="cronExpression != null">and `cron_expression` = #{cronExpression}</if>
+            <if test="state != null">and `state` = #{state}</if>
+            <if test="error != null">and `error` = #{error}</if>
+            <if test="millis != null">and `millis` = #{millis}</if>
+            <if test="createTime != null">and `create_time` = #{createTime}</if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `quartz_job_log`
+        <where>
+            <if test="id != null">and `id` = #{id}</if>
+            <if test="jobId != null">and `job_id` = #{jobId}</if>
+            <if test="jobName != null">and `job_name` = #{jobName}</if>
+            <if test="beanName != null">and `bean_name` = #{beanName}</if>
+            <if test="methodName != null">and `method_name` = #{methodName}</if>
+            <if test="param != null">and `param` = #{param}</if>
+            <if test="cronExpression != null">and `cron_expression` = #{cronExpression}</if>
+            <if test="state != null">and `state` = #{state}</if>
+            <if test="error != null">and `error` = #{error}</if>
+            <if test="millis != null">and `millis` = #{millis}</if>
+            <if test="createTime != null">and `create_time` = #{createTime}</if>
+        </where>
+    </select>
+</mapper>
