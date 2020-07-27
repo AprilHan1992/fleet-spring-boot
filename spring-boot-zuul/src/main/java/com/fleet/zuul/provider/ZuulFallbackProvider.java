@@ -73,7 +73,5 @@ public class ZuulFallbackProvider implements FallbackProvider {
                 return headers;
             }
         };
-
     }
-
 }

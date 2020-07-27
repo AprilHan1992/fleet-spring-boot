@@ -12,5 +12,4 @@ public class XxlJobApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

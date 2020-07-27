@@ -12,5 +12,4 @@ public class FlywayApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

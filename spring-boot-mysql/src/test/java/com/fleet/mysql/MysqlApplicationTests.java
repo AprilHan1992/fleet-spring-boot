@@ -12,5 +12,4 @@ public class MysqlApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

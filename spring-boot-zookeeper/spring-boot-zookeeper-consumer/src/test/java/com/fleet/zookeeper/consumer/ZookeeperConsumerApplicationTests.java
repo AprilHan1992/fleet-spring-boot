@@ -12,5 +12,4 @@ public class ZookeeperConsumerApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

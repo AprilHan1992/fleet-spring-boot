@@ -12,5 +12,4 @@ public class FreemarkerApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

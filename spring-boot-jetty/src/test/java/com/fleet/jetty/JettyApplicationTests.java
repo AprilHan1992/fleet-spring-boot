@@ -12,5 +12,4 @@ public class JettyApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

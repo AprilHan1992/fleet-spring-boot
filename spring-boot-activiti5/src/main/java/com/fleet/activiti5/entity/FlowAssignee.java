@@ -51,5 +51,4 @@ public class FlowAssignee {
     public void setAssigneetype(Integer assigneetype) {
         this.assigneetype = assigneetype;
     }
-
 }

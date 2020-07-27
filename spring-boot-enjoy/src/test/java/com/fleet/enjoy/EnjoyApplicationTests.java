@@ -12,5 +12,4 @@ public class EnjoyApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

@@ -16,5 +16,4 @@ public class JoopApplicationTests {
 //        Optional<User> user = userRepository.findById(1L);
 //        System.out.println(user);
 //    }
-
 }

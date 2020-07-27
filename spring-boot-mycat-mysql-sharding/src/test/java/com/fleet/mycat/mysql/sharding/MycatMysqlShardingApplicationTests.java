@@ -12,5 +12,4 @@ public class MycatMysqlShardingApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

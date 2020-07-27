@@ -12,5 +12,4 @@ public class HikariApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

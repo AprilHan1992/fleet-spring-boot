@@ -12,5 +12,4 @@ public class NacosConsumerApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }
