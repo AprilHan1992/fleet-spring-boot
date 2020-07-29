@@ -1,8 +1,8 @@
 package com.fleet.cache.ehcache.service.impl;
 
 import com.fleet.cache.ehcache.dao.UserDao;
-import com.fleet.cache.ehcache.service.UserService;
 import com.fleet.cache.ehcache.entity.User;
+import com.fleet.cache.ehcache.service.UserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -23,12 +23,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut(key = "#user.id")
     public User insert(User user) {
-        try {
-            userDao.insert(user);
-            return user;
-        } catch (Exception e) {
-            throw e;
-        }
+        userDao.insert(user);
+        return user;
     }
 
     @Override
