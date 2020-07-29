@@ -76,7 +76,7 @@
 - [spring-boot-cache-ehcache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-ehcache)：Spring Boot EhCache 本地缓存
 - [spring-boot-cache-caffeine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-caffeine)：Spring Boot Caffeine 本地缓存
 - [spring-boot-cache-guava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-guava)：Spring Boot Guava 本地缓存
-- [spring-boot-cache-redis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-redis)：Spring Boot Redis 本地缓存
+- [spring-boot-cache-rediscache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-rediscache)：Spring Boot RedisCache 本地缓存
 - [spring-boot-liquibase](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-liquibase)：Spring Boot Liquibase 数据库管理与迁移工具
 - [spring-boot-flyway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-flyway)：Spring Boot Flyway 数据库管理与迁移工具
 - [spring-boot-batch](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-batch)：Spring Boot Batch 批处理

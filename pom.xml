@@ -90,7 +90,7 @@
         <module>spring-boot-cache-ehcache</module>
         <module>spring-boot-cache-caffeine</module>
         <module>spring-boot-cache-guava</module>
-        <module>spring-boot-cache-redis</module>
+        <module>spring-boot-cache-rediscache</module>
         <module>spring-boot-liquibase</module>
         <module>spring-boot-flyway</module>
         <module>spring-boot-batch</module>
