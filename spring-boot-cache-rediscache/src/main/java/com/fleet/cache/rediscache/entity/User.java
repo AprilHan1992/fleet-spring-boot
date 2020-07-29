@@ -1,4 +1,4 @@
-package com.fleet.cache.redis.entity;
+package com.fleet.cache.rediscache.entity;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
-package com.fleet.cache.redis.controller;
+package com.fleet.cache.rediscache.controller;
 
-import com.fleet.cache.redis.entity.User;
-import com.fleet.cache.redis.service.UserService;
+import com.fleet.cache.rediscache.entity.User;
+import com.fleet.cache.rediscache.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

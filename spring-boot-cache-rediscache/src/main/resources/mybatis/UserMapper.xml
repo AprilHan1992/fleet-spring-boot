@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fleet.cache.redis.dao.UserDao">
-    <resultMap id="BaseResultMap" type="com.fleet.cache.redis.entity.User">
+<mapper namespace="com.fleet.cache.rediscache.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.fleet.cache.rediscache.entity.User">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
@@ -10,7 +10,7 @@
 		`id`, `name`
 	</sql>
 
-    <insert id="insert" parameterType="com.fleet.cache.redis.entity.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.fleet.cache.rediscache.entity.User" useGeneratedKeys="true" keyProperty="id">
         insert into `user` (
         <trim suffixOverrides=",">
             <if test="name != null">`name`,</if>
@@ -26,7 +26,7 @@
         delete from `user` where `id` = #{id}
     </delete>
 
-    <update id="update" parameterType="com.fleet.cache.redis.entity.User">
+    <update id="update" parameterType="com.fleet.cache.rediscache.entity.User">
         update `user`
         <set>
             <if test="name != null">`name` = #{name},</if>

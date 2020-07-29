@@ -1,6 +1,6 @@
-package com.fleet.cache.redis.service;
+package com.fleet.cache.rediscache.service;
 
-import com.fleet.cache.redis.entity.User;
+import com.fleet.cache.rediscache.entity.User;
 
 import java.util.List;
 import java.util.Map;

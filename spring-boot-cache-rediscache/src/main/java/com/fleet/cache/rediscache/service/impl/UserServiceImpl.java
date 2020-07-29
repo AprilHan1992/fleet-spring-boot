@@ -1,8 +1,8 @@
-package com.fleet.cache.redis.service.impl;
+package com.fleet.cache.rediscache.service.impl;
 
-import com.fleet.cache.redis.dao.UserDao;
-import com.fleet.cache.redis.entity.User;
-import com.fleet.cache.redis.service.UserService;
+import com.fleet.cache.rediscache.dao.UserDao;
+import com.fleet.cache.rediscache.entity.User;
+import com.fleet.cache.rediscache.service.UserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

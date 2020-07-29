@@ -1,6 +1,6 @@
-package com.fleet.cache.redis.dao;
+package com.fleet.cache.rediscache.dao;
 
-import com.fleet.cache.redis.entity.User;
+import com.fleet.cache.rediscache.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

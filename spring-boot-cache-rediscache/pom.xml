@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.fleet</groupId>
-    <artifactId>spring-boot-cache-redis</artifactId>
-    <name>spring-boot-cache-redis</name>
-    <description>cache-redis</description>
+    <artifactId>spring-boot-cache-rediscache</artifactId>
+    <name>spring-boot-cache-rediscache</name>
+    <description>cache-rediscache</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
