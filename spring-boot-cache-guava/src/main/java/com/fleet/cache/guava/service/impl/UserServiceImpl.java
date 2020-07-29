@@ -23,12 +23,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @CachePut(key = "#user.id")
     public User insert(User user) {
-        try {
-            userDao.insert(user);
-            return user;
-        } catch (Exception e) {
-            throw e;
-        }
+        userDao.insert(user);
+        return user;
     }
 
     @Override
