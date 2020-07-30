@@ -1,0 +1,15 @@
+= API:toc:
+left:toclevels: 4
+[[order-it]]
+== 1. 用户接口
+
+[[order-query]]
+=== 新增用户
+
+include::{snippets}/insert/http-request.adoc[]
+include::{snippets}/insert/http-response.adoc[]
+
+=== 查询用户
+
+include::{snippets}/get/http-request.adoc[]
+include::{snippets}/get/http-response.adoc[]

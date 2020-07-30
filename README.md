@@ -42,6 +42,7 @@
 - [spring-boot-swagger](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-swagger)：Spring Boot Swagger 自动生成接口文档
 - [spring-boot-knife4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-knife4j)：Spring Boot Knife4j 自动生成接口文档
 - [spring-boot-apidoc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-apidoc)：Spring Boot Apidoc 自动生成接口文档
+- [spring-boot-restdocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-restdocs)：Spring Boot Restdocs 自动生成接口文档
 - [spring-boot-async](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-async)：Spring Boot 线程池配置
 - [spring-boot-mail](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mail)：Spring Boot 发送邮件
 - [spring-boot-couchbase](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-couchbase)：Spring Boot Couchbase 数据库
@@ -64,6 +65,7 @@
 - [spring-boot-kafka](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-kafka)：Spring Boot Kafka 消息中间件
 - [spring-boot-rabbitmq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rabbitmq)：Spring Boot RabbitMQ 消息中间件
 - [spring-boot-rocketmq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rocketmq)：Spring Boot RocketMQ 消息中间件
+- [spring-boot-redismq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redismq)：Spring Boot RedisMQ 消息中间件
 - [spring-boot-websocket](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-websocket)：Spring Boot WebSocket 前后端通信
 - [spring-boot-socketio](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-socketio)：Spring Boot SocketIO 前后端通信
 - [spring-boot-shiro](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro)：Spring Boot Shiro 权限管理
