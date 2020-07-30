@@ -74,11 +74,11 @@
 - [spring-boot-hystrix-dashboard](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-dashboard)：Spring Boot Hystrix Dashboard 监控
 - [spring-boot-hystrix-turbine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-turbine)：Spring Boot Hystrix Turbine 聚合监控
 - [spring-boot-webflux](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webflux)：Spring Boot Webflux 响应式编程
-- [spring-boot-cache-cache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-cache)：Spring Boot 默认 ConcurrentMapCacheManager 本地缓存
-- [spring-boot-cache-ehcache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-ehcache)：Spring Boot EhCache 本地缓存
-- [spring-boot-cache-caffeine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-caffeine)：Spring Boot Caffeine 本地缓存
-- [spring-boot-cache-guava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-guava)：Spring Boot Guava 本地缓存
-- [spring-boot-cache-rediscache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache-rediscache)：Spring Boot RedisCache 本地缓存
+- [spring-boot-cache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache)：Spring Boot 默认 ConcurrentMapCacheManager 本地缓存
+- [spring-boot-ehcache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ehcache)：Spring Boot EhCache 本地缓存
+- [spring-boot-caffeine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-caffeine)：Spring Boot Caffeine 本地缓存
+- [spring-boot-guava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-guava)：Spring Boot Guava 本地缓存
+- [spring-boot-rediscache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rediscache)：Spring Boot RedisCache 本地缓存
 - [spring-boot-liquibase](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-liquibase)：Spring Boot Liquibase 数据库管理与迁移工具
 - [spring-boot-flyway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-flyway)：Spring Boot Flyway 数据库管理与迁移工具
 - [spring-boot-batch](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-batch)：Spring Boot Batch 批处理
