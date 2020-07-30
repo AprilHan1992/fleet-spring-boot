@@ -1,6 +1,6 @@
-package com.fleet.cache.guava.dao;
+package com.fleet.caffeine.dao;
 
-import com.fleet.cache.guava.entity.User;
+import com.fleet.caffeine.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

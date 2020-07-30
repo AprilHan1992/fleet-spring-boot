@@ -1,7 +1,7 @@
-package com.fleet.cache.guava.controller;
+package com.fleet.caffeine.controller;
 
-import com.fleet.cache.guava.entity.User;
-import com.fleet.cache.guava.service.UserService;
+import com.fleet.caffeine.entity.User;
+import com.fleet.caffeine.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

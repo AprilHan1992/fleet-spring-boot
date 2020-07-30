@@ -1,4 +1,4 @@
-package com.fleet.cache.caffeine;
+package com.fleet.caffeine;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,8 @@
-package com.fleet.cache.guava.service.impl;
+package com.fleet.caffeine.service.impl;
 
-import com.fleet.cache.guava.dao.UserDao;
-import com.fleet.cache.guava.entity.User;
-import com.fleet.cache.guava.service.UserService;
+import com.fleet.caffeine.dao.UserDao;
+import com.fleet.caffeine.entity.User;
+import com.fleet.caffeine.service.UserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

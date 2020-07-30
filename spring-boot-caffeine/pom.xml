@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.fleet</groupId>
-    <artifactId>spring-boot-cache-caffeine</artifactId>
-    <name>spring-boot-cache-caffeine</name>
-    <description>cache-caffeine</description>
+    <artifactId>spring-boot-caffeine</artifactId>
+    <name>spring-boot-caffeine</name>
+    <description>caffeine</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 

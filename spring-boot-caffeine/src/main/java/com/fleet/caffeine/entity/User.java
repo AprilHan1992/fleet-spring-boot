@@ -1,4 +1,4 @@
-package com.fleet.cache.guava.entity;
+package com.fleet.caffeine.entity;
 
 import java.io.Serializable;
 

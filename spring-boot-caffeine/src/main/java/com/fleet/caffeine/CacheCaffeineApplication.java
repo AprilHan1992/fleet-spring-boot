@@ -1,4 +1,4 @@
-package com.fleet.cache.caffeine;
+package com.fleet.caffeine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

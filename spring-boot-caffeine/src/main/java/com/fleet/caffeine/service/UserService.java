@@ -1,6 +1,6 @@
-package com.fleet.cache.cache.service;
+package com.fleet.caffeine.service;
 
-import com.fleet.cache.cache.entity.User;
+import com.fleet.caffeine.entity.User;
 
 import java.util.List;
 import java.util.Map;
