@@ -62,6 +62,7 @@
         <module>spring-boot-sqlite</module>
         <module>spring-boot-postgresql</module>
         <module>spring-boot-redis</module>
+        <module>spring-boot-memcached</module>
         <module>spring-boot-session</module>
         <module>spring-boot-elasticsearch</module>
         <module>spring-boot-mongodb</module>
