@@ -20,6 +20,6 @@ public class MemcachedApplicationTests {
     public void test() {
         MemcachedClient client = memcachedRunner.getClient();
         client.set("key", 1000, "fleet");
-        System.out.println("***********  " + client.get("testkey").toString());
+        System.out.println(client.get("key").toString());
     }
 }
