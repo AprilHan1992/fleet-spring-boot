@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.fleet</groupId>
-    <artifactId>spring-boot-cache-cache</artifactId>
-    <name>spring-boot-cache-cache</name>
-    <description>cache-cache</description>
+    <artifactId>spring-boot-cache</artifactId>
+    <name>spring-boot-cache</name>
+    <description>cache</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 

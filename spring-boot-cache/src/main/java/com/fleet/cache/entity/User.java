@@ -1,4 +1,4 @@
-package com.fleet.cache.cache.entity;
+package com.fleet.cache.entity;
 
 import java.io.Serializable;
 

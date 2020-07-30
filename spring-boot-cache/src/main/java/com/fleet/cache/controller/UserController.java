@@ -1,7 +1,7 @@
-package com.fleet.cache.cache.controller;
+package com.fleet.cache.controller;
 
-import com.fleet.cache.cache.service.UserService;
-import com.fleet.cache.cache.entity.User;
+import com.fleet.cache.service.UserService;
+import com.fleet.cache.entity.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
