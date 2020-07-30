@@ -1,8 +1,8 @@
-package com.fleet.cache.ehcache.service.impl;
+package com.fleet.ehcache.service.impl;
 
-import com.fleet.cache.ehcache.dao.UserDao;
-import com.fleet.cache.ehcache.entity.User;
-import com.fleet.cache.ehcache.service.UserService;
+import com.fleet.ehcache.dao.UserDao;
+import com.fleet.ehcache.entity.User;
+import com.fleet.ehcache.service.UserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

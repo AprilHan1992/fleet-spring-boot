@@ -1,6 +1,6 @@
-package com.fleet.cache.ehcache.dao;
+package com.fleet.ehcache.dao;
 
-import com.fleet.cache.ehcache.entity.User;
+import com.fleet.ehcache.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

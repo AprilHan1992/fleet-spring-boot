@@ -1,6 +1,6 @@
 logging:
   level:
-    com.fleet.cache.ehcache.dao: debug
+    com.fleet.ehcache.dao: debug
 spring:
   # 配置数据源
   datasource:

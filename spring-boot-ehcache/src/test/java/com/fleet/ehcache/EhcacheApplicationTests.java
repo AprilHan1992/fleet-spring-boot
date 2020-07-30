@@ -1,4 +1,4 @@
-package com.fleet.cache.cache;
+package com.fleet.ehcache;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CacheCacheApplicationTests {
+public class EhcacheApplicationTests {
 
 	@Test
 	public void contextLoads() {

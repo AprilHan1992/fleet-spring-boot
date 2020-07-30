@@ -1,6 +1,6 @@
-package com.fleet.cache.guava.service;
+package com.fleet.ehcache.service;
 
-import com.fleet.cache.guava.entity.User;
+import com.fleet.ehcache.entity.User;
 
 import java.util.List;
 import java.util.Map;
