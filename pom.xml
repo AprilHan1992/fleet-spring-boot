@@ -88,11 +88,11 @@
         <module>spring-boot-hystrix-dashboard</module>
         <module>spring-boot-hystrix-turbine</module>
         <module>spring-boot-webflux</module>
-        <module>spring-boot-cache-cache</module>
-        <module>spring-boot-cache-ehcache</module>
-        <module>spring-boot-cache-caffeine</module>
-        <module>spring-boot-cache-guava</module>
-        <module>spring-boot-cache-rediscache</module>
+        <module>spring-boot-cache</module>
+        <module>spring-boot-ehcache</module>
+        <module>spring-boot-caffeine</module>
+        <module>spring-boot-guava</module>
+        <module>spring-boot-rediscache</module>
         <module>spring-boot-liquibase</module>
         <module>spring-boot-flyway</module>
         <module>spring-boot-batch</module>
