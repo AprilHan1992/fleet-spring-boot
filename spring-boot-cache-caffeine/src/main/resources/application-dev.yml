@@ -1,6 +1,6 @@
 logging:
   level:
-    com.fleet.caffeine.dao: debug
+    com.fleet.cache.caffeine.dao: debug
 spring:
   # 配置数据源
   datasource:

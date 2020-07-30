@@ -1,6 +1,6 @@
 logging:
   level:
-    com.fleet.guava.dao: debug
+    com.fleet.cache.guava.dao: debug
 spring:
   # 配置数据源
   datasource:
