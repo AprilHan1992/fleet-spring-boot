@@ -2,6 +2,7 @@ package com.fleet.mysql.controller;
 
 import com.fleet.mysql.entity.User;
 import com.fleet.mysql.service.UserService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/insert")
-    public void save(User user) {
+    public void insert(@RequestBody User user) {
         userService.insert(user);
     }
 
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @RequestMapping("/update")
-    public void update(User user) {
+    public void update(@RequestBody User user) {
         userService.update(user);
     }
 
