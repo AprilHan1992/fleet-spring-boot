@@ -19,18 +19,18 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 @SpringBootTest
 public class BaseTests {
 
-    @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-
     public MockMvc mockMvc;
 
     @Resource
     private WebApplicationContext webApplicationContext;
 
+    @Rule
+    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+
     @Before
     public void before() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(documentationConfiguration(restDocumentation))
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext)
+                .apply(documentationConfiguration(this.restDocumentation))
                 .build();
     }
 
