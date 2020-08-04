@@ -11,7 +11,7 @@ import java.util.Date;
 @Component
 public class Sender {
 
-    private static final Logger logger = LoggerFactory.getLogger(Receiver.class);
+    private static final Logger logger = LoggerFactory.getLogger(Sender.class);
 
     @Resource
     private AmqpTemplate amqpTemplate;
