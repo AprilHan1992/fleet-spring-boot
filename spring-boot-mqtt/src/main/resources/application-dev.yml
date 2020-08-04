@@ -1,0 +1,8 @@
+spring:
+  mqtt:
+    url: tcp://127.0.0.1:1883
+    client-id: clientId
+    username: admin
+    password: admin
+    topic: topic
+
