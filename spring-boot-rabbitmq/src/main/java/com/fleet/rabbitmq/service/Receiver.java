@@ -9,16 +9,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * @author April Han
+ */
 @Component
-// @RabbitListener(queues = "message")
 @RabbitListener(queuesToDeclare = @Queue("messages"))
 public class Receiver {
 
     private static final Logger logger = LoggerFactory.getLogger(Receiver.class);
 
     @RabbitHandler
-    public void process(String Str) {
-        logger.info("接收消息：" + Str);
+    public void process(String msg) {
+        logger.info("接收消息：" + msg);
         logger.info("接收消息时间：" + new Date());
     }
 }
