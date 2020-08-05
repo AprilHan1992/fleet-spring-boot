@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * @author April Han
+ */
 @Component
 public class Sender {
 
