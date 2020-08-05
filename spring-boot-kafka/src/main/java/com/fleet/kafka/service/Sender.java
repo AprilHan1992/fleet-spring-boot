@@ -8,18 +8,20 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.Date;
 
+/**
+ * @author April Han
+ */
 @Component
 public class Sender {
 
     @Resource
     private KafkaTemplate kafkaTemplate;
 
-    // 发送消息
     public void send(String msg) {
         Msg message = new Msg();
         message.setId("KFK_" + System.currentTimeMillis());
         message.setMsg(msg);
         message.setSendTime(new Date());
-        kafkaTemplate.send("test", JSON.toJSONString(message));
+        kafkaTemplate.send("topic", JSON.toJSONString(message));
     }
 }
