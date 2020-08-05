@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.jms.Destination;
 
+/**
+ * @author April Han
+ */
 @Component
 @EnableJms
 public class Sender {
