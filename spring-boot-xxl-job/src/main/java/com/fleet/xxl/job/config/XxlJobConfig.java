@@ -5,6 +5,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author April Han
+ */
 @Configuration
 @ConfigurationProperties(prefix = "xxl.job")
 public class XxlJobConfig {
@@ -29,11 +32,12 @@ public class XxlJobConfig {
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
         xxlJobSpringExecutor.setAdminAddresses(admin.getAddress());
         xxlJobSpringExecutor.setAppname(executor.getAppname());
+        xxlJobSpringExecutor.setAddress(executor.getAddress());
         xxlJobSpringExecutor.setIp(executor.getIp());
         xxlJobSpringExecutor.setPort(executor.getPort());
         xxlJobSpringExecutor.setAccessToken(accessToken);
-        xxlJobSpringExecutor.setLogPath(executor.getLogPath());
-        xxlJobSpringExecutor.setLogRetentionDays(executor.getLogRetentionDays());
+        xxlJobSpringExecutor.setLogPath(executor.getLogpath());
+        xxlJobSpringExecutor.setLogRetentionDays(executor.getLogretentiondays());
         return xxlJobSpringExecutor;
     }
 
@@ -58,6 +62,8 @@ public class XxlJobConfig {
          */
         private String appname;
 
+        private String address;
+
         /**
          * 执行器 IP
          */
@@ -71,12 +77,12 @@ public class XxlJobConfig {
         /**
          * 执行器日志
          */
-        private String logPath;
+        private String logpath;
 
         /**
          * 执行器日志保留天数
          */
-        private int logRetentionDays;
+        private int logretentiondays;
 
         public String getAppname() {
             return appname;
@@ -84,6 +90,14 @@ public class XxlJobConfig {
 
         public void setAppname(String appname) {
             this.appname = appname;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
         }
 
         public String getIp() {
@@ -102,20 +116,20 @@ public class XxlJobConfig {
             this.port = port;
         }
 
-        public String getLogPath() {
-            return logPath;
+        public String getLogpath() {
+            return logpath;
         }
 
-        public void setLogPath(String logPath) {
-            this.logPath = logPath;
+        public void setLogpath(String logpath) {
+            this.logpath = logpath;
         }
 
-        public int getLogRetentionDays() {
-            return logRetentionDays;
+        public int getLogretentiondays() {
+            return logretentiondays;
         }
 
-        public void setLogRetentionDays(int logRetentionDays) {
-            this.logRetentionDays = logRetentionDays;
+        public void setLogretentiondays(int logretentiondays) {
+            this.logretentiondays = logretentiondays;
         }
     }
 
