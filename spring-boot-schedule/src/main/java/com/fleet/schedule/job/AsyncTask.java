@@ -21,7 +21,6 @@ public class AsyncTask {
     @Async
     @Scheduled(fixedDelay = 1000)
     public void task1() throws InterruptedException {
-
         logger.info("异步定时任务1执行时间：" + System.currentTimeMillis());
         logger.info("线程：" + Thread.currentThread().getName());
         Thread.sleep(1000 * 10);
