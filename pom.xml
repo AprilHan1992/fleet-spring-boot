@@ -127,6 +127,7 @@
         <module>spring-boot-shiro-online</module>
         <module>spring-boot-validator</module>
         <module>spring-boot-submit</module>
+        <module>spring-boot-zipkin</module>
         <module>spring-boot-common</module>
         <module>spring-boot-excel</module>
         <module>spring-boot-word</module>
