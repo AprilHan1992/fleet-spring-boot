@@ -3,8 +3,6 @@ server:
 spring:
   application:
     name: zipkin-clent
-  profiles:
-    active: dev
   zipkin:
     base-url: http://localhost:9411  # zipkin server 的地址
   sleuth:
@@ -16,11 +14,3 @@ spring:
       rate: 500
       # 跟踪信息收集采样比例，默认 0.1，为 1 是即 100%，收集所有
       probability: 1
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/
-    healthcheck:
-      enabled: true
-  instance:
-    prefer-ip-address: true

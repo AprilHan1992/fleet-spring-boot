@@ -20,7 +20,6 @@
     </properties>
 
     <modules>
-        <module>spring-boot-zipkin-eureka</module>
         <module>spring-boot-zipkin-server</module>
         <module>spring-boot-zipkin-client</module>
     </modules>
