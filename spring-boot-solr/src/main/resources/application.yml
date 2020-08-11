@@ -1,0 +1,6 @@
+server:
+  port: 8000
+spring:
+  data:
+    solr:
+      host: http://localhost:8080/solr/user_core
