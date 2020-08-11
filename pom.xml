@@ -27,6 +27,7 @@
         <module>spring-boot-consul</module>
         <module>spring-boot-nacos</module>
         <module>spring-boot-zookeeper</module>
+        <module>spring-boot-retrofit2</module>
         <module>spring-boot-lombok</module>
         <module>spring-boot-jetty</module>
         <module>spring-boot-undertow</module>
