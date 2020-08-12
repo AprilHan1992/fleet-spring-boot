@@ -1,12 +1,12 @@
-package com.fleet.hessian.consumer;
+package com.fleet.hessian.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleConsumerApplication {
+public class HessianProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SimpleConsumerApplication.class, args);
+        SpringApplication.run(HessianProviderApplication.class, args);
     }
 }
