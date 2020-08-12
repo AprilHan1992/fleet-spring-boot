@@ -1,4 +1,4 @@
-package com.fleet.util;
+package com.fleet.alg;
 
 import com.alibaba.fastjson.JSON;
 
