@@ -4,21 +4,28 @@ import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
+import java.io.Serializable;
+
+/**
+ * @author April Han
+ */
 @SolrDocument(collection = "user_core")
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Field
-    private Long id;
+    @Field("id")
+    private String id;
 
-    @Field
+    @Field("name")
     private String name;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

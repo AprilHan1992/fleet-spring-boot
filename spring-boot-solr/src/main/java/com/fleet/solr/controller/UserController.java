@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @RequestMapping("/delete")
-    public void delete(@RequestParam("id") Long id) {
+    public void delete(@RequestParam("id") String id) {
         userService.delete(id);
     }
 
@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @RequestMapping("/get")
-    public User get(@RequestParam("id") Long id) {
+    public User get(@RequestParam("id") String id) {
         return userService.get(id);
     }
 

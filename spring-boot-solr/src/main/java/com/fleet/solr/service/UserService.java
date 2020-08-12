@@ -12,13 +12,13 @@ public interface UserService {
 
     void insert(User user);
 
-    void delete(Long id);
+    void delete(String id);
 
     void deletes();
 
     void update(User user);
 
-    User get(Long id);
+    User get(String id);
 
     List<User> list(Map<String, String> map);
 }

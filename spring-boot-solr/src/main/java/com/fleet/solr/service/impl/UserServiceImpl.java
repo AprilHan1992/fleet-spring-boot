@@ -2,12 +2,13 @@ package com.fleet.solr.service.impl;
 
 import com.fleet.solr.entity.User;
 import com.fleet.solr.service.UserService;
+import com.google.gson.Gson;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrInputDocument;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,11 +30,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void insert(User user) {
-        SolrInputDocument document = new SolrInputDocument();
-        document.setField("id", user.getId());
-        document.setField("name", user.getName());
         try {
-            solrClient.add(document);
+            solrClient.addBean(user);
             solrClient.commit();
         } catch (IOException | SolrServerException e) {
             e.printStackTrace();
@@ -41,9 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         try {
-            solrClient.deleteById(String.valueOf(id));
+            solrClient.deleteById(id);
             solrClient.commit();
         } catch (IOException | SolrServerException e) {
             e.printStackTrace();
@@ -71,18 +69,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(Long id) {
-        User user = new User();
-        user.setId(id);
+    public User get(String id) {
         try {
-            SolrDocument document = solrClient.getById(String.valueOf(id));
-            if (document != null) {
-                user.setName(document.get("name").toString());
-            }
+            SolrDocument document = solrClient.getById(id);
+            Gson gson = new Gson();
+            String gsonString = gson.toJson(document);
+            return gson.fromJson(gsonString, User.class);
         } catch (IOException | SolrServerException e) {
             e.printStackTrace();
         }
-        return user;
+        return null;
     }
 
     @Override
@@ -90,9 +86,11 @@ public class UserServiceImpl implements UserService {
         List<User> userList = new ArrayList<>();
         SolrQuery query = new SolrQuery();
         if (map != null) {
+            List<String> queryList = new ArrayList<>();
             for (String key : map.keySet()) {
-                query.set(key, map.get(key));
+                queryList.add(key + ":*" + map.get(key) + "*");
             }
+            query.setQuery(StringUtils.join(queryList, " or "));
         }
         try {
             QueryResponse queryResponse = solrClient.query(query);
