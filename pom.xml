@@ -29,6 +29,7 @@
         <module>spring-boot-zookeeper</module>
         <module>spring-boot-retrofit2</module>
         <module>spring-boot-hessian</module>
+        <module>spring-boot-forest</module>
         <module>spring-boot-lombok</module>
         <module>spring-boot-jetty</module>
         <module>spring-boot-undertow</module>

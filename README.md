@@ -13,8 +13,9 @@ ouq# fleet-spring-boot
 - [spring-boot-consul](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-consul)：Spring Boot Consul 微服务注册与发现
 - [spring-boot-nacos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-nacos)：Spring Boot Nacos 微服务注册与发现
 - [spring-boot-zookeeper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zookeeper)：Spring Boot ZooKeeper 微服务注册与发现
-- [spring-boot-retrofit2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retrofit2)：Spring Boot Retrofit2 http 请求
+- [spring-boot-retrofit2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retrofit2)：Spring Boot Retrofit2 Http 请求
 - [spring-boot-hessian](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hessian)：Spring Boot Hessian 远程调用框架
+- [spring-boot-forest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-forest)：Spring Boot Forest Http 请求
 - [spring-boot-lombok](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-lombok)：Spring Boot Lombok 消除样板式代码
 - [spring-boot-jetty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jetty)：Spring Boot 使用 Jetty 作为 Servlet 引擎
 - [spring-boot-undertow](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-undertow)：Spring Boot 使用 Undertow 作为 Servlet 引擎
