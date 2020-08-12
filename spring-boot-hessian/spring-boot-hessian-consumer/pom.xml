@@ -44,7 +44,6 @@
             <groupId>com.fleet</groupId>
             <artifactId>spring-boot-hessian-provider</artifactId>
             <version>1.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

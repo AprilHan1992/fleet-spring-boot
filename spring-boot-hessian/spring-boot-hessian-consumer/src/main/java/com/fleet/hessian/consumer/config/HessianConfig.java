@@ -12,7 +12,7 @@ import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 public class HessianConfig {
 
     @Bean
-    public HessianProxyFactoryBean userService() {
+    public HessianProxyFactoryBean hessianProxyFactoryBean() {
         HessianProxyFactoryBean bean = new HessianProxyFactoryBean();
         bean.setServiceUrl("http://localhost:8001/user-service");
         bean.setServiceInterface(UserService.class);
