@@ -1,5 +1,8 @@
 package com.fleet.sentinel.enums;
 
+/**
+ * @author April Han
+ */
 public enum ResultState {
 
     /**
