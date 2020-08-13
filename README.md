@@ -117,6 +117,7 @@ ouq# fleet-spring-boot
 - [spring-boot-online](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-online)：Spring Boot 统计在线人数
 - [spring-boot-shiro-online](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro-online)：Spring Boot Shiro 统计在线人数
 - [spring-boot-validator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-validator)：Spring Boot Validator 参数校验
+- [spring-boot-submit](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-submit)：Spring Boot 防重复提交
 - [spring-boot-zipkin](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zipkin)：Spring Boot Zipkin 分布式跟踪系统
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
