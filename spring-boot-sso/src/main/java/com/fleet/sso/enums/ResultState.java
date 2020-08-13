@@ -1,5 +1,8 @@
 package com.fleet.sso.enums;
 
+/**
+ * @author April Han
+ */
 public enum ResultState {
 
     /**
