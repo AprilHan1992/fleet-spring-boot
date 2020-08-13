@@ -23,7 +23,7 @@ public class NettyClient {
                 .option(ChannelOption.TCP_NODELAY, true);
         try {
             ChannelFuture future = bootstrap.connect(address).sync();
-            future.channel().writeAndFlush("你好啊");
+            future.channel().writeAndFlush("你好");
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

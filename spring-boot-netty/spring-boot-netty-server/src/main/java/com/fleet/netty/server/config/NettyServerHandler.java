@@ -22,7 +22,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         logger.info("channel read......");
         logger.info("服务端收到消息: {}", JSON.toJSONString(msg));
-        ctx.write("你也好哦");
+        ctx.write("你也好");
         ctx.flush();
     }
 
