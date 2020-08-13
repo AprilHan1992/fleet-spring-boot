@@ -1,5 +1,8 @@
 package com.fleet.validator.enums;
 
+/**
+ * @author April Han
+ */
 public enum ResultState {
 
     /**
