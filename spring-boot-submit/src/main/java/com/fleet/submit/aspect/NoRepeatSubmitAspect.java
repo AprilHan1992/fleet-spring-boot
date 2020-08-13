@@ -1,6 +1,6 @@
 package com.fleet.submit.aspect;
 
-import com.fleet.submit.handler.BaseException;
+import com.fleet.submit.config.handler.BaseException;
 import com.fleet.submit.util.RedisUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

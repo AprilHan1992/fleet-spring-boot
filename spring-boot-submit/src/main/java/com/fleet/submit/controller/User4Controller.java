@@ -2,7 +2,7 @@ package com.fleet.submit.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.fleet.submit.entity.User;
-import com.fleet.submit.handler.BaseException;
+import com.fleet.submit.config.handler.BaseException;
 import org.apache.commons.collections4.map.LRUMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
