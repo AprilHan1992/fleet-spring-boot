@@ -1,4 +1,4 @@
-package com.fleet.exception.handler;
+package com.fleet.exception.config.handler;
 
 import com.fleet.exception.json.R;
 import org.springframework.boot.web.servlet.error.ErrorController;

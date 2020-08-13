@@ -1,4 +1,4 @@
-package com.fleet.exception.handler;
+package com.fleet.exception.config.handler;
 
 import com.fleet.exception.enums.ResultState;
 
