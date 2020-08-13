@@ -2,12 +2,10 @@ package com.fleet.exception.config.handler;
 
 import com.fleet.exception.enums.ResultState;
 
-import java.io.Serializable;
-
 /**
  * @author April Han
  */
-public class BaseException extends RuntimeException implements Serializable {
+public class BaseException extends RuntimeException {
 
     private static final long serialVersionUID = 4253696777296748794L;
 
