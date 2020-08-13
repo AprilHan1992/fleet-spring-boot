@@ -1,5 +1,6 @@
 package com.fleet.exception.handler;
 
+import com.fleet.exception.json.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -16,6 +17,9 @@ import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.sql.SQLException;
 
+/**
+ * @author April Han
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -28,8 +32,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = BaseException.class)
-    public String handleBaseException(BaseException e) {
-        return e.getMsg();
+    public R handleBaseException(BaseException e) {
+        return R.error(e.getCode(), e.getMsg());
     }
 
     /**
@@ -39,7 +43,7 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = Exception.class)
-    public String handleException(Exception e) {
+    public R handleException(Exception e) {
         if (e != null) {
             if (e instanceof RuntimeException) {
                 if (e instanceof NullPointerException) {
@@ -99,6 +103,6 @@ public class GlobalExceptionHandler {
                 }
             }
         }
-        return "失败";
+        return R.error();
     }
 }
