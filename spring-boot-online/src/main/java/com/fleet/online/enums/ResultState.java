@@ -1,5 +1,8 @@
 package com.fleet.online.enums;
 
+/**
+ * @author April Han
+ */
 public enum ResultState {
 
     /**

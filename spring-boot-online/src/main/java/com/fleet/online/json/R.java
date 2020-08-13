@@ -2,7 +2,14 @@ package com.fleet.online.json;
 
 import com.fleet.online.enums.ResultState;
 
-public class R {
+import java.io.Serializable;
+
+/**
+ * @author April Han
+ */
+public class R implements Serializable {
+
+    private static final long serialVersionUID = -6362815283450958495L;
 
     private Integer code;
 
@@ -31,7 +38,7 @@ public class R {
      * @param data 数据（可以是返回码说明，也可以是结果数据）
      * @return R
      */
-    public static R result(Integer code, Object data) {
+    public static R r(Integer code, Object data) {
         R r = new R();
         r.setCode(code);
         r.setData(data);
@@ -44,28 +51,7 @@ public class R {
      * @return R
      */
     public static R ok() {
-        return result(ResultState.SUCCESS.getCode(), ResultState.SUCCESS.getMsg());
-    }
-
-    /**
-     * 成功
-     *
-     * @param data 数据
-     * @return R
-     */
-    public static R ok(Object data) {
-        return result(ResultState.SUCCESS.getCode(), data);
-    }
-
-    /**
-     * 成功
-     *
-     * @param code 返回码
-     * @param data 数据（可以是返回码说明，也可以是结果数据）
-     * @return
-     */
-    public static R ok(Integer code, Object data) {
-        return result(code, data);
+        return r(ResultState.SUCCESS.getCode(), ResultState.SUCCESS.getMsg());
     }
 
     /**
@@ -75,26 +61,58 @@ public class R {
      * @return R
      */
     public static R ok(ResultState resultState) {
-        return result(resultState.getCode(), resultState.getMsg());
+        return r(resultState.getCode(), resultState.getMsg());
+    }
+
+    /**
+     * 成功
+     *
+     * @param code 返回码
+     * @param data 数据（可以是返回码说明，也可以是结果数据）
+     * @return R
+     */
+    public static R ok(Integer code, Object data) {
+        return r(code, data);
     }
 
     /**
      * 错误
      *
-     * @return
+     * @param resultState 成功枚举
+     * @param data        数据
+     * @return R
      */
-    public static R error() {
-        return result(ResultState.ERROR.getCode(), ResultState.ERROR.getMsg());
+    public static R ok(ResultState resultState, Object data) {
+        return r(resultState.getCode(), data);
     }
 
     /**
-     * 错误
+     * 成功
      *
      * @param data 数据
      * @return R
      */
-    public static R error(Object data) {
-        return result(ResultState.ERROR.getCode(), data);
+    public static R ok(Object data) {
+        return r(ResultState.SUCCESS.getCode(), data);
+    }
+
+    /**
+     * 错误
+     *
+     * @return R
+     */
+    public static R error() {
+        return r(ResultState.ERROR.getCode(), ResultState.ERROR.getMsg());
+    }
+
+    /**
+     * 错误
+     *
+     * @param resultState 错误枚举
+     * @return R
+     */
+    public static R error(ResultState resultState) {
+        return r(resultState.getCode(), resultState.getMsg());
     }
 
     /**
@@ -105,28 +123,28 @@ public class R {
      * @return
      */
     public static R error(Integer code, Object data) {
-        return result(code, data);
+        return r(code, data);
     }
 
     /**
      * 错误
      *
      * @param resultState 错误枚举
-     * @return R
-     */
-    public static R error(ResultState resultState) {
-        return result(resultState.getCode(), resultState.getMsg());
-    }
-
-    /**
-     * 错误
-     *
-     * @param resultState 错误枚举
-     * @param data         数据
+     * @param data        数据
      * @return R
      */
     public static R error(ResultState resultState, Object data) {
-        return result(resultState.getCode(), data);
+        return r(resultState.getCode(), data);
+    }
+
+    /**
+     * 错误
+     *
+     * @param data 数据
+     * @return R
+     */
+    public static R error(Object data) {
+        return r(ResultState.ERROR.getCode(), data);
     }
 
     /**
