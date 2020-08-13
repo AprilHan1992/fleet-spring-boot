@@ -2,9 +2,10 @@ package com.fleet.authcheck.config.handler;
 
 import com.fleet.authcheck.enums.ResultState;
 
-import java.io.Serializable;
-
-public class BaseException extends RuntimeException implements Serializable {
+/**
+ * @author April Han
+ */
+public class BaseException extends RuntimeException {
 
     private static final long serialVersionUID = 4253696777296748794L;
 
@@ -29,14 +30,14 @@ public class BaseException extends RuntimeException implements Serializable {
     }
 
     public BaseException() {
-        super("失败");
-        this.code = 400;
-        this.msg = "失败";
+        super(ResultState.ERROR.getMsg());
+        this.code = ResultState.ERROR.getCode();
+        this.msg = ResultState.ERROR.getMsg();
     }
 
     public BaseException(String msg) {
         super(msg);
-        this.code = 400;
+        this.code = ResultState.ERROR.getCode();
         this.msg = msg;
     }
 

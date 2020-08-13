@@ -1,5 +1,8 @@
 package com.fleet.authcheck.enums;
 
+/**
+ * @author April Han
+ */
 public enum ResultState {
 
     /**
