@@ -1,0 +1,13 @@
+logging:
+  level:
+    org.springframework.jdbc.core.JdbcTemplate: debug
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password:
+#    hikari:
+#      # 设置 utf8mb4 编码
+#      connection-init-sql: SET NAMES 'utf8mb4'
