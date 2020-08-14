@@ -99,7 +99,6 @@ ouq# fleet-spring-boot
 - [spring-boot-druid](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-druid)：Spring Boot Druid 连接池
 - [spring-boot-hikari](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hikari)：Spring Boot Hikari 连接池
 - [spring-boot-dubbo](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dubbo)：Spring Boot Dubbo 框架
-- [spring-boot-mysql-](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dubbo)：Spring Boot Dubbo 框架
 - [spring-boot-mysql-multi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi)：Spring Boot Mysql 多数据源
 - [spring-boot-mysql-multi-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi-aop)：Spring Boot Mysql 多数据源 AOP 实现
 - [spring-boot-mycat-mysql-proxy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mycat-mysql-proxy)：Spring Boot Mycat Mysql 读写分离
