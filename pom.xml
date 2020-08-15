@@ -33,7 +33,7 @@
         <module>spring-boot-lombok</module>
         <module>spring-boot-jetty</module>
         <module>spring-boot-undertow</module>
-        <module>spring-boot-mysql</module>
+        <module>spring-boot-jdbc</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-mybatis-plus</module>
         <module>spring-boot-mybatis-pagehelper</module>

@@ -1,12 +1,12 @@
-package com.fleet.mysql;
+package com.fleet.jdbc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MysqlApplication {
+public class JdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MysqlApplication.class, args);
+        SpringApplication.run(JdbcApplication.class, args);
     }
 }

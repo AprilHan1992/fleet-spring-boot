@@ -1,15 +1,17 @@
-package com.fleet.mysql.controller;
+package com.fleet.jdbc.controller;
 
-import com.fleet.mysql.entity.User;
-import com.fleet.mysql.service.UserService;
+import com.fleet.jdbc.entity.User;
+import com.fleet.jdbc.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -38,7 +40,12 @@ public class UserController {
     }
 
     @RequestMapping("/list")
-    public List<Map<String, Object>> list() {
+    public List<User> list() {
         return userService.list();
+    }
+
+    @RequestMapping("/count")
+    public int count() {
+        return userService.count();
     }
 }

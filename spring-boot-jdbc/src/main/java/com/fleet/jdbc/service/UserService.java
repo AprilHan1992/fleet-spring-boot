@@ -1,11 +1,13 @@
-package com.fleet.mysql.service;
+package com.fleet.jdbc.service;
 
-import com.fleet.mysql.entity.User;
+import com.fleet.jdbc.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @Component
 public interface UserService {
 
@@ -13,9 +15,13 @@ public interface UserService {
 
     int delete(Long id);
 
+    int[] deletes(Long[] ids);
+
     int update(User user);
 
     User get(Long id);
 
-    List<Map<String, Object>> list();
+    List<User> list();
+
+    int count();
 }

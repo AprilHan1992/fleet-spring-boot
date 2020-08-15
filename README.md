@@ -19,7 +19,7 @@ ouq# fleet-spring-boot
 - [spring-boot-lombok](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-lombok)：Spring Boot Lombok 消除样板式代码
 - [spring-boot-jetty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jetty)：Spring Boot 使用 Jetty 作为 Servlet 引擎
 - [spring-boot-undertow](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-undertow)：Spring Boot 使用 Undertow 作为 Servlet 引擎
-- [spring-boot-mysql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql)：Spring Boot 结合 Mysql
+- [spring-boot-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jdbc)：Spring Boot JDBC 操作数据库
 - [spring-boot-mybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis)：Spring Boot 结合 Mybatis
 - [spring-boot-mybatis-plus](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-plus)：Spring Boot 结合 Mybatis Plus
 - [spring-boot-mybatis-pagehelper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-pagehelper)：Spring Boot 结合 Mybatis PageHelper

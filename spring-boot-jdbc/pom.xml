@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.fleet</groupId>
-    <artifactId>spring-boot-mysql</artifactId>
-    <name>spring-boot-mysql</name>
-    <description>mysql</description>
+    <artifactId>spring-boot-jdbc</artifactId>
+    <name>spring-boot-jdbc</name>
+    <description>JDBC 操作数据库</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
