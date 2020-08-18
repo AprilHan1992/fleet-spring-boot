@@ -1,0 +1,146 @@
+package com.fleet.alg;
+
+import com.alibaba.fastjson.JSON;
+
+/**
+ * 排序
+ *
+ * @author April Han
+ */
+public class Sort {
+
+    public static void main(String[] args) {
+        int[] array = {3, 2, 7, 4, 9, 3, 3, 8, 1, 6};
+//        System.out.println(JSON.toJSONString(pop(array)));
+//        System.out.println(JSON.toJSONString(insert(array)));
+//        System.out.println(JSON.toJSONString(shell(array)));
+//        System.out.println(JSON.toJSONString(quick(array, 0, array.length - 1)));
+        System.out.println(JSON.toJSONString(select(array)));
+    }
+
+    /**
+     * 冒泡排序
+     */
+    public static int[] pop(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
+    }
+
+    /**
+     * 插入排序
+     */
+    public static int[] insert(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
+                int temp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = temp;
+            }
+        }
+        return array;
+    }
+
+    /**
+     * 希尔排序
+     */
+    public static int[] shell(int[] array) {
+        int step = array.length / 2;
+        while (step >= 1) {
+            for (int i = 0; i < step; i++) {
+                for (int j = i + step; j < array.length; j += step) {
+                    for (int k = j; k >= step && array[k - step] > array[k]; k -= step) {
+                        int temp = array[k];
+                        array[k] = array[k - step];
+                        array[k - step] = temp;
+                    }
+                }
+            }
+            step = step / 2;
+        }
+        return array;
+    }
+
+    /**
+     * 快速排序
+     */
+    public static int[] quick(int[] array, int low, int high) {
+        int i = low;
+        int j = high;
+        if (i < j) {
+            int base = array[i];
+            while (i < j) {
+                while (i < j && array[j] > base) {
+                    j--;
+                }
+                array[i] = array[j];
+                while (i < j && array[i] <= base) {
+                    i++;
+                }
+                array[j] = array[i];
+            }
+            array[i] = base;
+        }
+        if (i - 1 > low) {
+            array = quick(array, low, i - 1);
+        }
+        if (j + 1 < high) {
+            array = quick(array, j + 1, high);
+        }
+        return array;
+    }
+
+    /**
+     * 选择排序
+     */
+    public static int[] select(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[min]) {
+                    min = j;
+                }
+            }
+            if (i != min) {
+                int temp = array[i];
+                array[i] = array[min];
+                array[min] = temp;
+            }
+        }
+        return array;
+    }
+
+    /**
+     * 归并排序
+     */
+    public static int[] merge(int[] array, int l, int h) {
+        if (l == h) {
+            return new int[]{array[l]};
+        }
+
+        int mid = l + (h - l) / 2;
+        int[] leftArray = merge(array, l, mid); //左有序数组
+        int[] rightArray = merge(array, mid + 1, h); //右有序数组
+        int[] newArray = new int[leftArray.length + rightArray.length]; //新有序数组
+
+        int m = 0, i = 0, j = 0;
+        while (i < leftArray.length && j < rightArray.length) {
+            newArray[m++] = leftArray[i] < rightArray[j] ? leftArray[i++] : rightArray[j++];
+        }
+        while (i < leftArray.length) {
+            newArray[m++] = leftArray[i++];
+        }
+        while (j < rightArray.length) {
+            newArray[m++] = rightArray[j++];
+        }
+
+        return newArray;
+    }
+}

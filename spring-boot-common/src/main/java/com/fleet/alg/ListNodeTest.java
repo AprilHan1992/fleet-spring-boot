@@ -23,13 +23,4 @@ public class ListNodeTest {
         System.out.println("second 节点值" + ln.next.next.val);
         System.out.println("third 节点值" + ln.next.next.next.val);
     }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }
