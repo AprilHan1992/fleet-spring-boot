@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-undertow</artifactId>
     <name>spring-boot-undertow</name>
-    <description>使用 undertow 作为 Servlet 引擎应用</description>
+    <description>使用 Undertow 作为 Servlet 引擎应用</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -26,7 +26,7 @@
     </properties>
 
     <dependencies>
-        <!-- 使用 undertow 作为 Servlet 引擎应用 -->
+        <!-- 使用 Undertow 作为 Servlet 引擎应用 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
