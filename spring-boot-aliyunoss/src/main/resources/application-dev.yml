@@ -7,12 +7,12 @@ aliyun:
     fileHost: test
 # 文件
 file:
-  file-path: D:/file/files/
-  big-file-path: D:/file/files/big/
+  file-path: D:/files/
+  big-file-path: D:/files/big/
   # 存储图片资源的目录
-  img-path: D:/file/files/img/
-  template-path: D:/file/files/template/
-  zip-path: D:/file/files/zip/
+  img-path: D:/files/img/
+  template-path: D:/files/template/
+  zip-path: D:/files/zip/
 spring:
   servlet:
     multipart:
