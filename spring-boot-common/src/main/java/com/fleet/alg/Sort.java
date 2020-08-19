@@ -11,17 +11,18 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] array = {3, 2, 7, 4, 9, 3, 3, 8, 1, 6};
-//        System.out.println(JSON.toJSONString(pop(array)));
-//        System.out.println(JSON.toJSONString(insert(array)));
+//        System.out.println(JSON.toJSONString(bubble(array)));
+//        System.out.println(JSON.toJSONString(insertion(array)));
 //        System.out.println(JSON.toJSONString(shell(array)));
 //        System.out.println(JSON.toJSONString(quick(array, 0, array.length - 1)));
-        System.out.println(JSON.toJSONString(select(array)));
+//        System.out.println(JSON.toJSONString(selection(array)));
+        System.out.println(JSON.toJSONString(merge(array, 0, array.length - 1)));
     }
 
     /**
      * 冒泡排序
      */
-    public static int[] pop(int[] array) {
+    public static int[] bubble(int[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
@@ -37,7 +38,7 @@ public class Sort {
     /**
      * 插入排序
      */
-    public static int[] insert(int[] array) {
+    public static int[] insertion(int[] array) {
         for (int i = 1; i < array.length; i++) {
             for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
                 int temp = array[j];
@@ -100,7 +101,7 @@ public class Sort {
     /**
      * 选择排序
      */
-    public static int[] select(int[] array) {
+    public static int[] selection(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             int min = i;
             for (int j = i + 1; j < array.length; j++) {
@@ -120,15 +121,18 @@ public class Sort {
     /**
      * 归并排序
      */
-    public static int[] merge(int[] array, int l, int h) {
-        if (l == h) {
-            return new int[]{array[l]};
+    public static int[] merge(int[] array, int low, int high) {
+        if (low == high) {
+            return new int[]{array[low]};
         }
 
-        int mid = l + (h - l) / 2;
-        int[] leftArray = merge(array, l, mid); //左有序数组
-        int[] rightArray = merge(array, mid + 1, h); //右有序数组
-        int[] newArray = new int[leftArray.length + rightArray.length]; //新有序数组
+        int mid = (low + high) / 2;
+        // 左有序数组
+        int[] leftArray = merge(array, low, mid);
+        // 右有序数组
+        int[] rightArray = merge(array, mid + 1, high);
+        // 新有序数组
+        int[] newArray = new int[leftArray.length + rightArray.length];
 
         int m = 0, i = 0, j = 0;
         while (i < leftArray.length && j < rightArray.length) {
@@ -140,7 +144,6 @@ public class Sort {
         while (j < rightArray.length) {
             newArray[m++] = rightArray[j++];
         }
-
         return newArray;
     }
 }
