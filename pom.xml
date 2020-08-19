@@ -31,6 +31,7 @@
         <module>spring-boot-hessian</module>
         <module>spring-boot-forest</module>
         <module>spring-boot-lombok</module>
+        <module>spring-boot-tomcat</module>
         <module>spring-boot-jetty</module>
         <module>spring-boot-undertow</module>
         <module>spring-boot-jdbc</module>
