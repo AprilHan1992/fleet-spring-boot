@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-jetty</artifactId>
     <name>spring-boot-jetty</name>
-    <description>jetty</description>
+    <description>使用 Jetty 作为 Servlet 引擎应用</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -26,12 +26,7 @@
     </properties>
 
     <dependencies>
-        <!-- 默认使用tomcat作为Servlet引擎应用 -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.springframework.boot</groupId> -->
-        <!--     <artifactId>spring-boot-starter-web</artifactId> -->
-        <!-- </dependency> -->
-        <!--使用jetty作为Servlet引擎应用 -->
+        <!-- 使用 Jetty 作为 Servlet 引擎应用 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
