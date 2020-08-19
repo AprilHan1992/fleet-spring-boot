@@ -16,7 +16,8 @@ public class Sort {
 //        System.out.println(JSON.toJSONString(shell(array)));
 //        System.out.println(JSON.toJSONString(quick(array, 0, array.length - 1)));
 //        System.out.println(JSON.toJSONString(selection(array)));
-        System.out.println(JSON.toJSONString(merge(array, 0, array.length - 1)));
+//        System.out.println(JSON.toJSONString(merge(array, 0, array.length - 1)));
+        System.out.println(JSON.toJSONString(count(array)));
     }
 
     /**
@@ -145,5 +146,40 @@ public class Sort {
             newArray[m++] = rightArray[j++];
         }
         return newArray;
+    }
+
+    /**
+     * 计数排序
+     */
+    public static int[] count(int[] array) {
+        // 获取数列的最大值
+        int max = array[0];
+        int min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        // 根据最大值确定统计数组的长度
+        int len = max - min + 1;
+        int[] c = new int[len];
+        // 遍历数列，填充统计数组
+        for (int i = 0; i < array.length; ++i) {
+            c[array[i] - min]++;
+        }
+
+        // 遍历统计数组，输出结果
+        int index = 0;
+        int[] r = new int[array.length];
+        for (int i = 0; i < c.length; i++) {
+            while (c[i] > 0) {
+                r[index++] = i + min;
+                c[i]--;
+            }
+        }
+        return r;
     }
 }
