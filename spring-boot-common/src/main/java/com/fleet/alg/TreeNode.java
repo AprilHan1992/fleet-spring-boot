@@ -3,13 +3,15 @@ package com.fleet.alg;
 /**
  * @author April Han
  */
-public class ListNode {
+public class TreeNode {
 
     int val;
 
-    ListNode next;
+    TreeNode left;
 
-    ListNode(int x) {
+    TreeNode right;
+
+    TreeNode(int x) {
         val = x;
     }
 }

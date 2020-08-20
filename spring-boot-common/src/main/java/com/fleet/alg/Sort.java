@@ -1,7 +1,5 @@
 package com.fleet.alg;
 
-import com.alibaba.fastjson.JSON;
-
 /**
  * 排序
  *
@@ -17,7 +15,7 @@ public class Sort {
 //        System.out.println(JSON.toJSONString(quick(array, 0, array.length - 1)));
 //        System.out.println(JSON.toJSONString(selection(array)));
 //        System.out.println(JSON.toJSONString(merge(array, 0, array.length - 1)));
-        System.out.println(JSON.toJSONString(count(array)));
+//        System.out.println(JSON.toJSONString(count(array)));
     }
 
     /**
@@ -167,7 +165,7 @@ public class Sort {
         int len = max - min + 1;
         int[] c = new int[len];
         // 遍历数列，填充统计数组
-        for (int i = 0; i < array.length; ++i) {
+        for (int i = 0; i < array.length; i++) {
             c[array[i] - min]++;
         }
 
@@ -179,6 +177,43 @@ public class Sort {
                 r[index++] = i + min;
                 c[i]--;
             }
+        }
+        return r;
+    }
+
+    /**
+     * 计数排序
+     */
+    public static int[] count1(int[] array) {
+        // 获取数列的最大值
+        int max = array[0];
+        int min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        // 根据最大值确定统计数组的长度
+        int len = max - min + 1;
+        int[] c = new int[len];
+        // 遍历数列，填充统计数组，数组 c[] 中的每一个值表示它所对应的下标在排序后数组的出现次数
+        for (int i = 0; i < array.length; i++) {
+            c[array[i] - min]++;
+        }
+
+        // 新的 c[] 将表示他们的位置信息
+        for (int i = 1; i < c.length; i++) {
+            c[i] = c[i] + c[i - 1];
+        }
+
+        // 遍历 array[] 中的元素，填充到结果数组中，输出结果
+        int[] r = new int[array.length];
+        for (int i = array.length - 1; i >= 0; i--) {
+            r[c[array[i] - min] - 1] = array[i];
+            c[array[i] - min]--;
         }
         return r;
     }
