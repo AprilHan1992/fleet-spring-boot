@@ -1,7 +1,7 @@
-server:
-  tomcat:
-    # 配置 Tomcat 运行日志和临时文件的目录
-    basedir: D:/files/temp/
+#server:
+#  tomcat:
+#    # 配置 Tomcat 运行日志和临时文件的目录
+#    basedir: D:/files/temp/
 # 文件
 file:
   file-path: D:/files/
