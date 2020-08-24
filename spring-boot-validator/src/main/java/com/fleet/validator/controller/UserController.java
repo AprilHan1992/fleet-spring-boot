@@ -1,28 +1,27 @@
 package com.fleet.validator.controller;
 
 import com.fleet.validator.entity.User;
-import com.fleet.validator.repository.UserRepository;
+import com.fleet.validator.json.R;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @Resource
-    private UserRepository userRepository;
-
     @RequestMapping("/insert")
-    public void insert(@RequestBody @Valid User user) {
-        userRepository.save(user);
+    public R insert(@RequestBody @Valid User user) {
+        return R.ok();
     }
 
-    @RequestMapping("/list")
-    public Iterable<User> list() {
-        return userRepository.findAll();
+    @RequestMapping("/insert1")
+    public R insert1(@RequestBody User user) {
+        return R.ok();
     }
 }
