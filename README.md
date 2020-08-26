@@ -126,6 +126,7 @@ ouq# fleet-spring-boot
 ### 中级部分：
 
 - [spring-boot-excel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-excel)：Spring Boot Excel 操作
+- [spring-boot-easyexcel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-easyexcel)：Spring Boot EasyExcel 操作
 - [spring-boot-word](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-word)：Spring Boot Word 操作
 - [spring-boot-xml](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-xml)：Spring Boot Xml 操作
 - [spring-boot-openoffice](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-openoffice)：Spring Boot OpenOffice 文件转换 pdf 操作

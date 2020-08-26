@@ -137,6 +137,7 @@
         <module>spring-boot-transaction</module>
         <module>spring-boot-common</module>
         <module>spring-boot-excel</module>
+        <module>spring-boot-easyexcel</module>
         <module>spring-boot-word</module>
         <module>spring-boot-xml</module>
         <module>spring-boot-openoffice</module>
