@@ -7,7 +7,7 @@ spring:
     active: dev
 zuul:
   routes:
-    service-user:
+    service-provider:
       service-id: service-provider
       path: /provider/**
 eureka:
