@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-cors</artifactId>
     <name>spring-boot-cors</name>
-    <description>HTTP访问控制</description>
+    <description>HTTP 访问控制</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
