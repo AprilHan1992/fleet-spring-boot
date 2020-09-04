@@ -1,6 +1,8 @@
 package com.fleet.file.controller;
 
 import com.fleet.file.config.FileConfig;
+import com.fleet.file.entity.FileInfo;
+import com.fleet.file.json.R;
 import com.fleet.file.util.FileUtil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,16 +22,23 @@ public class FileController {
      * 上传文件
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(@RequestParam(value = "file") MultipartFile file) throws Exception {
+    public R upload(@RequestParam(value = "file") MultipartFile file) throws Exception {
         if (file == null) {
-            return "上传文件为空";
+            return R.error("上传文件为空");
         }
         try {
-            String fileName = FileUtil.rename(file.getOriginalFilename());
-            FileUtil.upload(file.getBytes(), fileConfig.getFilePath(), fileName);
-            return fileName;
+            String newFilename = FileUtil.rename(file.getOriginalFilename());
+            FileInfo fileInfo = new FileInfo();
+            fileInfo.setOriginalFilename(file.getOriginalFilename());
+            fileInfo.setNewFilename(newFilename);
+            fileInfo.setDir(fileConfig.getFilePath());
+            fileInfo.setPath(fileConfig.getFilePath() + newFilename);
+            fileInfo.setSize(file.getSize());
+
+            FileUtil.upload(file, fileConfig.getFilePath(), newFilename);
+            return R.ok(fileInfo);
         } catch (Exception e) {
-            return "失败";
+            return R.error("失败");
         }
     }
 
@@ -37,14 +46,17 @@ public class FileController {
      * 上传图片文件
      */
     @RequestMapping(value = "/image/upload", method = RequestMethod.POST)
-    public String imageUpload(@RequestParam(value = "file") MultipartFile file) throws Exception {
+    public R imageUpload(@RequestParam(value = "file") MultipartFile file) {
         if (file == null) {
-            return "上传图片文件为空";
+            return R.error("上传图片文件为空");
         }
-
-        String fileName = FileUtil.rename(file.getOriginalFilename());
-        FileUtil.upload(file.getBytes(), fileConfig.getImgPath(), fileName);
-        return "/file/image/view/" + fileName;
+        try {
+            String newFilename = FileUtil.rename(file.getOriginalFilename());
+            FileUtil.upload(file, fileConfig.getImgPath(), newFilename);
+            return R.ok("/file/image/view/" + newFilename);
+        } catch (Exception e) {
+            return R.error("失败");
+        }
     }
 
     /**
@@ -83,6 +95,6 @@ public class FileController {
         files[0] = new File(fileConfig.getImgPath() + "1.jpg");
         files[1] = new File(fileConfig.getImgPath() + "2.jpg");
         files[2] = new File(fileConfig.getImgPath());
-        FileUtil.download(files, fileConfig.getFilePath(), "图片.zip", response);
+        FileUtil.download(fileConfig.getFilePath(), files, "图片.zip", response);
     }
 }

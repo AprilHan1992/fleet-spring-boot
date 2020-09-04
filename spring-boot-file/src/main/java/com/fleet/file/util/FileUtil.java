@@ -1,7 +1,9 @@
 package com.fleet.file.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -15,6 +17,8 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * 文件工具类
+ *
+ * @author April Han
  */
 public class FileUtil {
 
@@ -22,27 +26,53 @@ public class FileUtil {
 
     /**
      * 文件上传
+     *
+     * @param file        上传文件
+     * @param dirs        上传目录
+     * @param newFilename 新文件名
      */
-    public static void upload(byte[] file, String path, String fileName) throws Exception {
-        File fileDir = new File(path);
-        if (!fileDir.exists() && !fileDir.isDirectory()) {
-            fileDir.mkdirs();
+    public static void upload(MultipartFile file, String dirs, String newFilename) throws Exception {
+        if (!mkdirs(dirs)) {
+            return;
         }
-        FileOutputStream fos = new FileOutputStream(path + fileName);
-        fos.write(file);
+
+        FileOutputStream fos = new FileOutputStream(dirs + newFilename);
+        fos.write(file.getBytes());
         fos.flush();
         fos.close();
     }
 
     /**
      * 文件上传
+     *
+     * @param bytes       上传文件 byte[]
+     * @param dirs        上传目录
+     * @param newFilename 新文件名
      */
-    public static void upload(InputStream is, String path, String fileName) throws Exception {
-        File fileDir = new File(path);
-        if (!fileDir.exists() && !fileDir.isDirectory()) {
-            fileDir.mkdirs();
+    public static void upload(byte[] bytes, String dirs, String newFilename) throws Exception {
+        if (!mkdirs(dirs)) {
+            return;
         }
-        FileOutputStream fos = new FileOutputStream(path + fileName);
+
+        FileOutputStream fos = new FileOutputStream(dirs + newFilename);
+        fos.write(bytes);
+        fos.flush();
+        fos.close();
+    }
+
+    /**
+     * 文件上传
+     *
+     * @param is          上传文件流
+     * @param dirs        上传目录
+     * @param newFilename 新文件名
+     */
+    public static void upload(InputStream is, String dirs, String newFilename) throws Exception {
+        if (!mkdirs(dirs)) {
+            return;
+        }
+
+        FileOutputStream fos = new FileOutputStream(dirs + newFilename);
         byte[] b = new byte[1024];
         int len;
         while ((len = is.read(b)) > 0) {
@@ -54,14 +84,33 @@ public class FileUtil {
     }
 
     /**
-     * resource 文件下载
+     * 文件下载
+     *
+     * @param dirs             下载目录
+     * @param originalFilename 原文件名
+     * @param response         响应
      */
-    public static void downloadResource(String filePath, String fileName, HttpServletResponse response) throws Exception {
-        InputStream is = FileUtil.class.getResourceAsStream(filePath);
+    public static void download(String dirs, String originalFilename, HttpServletResponse response) throws Exception {
+        download(dirs, originalFilename, null, response);
+    }
+
+    /**
+     * 文件下载
+     *
+     * @param dirs             下载目录
+     * @param originalFilename 原文件名
+     * @param newFilename      新文件名
+     * @param response         响应
+     */
+    public static void download(String dirs, String originalFilename, String newFilename, HttpServletResponse response) throws Exception {
+        InputStream is = new FileInputStream(dirs + originalFilename);
 
         response.reset();
         response.setContentType("bin");
-        response.addHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes(), StandardCharsets.ISO_8859_1));
+        if (StringUtils.isBlank(newFilename)) {
+            newFilename = originalFilename;
+        }
+        response.addHeader("Content-Disposition", "attachment;filename=" + new String(newFilename.getBytes(), StandardCharsets.ISO_8859_1));
         OutputStream os = response.getOutputStream();
         byte[] b = new byte[1024];
         int len;
@@ -74,14 +123,33 @@ public class FileUtil {
     }
 
     /**
-     * 文件下载
+     * resource 文件下载
+     *
+     * @param dirs             下载目录
+     * @param originalFilename 原文件名
+     * @param response         响应
      */
-    public static void download(String filePath, String fileName, HttpServletResponse response) throws Exception {
-        InputStream is = new FileInputStream(filePath);
+    public static void downloadResource(String dirs, String originalFilename, HttpServletResponse response) throws Exception {
+        downloadResource(dirs, originalFilename, null, response);
+    }
+
+    /**
+     * resource 文件下载
+     *
+     * @param dirs             下载目录
+     * @param originalFilename 原文件名
+     * @param newFilename      新文件名
+     * @param response         响应
+     */
+    public static void downloadResource(String dirs, String originalFilename, String newFilename, HttpServletResponse response) throws Exception {
+        InputStream is = FileUtil.class.getResourceAsStream(dirs + originalFilename);
 
         response.reset();
         response.setContentType("bin");
-        response.addHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes(), StandardCharsets.ISO_8859_1));
+        if (StringUtils.isBlank(newFilename)) {
+            newFilename = originalFilename;
+        }
+        response.addHeader("Content-Disposition", "attachment;filename=" + new String(newFilename.getBytes(), StandardCharsets.ISO_8859_1));
         OutputStream os = response.getOutputStream();
         byte[] b = new byte[1024];
         int len;
@@ -96,34 +164,38 @@ public class FileUtil {
     /**
      * 批量文件打包下载
      *
-     * @param files    文件
-     * @param path     缓存Zip包存放位置
-     * @param fileName 文件名
-     * @param response
-     * @throws Exception
+     * @param dirs        下载目录
+     * @param files       文件
+     * @param newFilename 新文件名
+     * @param response    响应
      */
-    public static void download(File[] files, String path, String fileName, HttpServletResponse response) throws Exception {
-        String zipFileName = UUIDUtil.getUUID() + ".zip";
-        File zipfile = new File(path + zipFileName);
-        if (!zipfile.exists()) {
-            zipfile.createNewFile();
+    public static void download(String dirs, File[] files, String newFilename, HttpServletResponse response) throws Exception {
+        String zipFilename = UUIDUtil.getUUID() + ".zip";
+        File zipFile = new File(dirs + zipFilename);
+        if (!zipFile.exists()) {
+            if (!zipFile.createNewFile()) {
+                return;
+            }
         }
-
-        FileOutputStream fos = new FileOutputStream(zipfile);
+        FileOutputStream fos = new FileOutputStream(zipFile);
         ZipOutputStream zos = new ZipOutputStream(fos);
         zipFile(files, zos);
         zos.finish();
         zos.close();
         fos.flush();
         fos.close();
-        downloadZip(zipfile, fileName, response);
+        download(dirs, zipFilename, newFilename, response);
     }
 
     /**
      * 图片在线查看
+     *
+     * @param dirs             下载目录
+     * @param originalFilename 原文件名
+     * @param response         响应
      */
-    public static void image(String path, String fileName, HttpServletResponse response) throws Exception {
-        InputStream is = new FileInputStream(path + fileName);
+    public static void image(String dirs, String originalFilename, HttpServletResponse response) throws Exception {
+        InputStream is = new FileInputStream(dirs + originalFilename);
 
         OutputStream os = response.getOutputStream();
         byte[] b = new byte[1024];
@@ -136,8 +208,16 @@ public class FileUtil {
         is.close();
     }
 
-    public static String rename(String fileName) {
-        return UUIDUtil.getUUID() + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
+    public static String rename(String filename) {
+        return UUIDUtil.getUUID() + "." + filename.substring(filename.lastIndexOf(".") + 1);
+    }
+
+    public static boolean mkdirs(String dirs) {
+        File fileDirs = new File(dirs);
+        if (!fileDirs.exists() && !fileDirs.isDirectory()) {
+            return fileDirs.mkdirs();
+        }
+        return true;
     }
 
     /**
@@ -145,8 +225,7 @@ public class FileUtil {
      */
     private static void zipFile(File[] files, ZipOutputStream zos) {
         if (files != null) {
-            for (int i = 0; i < files.length; i++) {
-                File file = files[i];
+            for (File file : files) {
                 zipFile(file, zos);
             }
         }
@@ -176,8 +255,8 @@ public class FileUtil {
                     try {
                         File[] files = file.listFiles();
                         if (files != null) {
-                            for (int i = 0; i < files.length; i++) {
-                                zipFile(files[i], zos);
+                            for (File f : files) {
+                                zipFile(f, zos);
                             }
                         }
                     } catch (Exception e) {
@@ -191,26 +270,6 @@ public class FileUtil {
     }
 
     /**
-     * 下载Zip文件
-     */
-    private static void downloadZip(File file, String fileName, HttpServletResponse response) throws Exception {
-        FileInputStream fis = new FileInputStream(file);
-
-        response.reset();
-        response.setContentType("application/octet-stream");
-        response.addHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes(), StandardCharsets.ISO_8859_1));
-        OutputStream os = response.getOutputStream();
-        byte[] b = new byte[1024];
-        int len;
-        while ((len = fis.read(b)) > 0) {
-            os.write(b, 0, len);
-        }
-        os.flush();
-        os.close();
-        fis.close();
-    }
-
-    /**
      * 在MappedByteBuffer释放后再对它进行读操作的话就会引发jvm crash，在并发情况下很容易发生
      * 正在释放时另一个线程正开始读取，于是crash就发生了。所以为了系统稳定性释放前一般需要检 查是否还有线程在读或写
      */
@@ -221,22 +280,19 @@ public class FileUtil {
             }
 
             mappedByteBuffer.force();
-            AccessController.doPrivileged(new PrivilegedAction<Object>() {
-                @Override
-                public Object run() {
-                    try {
-                        Method cleanerMethod = mappedByteBuffer.getClass().getMethod("cleaner");
-                        cleanerMethod.setAccessible(true);
-                        Object cleaner = cleanerMethod.invoke(mappedByteBuffer);
-                        Method cleanMethod = cleaner.getClass().getMethod("clean");
-                        cleanMethod.setAccessible(true);
-                        cleanMethod.invoke(cleaner);
-                    } catch (Exception e) {
-                        logger.error("clean MappedByteBuffer error!!!", e);
-                    }
-                    logger.info("clean MappedByteBuffer completed!!!");
-                    return null;
+            AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+                try {
+                    Method cleanerMethod = mappedByteBuffer.getClass().getMethod("cleaner");
+                    cleanerMethod.setAccessible(true);
+                    Object cleaner = cleanerMethod.invoke(mappedByteBuffer);
+                    Method cleanMethod = cleaner.getClass().getMethod("clean");
+                    cleanMethod.setAccessible(true);
+                    cleanMethod.invoke(cleaner);
+                } catch (Exception e) {
+                    logger.error("clean MappedByteBuffer error!!!", e);
                 }
+                logger.info("clean MappedByteBuffer completed!!!");
+                return null;
             });
         } catch (Exception e) {
             e.printStackTrace();
