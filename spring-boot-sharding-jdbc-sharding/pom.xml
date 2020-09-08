@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-sharding-jdbc-sharding</artifactId>
     <name>spring-boot-sharding-jdbc-sharding</name>
-    <description>sharding-jdbc-sharding</description>
+    <description>Sharding Jdbc 分库分表</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
