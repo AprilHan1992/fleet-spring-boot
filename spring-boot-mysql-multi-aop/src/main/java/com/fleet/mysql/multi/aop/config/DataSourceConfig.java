@@ -20,28 +20,28 @@ import java.util.Map;
 public class DataSourceConfig {
 
     @Primary
-    @Bean(name = "masterDataSource")
+    @Bean(name = "master")
     @ConfigurationProperties("spring.datasource.master")
-    public DataSource masterDataSource() {
+    public DataSource master() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "slaveDataSource")
-    @ConfigurationProperties("spring.datasource.slave")
-    public DataSource slaveDataSource() {
+    @Bean(name = "slaver")
+    @ConfigurationProperties("spring.datasource.slaver")
+    public DataSource slaver() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean(name = "dynamicDataSource")
-    public DataSource dynamicDataSource(@Qualifier("masterDataSource") DataSource masterDataSource,
-                                        @Qualifier("slaveDataSource") DataSource slaveDataSource) {
+    public DataSource dynamicDataSource(@Qualifier("master") DataSource master,
+                                        @Qualifier("slaver") DataSource slaver) {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         // 设置主库数据源
-        dynamicDataSource.setDefaultTargetDataSource(masterDataSource);
+        dynamicDataSource.setDefaultTargetDataSource(master);
 
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put(DBType.MASTER, masterDataSource);
-        targetDataSources.put(DBType.SLAVE, slaveDataSource);
+        targetDataSources.put(DBType.MASTER, master);
+        targetDataSources.put(DBType.SLAVER, slaver);
         dynamicDataSource.setTargetDataSources(targetDataSources);
         return dynamicDataSource;
     }

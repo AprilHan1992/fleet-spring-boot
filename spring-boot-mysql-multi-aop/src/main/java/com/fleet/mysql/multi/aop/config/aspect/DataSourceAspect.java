@@ -15,7 +15,7 @@ public class DataSourceAspect {
             + "|| execution(* com.fleet.mysql.multi.aop.service..*.select*(..)) "
             + "|| execution(* com.fleet.mysql.multi.aop.service..*.list*(..)))")
     public void read() {
-        DataSourceConfig.DataSourceType.setDBType(DBType.SLAVE);
+        DataSourceConfig.DataSourceType.setDBType(DBType.SLAVER);
     }
 
     @Before("@annotation(com.fleet.mysql.multi.aop.annotation.Master) "

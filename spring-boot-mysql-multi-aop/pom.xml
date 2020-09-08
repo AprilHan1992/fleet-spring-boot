@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-mysql-multi-aop</artifactId>
     <name>spring-boot-mysql-multi-aop</name>
-    <description>mysql-multi-aop</description>
+    <description>Mysql 多数据源 AOP 实现</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
