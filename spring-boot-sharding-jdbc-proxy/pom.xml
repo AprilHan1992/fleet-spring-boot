@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-sharding-jdbc-proxy</artifactId>
     <name>spring-boot-sharding-jdbc-proxy</name>
-    <description>sharding-jdbc-proxy</description>
+    <description>Sharding Jdbc 读写分离</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
