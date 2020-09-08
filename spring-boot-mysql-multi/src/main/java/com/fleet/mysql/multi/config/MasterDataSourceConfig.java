@@ -14,22 +14,25 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * @author April Han
+ */
 @Configuration
 @MapperScan(basePackages = "com.fleet.mysql.multi.dao.master", sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDataSourceConfig {
 
     @Primary
-    @Bean(name = "masterDataSource")
+    @Bean(name = "master")
     @ConfigurationProperties("spring.datasource.master")
-    public DataSource masterDataSource() {
+    public DataSource master() {
         return DataSourceBuilder.create().build();
     }
 
     @Primary
     @Bean(name = "masterSqlSessionFactory")
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource) throws Exception {
+    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("master") DataSource master) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(masterDataSource);
+        bean.setDataSource(master);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/master/*Mapper.xml"));
         return bean.getObject();
     }

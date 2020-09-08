@@ -1,4 +1,4 @@
-package com.fleet.mysql.multi.dao.slave;
+package com.fleet.mysql.multi.dao.slaver;
 
 import com.fleet.mysql.multi.entity.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Mapper
 @Repository
-public interface SlaveUserDao {
+public interface SlaverUserDao {
 
     int insert(User user);
 

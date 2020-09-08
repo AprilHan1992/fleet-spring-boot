@@ -1,7 +1,7 @@
 package com.fleet.mysql.multi.service.impl;
 
 import com.fleet.mysql.multi.dao.master.MasterUserDao;
-import com.fleet.mysql.multi.dao.slave.SlaveUserDao;
+import com.fleet.mysql.multi.dao.slaver.SlaverUserDao;
 import com.fleet.mysql.multi.entity.User;
 import com.fleet.mysql.multi.service.UserService;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     private MasterUserDao masterUserDao;
 
     @Resource
-    private SlaveUserDao slaveUserDao;
+    private SlaverUserDao slaverUserDao;
 
     @Override
     public int insert(User user) {
@@ -38,11 +38,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(Long id) {
-        return slaveUserDao.get(id);
+        return slaverUserDao.get(id);
     }
 
     @Override
     public List<User> list(Map<String, Object> map) {
-        return slaveUserDao.list(map);
+        return slaverUserDao.list(map);
     }
 }

@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-mysql-multi</artifactId>
     <name>spring-boot-mysql-multi</name>
-    <description>mysql-multi</description>
+    <description>Mysql 多数据源</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
