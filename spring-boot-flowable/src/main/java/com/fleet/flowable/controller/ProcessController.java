@@ -156,6 +156,9 @@ public class ProcessController {
     @GetMapping("/processRateImage")
     public void processRateImage(@RequestParam String businessKey, HttpServletResponse response) {
         ResponseEntity<byte[]> entity = processService.getProcessRateImage(businessKey);
+        if (entity == null) {
+            return;
+        }
         try {
             byte[] bytes = entity.getBody();
             OutputStream os = response.getOutputStream();
