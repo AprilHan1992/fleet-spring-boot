@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-flowable</artifactId>
     <name>spring-boot-flowable</name>
-    <description>Flowable 工作流</description>
+    <description>Flowable 工作流引擎</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -35,12 +35,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <groupId>org.junit.vintage</groupId>-->
-            <!--                    <artifactId>junit-vintage-engine</artifactId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -58,31 +52,6 @@
             <version>1.2.62</version>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.flowable</groupId>-->
-        <!--            <artifactId>flowable-spring-boot-starter</artifactId>-->
-        <!--            <version>${flowable.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.flowable</groupId>-->
-        <!--            <artifactId>flowable-engine</artifactId>-->
-        <!--            <version>${flowable.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.flowable</groupId>-->
-        <!--            <artifactId>flowable-ui-modeler-conf</artifactId>-->
-        <!--            <version>${flowable.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.flowable</groupId>-->
-        <!--            <artifactId>flowable-ui-modeler-rest</artifactId>-->
-        <!--            <version>${flowable.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.flowable</groupId>-->
-        <!--            <artifactId>flowable-ui-modeler-logic</artifactId>-->
-        <!--            <version>${flowable.version}</version>-->
-        <!--        </dependency>-->
     </dependencies>
 
     <build>
