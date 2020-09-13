@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/service")
 public class ModelEditorJsonRestResource implements ModelDataJsonConstants {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(ModelEditorJsonRestResource.class);
+    protected static final Logger logger = LoggerFactory.getLogger(ModelEditorJsonRestResource.class);
 
     @Resource
     private RepositoryService repositoryService;
@@ -46,7 +46,7 @@ public class ModelEditorJsonRestResource implements ModelDataJsonConstants {
                 modelNode.put("model", editorJsonNode);
 
             } catch (Exception e) {
-                LOGGER.error("Error creating model JSON", e);
+                logger.error("Error creating model JSON", e);
                 throw new ActivitiException("Error creating model JSON", e);
             }
         }

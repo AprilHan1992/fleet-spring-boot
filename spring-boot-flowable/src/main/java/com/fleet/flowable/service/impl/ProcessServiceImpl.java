@@ -1,20 +1,20 @@
-package com.fleet.activiti6.service.impl;
+package com.fleet.flowable.service.impl;
 
-import com.fleet.activiti6.entity.*;
-import com.fleet.activiti6.page.Page;
-import com.fleet.activiti6.page.PageUtil;
-import com.fleet.activiti6.service.ProcessService;
-import org.activiti.bpmn.model.*;
-import org.activiti.engine.*;
-import org.activiti.engine.history.HistoricActivityInstance;
-import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.history.HistoricTaskInstance;
-import org.activiti.engine.history.HistoricVariableInstance;
-import org.activiti.engine.repository.ProcessDefinition;
-import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Comment;
-import org.activiti.engine.task.Task;
-import org.activiti.image.ProcessDiagramGenerator;
+import com.fleet.flowable.entity.*;
+import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.PageUtil;
+import com.fleet.flowable.service.ProcessService;
+import org.flowable.bpmn.model.*;
+import org.flowable.engine.*;
+import org.flowable.engine.history.HistoricActivityInstance;
+import org.flowable.engine.history.HistoricProcessInstance;
+import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.engine.task.Comment;
+import org.flowable.image.ProcessDiagramGenerator;
+import org.flowable.task.api.Task;
+import org.flowable.task.api.history.HistoricTaskInstance;
+import org.flowable.variable.api.history.HistoricVariableInstance;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +25,9 @@ import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.*;
 
+/**
+ * @author April Han
+ */
 @Transactional
 @Service
 public class ProcessServiceImpl implements ProcessService {
@@ -140,6 +143,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     private ProcessInfo<?> getProcessInfo(HistoricProcessInstance historicProcessInstance) {
         String processInstanceId = historicProcessInstance.getId();
+
         HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
                 .processInstanceId(processInstanceId)
                 .variableName("info")
@@ -208,6 +212,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     private ProcessInfo<?> getProcessInfo(HistoricActivityInstance historicActivityInstance) {
         String processInstanceId = historicActivityInstance.getId();
+
         HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
                 .processInstanceId(processInstanceId)
                 .variableName("info")
@@ -272,8 +277,9 @@ public class ProcessServiceImpl implements ProcessService {
             return null;
         }
 
+        String processInstanceId = processInstance.getId();
         Task task = taskService.createTaskQuery()
-                .processInstanceId(processInstance.getId())
+                .processInstanceId(processInstanceId)
                 .singleResult();
         return getTaskInfo(task);
     }
@@ -350,7 +356,9 @@ public class ProcessServiceImpl implements ProcessService {
         if (task == null) {
             return "任务不存在";
         }
+
         String taskId = task.getId();
+
         ProcessInfo<?> processInfo = (ProcessInfo<?>) taskService.getVariable(taskId, "info");
         for (String key : assignees.keySet()) {
             processInfo.getAssignees().put(key, assignees.get(key));
@@ -382,6 +390,7 @@ public class ProcessServiceImpl implements ProcessService {
         if (historicProcessInstance == null) {
             return "businessKey:" + businessKey + "不存在";
         }
+
         String processInstanceId = historicProcessInstance.getId();
 
         runtimeService.deleteProcessInstance(processInstanceId, "终止");
@@ -398,8 +407,10 @@ public class ProcessServiceImpl implements ProcessService {
             return null;
         }
 
+        String processInstanceId = historicProcessInstance.getId();
+
         HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
-                .processInstanceId(historicProcessInstance.getId())
+                .processInstanceId(processInstanceId)
                 .variableName("info")
                 .singleResult();
         if (historicVariableInstance == null) {
@@ -515,14 +526,12 @@ public class ProcessServiceImpl implements ProcessService {
             if (processDefinition == null) {
                 return null;
             }
-            String diagramResourceName = processDefinition.getDiagramResourceName();
-            if (diagramResourceName == null) {
-                return null;
-            }
 
-            BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinition.getId());
+            String processDefinitionId = processDefinition.getId();
+
+            BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
             ProcessDiagramGenerator processDiagramGenerator = processEngineConfiguration.getProcessDiagramGenerator();
-            InputStream is = processDiagramGenerator.generateDiagram(bpmnModel, "png", Collections.emptyList(), Collections.emptyList(), "宋体", "宋体", null, null, 1.0);
+            InputStream is = processDiagramGenerator.generateDiagram(bpmnModel, "png", Collections.emptyList(), Collections.emptyList(), "宋体", "宋体", "宋体", null, 1.0, false);
 
             byte[] bytes = new byte[is.available()];
             is.read(bytes);
@@ -543,32 +552,49 @@ public class ProcessServiceImpl implements ProcessService {
     public ResponseEntity<byte[]> getProcessRateImage(String businessKey) {
         ResponseEntity<byte[]> entity = null;
         try {
-            HistoricProcessInstance processInstance = historyService.createHistoricProcessInstanceQuery()
+            HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
                     .processInstanceBusinessKey(businessKey)
                     .singleResult();
-            if (processInstance == null) {
+            if (historicProcessInstance == null) {
                 return null;
             }
 
+            String processInstanceId = historicProcessInstance.getId();
+            String processDefinitionId = historicProcessInstance.getProcessDefinitionId();
+
+            BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
+
+            List<String> highLightedActivities = new ArrayList<>();
+            // 如果只用框选中当前流程执行任务
+            List<Task> taskList = taskService.createTaskQuery().processInstanceId(processInstanceId).list();
+            for (Task task : taskList) {
+                highLightedActivities.add(task.getTaskDefinitionKey());
+            }
+
+            List<String> highLightedFlows = new ArrayList<>();
+            // 当前流程所有活动
             List<HistoricActivityInstance> historicActivityInstanceList = historyService.createHistoricActivityInstanceQuery()
-                    .processInstanceId(processInstance.getId())
-                    .orderByHistoricActivityInstanceStartTime().asc()
+                    .processInstanceId(processInstanceId)
+                    .orderByHistoricActivityInstanceId().asc()
                     .list();
             if (historicActivityInstanceList == null) {
                 return null;
             }
+            for (HistoricActivityInstance historicActivityInstance : historicActivityInstanceList) {
+                String activityType = historicActivityInstance.getActivityType();
+                String activityId = historicActivityInstance.getActivityId();
+//                // 如果用框选中全部历史任务
+//                if (!"sequenceFlow".equals(activityType)) {
+//                    highLightedActivities.add(activityId);
+//                }
 
-            List<String> highLightedActivityIds = new ArrayList<>();
-            for (HistoricActivityInstance tempActivity : historicActivityInstanceList) {
-                String activityId = tempActivity.getActivityId();
-                highLightedActivityIds.add(activityId);
+                if ("sequenceFlow".equals(activityType)) {
+                    highLightedFlows.add(activityId);
+                }
             }
 
-            BpmnModel bpmnModel = repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());
-            List<String> highLightedFlows = getHighLightedFlows(bpmnModel, historicActivityInstanceList);
-
             ProcessDiagramGenerator processDiagramGenerator = processEngineConfiguration.getProcessDiagramGenerator();
-            InputStream is = processDiagramGenerator.generateDiagram(bpmnModel, "png", highLightedActivityIds, highLightedFlows, "宋体", "宋体", null, null, 1.0);
+            InputStream is = processDiagramGenerator.generateDiagram(bpmnModel, "png", highLightedActivities, highLightedFlows, "宋体", "宋体", "宋体", null, 1.0, false);
 
             byte[] bytes = new byte[is.available()];
             is.read(bytes);
@@ -585,43 +611,6 @@ public class ProcessServiceImpl implements ProcessService {
         return entity;
     }
 
-    /**
-     * 获取需要高亮的线
-     */
-    private static List<String> getHighLightedFlows(BpmnModel bpmnModel, List<HistoricActivityInstance> historicActivityInstanceList) {
-        // 高亮流程已发生流转的线id集合
-        List<String> highLightedFlows = new ArrayList<>();
-
-        for (int i = 0; i < historicActivityInstanceList.size(); i++) {
-            HistoricActivityInstance current = historicActivityInstanceList.get(i);
-            if (current.getEndTime() != null) {
-                // 获得当前活动对应的节点信息及 outgoingFlows 信息
-                FlowNode currentFlowNode = (FlowNode) bpmnModel.getMainProcess().getFlowElement(current.getActivityId());
-                List<SequenceFlow> sequenceFlows = currentFlowNode.getOutgoingFlows();
-                // 并行网关或兼容网关
-                if ("parallelGateway".equals(current.getActivityType()) || "inclusiveGateway".equals(current.getActivityType())) {
-                    for (SequenceFlow sequenceFlow : sequenceFlows) {
-                        highLightedFlows.add(sequenceFlow.getId());
-                    }
-                } else {
-                    NEXT:
-                    for (int j = i + 1; j < historicActivityInstanceList.size(); j++) {
-                        HistoricActivityInstance next = historicActivityInstanceList.get(j);
-                        FlowNode nextFlowNode = (FlowNode) bpmnModel.getMainProcess().getFlowElement(next.getActivityId());
-                        for (SequenceFlow sequenceFlow : sequenceFlows) {
-                            FlowNode flowNode = (FlowNode) bpmnModel.getMainProcess().getFlowElement(sequenceFlow.getTargetRef());
-                            if (nextFlowNode.equals(flowNode)) {
-                                highLightedFlows.add(sequenceFlow.getId());
-                                break NEXT;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return highLightedFlows;
-    }
-
     @Override
     public List<ApprovalLog> getApprovalLog(String businessKey) {
         HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
@@ -631,8 +620,10 @@ public class ProcessServiceImpl implements ProcessService {
             return new ArrayList<>();
         }
 
+        String processInstanceId = historicProcessInstance.getId();
+
         List<HistoricActivityInstance> historicActivityInstanceList = historyService.createHistoricActivityInstanceQuery()
-                .processInstanceId(historicProcessInstance.getId())
+                .processInstanceId(processInstanceId)
                 .activityType("userTask")
                 .orderByHistoricActivityInstanceStartTime().asc()
                 .list();
@@ -780,7 +771,9 @@ public class ProcessServiceImpl implements ProcessService {
         if (processInstance.isSuspended()) {
             return "已挂起";
         }
-        runtimeService.suspendProcessInstanceById(processInstance.getId());
+
+        String processInstanceId = processInstance.getId();
+        runtimeService.suspendProcessInstanceById(processInstanceId);
         return "成功";
     }
 
@@ -795,7 +788,9 @@ public class ProcessServiceImpl implements ProcessService {
         if (!processInstance.isSuspended()) {
             return "已激活";
         }
-        runtimeService.activateProcessInstanceById(processInstance.getId());
+
+        String processInstanceId = processInstance.getId();
+        runtimeService.activateProcessInstanceById(processInstanceId);
         return "成功";
     }
 }

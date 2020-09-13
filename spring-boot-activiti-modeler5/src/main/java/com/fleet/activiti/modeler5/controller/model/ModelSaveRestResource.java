@@ -24,7 +24,7 @@ import java.io.InputStream;
 @RequestMapping(value = "/service")
 public class ModelSaveRestResource implements ModelDataJsonConstants {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(ModelSaveRestResource.class);
+    protected static final Logger logger = LoggerFactory.getLogger(ModelSaveRestResource.class);
 
     @Resource
     private RepositoryService repositoryService;
@@ -64,7 +64,7 @@ public class ModelSaveRestResource implements ModelDataJsonConstants {
             repositoryService.addModelEditorSourceExtra(model.getId(), result);
             baos.close();
         } catch (Exception e) {
-            LOGGER.error("Error saving model", e);
+            logger.error("Error saving model", e);
             throw new ActivitiException("Error saving model", e);
         }
     }
