@@ -139,6 +139,9 @@ public class ProcessController {
     @GetMapping("/processImage")
     public void processImage(@RequestParam String processDefinitionKey, HttpServletResponse response) {
         ResponseEntity<byte[]> entity = processService.getProcessImage(processDefinitionKey);
+        if (entity == null) {
+            return;
+        }
         try {
             byte[] bytes = entity.getBody();
             OutputStream os = response.getOutputStream();
