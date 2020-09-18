@@ -155,6 +155,7 @@
         <module>spring-boot-mso</module>
         <module>spring-boot-elk</module>
         <module>spring-boot-aliyunoss</module>
+        <module>spring-boot-oshi</module>
     </modules>
 
     <build>
