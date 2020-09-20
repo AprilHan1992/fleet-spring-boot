@@ -138,6 +138,8 @@
         <module>spring-boot-zipkin</module>
         <module>spring-boot-netty</module>
         <module>spring-boot-transaction</module>
+        <module>spring-boot-oshi</module>
+        <module>spring-boot-hutool</module>
         <module>spring-boot-common</module>
         <module>spring-boot-excel</module>
         <module>spring-boot-easyexcel</module>
@@ -155,7 +157,6 @@
         <module>spring-boot-mso</module>
         <module>spring-boot-elk</module>
         <module>spring-boot-aliyunoss</module>
-        <module>spring-boot-oshi</module>
     </modules>
 
     <build>
