@@ -15,3 +15,4 @@ spring:
             required: true
           ssl:
             trust: smtp.sina.com
+          timeout: 10000

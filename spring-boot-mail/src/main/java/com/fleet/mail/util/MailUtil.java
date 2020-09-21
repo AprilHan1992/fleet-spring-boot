@@ -1,97 +1,132 @@
 package com.fleet.mail.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * 邮件工具类
+ *
+ * @author April Han
  */
 public class MailUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(MailUtil.class);
+    private JavaMailSender javaMailSender;
 
-    private JavaMailSenderImpl javaMailSender;
+    private TemplateEngine templateEngine;
 
-    private Map<String, String> map;
+    public void setJavaMailSender(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
-    public MailUtil(Map<String, String> map) {
-        if (map == null) {
-            logger.error("邮件服务错误：配置缺失");
-            return;
-        }
-        this.map = map;
-        javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost(map.get("host"));
-        javaMailSender.setPort(StringUtils.isNotEmpty(map.get("port")) ? Integer.parseInt(map.get("port")) : 25);
-        javaMailSender.setProtocol(map.get("protocol"));
-        javaMailSender.setUsername(map.get("username"));
-        javaMailSender.setPassword(map.get("password"));
-        javaMailSender.setDefaultEncoding(StringUtils.isNotEmpty(map.get("default-encoding")) ? map.get("default-encoding") : "UTF-8");
-        Properties javaMailProperties = new Properties();
-        javaMailProperties.setProperty("mail.smtp.auth", "true");
-        javaMailProperties.setProperty("mail.smtp.timeout", "10000");
-        javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
-        javaMailProperties.setProperty("mail.smtp.starttls.required", "true");
-        javaMailSender.setJavaMailProperties(javaMailProperties);
+    public void setTemplateEngine(TemplateEngine templateEngine) {
+        this.templateEngine = templateEngine;
     }
 
     /**
      * 发送文本邮件
      */
-    public void textMail(String to, String subject, String text) throws Exception {
-        simpleMail(to, subject, text);
-    }
-
-    /**
-     * 发送文本邮件
-     */
-    public void simpleMail(String to, String subject, String text) throws Exception {
+    public void textMail(String from, String to, String subject, String text) throws Exception {
         String[] tos = {to};
-        simpleMail(tos, subject, text);
+        simpleMail(from, null, tos, subject, text);
     }
 
     /**
      * 发送文本邮件
      */
-    public void textMail(List<String> toList, String subject, String text) throws Exception {
-        simpleMail(toList, subject, text);
+    public void textMail(String from, String personal, String to, String subject, String text) throws Exception {
+        String[] tos = {to};
+        simpleMail(from, personal, tos, subject, text);
     }
 
     /**
      * 发送文本邮件
      */
-    public void simpleMail(List<String> toList, String subject, String text) throws Exception {
+    public void textMail(String from, List<String> toList, String subject, String text) throws Exception {
         String[] tos = toList.toArray(new String[0]);
-        simpleMail(tos, subject, text);
+        simpleMail(from, null, tos, subject, text);
     }
 
     /**
      * 发送文本邮件
      */
-    public void textMail(String[] tos, String subject, String text) throws Exception {
-        simpleMail(tos, subject, text);
+    public void textMail(String from, String personal, List<String> toList, String subject, String text) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        simpleMail(from, personal, tos, subject, text);
     }
 
     /**
      * 发送文本邮件
      */
-    public void simpleMail(String[] tos, String subject, String text) throws Exception {
+    public void textMail(String from, String[] tos, String subject, String text) throws Exception {
+        simpleMail(from, null, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void textMail(String from, String personal, String[] tos, String subject, String text) throws Exception {
+        simpleMail(from, personal, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, String to, String subject, String text) throws Exception {
+        String[] tos = {to};
+        simpleMail(from, null, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, String personal, String to, String subject, String text) throws Exception {
+        String[] tos = {to};
+        simpleMail(from, personal, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, List<String> toList, String subject, String text) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        simpleMail(from, null, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, String personal, List<String> toList, String subject, String text) throws
+            Exception {
+        String[] tos = toList.toArray(new String[0]);
+        simpleMail(from, personal, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, String[] tos, String subject, String text) throws Exception {
+        simpleMail(from, null, tos, subject, text);
+    }
+
+    /**
+     * 发送文本邮件
+     */
+    public void simpleMail(String from, String personal, String[] tos, String subject, String text) throws Exception {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        if (StringUtils.isNotEmpty(this.map.get("personal"))) {
-            helper.setFrom(this.map.get("from"), this.map.get("personal"));
+        if (StringUtils.isNotEmpty(personal)) {
+            helper.setFrom(from, personal);
         } else {
-            helper.setFrom(this.map.get("from"));
+            helper.setFrom(from);
         }
         helper.setTo(tos);
         helper.setSubject(subject);
@@ -99,33 +134,55 @@ public class MailUtil {
         javaMailSender.send(message);
     }
 
-
     /**
      * 发送html邮件
      */
-    public void htmlMail(String to, String subject, String text) throws Exception {
+    public void htmlMail(String from, String to, String subject, String text) throws Exception {
         String[] tos = {to};
-        htmlMail(tos, subject, text);
+        htmlMail(from, null, tos, subject, text);
     }
 
     /**
      * 发送html邮件
      */
-    public void htmlMail(List<String> toList, String subject, String text) throws Exception {
+    public void htmlMail(String from, String personal, String to, String subject, String text) throws Exception {
+        String[] tos = {to};
+        htmlMail(from, personal, tos, subject, text);
+    }
+
+    /**
+     * 发送html邮件
+     */
+    public void htmlMail(String from, List<String> toList, String subject, String text) throws Exception {
         String[] tos = toList.toArray(new String[0]);
-        htmlMail(tos, subject, text);
+        htmlMail(from, null, tos, subject, text);
     }
 
     /**
      * 发送html邮件
      */
-    public void htmlMail(String[] tos, String subject, String text) throws Exception {
+    public void htmlMail(String from, String personal, List<String> toList, String subject, String text) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        htmlMail(from, personal, tos, subject, text);
+    }
+
+    /**
+     * 发送html邮件
+     */
+    public void htmlMail(String from, String[] tos, String subject, String text) throws Exception {
+        htmlMail(from, null, tos, subject, text);
+    }
+
+    /**
+     * 发送html邮件
+     */
+    public void htmlMail(String from, String personal, String[] tos, String subject, String text) throws Exception {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        if (StringUtils.isNotEmpty(this.map.get("personal"))) {
-            helper.setFrom(this.map.get("from"), this.map.get("personal"));
+        if (StringUtils.isNotEmpty(personal)) {
+            helper.setFrom(from, personal);
         } else {
-            helper.setFrom(this.map.get("from"));
+            helper.setFrom(from);
         }
         helper.setTo(tos);
         helper.setSubject(subject);
@@ -136,29 +193,53 @@ public class MailUtil {
     /**
      * 发送带附件的邮件
      */
-    public void attachmentMail(String to, String subject, String text, Map<String, File> files) throws Exception {
+    public void attachmentMail(String from, String to, String subject, String text, Map<String, File> files) throws Exception {
         String[] tos = {to};
-        attachmentMail(tos, subject, text, files);
+        attachmentMail(from, null, tos, subject, text, files);
     }
 
     /**
      * 发送带附件的邮件
      */
-    public void attachmentMail(List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
+    public void attachmentMail(String from, String personal, String to, String subject, String text, Map<String, File> files) throws Exception {
+        String[] tos = {to};
+        attachmentMail(from, personal, tos, subject, text, files);
+    }
+
+    /**
+     * 发送带附件的邮件
+     */
+    public void attachmentMail(String from, List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
         String[] tos = toList.toArray(new String[0]);
-        attachmentMail(tos, subject, text, files);
+        attachmentMail(from, null, tos, subject, text, files);
     }
 
     /**
      * 发送带附件的邮件
      */
-    public void attachmentMail(String[] tos, String subject, String text, Map<String, File> files) throws Exception {
+    public void attachmentMail(String from, String personal, List<String> toList, String subject, String
+            text, Map<String, File> files) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        attachmentMail(from, personal, tos, subject, text, files);
+    }
+
+    /**
+     * 发送带附件的邮件
+     */
+    public void attachmentMail(String from, String[] tos, String subject, String text, Map<String, File> files) throws Exception {
+        attachmentMail(from, null, tos, subject, text, files);
+    }
+
+    /**
+     * 发送带附件的邮件
+     */
+    public void attachmentMail(String from, String personal, String[] tos, String subject, String text, Map<String, File> files) throws Exception {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        if (StringUtils.isNotEmpty(this.map.get("personal"))) {
-            helper.setFrom(this.map.get("from"), this.map.get("personal"));
+        if (StringUtils.isNotEmpty(personal)) {
+            helper.setFrom(from, personal);
         } else {
-            helper.setFrom(this.map.get("from"));
+            helper.setFrom(from);
         }
         helper.setTo(tos);
         helper.setSubject(subject);
@@ -181,29 +262,52 @@ public class MailUtil {
     /**
      * 发送正文中有静态资源（图片）的邮件
      */
-    public void inlineMail(String to, String subject, String text, Map<String, File> files) throws Exception {
+    public void inlineMail(String from, String to, String subject, String text, Map<String, File> files) throws Exception {
         String[] tos = {to};
-        inlineMail(tos, subject, text, files);
+        inlineMail(from, null, tos, subject, text, files);
     }
 
     /**
      * 发送正文中有静态资源（图片）的邮件
      */
-    public void inlineMail(List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
+    public void inlineMail(String from, String personal, String to, String subject, String text, Map<String, File> files) throws Exception {
+        String[] tos = {to};
+        inlineMail(from, personal, tos, subject, text, files);
+    }
+
+    /**
+     * 发送正文中有静态资源（图片）的邮件
+     */
+    public void inlineMail(String from, List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
         String[] tos = toList.toArray(new String[0]);
-        inlineMail(tos, subject, text, files);
+        inlineMail(from, null, tos, subject, text, files);
     }
 
     /**
      * 发送正文中有静态资源（图片）的邮件
      */
-    public void inlineMail(String[] tos, String subject, String text, Map<String, File> files) throws Exception {
+    public void inlineMail(String from, String personal, List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        inlineMail(from, personal, tos, subject, text, files);
+    }
+
+    /**
+     * 发送正文中有静态资源（图片）的邮件
+     */
+    public void inlineMail(String from, String[] tos, String subject, String text, Map<String, File> files) throws Exception {
+        inlineMail(from, null, tos, subject, text, files);
+    }
+
+    /**
+     * 发送正文中有静态资源（图片）的邮件
+     */
+    public void inlineMail(String from, String personal, String[] tos, String subject, String text, Map<String, File> files) throws Exception {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        if (StringUtils.isNotEmpty(this.map.get("personal"))) {
-            helper.setFrom(this.map.get("from"), this.map.get("personal"));
+        if (StringUtils.isNotEmpty(personal)) {
+            helper.setFrom(from, personal);
         } else {
-            helper.setFrom(this.map.get("from"));
+            helper.setFrom(from);
         }
         helper.setTo(tos);
         helper.setSubject(subject);
@@ -219,6 +323,66 @@ public class MailUtil {
                 }
             });
         }
+        javaMailSender.send(message);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, String to, String subject, String template, Map<String, Object> variables) throws Exception {
+        String[] tos = {to};
+        templateMail(from, null, tos, subject, template, variables);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, String personal, String to, String subject, String template, Map<String, Object> variables) throws Exception {
+        String[] tos = {to};
+        templateMail(from, personal, tos, subject, template, variables);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, List<String> toList, String subject, String template, Map<String, Object> variables) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        templateMail(from, null, tos, subject, template, variables);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, String personal, List<String> toList, String subject, String template, Map<String, Object> variables) throws Exception {
+        String[] tos = toList.toArray(new String[0]);
+        templateMail(from, personal, tos, subject, template, variables);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, String[] tos, String subject, String template, Map<String, Object> variables) throws Exception {
+        templateMail(from, null, tos, subject, template, variables);
+    }
+
+    /**
+     * 发送模板邮件
+     */
+    public void templateMail(String from, String personal, String[] tos, String subject, String template, Map<String, Object> variables) throws Exception {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        if (StringUtils.isNotEmpty(personal)) {
+            helper.setFrom(from, personal);
+        } else {
+            helper.setFrom(from);
+        }
+        helper.setTo(tos);
+        helper.setSubject(subject);
+
+        Context context = new Context();
+        context.setVariables(variables);
+        String text = templateEngine.process(template, context);
+        helper.setText(text, true);
         javaMailSender.send(message);
     }
 }
