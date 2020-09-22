@@ -104,8 +104,7 @@ public class MailUtil {
     /**
      * 发送文本邮件
      */
-    public void simpleMail(String from, String personal, List<String> toList, String subject, String text) throws
-            Exception {
+    public void simpleMail(String from, String personal, List<String> toList, String subject, String text) throws Exception {
         String[] tos = toList.toArray(new String[0]);
         simpleMail(from, personal, tos, subject, text);
     }
@@ -217,8 +216,7 @@ public class MailUtil {
     /**
      * 发送带附件的邮件
      */
-    public void attachmentMail(String from, String personal, List<String> toList, String subject, String
-            text, Map<String, File> files) throws Exception {
+    public void attachmentMail(String from, String personal, List<String> toList, String subject, String text, Map<String, File> files) throws Exception {
         String[] tos = toList.toArray(new String[0]);
         attachmentMail(from, personal, tos, subject, text, files);
     }
