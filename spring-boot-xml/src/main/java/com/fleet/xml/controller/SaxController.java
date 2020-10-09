@@ -26,7 +26,7 @@ public class SaxController {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {
             SAXParser saxParser = saxParserFactory.newSAXParser();
-            SAXHandler saxHandler = new SAXHandler();
+            SaxHandler saxHandler = new SaxHandler();
             saxParser.parse("classpath:xml/protocol.xml", saxHandler);
             return saxHandler.getProtocolList();
         } catch (ParserConfigurationException | IOException | SAXException e) {

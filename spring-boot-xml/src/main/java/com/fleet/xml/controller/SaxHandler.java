@@ -9,7 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SAXHandler extends DefaultHandler {
+public class SaxHandler extends DefaultHandler {
 
     private String name;
 
