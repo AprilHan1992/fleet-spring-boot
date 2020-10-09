@@ -8,12 +8,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DOM 方式
+ *
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/dom")
 public class DomController {
@@ -35,22 +43,22 @@ public class DomController {
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
                             String name = node.getNodeName();
                             String value = node.getFirstChild().getNodeValue();
-                            if (name.equals("name")) {
+                            if ("name".equals(name)) {
                                 protocol.setName(value);
                             }
-                            if (name.equals("identifier")) {
+                            if ("identifier".equals(name)) {
                                 protocol.setIdentifier(value);
                             }
-                            if (name.equals("unit")) {
+                            if ("unit".equals(name)) {
                                 protocol.setUnit(value);
                             }
-                            if (name.equals("type")) {
+                            if ("type".equals(name)) {
                                 protocol.setType(Integer.parseInt(value));
                             }
-                            if (name.equals("length")) {
+                            if ("length".equals(name)) {
                                 protocol.setLength(Integer.parseInt(value));
                             }
-                            if (name.equals("propertyList")) {
+                            if ("propertyList".equals(name)) {
                                 List<Property> propertyList = new ArrayList<>();
                                 NodeList childNodeList = node.getChildNodes();
                                 for (int j = 0; j < childNodeList.getLength(); j++) {
@@ -61,10 +69,10 @@ public class DomController {
                                             if (childNode.getNodeType() == Node.ELEMENT_NODE) {
                                                 String childName = childNode.getNodeName();
                                                 String childValue = childNode.getFirstChild().getNodeValue();
-                                                if (childName.equals("value")) {
+                                                if ("value".equals(childName)) {
                                                     property.setValue(childValue);
                                                 }
-                                                if (childName.equals("desc")) {
+                                                if ("desc".equals(childName)) {
                                                     property.setDesc(childValue);
                                                 }
                                             }
@@ -74,10 +82,10 @@ public class DomController {
                                 }
                                 protocol.setPropertyList(propertyList);
                             }
-                            if (name.equals("reservedWord")) {
+                            if ("reservedWord".equals(name)) {
                                 protocol.setReservedWord(Integer.parseInt(value));
                             }
-                            if (name.equals("remark")) {
+                            if ("remark".equals(name)) {
                                 protocol.setRemark(value);
                             }
                         }
@@ -85,9 +93,9 @@ public class DomController {
                     protocolList.add(protocol);
                 }
             }
-        } catch (Exception e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
         }
-
         return protocolList;
     }
 }
