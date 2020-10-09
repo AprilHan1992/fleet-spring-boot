@@ -33,65 +33,62 @@ public class DomController {
         try {
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse("classpath:xml/protocol.xml");
-            Element element = document.getDocumentElement();
-            NodeList nodeList = element.getChildNodes();
+            NodeList nodeList = document.getElementsByTagName("protocol");
             for (int i = 0; i < nodeList.getLength(); i++) {
+                Protocol protocol = new Protocol();
                 Node item = nodeList.item(i);
-                if (item instanceof Element) {
-                    Protocol protocol = new Protocol();
-                    for (Node node = item.getFirstChild(); node != null; node = node.getNextSibling()) {
-                        if (node.getNodeType() == Node.ELEMENT_NODE) {
-                            String name = node.getNodeName();
-                            String value = node.getFirstChild().getNodeValue();
-                            if ("name".equals(name)) {
-                                protocol.setName(value);
-                            }
-                            if ("identifier".equals(name)) {
-                                protocol.setIdentifier(value);
-                            }
-                            if ("unit".equals(name)) {
-                                protocol.setUnit(value);
-                            }
-                            if ("type".equals(name)) {
-                                protocol.setType(Integer.parseInt(value));
-                            }
-                            if ("length".equals(name)) {
-                                protocol.setLength(Integer.parseInt(value));
-                            }
-                            if ("propertyList".equals(name)) {
-                                List<Property> propertyList = new ArrayList<>();
-                                NodeList childNodeList = node.getChildNodes();
-                                for (int j = 0; j < childNodeList.getLength(); j++) {
-                                    Node childItem = childNodeList.item(j);
-                                    if (childItem instanceof Element) {
-                                        Property property = new Property();
-                                        for (Node childNode = childItem.getFirstChild(); childNode != null; childNode = childNode.getNextSibling()) {
-                                            if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                                                String childName = childNode.getNodeName();
-                                                String childValue = childNode.getFirstChild().getNodeValue();
-                                                if ("value".equals(childName)) {
-                                                    property.setValue(childValue);
-                                                }
-                                                if ("desc".equals(childName)) {
-                                                    property.setDesc(childValue);
-                                                }
+                for (Node node = item.getFirstChild(); node != null; node = node.getNextSibling()) {
+                    if (node.getNodeType() == Node.ELEMENT_NODE) {
+                        String name = node.getNodeName();
+                        String value = node.getFirstChild().getNodeValue();
+                        if ("name".equals(name)) {
+                            protocol.setName(value);
+                        }
+                        if ("identifier".equals(name)) {
+                            protocol.setIdentifier(value);
+                        }
+                        if ("unit".equals(name)) {
+                            protocol.setUnit(value);
+                        }
+                        if ("type".equals(name)) {
+                            protocol.setType(Integer.parseInt(value));
+                        }
+                        if ("length".equals(name)) {
+                            protocol.setLength(Integer.parseInt(value));
+                        }
+                        if ("propertyList".equals(name)) {
+                            List<Property> propertyList = new ArrayList<>();
+                            NodeList childNodeList = node.getChildNodes();
+                            for (int j = 0; j < childNodeList.getLength(); j++) {
+                                Node childItem = childNodeList.item(j);
+                                if (childItem instanceof Element) {
+                                    Property property = new Property();
+                                    for (Node childNode = childItem.getFirstChild(); childNode != null; childNode = childNode.getNextSibling()) {
+                                        if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+                                            String childName = childNode.getNodeName();
+                                            String childValue = childNode.getFirstChild().getNodeValue();
+                                            if ("value".equals(childName)) {
+                                                property.setValue(childValue);
+                                            }
+                                            if ("desc".equals(childName)) {
+                                                property.setDesc(childValue);
                                             }
                                         }
-                                        propertyList.add(property);
                                     }
+                                    propertyList.add(property);
                                 }
-                                protocol.setPropertyList(propertyList);
                             }
-                            if ("reservedWord".equals(name)) {
-                                protocol.setReservedWord(Integer.parseInt(value));
-                            }
-                            if ("remark".equals(name)) {
-                                protocol.setRemark(value);
-                            }
+                            protocol.setPropertyList(propertyList);
+                        }
+                        if ("reservedWord".equals(name)) {
+                            protocol.setReservedWord(Integer.parseInt(value));
+                        }
+                        if ("remark".equals(name)) {
+                            protocol.setRemark(value);
                         }
                     }
-                    protocolList.add(protocol);
                 }
+                protocolList.add(protocol);
             }
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();

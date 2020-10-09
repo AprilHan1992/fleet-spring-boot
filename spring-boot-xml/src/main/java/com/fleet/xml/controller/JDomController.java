@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +27,7 @@ public class JDomController {
         List<Protocol> protocolList = new ArrayList<>();
         SAXBuilder saxBuilder = new SAXBuilder();
         try {
-            InputStream is = this.getClass().getResourceAsStream("/xml/protocol.xml");
-            Document document = saxBuilder.build(is);
+            Document document = saxBuilder.build("classpath:xml/protocol.xml");
             Element rootElement = document.getRootElement();
             List<Element> childrenList = rootElement.getChildren();
             for (Element childrenElement : childrenList) {

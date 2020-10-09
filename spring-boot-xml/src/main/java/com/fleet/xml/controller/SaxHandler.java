@@ -3,7 +3,6 @@ package com.fleet.xml.controller;
 import com.fleet.xml.entity.Property;
 import com.fleet.xml.entity.Protocol;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class SaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         name = qName;
         if ("protocol".equals(name)) {
             protocol = new Protocol();
@@ -37,7 +36,7 @@ public class SaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         if ("protocol".equals(qName)) {
             if (propertyList.size() != 0) {
                 protocol.setPropertyList(propertyList);
@@ -52,7 +51,7 @@ public class SaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         String value = new String(ch, start, length);
         if ("name".equals(name)) {
             protocol.setName(value);
