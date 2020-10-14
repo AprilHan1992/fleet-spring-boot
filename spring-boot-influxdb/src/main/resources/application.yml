@@ -1,0 +1,9 @@
+server:
+  port: 8000
+spring:
+  influx:
+    url: http://localhost:8086
+    user: admin
+    password: admin
+    database: user_db
+    retention-policy: autogen

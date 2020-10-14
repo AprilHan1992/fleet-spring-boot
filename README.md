@@ -109,6 +109,7 @@
 - [spring-boot-sharding-jdbc-proxy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sharding-jdbc-proxy)：Spring Boot Sharding Jdbc 读写分离
 - [spring-boot-sharding-jdbc-sharding](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sharding-jdbc-sharding)：Spring Boot Sharding Jdbc 分库分表
 - [spring-boot-ldap](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ldap)：Spring Boot LDAP 轻型目录访问协议
+- [spring-boot-influxdb](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-influxdb)：Spring Boot InfluxDB 时序数据库
 - [spring-boot-activiti5](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti5)：Spring Boot Activiti 5 工作流引擎
 - [spring-boot-activiti-modeler5](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti-modeler5)：Spring Boot Activiti Modeler 5 在线流程编辑器
 - [spring-boot-activiti6](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti6)：Spring Boot Activiti 6 工作流引擎
