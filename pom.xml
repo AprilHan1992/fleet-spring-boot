@@ -33,6 +33,7 @@
         <module>spring-boot-cors</module>
         <module>spring-boot-config</module>
         <module>spring-boot-lombok</module>
+        <module>spring-boot-filter</module>
         <module>spring-boot-tomcat</module>
         <module>spring-boot-jetty</module>
         <module>spring-boot-undertow</module>

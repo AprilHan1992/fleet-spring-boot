@@ -19,6 +19,7 @@
 - [spring-boot-cors](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cors)：Spring Boot HTTP 访问控制
 - [spring-boot-config](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-config)：Spring Boot 配置中心
 - [spring-boot-lombok](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-lombok)：Spring Boot Lombok 消除样板式代码
+- [spring-boot-filter](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-filter)：Spring Boot 过滤器
 - [spring-boot-tomcat](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tomcat)：Spring Boot 使用 Tomcat （默认） 作为 Servlet 引擎应用
 - [spring-boot-jetty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jetty)：Spring Boot 使用 Jetty 作为 Servlet 引擎
 - [spring-boot-undertow](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-undertow)：Spring Boot 使用 Undertow 作为 Servlet 引擎
