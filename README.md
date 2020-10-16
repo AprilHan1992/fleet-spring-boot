@@ -128,6 +128,7 @@
 - [spring-boot-transaction](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-transaction)：Spring Boot 事务管理
 - [spring-boot-oshi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-oshi)：Spring Boot 基于JNA的免费的本地操作系统和Java的硬件信息库
 - [spring-boot-hutool](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hutool)：Spring Boot Hutool Java 工具类库
+- [spring-boot-https](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-https)：Spring Boot HTTPS
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：
