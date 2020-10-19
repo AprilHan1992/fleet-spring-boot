@@ -9,8 +9,6 @@ import java.util.Date;
  */
 public class QuartzJobLog {
 
-    private static final long serialVersionUID = 4069607703129526255L;
-
     /**
      * 日志id
      */

@@ -5,8 +5,6 @@ package com.fleet.quartz.entity;
  */
 public class QuartzJob {
 
-    private static final long serialVersionUID = -7583052536281180202L;
-
     /**
      * 任务调度参数key
      */
