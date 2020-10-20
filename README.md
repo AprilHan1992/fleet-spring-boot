@@ -14,6 +14,7 @@
 - [spring-boot-nacos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-nacos)：Spring Boot Nacos 微服务注册与发现
 - [spring-boot-zookeeper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zookeeper)：Spring Boot ZooKeeper 微服务注册与发现
 - [spring-boot-retrofit2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retrofit2)：Spring Boot Retrofit2 Http 请求
+- [spring-boot-rmi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rmi)：Spring Boot RMI 远程调用框架
 - [spring-boot-hessian](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hessian)：Spring Boot Hessian 远程调用框架
 - [spring-boot-forest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-forest)：Spring Boot Forest Http 请求
 - [spring-boot-cors](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cors)：Spring Boot HTTP 访问控制
