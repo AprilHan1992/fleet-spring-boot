@@ -7,7 +7,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-admin</artifactId>
     <name>spring-boot-admin</name>
-    <description>admin</description>
+    <description>Admin 应用信息可视化</description>
     <packaging>pom</packaging>
     <version>1.0</version>
 

@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-admin-server</artifactId>
     <name>spring-boot-admin-server</name>
-    <description>admin-server</description>
+    <description>服务端</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
