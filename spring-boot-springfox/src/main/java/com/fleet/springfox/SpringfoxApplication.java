@@ -1,4 +1,4 @@
-package com.fleet.swagger;
+package com.fleet.springfox;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author April Han
  */
 @SpringBootApplication
-public class SwaggerApplication {
+public class SpringfoxApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SwaggerApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringfoxApplication.class, args);
+	}
 }

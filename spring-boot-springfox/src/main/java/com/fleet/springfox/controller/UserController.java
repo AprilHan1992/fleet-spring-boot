@@ -1,6 +1,6 @@
-package com.fleet.swagger.controller;
+package com.fleet.springfox.controller;
 
-import com.fleet.swagger.entity.User;
+import com.fleet.springfox.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

@@ -1,4 +1,4 @@
-package com.fleet.swagger.entity;
+package com.fleet.springfox.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
