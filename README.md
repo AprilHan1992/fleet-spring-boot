@@ -49,6 +49,7 @@
 - [spring-boot-admin-client](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-admin/spring-boot-admin-client)：Spring Boot Admin 应用信息可视化，客户端示例
 - [spring-boot-admin-server](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-admin/spring-boot-admin-server)：Spring Boot Admin 应用信息可视化，服务端示例
 - [spring-boot-swagger](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-swagger)：Spring Boot Swagger 自动生成接口文档
+- [spring-boot-springfox](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-springfox)：Spring Boot Swagger 自动生成接口文档
 - [spring-boot-knife4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-knife4j)：Spring Boot Knife4j 自动生成接口文档
 - [spring-boot-apidoc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-apidoc)：Spring Boot Apidoc 自动生成接口文档
 - [spring-boot-restdocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-restdocs)：Spring Boot Restdocs 自动生成接口文档
