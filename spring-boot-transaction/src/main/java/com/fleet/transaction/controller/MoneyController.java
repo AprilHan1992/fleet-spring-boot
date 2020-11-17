@@ -25,17 +25,17 @@ public class MoneyController {
     private Transfer2Service transfer2Service;
 
     @RequestMapping("/transfer")
-    public void transfer() throws Exception {
+    public void transfer() {
         transferService.transfer("张三", "李四", 3000);
     }
 
     @RequestMapping("/transfer1")
-    public void transfer1() throws Exception {
+    public void transfer1() {
         transfer1Service.transfer("张三", "李四", 3000);
     }
 
     @RequestMapping("/transfer2")
-    public void transfer2() throws Exception {
+    public void transfer2() {
         transfer2Service.transfer("张三", "李四", 3000);
     }
 }
