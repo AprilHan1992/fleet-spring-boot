@@ -145,6 +145,7 @@
         <module>spring-boot-oshi</module>
         <module>spring-boot-hutool</module>
         <module>spring-boot-https</module>
+        <module>spring-boot-spock</module>
         <module>spring-boot-common</module>
         <module>spring-boot-excel</module>
         <module>spring-boot-easyexcel</module>
