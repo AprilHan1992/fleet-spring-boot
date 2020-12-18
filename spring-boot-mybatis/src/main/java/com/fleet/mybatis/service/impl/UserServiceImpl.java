@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
         return userDao.get(id);
     }
 
+    @Override
     public List<User> list(Map<String, Object> map) {
         return userDao.list(map);
     }
