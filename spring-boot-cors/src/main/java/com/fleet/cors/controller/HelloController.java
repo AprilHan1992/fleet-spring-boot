@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 跨域配置（三），在接口类上添加注解
+ * 跨域配置（一）：注解方式
+ * 在需要跨域的 Controller 层的类或方法上加上注解 @CrossOrigin
  *
  * @author April Han
  */
@@ -12,9 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    /**
-     * 跨域配置（四），在接口方法上添加注解
-     */
     // @CrossOrigin(origins = {"http://localhost:8000"})
     @RequestMapping("/hello")
     public String hello() {

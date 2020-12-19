@@ -5,7 +5,8 @@
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //
 ///**
-// * 跨域配置（二）
+// * 跨域配置（三）
+// * 继承 WebMvcConfigurer，重写 addCorsMappings 方法
 // *
 // * @author April Han
 // */
@@ -14,7 +15,6 @@
 //
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
-//        WebMvcConfigurer.super.addCorsMappings(registry);
 //        registry
 //                // 跨域有效接口
 //                .addMapping("/**")
@@ -24,6 +24,8 @@
 //                .allowedHeaders("*")
 //                // 跨域的请求方法
 //                .allowedMethods("*")
+//                // 预请求的结果的有效期
+//                .maxAge(3600)
 //                // 跨域是否支持证书
 //                .allowCredentials(true);
 //    }

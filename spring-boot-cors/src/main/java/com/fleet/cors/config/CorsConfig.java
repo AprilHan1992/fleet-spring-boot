@@ -7,7 +7,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * 跨域配置（一）
+ * 跨域配置（四）
  *
  * @author April Han
  */
@@ -17,17 +17,17 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        CorsConfiguration conf = new CorsConfiguration();
         // 跨域的地址，注意 127.0.0.1 != localhost
-        corsConfiguration.addAllowedOrigin("*");
+        conf.addAllowedOrigin("*");
         // 跨域的请求头
-        corsConfiguration.addAllowedHeader("*");
+        conf.addAllowedHeader("*");
         // 跨域的请求方法
-        corsConfiguration.addAllowedMethod("*");
+        conf.addAllowedMethod("*");
         // 跨域是否支持证书
-        corsConfiguration.setAllowCredentials(true);
+        conf.setAllowCredentials(true);
         // 跨域有效接口
-        source.registerCorsConfiguration("/**", corsConfiguration);
+        source.registerCorsConfiguration("/**", conf);
         return new CorsFilter(source);
     }
 }
