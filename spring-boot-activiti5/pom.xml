@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-activiti5</artifactId>
     <name>spring-boot-activiti5</name>
-    <description>activiti5</description>
+    <description>Activiti 5 工作流引擎</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
