@@ -16,6 +16,11 @@ public interface ProcessService {
     PageUtil<TaskInfo<?>> myTaskList(String userId, Page page);
 
     /**
+     * 我的待办列表（某一流程类型）
+     */
+    PageUtil<TaskInfo<?>> myTaskListByDefinitionKey(String userId, String definitionKey, Page page);
+
+    /**
      * 我的申请列表
      */
     PageUtil<ProcessInfo<?>> myAppliedList(String userId, Page page);
@@ -28,7 +33,7 @@ public interface ProcessService {
     /**
      * 获取同一类型流程数量
      */
-    Long getTotal(String processDefinitionKey);
+    Long getTotal(String definitionKey);
 
     /**
      * 创建流程实例
@@ -68,7 +73,7 @@ public interface ProcessService {
     /**
      * 流程详情
      */
-    ProcessInfo<?> getByProcessInstanceId(String processInstanceId);
+    ProcessInfo<?> getByInstanceId(String instanceId);
 
     /**
      * 流程详情
@@ -83,12 +88,12 @@ public interface ProcessService {
     /**
      * 流程图
      */
-    ResponseEntity<byte[]> getProcessImage(String processDefinitionKey);
+    ResponseEntity<byte[]> getImage(String definitionKey);
 
     /**
      * 流程图（附加进度）
      */
-    ResponseEntity<byte[]> getProcessRateImage(String businessKey);
+    ResponseEntity<byte[]> getRateImage(String businessKey);
 
     /**
      * 获取流程审批记录

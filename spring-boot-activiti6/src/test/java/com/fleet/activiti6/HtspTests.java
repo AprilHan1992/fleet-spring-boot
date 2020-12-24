@@ -54,9 +54,9 @@ public class HtspTests {
     @Test
     public void start() {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setProcessDefinitionKey("htsp");
+        processInfo.setDefinitionKey("htsp");
         processInfo.setBusinessKey("htsp:1");
-        processInfo.setProcessName("这是合同审批流程");
+        processInfo.setTitle("这是合同审批流程");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -79,9 +79,9 @@ public class HtspTests {
     @Test
     public void apply() {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setProcessDefinitionKey("htsp");
+        processInfo.setDefinitionKey("htsp");
         processInfo.setBusinessKey("htsp:1");
-        processInfo.setProcessName("这是合同审批流程");
+        processInfo.setTitle("这是合同审批流程");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -123,7 +123,7 @@ public class HtspTests {
 
         Approval approval = new Approval();
         approval.setFlag("同意");
-        approval.setTaskId("2520");
+        approval.setTaskId("2519");
         approval.setRemark("同意");
         processService.completeTask(approval);
     }
@@ -140,8 +140,8 @@ public class HtspTests {
     }
 
     @Test
-    public void getByProcessInstanceId() {
-        ProcessInfo<?> processInfo = processService.getByProcessInstanceId("5007");
+    public void getByInstanceId() {
+        ProcessInfo<?> processInfo = processService.getByInstanceId("5007");
         System.out.println(JSON.toJSONString(processInfo));
     }
 
