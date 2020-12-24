@@ -16,12 +16,12 @@ public class ProcessInfo<T> implements Serializable {
     /**
      * 实例id
      */
-    private String processInstanceId;
+    private String instanceId;
 
     /**
      * 流程类型
      */
-    private String processDefinitionKey;
+    private String definitionKey;
 
     /**
      * 流程编号（唯一）
@@ -31,7 +31,7 @@ public class ProcessInfo<T> implements Serializable {
     /**
      * 流程名称
      */
-    private String processName;
+    private String title;
 
     /**
      * 流程发起人
@@ -85,20 +85,20 @@ public class ProcessInfo<T> implements Serializable {
      */
     private Integer state;
 
-    public String getProcessInstanceId() {
-        return processInstanceId;
+    public String getInstanceId() {
+        return instanceId;
     }
 
-    public void setProcessInstanceId(String processInstanceId) {
-        this.processInstanceId = processInstanceId;
+    public void setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
     }
 
-    public String getProcessDefinitionKey() {
-        return processDefinitionKey;
+    public String getDefinitionKey() {
+        return definitionKey;
     }
 
-    public void setProcessDefinitionKey(String processDefinitionKey) {
-        this.processDefinitionKey = processDefinitionKey;
+    public void setDefinitionKey(String definitionKey) {
+        this.definitionKey = definitionKey;
     }
 
     public String getBusinessKey() {
@@ -109,12 +109,12 @@ public class ProcessInfo<T> implements Serializable {
         this.businessKey = businessKey;
     }
 
-    public String getProcessName() {
-        return processName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProcessName(String processName) {
-        this.processName = processName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getInitiator() {

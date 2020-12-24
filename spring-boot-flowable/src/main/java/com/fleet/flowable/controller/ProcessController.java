@@ -30,6 +30,14 @@ public class ProcessController {
     }
 
     /**
+     * 我的待办列表（某一流程类型）
+     */
+    @PostMapping("/myTaskListByDefinitionKey/{userId}")
+    public PageUtil<TaskInfo<?>> myTaskList(@PathVariable("userId") String userId, @RequestParam("definitionKey") String definitionKey, @RequestBody Page page) {
+        return processService.myTaskListByDefinitionKey(userId, definitionKey, page);
+    }
+
+    /**
      * 我的申请列表
      */
     @PostMapping("/myAppliedList/{userId}")
@@ -49,8 +57,8 @@ public class ProcessController {
      * 获取同一类型流程数量
      */
     @GetMapping(value = "/getTotal")
-    public long getTotal(@RequestParam String processDefinitionKey) {
-        return processService.getTotal(processDefinitionKey);
+    public long getTotal(@RequestParam String definitionKey) {
+        return processService.getTotal(definitionKey);
     }
 
     /**
@@ -112,9 +120,9 @@ public class ProcessController {
     /**
      * 获取流程详情
      */
-    @GetMapping(value = "/getByProcessInstanceId")
-    public ProcessInfo<?> getByProcessInstanceId(@RequestParam String processInstanceId) {
-        return processService.getByProcessInstanceId(processInstanceId);
+    @GetMapping(value = "/getByInstanceId")
+    public ProcessInfo<?> getByInstanceId(@RequestParam String instanceId) {
+        return processService.getByInstanceId(instanceId);
     }
 
     /**
@@ -137,8 +145,8 @@ public class ProcessController {
      * 流程图
      */
     @GetMapping("/processImage")
-    public void processImage(@RequestParam String processDefinitionKey, HttpServletResponse response) {
-        ResponseEntity<byte[]> entity = processService.getProcessImage(processDefinitionKey);
+    public void processImage(@RequestParam String definitionKey, HttpServletResponse response) {
+        ResponseEntity<byte[]> entity = processService.getImage(definitionKey);
         if (entity == null) {
             return;
         }
@@ -158,7 +166,7 @@ public class ProcessController {
      */
     @GetMapping("/processRateImage")
     public void processRateImage(@RequestParam String businessKey, HttpServletResponse response) {
-        ResponseEntity<byte[]> entity = processService.getProcessRateImage(businessKey);
+        ResponseEntity<byte[]> entity = processService.getRateImage(businessKey);
         if (entity == null) {
             return;
         }

@@ -57,9 +57,9 @@ public class QjsqTests {
     @Test
     public void start() {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setProcessDefinitionKey("qjsq");
+        processInfo.setDefinitionKey("qjsq");
         processInfo.setBusinessKey("qjsq:1");
-        processInfo.setProcessName("这是请假流程");
+        processInfo.setTitle("这是请假流程");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -80,9 +80,9 @@ public class QjsqTests {
     @Test
     public void apply() {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setProcessDefinitionKey("qjsq");
+        processInfo.setDefinitionKey("qjsq");
         processInfo.setBusinessKey("qjsq:2");
-        processInfo.setProcessName("这是请假流程");
+        processInfo.setTitle("这是请假流程");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -139,8 +139,8 @@ public class QjsqTests {
     }
 
     @Test
-    public void getByProcessInstanceId() {
-        ProcessInfo<?> processInfo = processService.getByProcessInstanceId("5007");
+    public void getByInstanceId() {
+        ProcessInfo<?> processInfo = processService.getByInstanceId("5007");
         System.out.println(JSON.toJSONString(processInfo));
     }
 
