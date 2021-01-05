@@ -7,7 +7,6 @@ import com.fleet.mso.enums.ResultState;
 import com.fleet.mso.json.R;
 import com.fleet.mso.service.UserService;
 import com.fleet.mso.util.MD5Util;
-import com.fleet.mso.util.RedisUtil;
 import com.fleet.mso.util.UUIDUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +22,8 @@ public class PwdController extends BaseController {
     @Resource
     UserService userService;
 
-    @Resource
-    RedisUtil redisUtil;
-
     /**
-     * 登陆
+     * 修改密码
      *
      * @param oldPwd 旧密码
      * @param newPwd 新密码
