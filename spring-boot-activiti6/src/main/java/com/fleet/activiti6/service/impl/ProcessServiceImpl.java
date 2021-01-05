@@ -77,7 +77,7 @@ public class ProcessServiceImpl implements ProcessService {
     public PageUtil<TaskInfo<?>> myTaskListByDefinitionKey(String userId, String definitionKey, Page page) {
         PageUtil<TaskInfo<?>> pageUtil = new PageUtil<>();
         List<Task> taskList = taskService.createTaskQuery()
-                .taskDefinitionKey(definitionKey)
+                .processDefinitionKey(definitionKey)
                 .taskAssignee(userId)
                 .orderByTaskCreateTime().asc()
                 .listPage(page.getFromPageIndex(), page.getPageRows());
@@ -91,7 +91,7 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         long count = taskService.createTaskQuery()
-                .taskDefinitionKey(definitionKey)
+                .processDefinitionKey(definitionKey)
                 .taskAssignee(userId)
                 .count();
 
