@@ -13,12 +13,12 @@ public interface ProcessService {
     /**
      * 我的待办列表
      */
-    PageUtil<TaskInfo<?>> myTaskList(String userId, Page page);
+    PageUtil<TaskInfo> myTaskList(String userId, Page page);
 
     /**
      * 我的待办列表（某一流程类型）
      */
-    PageUtil<TaskInfo<?>> myTaskListByDefinitionKey(String userId, String definitionKey, Page page);
+    PageUtil<TaskInfo> myTaskListByDefinitionKey(String userId, String definitionKey, Page page);
 
     /**
      * 我的申请列表
@@ -38,7 +38,7 @@ public interface ProcessService {
     /**
      * 创建流程实例
      */
-    TaskInfo<?> start(ProcessInfo<?> processInfo);
+    TaskInfo start(ProcessInfo<?> processInfo);
 
     /**
      * 流程申请（创建流程实例并且自动完成 apply 填写申请单节点）

@@ -48,17 +48,17 @@ public class ProcessServiceImpl implements ProcessService {
     ProcessEngineConfiguration processEngineConfiguration;
 
     @Override
-    public PageUtil<TaskInfo<?>> myTaskList(String userId, Page page) {
-        PageUtil<TaskInfo<?>> pageUtil = new PageUtil<>();
+    public PageUtil<TaskInfo> myTaskList(String userId, Page page) {
+        PageUtil<TaskInfo> pageUtil = new PageUtil<>();
         List<Task> taskList = taskService.createTaskQuery()
                 .taskAssignee(userId)
                 .orderByTaskCreateTime().asc()
                 .listPage(page.getFromPageIndex(), page.getPageRows());
 
-        List<TaskInfo<?>> taskInfoList = new ArrayList<>();
+        List<TaskInfo> taskInfoList = new ArrayList<>();
         if (taskList != null) {
             for (Task task : taskList) {
-                TaskInfo<?> taskInfo = getTaskInfo(task);
+                TaskInfo taskInfo = getTaskInfo(task);
                 taskInfoList.add(taskInfo);
             }
         }
@@ -74,18 +74,18 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public PageUtil<TaskInfo<?>> myTaskListByDefinitionKey(String userId, String definitionKey, Page page) {
-        PageUtil<TaskInfo<?>> pageUtil = new PageUtil<>();
+    public PageUtil<TaskInfo> myTaskListByDefinitionKey(String userId, String definitionKey, Page page) {
+        PageUtil<TaskInfo> pageUtil = new PageUtil<>();
         List<Task> taskList = taskService.createTaskQuery()
                 .processDefinitionKey(definitionKey)
                 .taskAssignee(userId)
                 .orderByTaskCreateTime().asc()
                 .listPage(page.getFromPageIndex(), page.getPageRows());
 
-        List<TaskInfo<?>> taskInfoList = new ArrayList<>();
+        List<TaskInfo> taskInfoList = new ArrayList<>();
         if (taskList != null) {
             for (Task task : taskList) {
-                TaskInfo<?> taskInfo = getTaskInfo(task);
+                TaskInfo taskInfo = getTaskInfo(task);
                 taskInfoList.add(taskInfo);
             }
         }
@@ -101,7 +101,7 @@ public class ProcessServiceImpl implements ProcessService {
         return pageUtil;
     }
 
-    private TaskInfo<?> getTaskInfo(Task task) {
+    private TaskInfo getTaskInfo(Task task) {
         String taskId = task.getId();
         String instanceId = task.getProcessInstanceId();
 
@@ -123,7 +123,7 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         // 将 task 转换成我们需要的格式 taskInfo
-        TaskInfo<?> taskInfo = new TaskInfo<>();
+        TaskInfo taskInfo = new TaskInfo();
         taskInfo.setInstanceId(instanceId);
         taskInfo.setDefinitionKey(processInfo.getDefinitionKey());
         taskInfo.setBusinessKey(processInstance.getBusinessKey());
@@ -282,7 +282,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public TaskInfo<?> start(ProcessInfo<?> processInfo) {
+    public TaskInfo start(ProcessInfo<?> processInfo) {
         // 先判断business的唯一性
         String businessKey = processInfo.getBusinessKey();
         HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
@@ -311,7 +311,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Override
     public String apply(ProcessInfo<?> processInfo) {
-        TaskInfo<?> taskInfo = start(processInfo);
+        TaskInfo taskInfo = start(processInfo);
         if (taskInfo == null) {
             return "失败";
         }
