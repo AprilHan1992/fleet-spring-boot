@@ -7,8 +7,10 @@ import java.util.Date;
 
 /**
  * 任务信息
+ *
+ * @author April Han
  */
-public class TaskInfo<T> implements Serializable {
+public class TaskInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

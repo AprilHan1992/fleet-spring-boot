@@ -14,6 +14,9 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/process")
 public class ProcessController {
@@ -25,7 +28,7 @@ public class ProcessController {
      * 我的待办列表
      */
     @PostMapping("/myTaskList/{userId}")
-    public PageUtil<TaskInfo<?>> myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
+    public PageUtil<TaskInfo> myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
         return processService.myTaskList(userId, page);
     }
 
@@ -33,7 +36,7 @@ public class ProcessController {
      * 我的待办列表（某一流程类型）
      */
     @PostMapping("/myTaskListByDefinitionKey/{userId}")
-    public PageUtil<TaskInfo<?>> myTaskList(@PathVariable("userId") String userId, @RequestParam("definitionKey") String definitionKey, @RequestBody Page page) {
+    public PageUtil<TaskInfo> myTaskListByDefinitionKey(@PathVariable("userId") String userId, @RequestParam("definitionKey") String definitionKey, @RequestBody Page page) {
         return processService.myTaskListByDefinitionKey(userId, definitionKey, page);
     }
 
@@ -65,7 +68,7 @@ public class ProcessController {
      * 创建流程实例
      */
     @PostMapping("/start")
-    public TaskInfo<?> start(@RequestBody ProcessInfo<?> processInfo) {
+    public TaskInfo start(@RequestBody ProcessInfo<?> processInfo) {
         return processService.start(processInfo);
     }
 

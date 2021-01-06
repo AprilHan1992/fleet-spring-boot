@@ -29,7 +29,7 @@ public class HtspTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        PageUtil<TaskInfo<?>> pageUtil = processService.myTaskList(userId, page);
+        PageUtil<TaskInfo> pageUtil = processService.myTaskList(userId, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
 
