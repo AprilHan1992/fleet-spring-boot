@@ -28,6 +28,7 @@
 - [spring-boot-mybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis)：Spring Boot 结合 Mybatis
 - [spring-boot-mybatis-plus](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-plus)：Spring Boot 结合 Mybatis Plus
 - [spring-boot-mybatis-pagehelper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-pagehelper)：Spring Boot 结合 Mybatis PageHelper
+- [spring-boot-mybatis-dynamic-sql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-dynamic-sql)：Spring Boot 结合 Mybatis Dynamic SQL
 - [spring-boot-tkmybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tkmybatis)：Spring Boot 结合 TKMybatis
 - [spring-boot-jpa](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jpa)：Spring Boot 结合 JPA
 - [spring-boot-jooq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jooq)：Spring Boot 结合 JOOQ

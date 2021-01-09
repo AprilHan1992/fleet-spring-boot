@@ -1,0 +1,24 @@
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    username: root
+    password:
+logging:
+  level:
+    com.example.demo.dao : debug
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
+## PageHelper 配置
+#pagehelper:
+#  helper-dialect: mysql
+#  auto-dialect: true
+#  reasonable: true
+#  offset-as-page-num: true
+#  row-bounds-with-count: true
+#  page-size-zero: false
+#  params: count=countSql
+#  support-methods-arguments: true

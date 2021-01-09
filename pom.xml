@@ -42,6 +42,7 @@
         <module>spring-boot-mybatis</module>
         <module>spring-boot-mybatis-plus</module>
         <module>spring-boot-mybatis-pagehelper</module>
+        <module>spring-boot-mybatis-dynamic-sql</module>
         <module>spring-boot-tkmybatis</module>
         <module>spring-boot-jpa</module>
         <module>spring-boot-jooq</module>
