@@ -6,7 +6,7 @@ spring:
     username: root
     password:
 mybatis:
-  mapper-locations: mybatis/**/*Mapper.xml
+  mapper-locations: mybatis/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
 # PageHelper 配置
