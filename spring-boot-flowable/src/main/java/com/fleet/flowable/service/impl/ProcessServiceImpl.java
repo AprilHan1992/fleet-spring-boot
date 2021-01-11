@@ -239,7 +239,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     private ProcessInfo<?> getProcessInfo(HistoricActivityInstance historicActivityInstance) {
-        String instanceId = historicActivityInstance.getId();
+        String instanceId = historicActivityInstance.getProcessInstanceId();
 
         HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
                 .processInstanceId(instanceId)
