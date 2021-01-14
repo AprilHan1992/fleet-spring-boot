@@ -28,7 +28,7 @@ public class UserController {
      */
     @CrossOrigin
     @RequestMapping(value = "/insert")
-    private boolean insert(@RequestBody User user) {
+    public boolean insert(@RequestBody User user) {
         return true;
     }
 
@@ -47,7 +47,7 @@ public class UserController {
      */
     @CrossOrigin
     @RequestMapping(value = "/delete")
-    private boolean delete(@RequestParam Long id) {
+    public boolean delete(@RequestParam Long id) {
         return true;
     }
 
@@ -68,7 +68,7 @@ public class UserController {
      */
     @CrossOrigin
     @RequestMapping(value = "/update")
-    private boolean update(@RequestBody User user) {
+    public boolean update(@RequestBody User user) {
         return true;
     }
 
@@ -87,7 +87,7 @@ public class UserController {
      */
     @CrossOrigin
     @RequestMapping(value = "/get")
-    private User get(@RequestParam Long id) {
+    public User get(@RequestParam Long id) {
         User user = new User();
         user.setId(1L);
         user.setName("fleet");

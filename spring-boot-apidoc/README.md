@@ -40,7 +40,7 @@
  */
 @CrossOrigin
 @RequestMapping(value = "/get")
-private User get(@RequestParam Long id) {
+public User get(@RequestParam Long id) {
     User user = new User();
     user.setId(1L);
     user.setName("fleet");
