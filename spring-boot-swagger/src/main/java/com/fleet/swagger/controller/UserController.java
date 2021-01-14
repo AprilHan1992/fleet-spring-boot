@@ -16,28 +16,28 @@ public class UserController {
     @ApiOperation("添加用户信息")
     @ApiImplicitParam(name = "user", value = "User对象", required = true)
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    private boolean insert(@RequestBody User user) {
+    public boolean insert(@RequestBody User user) {
         return true;
     }
 
     @ApiOperation("根据用户id删除用户信息")
     @ApiImplicitParam(name = "id", value = "用户id", required = true)
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    private boolean delete(@RequestParam Long id) {
+    public boolean delete(@RequestParam Long id) {
         return true;
     }
 
     @ApiOperation("修改用户信息")
     @ApiImplicitParam(name = "user", value = "User对象", required = true)
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    private boolean update(@RequestBody User user) {
+    public boolean update(@RequestBody User user) {
         return true;
     }
 
     @ApiOperation("根据用户id查询用户信息")
     @ApiImplicitParam(name = "id", value = "用户id", required = true)
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    private User get(@RequestParam Long id) {
+    public User get(@RequestParam Long id) {
         User user = new User();
         user.setId(1L);
         user.setName("fleet");
