@@ -1,0 +1,16 @@
+{
+  "projectName": "Smart-Doc API文档",
+  "serverUrl": "http://localhost:8000",
+  "isStrict": false,
+  "allInOne": true,
+  "outPath": "src/main/resources/static/doc",
+  "coverOld": true,
+  "dataDictionaries": [
+    {
+      "title": "http状态码",
+      "enumClassName": "com.fleet.smart.doc.enums.ResultState",
+      "codeField": "code",
+      "descField": "msg"
+    }
+  ]
+}

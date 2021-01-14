@@ -67,6 +67,7 @@
         <module>spring-boot-knife4j</module>
         <module>spring-boot-apidoc</module>
         <module>spring-boot-restdocs</module>
+        <module>spring-boot-smart-doc</module>
         <module>spring-boot-async</module>
         <module>spring-boot-mail</module>
         <module>spring-boot-couchbase</module>
