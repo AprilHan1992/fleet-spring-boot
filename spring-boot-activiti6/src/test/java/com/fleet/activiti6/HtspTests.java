@@ -26,9 +26,7 @@ public class HtspTests {
     @Test
     public void myTaskList() {
         String userId = "2";
-        Page page = new Page();
-        page.setPageIndex(1);
-        page.setPageRows(10);
+        Page page = new Page(1, 1);
         PageUtil<TaskInfo> pageUtil = processService.myTaskList(userId, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
