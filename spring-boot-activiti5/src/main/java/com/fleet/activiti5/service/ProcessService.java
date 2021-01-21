@@ -16,11 +16,6 @@ public interface ProcessService {
     PageUtil<TaskInfo> myTaskList(String userId, Page page);
 
     /**
-     * 我的待办列表（某一流程类型）
-     */
-    PageUtil<TaskInfo> myTaskListByDefinitionKey(String userId, String definitionKey, Page page);
-
-    /**
      * 我的申请列表
      */
     PageUtil<ProcessInfo<?>> myAppliedList(String userId, Page page);
@@ -61,9 +56,14 @@ public interface ProcessService {
     String resetAssignees(String businessKey, Map<String, String> assignees);
 
     /**
-     * 流程中止
+     * 流程终止（只允许在申请“apply”节点终止流程）
      */
     String stop(String businessKey);
+
+    /**
+     * 流程删除
+     */
+    String delete(String businessKey);
 
     /**
      * 流程详情

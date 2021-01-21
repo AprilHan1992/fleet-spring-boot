@@ -6,15 +6,18 @@ import com.fleet.activiti5.page.PageUtil;
 import com.fleet.activiti5.service.ProcessService;
 import org.activiti.bpmn.model.*;
 import org.activiti.engine.*;
-import org.activiti.engine.history.HistoricActivityInstance;
-import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.history.HistoricTaskInstance;
-import org.activiti.engine.history.HistoricVariableInstance;
+import org.activiti.engine.history.*;
+import org.activiti.engine.impl.RepositoryServiceImpl;
+import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
+import org.activiti.engine.impl.pvm.process.ActivityImpl;
+import org.activiti.engine.impl.pvm.process.TransitionImpl;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Comment;
 import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskQuery;
 import org.activiti.image.ProcessDiagramGenerator;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +28,9 @@ import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.*;
 
+/**
+ * @author April Han
+ */
 @Transactional
 @Service("processService")
 public class ProcessServiceImpl implements ProcessService {
@@ -36,24 +42,36 @@ public class ProcessServiceImpl implements ProcessService {
     private TaskService taskService;
 
     @Resource
-    HistoryService historyService;
+    private HistoryService historyService;
 
     @Resource
-    IdentityService identityService;
+    private IdentityService identityService;
 
     @Resource
-    RepositoryService repositoryService;
+    private RepositoryService repositoryService;
 
     @Resource
-    ProcessEngineConfiguration processEngineConfiguration;
+    private ProcessEngineConfiguration processEngineConfiguration;
 
     @Override
     public PageUtil<TaskInfo> myTaskList(String userId, Page page) {
         PageUtil<TaskInfo> pageUtil = new PageUtil<>();
-        List<Task> taskList = taskService.createTaskQuery()
-                .taskAssignee(userId)
-                .orderByTaskCreateTime().asc()
-                .listPage(page.getFromPageIndex(), page.getPageRows());
+        TaskQuery taskQuery = taskService.createTaskQuery();
+        taskQuery.taskAssignee(userId);
+        String title = Objects.toString(page.get("title"), "");
+        if (StringUtils.isNotEmpty(title)) {
+            taskQuery.processVariableValueLike("title", "%" + title + "%");
+        }
+        String definitionKey = Objects.toString(page.get("definitionKey"), "");
+        if (StringUtils.isNotEmpty(definitionKey)) {
+            taskQuery.processDefinitionKey(definitionKey);
+        }
+        String definitionName = Objects.toString(page.get("definitionName"), "");
+        if (StringUtils.isNotEmpty(definitionName)) {
+            taskQuery.processDefinitionName(definitionName);
+        }
+        taskQuery.orderByTaskCreateTime().asc();
+        List<Task> taskList = taskQuery.listPage(page.getFromPageIndex(), page.getPageRows());
 
         List<TaskInfo> taskInfoList = new ArrayList<>();
         if (taskList != null) {
@@ -63,37 +81,7 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
 
-        long count = taskService.createTaskQuery()
-                .taskAssignee(userId)
-                .count();
-
-        pageUtil.setList(taskInfoList);
-        page.setTotalRows((int) count);
-        pageUtil.setPage(page);
-        return pageUtil;
-    }
-
-    @Override
-    public PageUtil<TaskInfo> myTaskListByDefinitionKey(String userId, String definitionKey, Page page) {
-        PageUtil<TaskInfo> pageUtil = new PageUtil<>();
-        List<Task> taskList = taskService.createTaskQuery()
-                .processDefinitionKey(definitionKey)
-                .taskAssignee(userId)
-                .orderByTaskCreateTime().asc()
-                .listPage(page.getFromPageIndex(), page.getPageRows());
-
-        List<TaskInfo> taskInfoList = new ArrayList<>();
-        if (taskList != null) {
-            for (Task task : taskList) {
-                TaskInfo taskInfo = getTaskInfo(task);
-                taskInfoList.add(taskInfo);
-            }
-        }
-
-        long count = taskService.createTaskQuery()
-                .processDefinitionKey(definitionKey)
-                .taskAssignee(userId)
-                .count();
+        long count = taskQuery.count();
 
         pageUtil.setList(taskInfoList);
         page.setTotalRows((int) count);
@@ -143,10 +131,22 @@ public class ProcessServiceImpl implements ProcessService {
     @Override
     public PageUtil<ProcessInfo<?>> myAppliedList(String userId, Page page) {
         PageUtil<ProcessInfo<?>> pageUtil = new PageUtil<>();
-        List<HistoricProcessInstance> historicProcessInstanceList = historyService.createHistoricProcessInstanceQuery()
-                .variableValueEquals("initiator", userId)
-                .orderByProcessInstanceStartTime().desc()
-                .listPage(page.getFromPageIndex(), page.getPageRows());
+        HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
+        historicProcessInstanceQuery.variableValueEquals("initiator", userId);
+        String title = Objects.toString(page.get("title"), "");
+        if (StringUtils.isNotEmpty(title)) {
+            historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
+        }
+        String definitionKey = Objects.toString(page.get("definitionKey"), "");
+        if (StringUtils.isNotEmpty(definitionKey)) {
+            historicProcessInstanceQuery.processDefinitionKey(definitionKey);
+        }
+        String definitionName = Objects.toString(page.get("definitionName"), "");
+        if (StringUtils.isNotEmpty(definitionName)) {
+            historicProcessInstanceQuery.processDefinitionName(definitionName);
+        }
+        historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
+        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
 
         List<ProcessInfo<?>> processInfoList = new ArrayList<>();
         if (historicProcessInstanceList != null) {
@@ -156,9 +156,43 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
 
-        long count = historyService.createHistoricProcessInstanceQuery()
-                .variableValueEquals("initiator", userId)
-                .count();
+        long count = historicProcessInstanceQuery.count();
+
+        pageUtil.setList(processInfoList);
+        page.setTotalRows((int) count);
+        pageUtil.setPage(page);
+        return pageUtil;
+    }
+
+    @Override
+    public PageUtil<ProcessInfo<?>> myApprovedList(String userId, Page page) {
+        PageUtil<ProcessInfo<?>> pageUtil = new PageUtil<>();
+        HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
+        historicProcessInstanceQuery.involvedUser(userId);
+        String title = Objects.toString(page.get("title"), "");
+        if (StringUtils.isNotEmpty(title)) {
+            historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
+        }
+        String definitionKey = Objects.toString(page.get("definitionKey"), "");
+        if (StringUtils.isNotEmpty(definitionKey)) {
+            historicProcessInstanceQuery.processDefinitionKey(definitionKey);
+        }
+        String definitionName = Objects.toString(page.get("definitionName"), "");
+        if (StringUtils.isNotEmpty(definitionName)) {
+            historicProcessInstanceQuery.processDefinitionName(definitionName);
+        }
+        historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
+        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
+
+        List<ProcessInfo<?>> processInfoList = new ArrayList<>();
+        if (historicProcessInstanceList != null) {
+            for (HistoricProcessInstance historicProcessInstance : historicProcessInstanceList) {
+                ProcessInfo<?> processInfo = getProcessInfo(historicProcessInstance);
+                processInfoList.add(processInfo);
+            }
+        }
+
+        long count = historicProcessInstanceQuery.count();
 
         pageUtil.setList(processInfoList);
         page.setTotalRows((int) count);
@@ -178,6 +212,31 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         ProcessInfo<?> processInfo = (ProcessInfo<?>) historicVariableInstance.getValue();
+
+        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
+                .processInstanceId(instanceId)
+                .singleResult();
+        if (processInstance != null) {
+            processInfo.setState(1);
+            Task task = taskService.createTaskQuery()
+                    .processInstanceId(instanceId)
+                    .singleResult();
+            if (task != null) {
+                processInfo.setAssignee(task.getAssignee());
+            }
+        } else {
+            // 查询流程是否终止
+            HistoricVariableInstance terminated = historyService.createHistoricVariableInstanceQuery()
+                    .processInstanceId(instanceId)
+                    .variableName("terminated")
+                    .singleResult();
+            if (terminated != null) {
+                processInfo.setState(3);
+            } else {
+                processInfo.setState(2);
+            }
+        }
+
         if (historicProcessInstance.getEndTime() == null) {
             processInfo.setState(1);
             Task task = taskService.createTaskQuery()
@@ -206,75 +265,6 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public PageUtil<ProcessInfo<?>> myApprovedList(String userId, Page page) {
-        PageUtil<ProcessInfo<?>> pageUtil = new PageUtil<>();
-        List<HistoricActivityInstance> historicActivityInstanceList = historyService.createHistoricActivityInstanceQuery()
-                .taskAssignee(userId)
-                .activityType("userTask")
-                .finished()
-                .orderByHistoricActivityInstanceStartTime().desc()
-                .listPage(page.getFromPageIndex(), page.getPageRows());
-
-        List<ProcessInfo<?>> processInfoList = new ArrayList<>();
-        if (historicActivityInstanceList != null) {
-            for (HistoricActivityInstance historicActivityInstance : historicActivityInstanceList) {
-                ProcessInfo<?> processInfo = getProcessInfo(historicActivityInstance);
-                processInfoList.add(processInfo);
-            }
-        }
-
-        long count = historyService.createHistoricActivityInstanceQuery()
-                .taskAssignee(userId)
-                .activityType("userTask")
-                .finished()
-                .count();
-
-        pageUtil.setList(processInfoList);
-        page.setTotalRows((int) count);
-        pageUtil.setPage(page);
-        return pageUtil;
-    }
-
-    private ProcessInfo<?> getProcessInfo(HistoricActivityInstance historicActivityInstance) {
-        String instanceId = historicActivityInstance.getProcessInstanceId();
-
-        HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
-                .processInstanceId(instanceId)
-                .variableName("info")
-                .singleResult();
-        if (historicVariableInstance == null) {
-            return null;
-        }
-
-        ProcessInfo<?> processInfo = (ProcessInfo<?>) historicVariableInstance.getValue();
-        if (historicActivityInstance.getEndTime() == null) {
-            processInfo.setState(1);
-            Task task = taskService.createTaskQuery()
-                    .processInstanceId(instanceId)
-                    .singleResult();
-            if (task != null) {
-                processInfo.setAssignee(task.getAssignee());
-            }
-        } else {
-            // 查询流程是否终止
-            HistoricVariableInstance terminated = historyService.createHistoricVariableInstanceQuery()
-                    .processInstanceId(instanceId)
-                    .variableName("terminated")
-                    .singleResult();
-            if (terminated != null) {
-                processInfo.setState(3);
-            } else {
-                processInfo.setState(2);
-            }
-        }
-
-        processInfo.setInstanceId(instanceId);
-        processInfo.setStartTime(historicActivityInstance.getStartTime());
-        processInfo.setEndTime(historicActivityInstance.getEndTime());
-        return processInfo;
-    }
-
-    @Override
     public Long getTotal(String definitionKey) {
         return historyService.createHistoricProcessInstanceQuery()
                 .processDefinitionKey(definitionKey)
@@ -294,10 +284,13 @@ public class ProcessServiceImpl implements ProcessService {
 
         identityService.setAuthenticatedUserId(processInfo.getInitiator());
 
-        Map<String, Object> vars = new HashMap<>();
-        vars.put("info", processInfo);
-        vars.put("initiator", processInfo.getInitiator());
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processInfo.getDefinitionKey(), processInfo.getBusinessKey(), vars);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("definitionKey", processInfo.getDefinitionKey());
+        variables.put("businessKey", processInfo.getBusinessKey());
+        variables.put("title", processInfo.getTitle());
+        variables.put("initiator", processInfo.getInitiator());
+        variables.put("info", processInfo);
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processInfo.getDefinitionKey(), processInfo.getBusinessKey(), variables);
         if (processInstance == null) {
             return null;
         }
@@ -317,9 +310,9 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         Approval approval = new Approval();
+        approval.setTaskId(taskInfo.getTaskId());
         approval.setFlag("提交");
         approval.setRemark("提交");
-        approval.setTaskId(taskInfo.getTaskId());
         completeTask(approval);
         return "成功";
     }
@@ -333,16 +326,14 @@ public class ProcessServiceImpl implements ProcessService {
             return "任务不存在";
         }
 
-        // 添加审批记录
-        taskService.addComment(taskId, task.getProcessInstanceId(), "重新提交");
+        String instanceId = task.getProcessInstanceId();
 
-        Map<String, Object> vars = new HashMap<>();
-        vars.put("info", processInfo);
-        vars.put("操作", "提交");
-        taskService.setVariablesLocal(taskId, vars);
-
-        // 完成任务
-        taskService.complete(taskId, vars);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("操作", "重新提交");
+        taskService.setVariablesLocal(taskId, variables);
+        taskService.addComment(taskId, instanceId, "重新提交");
+        variables.put("info", processInfo);
+        taskService.complete(taskId, variables);
         return "成功";
     }
 
@@ -356,20 +347,18 @@ public class ProcessServiceImpl implements ProcessService {
             return "任务不存在";
         }
 
+        String instanceId = task.getProcessInstanceId();
+
         List<String> taskOperationList = getTaskOperation(taskId);
         if (!taskOperationList.contains(approval.getFlag())) {
             return "任务节点没有“" + approval.getFlag() + "”操作";
         }
 
-        // 添加审批记录
-        taskService.addComment(taskId, task.getProcessInstanceId(), approval.getRemark());
-
-        Map<String, Object> vars = new HashMap<>();
-        vars.put("操作", approval.getFlag());
-        taskService.setVariablesLocal(taskId, vars);
-
-        // 完成任务
-        taskService.complete(taskId, vars);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("操作", approval.getFlag());
+        taskService.setVariablesLocal(taskId, variables);
+        taskService.addComment(taskId, instanceId, approval.getRemark());
+        taskService.complete(taskId, variables);
         return "成功";
     }
 
@@ -389,9 +378,9 @@ public class ProcessServiceImpl implements ProcessService {
             processInfo.getAssignees().put(key, assignees.get(key));
         }
 
-        Map<String, Object> vars = new HashMap<>();
-        vars.put("info", processInfo);
-        taskService.setVariables(taskId, vars);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("info", processInfo);
+        taskService.setVariables(taskId, variables);
 
         if (task.getName() != null) {
             if (assignees.containsKey(task.getName())) {
@@ -409,6 +398,75 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Override
     public String stop(String businessKey) {
+        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
+                .processInstanceBusinessKey(businessKey)
+                .singleResult();
+        if (processInstance == null) {
+            return "businessKey:" + businessKey + "不存在或流程已结案，无法终止";
+        }
+
+        String definitionId = processInstance.getProcessDefinitionId();
+        // 取得流程定义
+        ProcessDefinitionEntity processDefinitionEntity = getProcessDefinitionEntity(definitionId);
+        ActivityImpl endActivity = getEndActivityImpl(processDefinitionEntity);
+        if (endActivity == null) {
+            return "无结束事件";
+        }
+
+        List<Task> taskList = taskService.createTaskQuery()
+                .processInstanceBusinessKey(businessKey)
+                .list();
+        if (taskList == null || taskList.size() == 0) {
+            return "任务不存在";
+        } else if (taskList.size() > 1) {
+            return "只允许在申请节点终止流程";
+        } else {
+            Task task = taskList.get(0);
+            String taskId = task.getId();
+            String instanceId = task.getProcessInstanceId();
+            String activityId = task.getTaskDefinitionKey();
+
+            ActivityImpl curActivity = getActivityImpl(processDefinitionEntity, activityId);
+            if (!"apply".equals(curActivity.getId())) {
+                return "只允许在申请节点终止流程";
+            }
+            curActivity.getOutgoingTransitions().clear();
+
+            // 创建新流向
+            TransitionImpl transition = curActivity.createOutgoingTransition();
+            transition.setDestination(endActivity);
+
+            Map<String, Object> variables = new HashMap<>();
+            variables.put("操作", "终止");
+            taskService.setVariablesLocal(taskId, variables);
+            taskService.addComment(taskId, instanceId, "终止");
+            variables.put("terminated", "true");
+            taskService.complete(taskId, variables);
+        }
+
+        return "成功";
+    }
+
+    private ActivityImpl getActivityImpl(ProcessDefinitionEntity processDefinitionEntity, String activityId) {
+        return processDefinitionEntity.findActivity(activityId);
+    }
+
+    private ActivityImpl getEndActivityImpl(ProcessDefinitionEntity processDefinitionEntity) {
+        List<ActivityImpl> activities = processDefinitionEntity.getActivities();
+        for (ActivityImpl activity : activities) {
+            if ("endEvent".equals(activity.getProperty("type").toString())) {
+                return activity;
+            }
+        }
+        return null;
+    }
+
+    private ProcessDefinitionEntity getProcessDefinitionEntity(String definitionId) {
+        return (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService).getDeployedProcessDefinition(definitionId);
+    }
+
+    @Override
+    public String delete(String businessKey) {
         HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();
@@ -417,9 +475,12 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         String instanceId = historicProcessInstance.getId();
-
-        runtimeService.deleteProcessInstance(instanceId, "终止");
+        // 流程未结束
+        if (historicProcessInstance.getEndTime() == null) {
+            runtimeService.deleteProcessInstance(instanceId, "delete");
+        }
         historyService.deleteHistoricProcessInstance(instanceId);
+
         return "成功";
     }
 
@@ -465,8 +526,9 @@ public class ProcessServiceImpl implements ProcessService {
             return null;
         }
 
+        String instanceId = historicTaskInstance.getProcessInstanceId();
         HistoricVariableInstance historicVariableInstance = historyService.createHistoricVariableInstanceQuery()
-                .processInstanceId(historicTaskInstance.getProcessInstanceId())
+                .processInstanceId(instanceId)
                 .variableName("info")
                 .singleResult();
         if (historicVariableInstance == null) {
@@ -590,9 +652,11 @@ public class ProcessServiceImpl implements ProcessService {
             BpmnModel bpmnModel = repositoryService.getBpmnModel(definitionId);
 
             List<String> highLightedActivities = new ArrayList<>();
-            List<String> highLightedFlows = new ArrayList<>();
+            List<String> highLightedFlows;
             // 如果只用框选中当前流程执行任务
-            List<Task> taskList = taskService.createTaskQuery().processInstanceId(instanceId).list();
+            List<Task> taskList = taskService.createTaskQuery()
+                    .processInstanceId(instanceId)
+                    .list();
             for (Task task : taskList) {
                 highLightedActivities.add(task.getTaskDefinitionKey());
             }

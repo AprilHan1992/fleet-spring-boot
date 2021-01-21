@@ -33,14 +33,6 @@ public class ProcessController {
     }
 
     /**
-     * 我的待办列表（某一流程类型）
-     */
-    @PostMapping("/myTaskListByDefinitionKey/{userId}")
-    public PageUtil<TaskInfo> myTaskListByDefinitionKey(@PathVariable("userId") String userId, @RequestParam("definitionKey") String definitionKey, @RequestBody Page page) {
-        return processService.myTaskListByDefinitionKey(userId, definitionKey, page);
-    }
-
-    /**
      * 我的申请列表
      */
     @PostMapping("/myAppliedList/{userId}")
@@ -105,11 +97,19 @@ public class ProcessController {
     }
 
     /**
-     * 流程中止
+     * 流程终止（只允许在申请“apply”节点终止流程）
      */
     @GetMapping("/stop")
     public void stop(@RequestParam String businessKey) {
         processService.stop(businessKey);
+    }
+
+    /**
+     * 流程删除
+     */
+    @GetMapping("/delete")
+    public void delete(@RequestParam String businessKey) {
+        processService.delete(businessKey);
     }
 
     /**

@@ -29,6 +29,9 @@ public class HtspTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
+        page.put("title", "合同");
+        page.put("definitionKey", "htsp");
+        page.put("definitionName", "合同审批");
         PageUtil<TaskInfo> pageUtil = processService.myTaskList(userId, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
@@ -39,16 +42,24 @@ public class HtspTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        processService.myAppliedList(userId, page);
+        page.put("title", "合同");
+        page.put("definitionKey", "htsp");
+        page.put("definitionName", "合同审批");
+        PageUtil<ProcessInfo<?>> pageUtil = processService.myAppliedList(userId, page);
+        System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
     public void myApprovedList() {
-        String userId = "1";
+        String userId = "2";
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        processService.myApprovedList(userId, page);
+        page.put("title", "合同");
+        page.put("definitionKey", "htsp");
+        page.put("definitionName", "合同审批");
+        PageUtil<ProcessInfo<?>> pageUtil = processService.myApprovedList(userId, page);
+        System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
@@ -56,7 +67,7 @@ public class HtspTests {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("htsp");
         processInfo.setBusinessKey("htsp:1");
-        processInfo.setTitle("这是合同审批流程");
+        processInfo.setTitle("合同审批流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -81,7 +92,7 @@ public class HtspTests {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("htsp");
         processInfo.setBusinessKey("htsp:1");
-        processInfo.setTitle("这是合同审批流程");
+        processInfo.setTitle("合同审批流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -117,13 +128,13 @@ public class HtspTests {
 
 //        Approval approval = new Approval();
 //        approval.setFlag("驳回");
-//        approval.setTaskId("10006");
+//        approval.setTaskId("12525");
 //        approval.setRemark("驳回");
 //        processService.completeTask(approval);
 
         Approval approval = new Approval();
         approval.setFlag("同意");
-        approval.setTaskId("2519");
+        approval.setTaskId("2508");
         approval.setRemark("同意");
         processService.completeTask(approval);
     }
@@ -159,15 +170,15 @@ public class HtspTests {
 
     @Test
     public void getApprovalLog() {
-        List<ApprovalLog> approvalLogList = processService.getApprovalLog("htsp:1");
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("htsp:2");
         System.out.println(JSON.toJSONString(approvalLogList));
     }
 
     @Test
     public void turnTask() {
         Turn turn = new Turn();
-        turn.setTaskId("23");
-        turn.setAssignee("2");
+        turn.setTaskId("32");
+        turn.setAssignee("3");
         turn.setRemark("转交");
         processService.turnTask(turn);
     }
@@ -175,7 +186,7 @@ public class HtspTests {
     @Test
     public void delegateTask() {
         Turn turn = new Turn();
-        turn.setTaskId("17507");
+        turn.setTaskId("32");
         turn.setAssignee("2");
         turn.setRemark("委派");
         processService.delegateTask(turn);
@@ -184,7 +195,7 @@ public class HtspTests {
     @Test
     public void resolveTask() {
         Turn turn = new Turn();
-        turn.setTaskId("17507");
+        turn.setTaskId("32");
         turn.setRemark("委派完成");
         processService.resolveTask(turn);
     }
