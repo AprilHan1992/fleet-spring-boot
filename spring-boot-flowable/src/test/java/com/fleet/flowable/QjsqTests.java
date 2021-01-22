@@ -1,10 +1,7 @@
 package com.fleet.flowable;
 
 import com.alibaba.fastjson.JSON;
-import com.fleet.flowable.entity.Approval;
-import com.fleet.flowable.entity.ProcessInfo;
-import com.fleet.flowable.entity.TaskInfo;
-import com.fleet.flowable.entity.Turn;
+import com.fleet.flowable.entity.*;
 import com.fleet.flowable.page.Page;
 import com.fleet.flowable.page.PageUtil;
 import com.fleet.flowable.service.ProcessService;
@@ -59,7 +56,7 @@ public class QjsqTests {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("qjsq");
         processInfo.setBusinessKey("qjsq:1");
-        processInfo.setTitle("这是请假流程");
+        processInfo.setTitle("请假流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -81,8 +78,8 @@ public class QjsqTests {
     public void apply() {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("qjsq");
-        processInfo.setBusinessKey("qjsq:2");
-        processInfo.setTitle("这是请假流程");
+        processInfo.setBusinessKey("qjsq:1");
+        processInfo.setTitle("请假流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -114,22 +111,27 @@ public class QjsqTests {
 //         approval.setRemark("重新提交");
 //         processService.completeTask(approval);
 
-        Approval approval = new Approval();
-        approval.setFlag("驳回");
-        approval.setTaskId("c018cb6e-f584-11ea-bd5e-b05216671a81");
-        approval.setRemark("驳回");
-        processService.completeTask(approval);
-
 //        Approval approval = new Approval();
-//        approval.setFlag("同意");
-//        approval.setTaskId("47a9e530-f565-11ea-bf89-b05216671a81");
-//        approval.setRemark("同意");
+//        approval.setFlag("驳回");
+//        approval.setTaskId("c018cb6e-f584-11ea-bd5e-b05216671a81");
+//        approval.setRemark("驳回");
 //        processService.completeTask(approval);
+
+        Approval approval = new Approval();
+        approval.setFlag("同意");
+        approval.setTaskId("47a9e530-f565-11ea-bf89-b05216671a81");
+        approval.setRemark("同意");
+        processService.completeTask(approval);
     }
 
     @Test
     public void stop() {
         processService.stop("qjsq:1");
+    }
+
+    @Test
+    public void delete() {
+        processService.delete("qjsq:1");
     }
 
     @Test
@@ -155,12 +157,12 @@ public class QjsqTests {
         List<String> taskOperationList = processService.getTaskOperation("23");
         System.out.println(JSON.toJSONString(taskOperationList));
     }
-//
-//    @Test
-//    public void getApprovalLog() {
-//        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qjsq:1");
-//        System.out.println(JSON.toJSONString(approvalLogList));
-//    }
+
+    @Test
+    public void getApprovalLog() {
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qjsq:1");
+        System.out.println(JSON.toJSONString(approvalLogList));
+    }
 
     @Test
     public void turnTask() {
@@ -170,31 +172,31 @@ public class QjsqTests {
         turn.setRemark("转交");
         processService.turnTask(turn);
     }
-//
-//    @Test
-//    public void delegateTask() {
-//        Turn turn = new Turn();
-//        turn.setTaskId("17507");
-//        turn.setAssignee("2");
-//        turn.setRemark("委派");
-//        processService.delegateTask(turn);
-//    }
-//
-//    @Test
-//    public void resolveTask() {
-//        Turn turn = new Turn();
-//        turn.setTaskId("17507");
-//        turn.setRemark("委派完成");
-//        processService.resolveTask(turn);
-//    }
-//
-//    @Test
-//    public void suspendProcess() {
-//        processService.suspendProcess("qjsq:1");
-//    }
-//
-//    @Test
-//    public void activateProcess() {
-//        processService.activateProcess("qjsq:1");
-//    }
+
+    @Test
+    public void delegateTask() {
+        Turn turn = new Turn();
+        turn.setTaskId("17507");
+        turn.setAssignee("2");
+        turn.setRemark("委派");
+        processService.delegateTask(turn);
+    }
+
+    @Test
+    public void resolveTask() {
+        Turn turn = new Turn();
+        turn.setTaskId("17507");
+        turn.setRemark("委派完成");
+        processService.resolveTask(turn);
+    }
+
+    @Test
+    public void suspendProcess() {
+        processService.suspendProcess("qjsq:1");
+    }
+
+    @Test
+    public void activateProcess() {
+        processService.activateProcess("qjsq:1");
+    }
 }
