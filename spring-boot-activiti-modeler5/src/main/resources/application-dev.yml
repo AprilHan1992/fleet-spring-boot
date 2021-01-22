@@ -6,11 +6,6 @@ spring:
     username: root
     password:
 #    jmx-enabled: true
-#  jpa:
-#    database: mysql
-#    hibernate:
-#      ddl-auto: none
-#    show-sql: true
 mybatis:
   mapper-locations: mybatis/*Mapper.xml
   configuration:
