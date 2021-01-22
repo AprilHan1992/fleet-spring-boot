@@ -52,6 +52,7 @@
 - [spring-boot-springfox](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-springfox)：Spring Boot SpringFox 自动生成接口文档
 - [spring-boot-knife4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-knife4j)：Spring Boot Knife4j 自动生成接口文档
 - [spring-boot-apidoc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-apidoc)：Spring Boot Apidoc 自动生成接口文档
+- [spring-boot-japidocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-japidocs)：Spring Boot JApiDocs 自动生成接口文档
 - [spring-boot-restdocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-restdocs)：Spring Boot Restdocs 自动生成接口文档
 - [spring-boot-smart-doc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-smart-doc)：Spring Boot Smart-Doc 自动生成接口文档
 - [spring-boot-async](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-async)：Spring Boot 线程池配置

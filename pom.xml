@@ -66,6 +66,7 @@
         <module>spring-boot-springfox</module>
         <module>spring-boot-knife4j</module>
         <module>spring-boot-apidoc</module>
+        <module>spring-boot-japidocs</module>
         <module>spring-boot-restdocs</module>
         <module>spring-boot-smart-doc</module>
         <module>spring-boot-async</module>
