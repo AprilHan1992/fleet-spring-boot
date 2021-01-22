@@ -32,7 +32,7 @@ import java.util.*;
  * @author April Han
  */
 @Transactional
-@Service("processService")
+@Service
 public class ProcessServiceImpl implements ProcessService {
 
     @Resource
@@ -213,30 +213,6 @@ public class ProcessServiceImpl implements ProcessService {
 
         ProcessInfo<?> processInfo = (ProcessInfo<?>) historicVariableInstance.getValue();
 
-        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
-                .processInstanceId(instanceId)
-                .singleResult();
-        if (processInstance != null) {
-            processInfo.setState(1);
-            Task task = taskService.createTaskQuery()
-                    .processInstanceId(instanceId)
-                    .singleResult();
-            if (task != null) {
-                processInfo.setAssignee(task.getAssignee());
-            }
-        } else {
-            // 查询流程是否终止
-            HistoricVariableInstance terminated = historyService.createHistoricVariableInstanceQuery()
-                    .processInstanceId(instanceId)
-                    .variableName("terminated")
-                    .singleResult();
-            if (terminated != null) {
-                processInfo.setState(3);
-            } else {
-                processInfo.setState(2);
-            }
-        }
-
         if (historicProcessInstance.getEndTime() == null) {
             processInfo.setState(1);
             Task task = taskService.createTaskQuery()
@@ -406,7 +382,7 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         String definitionId = processInstance.getProcessDefinitionId();
-        // 取得流程定义
+
         ProcessDefinitionEntity processDefinitionEntity = getProcessDefinitionEntity(definitionId);
         ActivityImpl endActivity = getEndActivityImpl(processDefinitionEntity);
         if (endActivity == null) {
@@ -426,12 +402,12 @@ public class ProcessServiceImpl implements ProcessService {
             String instanceId = task.getProcessInstanceId();
             String activityId = task.getTaskDefinitionKey();
 
-            ActivityImpl curActivity = getActivityImpl(processDefinitionEntity, activityId);
-            if (!"apply".equals(curActivity.getId())) {
+            if (!"apply".equals(activityId)) {
                 return "只允许在申请节点终止流程";
             }
-            curActivity.getOutgoingTransitions().clear();
 
+            ActivityImpl curActivity = getActivityImpl(processDefinitionEntity, activityId);
+            curActivity.getOutgoingTransitions().clear();
             // 创建新流向
             TransitionImpl transition = curActivity.createOutgoingTransition();
             transition.setDestination(endActivity);

@@ -145,6 +145,11 @@ public class HtspTests {
     }
 
     @Test
+    public void delete() {
+        processService.delete("htsp:1");
+    }
+
+    @Test
     public void getByBusinessKey() {
         ProcessInfo<?> processInfo = processService.getByBusinessKey("htsp:1");
         System.out.println(JSON.toJSONString(processInfo));
@@ -170,15 +175,15 @@ public class HtspTests {
 
     @Test
     public void getApprovalLog() {
-        List<ApprovalLog> approvalLogList = processService.getApprovalLog("htsp:2");
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("htsp:1");
         System.out.println(JSON.toJSONString(approvalLogList));
     }
 
     @Test
     public void turnTask() {
         Turn turn = new Turn();
-        turn.setTaskId("32");
-        turn.setAssignee("3");
+        turn.setTaskId("23");
+        turn.setAssignee("2");
         turn.setRemark("转交");
         processService.turnTask(turn);
     }
@@ -186,7 +191,7 @@ public class HtspTests {
     @Test
     public void delegateTask() {
         Turn turn = new Turn();
-        turn.setTaskId("32");
+        turn.setTaskId("17507");
         turn.setAssignee("2");
         turn.setRemark("委派");
         processService.delegateTask(turn);

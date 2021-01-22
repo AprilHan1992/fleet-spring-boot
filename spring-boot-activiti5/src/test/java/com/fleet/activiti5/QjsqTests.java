@@ -130,6 +130,11 @@ public class QjsqTests {
     }
 
     @Test
+    public void delete() {
+        processService.delete("qjsq:1");
+    }
+
+    @Test
     public void getByBusinessKey() {
         ProcessInfo<?> processInfo = processService.getByBusinessKey("qjsq:1");
         System.out.println(JSON.toJSONString(processInfo));
