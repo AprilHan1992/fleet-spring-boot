@@ -37,7 +37,7 @@ public class UserController {
     /**
      * 修改用户
      *
-     * @param user
+     * @param user 用户信息
      * @return
      */
     @PostMapping("/update")
