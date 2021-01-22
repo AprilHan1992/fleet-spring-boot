@@ -1,0 +1,4 @@
+logging:
+  level:
+    org.springframework.web: error
+    com.fleet.logback.controller: error
