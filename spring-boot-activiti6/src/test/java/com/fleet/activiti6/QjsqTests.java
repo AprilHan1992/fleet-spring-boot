@@ -56,7 +56,7 @@ public class QjsqTests {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("qjsq");
         processInfo.setBusinessKey("qjsq:1");
-        processInfo.setTitle("这是请假流程");
+        processInfo.setTitle("请假流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -79,7 +79,7 @@ public class QjsqTests {
         ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
         processInfo.setDefinitionKey("qjsq");
         processInfo.setBusinessKey("qjsq:1");
-        processInfo.setTitle("这是请假流程");
+        processInfo.setTitle("请假流程一");
         processInfo.setInitiator("1");
         processInfo.setPhone("11111");
         processInfo.setEmail("1222");
@@ -127,6 +127,11 @@ public class QjsqTests {
     @Test
     public void stop() {
         processService.stop("qjsq:1");
+    }
+
+    @Test
+    public void delete() {
+        processService.delete("qjsq:1");
     }
 
     @Test
