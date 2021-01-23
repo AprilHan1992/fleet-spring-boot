@@ -118,6 +118,7 @@
         <module>spring-boot-schedule</module>
         <module>spring-boot-quartz</module>
         <module>spring-boot-xxl-job</module>
+        <module>spring-boot-elastic-job</module>
         <module>spring-boot-jsoup</module>
         <module>spring-boot-druid</module>
         <module>spring-boot-hikari</module>
