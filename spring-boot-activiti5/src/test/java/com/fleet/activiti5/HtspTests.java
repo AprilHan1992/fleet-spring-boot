@@ -42,6 +42,7 @@ public class HtspTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
+        page.put("state", 1);
         page.put("title", "合同");
         page.put("definitionKey", "htsp");
         page.put("definitionName", "合同审批");
@@ -55,6 +56,7 @@ public class HtspTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
+        page.put("state", 1);
         page.put("title", "合同");
         page.put("definitionKey", "htsp");
         page.put("definitionName", "合同审批");
@@ -128,7 +130,7 @@ public class HtspTests {
 
 //        Approval approval = new Approval();
 //        approval.setFlag("驳回");
-//        approval.setTaskId("12525");
+//        approval.setTaskId("34");
 //        approval.setRemark("驳回");
 //        processService.completeTask(approval);
 
