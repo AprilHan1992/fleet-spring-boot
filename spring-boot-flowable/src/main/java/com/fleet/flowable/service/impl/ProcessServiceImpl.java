@@ -60,6 +60,10 @@ public class ProcessServiceImpl implements ProcessService {
         PageUtil<TaskInfo> pageUtil = new PageUtil<>();
         TaskQuery taskQuery = taskService.createTaskQuery();
         taskQuery.taskAssignee(userId);
+        String initiator = Objects.toString(page.get("initiator"), "");
+        if (StringUtils.isNotEmpty(initiator)) {
+            taskQuery.processVariableValueEquals("initiator", initiator);
+        }
         String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             taskQuery.processVariableValueLike("title", "%" + title + "%");
@@ -135,6 +139,10 @@ public class ProcessServiceImpl implements ProcessService {
         PageUtil<ProcessInfo<?>> pageUtil = new PageUtil<>();
         HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
         historicProcessInstanceQuery.variableValueEquals("initiator", userId);
+        String assignee = Objects.toString(page.get("assignee"), "");
+        if (StringUtils.isNotEmpty(assignee)) {
+            historicProcessInstanceQuery.involvedUser(assignee);
+        }
         String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
@@ -146,6 +154,18 @@ public class ProcessServiceImpl implements ProcessService {
         String definitionName = Objects.toString(page.get("definitionName"), "");
         if (StringUtils.isNotEmpty(definitionName)) {
             historicProcessInstanceQuery.processDefinitionName(definitionName);
+        }
+        String state = Objects.toString(page.get("state"), "");
+        if (StringUtils.isNotEmpty(state)) {
+            if ("1".equals(state)) {
+                historicProcessInstanceQuery.unfinished();
+            } else if ("2".equals(state)) {
+                historicProcessInstanceQuery.variableValueEquals("terminated", "false");
+                historicProcessInstanceQuery.finished();
+            } else if ("3".equals(state)) {
+                historicProcessInstanceQuery.variableValueEquals("terminated", "true");
+                historicProcessInstanceQuery.finished();
+            }
         }
         historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
         List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
@@ -171,6 +191,10 @@ public class ProcessServiceImpl implements ProcessService {
         PageUtil<ProcessInfo<?>> pageUtil = new PageUtil<>();
         HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
         historicProcessInstanceQuery.involvedUser(userId);
+        String initiator = Objects.toString(page.get("initiator"), "");
+        if (StringUtils.isNotEmpty(initiator)) {
+            historicProcessInstanceQuery.variableValueEquals("initiator", initiator);
+        }
         String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
@@ -182,6 +206,18 @@ public class ProcessServiceImpl implements ProcessService {
         String definitionName = Objects.toString(page.get("definitionName"), "");
         if (StringUtils.isNotEmpty(definitionName)) {
             historicProcessInstanceQuery.processDefinitionName(definitionName);
+        }
+        String state = Objects.toString(page.get("state"), "");
+        if (StringUtils.isNotEmpty(state)) {
+            if ("1".equals(state)) {
+                historicProcessInstanceQuery.unfinished();
+            } else if ("2".equals(state)) {
+                historicProcessInstanceQuery.variableValueEquals("terminated", "false");
+                historicProcessInstanceQuery.finished();
+            } else if ("3".equals(state)) {
+                historicProcessInstanceQuery.variableValueEquals("terminated", "true");
+                historicProcessInstanceQuery.finished();
+            }
         }
         historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
         List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
@@ -227,7 +263,7 @@ public class ProcessServiceImpl implements ProcessService {
             // 查询流程是否终止
             HistoricVariableInstance terminated = historyService.createHistoricVariableInstanceQuery()
                     .processInstanceId(instanceId)
-                    .variableName("terminated")
+                    .variableValueEquals("terminated", "true")
                     .singleResult();
             if (terminated != null) {
                 processInfo.setState(3);
@@ -311,6 +347,7 @@ public class ProcessServiceImpl implements ProcessService {
         taskService.setVariablesLocal(taskId, variables);
         taskService.addComment(taskId, instanceId, "重新提交");
         variables.put("info", processInfo);
+        variables.put("terminated", "false");
         taskService.complete(taskId, variables);
         return "成功";
     }
@@ -336,6 +373,7 @@ public class ProcessServiceImpl implements ProcessService {
         variables.put("操作", approval.getFlag());
         taskService.setVariablesLocal(taskId, variables);
         taskService.addComment(taskId, instanceId, approval.getRemark());
+        variables.put("terminated", "false");
         taskService.complete(taskId, variables);
         return "成功";
     }

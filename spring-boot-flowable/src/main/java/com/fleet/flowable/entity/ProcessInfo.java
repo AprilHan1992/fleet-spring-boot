@@ -81,7 +81,7 @@ public class ProcessInfo<T> implements Serializable {
     private Date endTime;
 
     /**
-     * 流程状态（1：进行中，2：已结案，3：已终止）
+     * 流程状态（1：审批中，2：已结案，3：已终止）
      */
     private Integer state;
 
