@@ -25,5 +25,11 @@
 	```
 	spring:
 	  thymeleaf:
+	    mode: LEGACYHTML5
+	    encoding: UTF-8
+	    servlet:
+	      content-type: text/html
 	    cache: false
+	    prefix: classpath:/templates/
+	    suffix: .html
 	```
