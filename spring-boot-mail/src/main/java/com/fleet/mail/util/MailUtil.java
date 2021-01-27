@@ -4,9 +4,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
+import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.util.List;
@@ -19,17 +20,11 @@ import java.util.Map;
  */
 public class MailUtil {
 
+    @Resource
     private JavaMailSender javaMailSender;
 
-    private TemplateEngine templateEngine;
-
-    public void setJavaMailSender(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
-
-    public void setTemplateEngine(TemplateEngine templateEngine) {
-        this.templateEngine = templateEngine;
-    }
+    @Resource
+    private SpringTemplateEngine springTemplateEngine;
 
     /**
      * 发送文本邮件
@@ -379,7 +374,7 @@ public class MailUtil {
 
         Context context = new Context();
         context.setVariables(variables);
-        String text = templateEngine.process(template, context);
+        String text = springTemplateEngine.process(template, context);
         helper.setText(text, true);
         javaMailSender.send(message);
     }
