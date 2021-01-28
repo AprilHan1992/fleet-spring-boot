@@ -1,0 +1,9 @@
+server:
+  port: 8000
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
+graphiql:
+  mapping: /graphiql
