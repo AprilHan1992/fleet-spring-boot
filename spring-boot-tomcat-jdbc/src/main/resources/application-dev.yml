@@ -1,0 +1,49 @@
+spring:
+  # 配置数据源
+  datasource:
+    # 驱动类名称
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库地址
+    url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    # 数据库账户
+    username: root
+    # 数据库密码
+    password:
+    # 配置连接池
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    tomcat:
+      # 连接池同一时间可分配的最大活跃连接数
+      max-active: 100
+      # 始终保留在池中的最大连接数，如果启用，将定期检查限制连接，超出此属性设定的值且空闲时间超过 min-evictable-idle-time-millis 的连接则释放
+      max-idle: 100
+      # 始终保留在池中的最小连接数，池中的连接数量若低于此值则创建新的连接，如果连接验证失败将缩小至此值
+      min-idle: 3
+      # 初始化时建立物理连接的个数
+      initial-size: 3
+      # 最大等待时间（毫秒），如果在没有连接可用的情况下等待超过此时间，则抛出异常
+      max-wait: 30000
+      # 当从连接池中取出一个连接时是否进行验证，若验证失败则从池中删除该连接并尝试取出另一个连接
+      test-on-borrow: false
+      # 当一个连接首次被创建时是否进行验证，若验证失败则抛出 SQLException 异常
+      test-on-connect: false
+      # 当一个连接使用完归还到连接池时是否进行验证
+      test-on-return: false
+      # 对池中空闲的连接是否进行验证，验证失败则回收此连接
+      test-while-idle: false
+      # 在连接池返回连接给调用者前用来对连接进行验证的查询 SQL
+      validation-query: SELECT 1
+      # SQL 查询验证超时时间（秒），小于或等于 0 的数值表示禁用
+      validation-query-timeout: 3
+      # 在空闲连接回收器线程运行期间休眠时间（毫秒）， 该值不应该小于 1 秒，它决定线程多久验证空闲连接或丢弃连接的频率
+      time-between-eviction-runs-millis: 5000
+      # 连接在池中保持空闲而不被回收的最小时间（毫秒）
+      min-evictable-idle-time-millis: 60000
+      # 标记是否删除泄露的连接，如果连接超出 remove-abandoned-timeout 的限制，且该属性设置为 true，则连接被认为是被泄露并且可以被删除
+      remove-abandoned: false
+      # 泄露的连接可以被删除的超时时间（秒），该值应设置为应用程序查询可能执行的最长时间
+      remove-abandoned-timeout: 60
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  check-config-location: true
+  configuration:
+    map-underscore-to-camel-case: true

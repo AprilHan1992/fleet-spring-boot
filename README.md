@@ -106,8 +106,9 @@
 - [spring-boot-xxl-job](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-xxl-job)：Spring Boot xxl-job 分布式任务调度平台
 - [spring-boot-elastic-job](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elastic-job)：Spring Boot elastic-job 分布式任务调度平台
 - [spring-boot-jsoup](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jsoup)：Spring Boot Jsoup 拦截 XSS
+- [spring-boot-hikari](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hikari)：Spring Boot Hikari 连接池（默认连接池）
 - [spring-boot-druid](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-druid)：Spring Boot Druid 连接池
-- [spring-boot-hikari](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hikari)：Spring Boot Hikari 连接池
+- [spring-boot-tomcat-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tomcat-jdbc)：Spring Boot Tomcat-Jdbc 连接池
 - [spring-boot-dubbo](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dubbo)：Spring Boot Dubbo 框架
 - [spring-boot-mysql-multi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi)：Spring Boot Mysql 多数据源
 - [spring-boot-mysql-multi-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi-aop)：Spring Boot Mysql 多数据源 AOP 实现
