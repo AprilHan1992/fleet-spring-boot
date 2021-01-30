@@ -5,25 +5,14 @@ spring:
     url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
     username: root
     password:
-    # 连接池配置
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      # 最小空闲连接数量
-      minimum-idle: 5
-      # 空闲连接存活最大时间，默认600000，即10分钟
-      idle-timeout: 180000
-      # 连接池最大连接数，默认10
+      minimum-idle: 10
       maximum-pool-size: 10
-      # 控制从池返回的连接的默认自动提交行为，默认true
-      auto-commit: true
-      # 连接池名称
-      pool-name: FleetHikariCP
-      # 池中连接的最长生命周期，默认1800000，即30分钟。不等于0且小于30秒，会被重置为默认值
       max-lifetime: 1800000
-      # 数据库连接超时时间，默认30000，即30秒
+      idle-timeout: 600000
       connection-timeout: 30000
-      # 连接测试查询
-      # SELECT 1(mysql)，select 1 from dual(oracle)，SELECT 1(MS Sql Server)
+      validation-timeout: 5000
       connection-test-query: SELECT 1
 mybatis:
   mapper-locations: mybatis/*Mapper.xml
