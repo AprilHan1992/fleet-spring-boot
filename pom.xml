@@ -76,6 +76,7 @@
         <module>spring-boot-h2</module>
         <module>spring-boot-sqlite</module>
         <module>spring-boot-postgresql</module>
+        <module>spring-boot-jndi</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-memcached</module>
         <module>spring-boot-session</module>

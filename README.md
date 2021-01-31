@@ -62,6 +62,7 @@
 - [spring-boot-h2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-h2)：Spring Boot H2 数据库
 - [spring-boot-sqlite](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sqlite)：Spring Boot Sqlite 数据库
 - [spring-boot-postgresql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgresql)：Spring Boot Postgresql 数据库
+- [spring-boot-jndi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jndi)：Spring Boot JNDI 数据源
 - [spring-boot-redis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redis)：Spring Boot Redis 缓存
 - [spring-boot-memcached](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-memcached)：Spring Boot Memcached 缓存
 - [spring-boot-session](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-session)：Spring Boot Session 共享
