@@ -1,3 +1,0 @@
-spring:
-  datasource:
-    jndi-name: jdbc/testDB
