@@ -31,6 +31,7 @@
         <module>spring-boot-rmi</module>
         <module>spring-boot-hessian</module>
         <module>spring-boot-forest</module>
+        <module>spring-boot-thrift</module>
         <module>spring-boot-cors</module>
         <module>spring-boot-graphql</module>
         <module>spring-boot-config</module>

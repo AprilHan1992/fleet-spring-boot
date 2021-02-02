@@ -17,6 +17,7 @@
 - [spring-boot-rmi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rmi)：Spring Boot RMI 远程调用框架
 - [spring-boot-hessian](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hessian)：Spring Boot Hessian 远程调用框架
 - [spring-boot-forest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-forest)：Spring Boot Forest Http 请求
+- [spring-boot-thrift](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-thrift)：Spring Boot Thrift RPC 请求
 - [spring-boot-cors](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cors)：Spring Boot HTTP 访问控制
 - [spring-boot-graphql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-graphql)：Spring Boot GraphQL 构建 API
 - [spring-boot-config](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-config)：Spring Boot 配置中心
