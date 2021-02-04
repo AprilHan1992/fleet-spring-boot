@@ -21,7 +21,7 @@
         <module>spring-boot-hello</module>
         <module>spring-boot-starter</module>
         <module>spring-boot-simple</module>
-<!--        <module>spring-boot-eureka</module>-->
+        <module>spring-boot-eureka</module>
         <module>spring-boot-consul</module>
         <module>spring-boot-nacos</module>
         <module>spring-boot-zookeeper</module>
