@@ -1,0 +1,12 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: seata-consumer
+seata:
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: 127.0.0.1:8091
+  tx-service-group: my_test_tx_group
