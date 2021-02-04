@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-seata-consumer</artifactId>
     <name>spring-boot-seata-consumer</name>
-    <description>seata-consumer</description>
+    <description>消费端</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 

@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-seata-order</artifactId>
     <name>spring-boot-seata-order</name>
-    <description>order</description>
+    <description>订单</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 

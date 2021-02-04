@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-seata-user</artifactId>
     <name>spring-boot-seata-user</name>
-    <description>user</description>
+    <description>用户、货币</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
