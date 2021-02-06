@@ -60,7 +60,7 @@
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <scope>runtime</scope>
+        <version>8.0.17</version>
     </dependency>
 </dependencies>
 
