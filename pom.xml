@@ -150,6 +150,7 @@
         <module>spring-boot-netty</module>
         <module>spring-boot-transaction</module>
         <module>spring-boot-seata</module>
+        <module>spring-boot-atomikos</module>
         <module>spring-boot-oshi</module>
         <module>spring-boot-hutool</module>
         <module>spring-boot-https</module>
