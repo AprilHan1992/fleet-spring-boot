@@ -1,5 +1,8 @@
 package com.fleet.mysql.multi.entity;
 
+/**
+ * @author April Han
+ */
 public class User {
 
 	private Long id;

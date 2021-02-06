@@ -5,6 +5,9 @@ import com.fleet.mysql.multi.entity.User;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 public interface UserService {
 
     int insert(User user);

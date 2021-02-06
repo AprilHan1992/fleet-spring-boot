@@ -10,6 +10,9 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
