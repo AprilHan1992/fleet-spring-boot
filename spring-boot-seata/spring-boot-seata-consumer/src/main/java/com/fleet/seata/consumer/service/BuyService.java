@@ -35,7 +35,7 @@ public class BuyService {
         logger.info("consumer 服务：" + xid);
 
         try {
-            goodsService.deduct(goodsId, amount);
+            goodsService.decrease(goodsId, amount);
         } catch (Exception e) {
             throw new RuntimeException();
         }

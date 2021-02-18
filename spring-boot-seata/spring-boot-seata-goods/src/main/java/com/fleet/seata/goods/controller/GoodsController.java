@@ -31,12 +31,12 @@ public class GoodsController {
      * @param amount
      * @return
      */
-    @RequestMapping("/deduct")
-    public boolean deduct(@RequestParam("id") Integer id, @RequestParam("amount") Integer amount) {
+    @RequestMapping("/decrease")
+    public boolean decrease(@RequestParam("id") Integer id, @RequestParam("amount") Integer amount) {
         Random random = new Random();
         if (random.nextBoolean()) {
             throw new RuntimeException("减库存失败");
         }
-        return goodsService.deduct(id, amount);
+        return goodsService.decrease(id, amount);
     }
 }

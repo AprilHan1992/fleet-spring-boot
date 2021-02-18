@@ -14,5 +14,5 @@ public interface GoodsDao {
 
     Goods get(Integer id);
 
-    int deduct(@Param("id") Integer id, @Param("amount") Integer amount);
+    int decrease(@Param("id") Integer id, @Param("amount") Integer amount);
 }

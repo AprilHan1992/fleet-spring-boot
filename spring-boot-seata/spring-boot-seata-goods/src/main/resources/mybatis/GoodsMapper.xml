@@ -17,7 +17,7 @@
         from `goods` where `id` = #{id}
     </select>
 
-    <update id="deduct">
+    <update id="decrease">
         update `goods` set `amount` = `amount` -  #{amount} where id = #{id}
     </update>
 </mapper>

@@ -21,6 +21,6 @@ public interface GoodsService {
      * @param amount
      * @return
      */
-    @RequestMapping("/goods/deduct")
-    boolean deduct(@RequestParam("id") Integer id, @RequestParam("amount") Integer amount);
+    @RequestMapping("/goods/decrease")
+    boolean decrease(@RequestParam("id") Integer id, @RequestParam("amount") Integer amount);
 }

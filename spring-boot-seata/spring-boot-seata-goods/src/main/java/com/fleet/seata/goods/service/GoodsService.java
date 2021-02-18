@@ -11,5 +11,5 @@ public interface GoodsService {
 
     Goods get(Integer id);
 
-    boolean deduct(Integer id, Integer amount);
+    boolean decrease(Integer id, Integer amount);
 }

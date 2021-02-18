@@ -27,11 +27,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public boolean deduct(Integer id, Integer amount) {
+    public boolean decrease(Integer id, Integer amount) {
         String xid = RootContext.getXID();
         logger.info("goods 服务：" + xid);
 
-        if (goodsDao.deduct(id, amount) == 0) {
+        if (goodsDao.decrease(id, amount) == 0) {
             return false;
         }
         return true;
