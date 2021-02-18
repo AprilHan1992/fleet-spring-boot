@@ -23,8 +23,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public boolean deduct(Integer id, Integer amount) {
-        if (goodsDao.deduct(id, amount) == 0) {
+    public boolean decrease(Integer id, Integer amount) {
+        if (goodsDao.decrease(id, amount) == 0) {
             return false;
         }
         Random random = new Random();

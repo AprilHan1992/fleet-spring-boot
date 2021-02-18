@@ -31,7 +31,7 @@ public class BuyServiceImpl implements BuyService {
 
     @Transactional
     public void buy(Integer userId, Integer goodsId, Integer amount, Integer money) {
-        goodsService.deduct(goodsId, amount);
+        goodsService.decrease(goodsId, amount);
 
         Order order = new Order();
         order.setUserId(userId);

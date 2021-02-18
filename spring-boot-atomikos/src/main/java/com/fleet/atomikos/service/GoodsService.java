@@ -18,5 +18,5 @@ public interface GoodsService {
      * @param amount
      * @return
      */
-    boolean deduct(Integer id, Integer amount);
+    boolean decrease(Integer id, Integer amount);
 }
