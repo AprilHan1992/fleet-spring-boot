@@ -39,6 +39,8 @@ public class RedisLockController {
     @RedisLock(time = 2)
     @RequestMapping(path = "/testLock")
     public void testLock() throws InterruptedException {
+        // 模拟业务处理时间
+        Thread.sleep(500);
         String s = Thread.currentThread().getName();
         if (unLockNum > 0) {
             logger.info(s + "抢号成功，号码是：" + unLockNum);
@@ -46,6 +48,5 @@ public class RedisLockController {
         } else {
             logger.info(s + "抢号失败，号码已经被抢光");
         }
-        Thread.sleep(500);
     }
 }
