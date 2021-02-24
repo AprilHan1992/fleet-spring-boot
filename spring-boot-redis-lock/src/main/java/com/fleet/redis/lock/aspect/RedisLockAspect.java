@@ -24,7 +24,7 @@ public class RedisLockAspect {
     RedisLockRegistry redisLockRegistry;
 
     @Around("@annotation(com.fleet.redis.lock.aspect.annotation.RedisLock)")
-    public Object aroundApi(ProceedingJoinPoint pjp) throws Throwable {
+    public Object around(ProceedingJoinPoint pjp) throws Throwable {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         String name = signature.getName();
         Method method = signature.getMethod();

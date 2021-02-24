@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-redis-lock</artifactId>
     <name>spring-boot-redis-lock</name>
-    <description>redis分布式锁</description>
+    <description>Redis 分布式锁</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
