@@ -84,6 +84,7 @@
 - [spring-boot-redismq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redismq)：Spring Boot RedisMQ 消息中间件
 - [spring-boot-mqtt](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mqtt)：Spring Boot MQTT 消息中间件
 - [spring-boot-redis-lock](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redis-lock)：Spring Boot Redis 分布式锁
+- [spring-boot-redisson](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redisson)：Spring Boot Redisson 分布式锁
 - [spring-boot-websocket](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-websocket)：Spring Boot WebSocket 前后端通信
 - [spring-boot-socketio](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-socketio)：Spring Boot SocketIO 前后端通信
 - [spring-boot-shiro](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro)：Spring Boot Shiro 权限管理
