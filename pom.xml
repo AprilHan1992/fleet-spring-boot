@@ -171,6 +171,7 @@
         <module>spring-boot-gridfs</module>
         <module>spring-boot-javafx</module>
         <module>spring-boot-cxf</module>
+        <module>spring-boot-webssh</module>
         <module>spring-boot-sso</module>
         <module>spring-boot-mso</module>
         <module>spring-boot-elk</module>
