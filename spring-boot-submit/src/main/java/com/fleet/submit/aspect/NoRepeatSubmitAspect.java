@@ -27,15 +27,15 @@ public class NoRepeatSubmitAspect {
     RedisUtil redisUtil;
 
     @Pointcut("@annotation(com.fleet.submit.aspect.annotation.NoRepeatSubmit)")
-    public void pointcut() {
+    public void doPointcut() {
     }
 
-    @Before("pointcut()")
+    @Before("doPointcut()")
     public void doBefore() {
         System.out.println("执行 Before");
     }
 
-    @Around("pointcut()")
+    @Around("doPointcut()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("执行 Around");
         ServletRequestAttributes attributes = (ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes());
@@ -51,17 +51,17 @@ public class NoRepeatSubmitAspect {
         }
     }
 
-    @AfterThrowing(pointcut = "pointcut()", throwing = "e")
+    @AfterThrowing(pointcut = "doPointcut()", throwing = "e")
     public void doAfterThrowing(JoinPoint jp, Throwable e) {
         System.out.println("执行 AfterThrowing");
     }
 
-    @After("pointcut()")
+    @After("doPointcut()")
     public void doAfter(JoinPoint pjp) {
         System.out.println("执行 After");
     }
 
-    @AfterReturning(pointcut = "pointcut()", returning = "o")
+    @AfterReturning(pointcut = "doPointcut()", returning = "o")
     public void doAfterReturning(JoinPoint pjp, Object o) {
         System.out.println("执行 AfterReturning");
     }
