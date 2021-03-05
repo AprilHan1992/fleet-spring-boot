@@ -29,7 +29,6 @@
         <module>spring-boot-rmi</module>
         <module>spring-boot-hessian</module>
         <module>spring-boot-forest</module>
-        <module>spring-boot-thrift</module>
         <module>spring-boot-cors</module>
         <module>spring-boot-graphql</module>
         <module>spring-boot-config</module>
@@ -150,6 +149,8 @@
         <module>spring-boot-submit</module>
         <module>spring-boot-zipkin</module>
         <module>spring-boot-netty</module>
+        <module>spring-boot-thrift</module>
+        <module>spring-boot-grpc</module>
         <module>spring-boot-transaction</module>
         <module>spring-boot-seata</module>
         <module>spring-boot-atomikos</module>
