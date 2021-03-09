@@ -151,6 +151,7 @@
         <module>spring-boot-netty</module>
         <module>spring-boot-thrift</module>
         <module>spring-boot-grpc</module>
+        <module>spring-boot-motan</module>
         <module>spring-boot-transaction</module>
         <module>spring-boot-seata</module>
         <module>spring-boot-atomikos</module>

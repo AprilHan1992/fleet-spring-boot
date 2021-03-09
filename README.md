@@ -135,9 +135,10 @@
 - [spring-boot-validator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-validator)：Spring Boot Validator 参数校验
 - [spring-boot-submit](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-submit)：Spring Boot 防重复提交
 - [spring-boot-zipkin](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zipkin)：Spring Boot Zipkin 分布式跟踪系统
-- [spring-boot-netty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-netty)：Spring Boot Netty RPC 框架
+- [spring-boot-netty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-netty)：Spring Boot Netty 基于 NIO 开发的网络通信框架
 - [spring-boot-thrift](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-thrift)：Spring Boot Thrift RPC 框架
 - [spring-boot-grpc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-grpc)：Spring Boot gRPC RPC 框架
+- [spring-boot-motan](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-motan)：Spring Boot Motan RPC 框架
 - [spring-boot-transaction](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-transaction)：Spring Boot 事务管理
 - [spring-boot-seata](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seata)：Spring Boot Seata 分布式事务管理
 - [spring-boot-atomikos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-atomikos)：Spring Boot Atomikos 分布式事务管理
