@@ -1,4 +1,4 @@
-# fleet-spring-boot
+	# fleet-spring-boot
 
 > Spring Boot 教程，Spring Boot 的各种简单示例，快速入门使用 Spring Boot 各种组件
 
@@ -43,6 +43,7 @@
 - [spring-boot-groovy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-groovy)：Spring Boot 结合 Groovy 模板引擎
 - [spring-boot-properties](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-properties)：Spring Boot 读取配置文件中的内容
 - [spring-boot-logback](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-logback)：Spring Boot 集成 Logback 日志
+- [spring-boot-log4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-log4j)：Spring Boot 集成 Log4j 日志
 - [spring-boot-log4j2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-log4j2)：Spring Boot 集成 Log4j2 日志
 - [spring-boot-logstash](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-logstash)：Spring Boot Logstash 日志管理工具
 - [spring-boot-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aop)：Spring Boot AOP 切面
