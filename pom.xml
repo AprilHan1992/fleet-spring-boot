@@ -102,7 +102,6 @@
         <module>spring-boot-shiro</module>
         <module>spring-boot-security</module>
         <module>spring-boot-oauth2</module>
-        <module>spring-boot-authcheck</module>
         <module>spring-boot-neo4j</module>
         <module>spring-boot-hystrix</module>
         <module>spring-boot-hystrix-dashboard</module>

@@ -168,6 +168,5 @@
 
 ### 高级部分：
 
-- [spring-boot-authcheck](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-authcheck)：Spring Boot 自定义权限管理
 - [spring-boot-elk](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elk)：Spring Boot ELK 日志收集系统
 - [spring-boot-aliyunoss](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aliyunoss)：Spring Boot Aliyun OSS 对象存储
