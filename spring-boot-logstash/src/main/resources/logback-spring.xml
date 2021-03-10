@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <contextName>logback</contextName>
-    <property name="logPath" value="./applog"/>
 
-    <!-- 控制台输出 -->
+    <property name="FILE_PATH" value="./applog/logback"/>
+    <property name="LOG_PATTERN" value="%d{HH:mm:ss.SSS} [%p] %c.%M\\(%F:%L\\)%n%m%n"/>
+
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- 日志输出编码 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
         <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%logger{50}] %file : %line - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 关联logstash输出 -->
+    <!-- 关联 logstash 输出 -->
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>127.0.0.1:4567</destination>
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
@@ -24,6 +26,14 @@
             <appender-ref ref="logstash"/>
         </root>
     </springProfile>
+
+    <springProfile name="test">
+        <root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="logstash"/>
+        </root>
+    </springProfile>
+
     <springProfile name="pro">
         <root level="error">
             <appender-ref ref="console"/>
