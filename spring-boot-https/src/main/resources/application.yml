@@ -6,5 +6,5 @@ server:
     # 密钥库密码
     key-store-password: fleetsoft
     key-store-type: JKS
-    key-alias: tomcat
+    key-alias: tomcathttps
     enabled: true
