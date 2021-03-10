@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class HttpsConfig {
 
     /**
-     * 配置 http(80) -> 强制跳转到 https(8000)
+     * 强制 http(80) 跳转到 https(8000)
      */
     @Bean
     public Connector connector() {
