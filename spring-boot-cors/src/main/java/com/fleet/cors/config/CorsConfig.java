@@ -17,17 +17,17 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration conf = new CorsConfiguration();
+        CorsConfiguration config = new CorsConfiguration();
         // 跨域的地址，注意 127.0.0.1 != localhost
-        conf.addAllowedOrigin("*");
+        config.addAllowedOrigin("*");
         // 跨域的请求头
-        conf.addAllowedHeader("*");
+        config.addAllowedHeader("*");
         // 跨域的请求方法
-        conf.addAllowedMethod("*");
+        config.addAllowedMethod("*");
         // 跨域是否支持证书
-        conf.setAllowCredentials(true);
+        config.setAllowCredentials(true);
         // 跨域有效接口
-        source.registerCorsConfiguration("/**", conf);
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }
