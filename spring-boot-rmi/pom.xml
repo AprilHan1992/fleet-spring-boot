@@ -7,7 +7,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-rmi</artifactId>
     <name>spring-boot-rmi</name>
-    <description>Hessian 远程调用框架</description>
+    <description>RMI 远程调用框架</description>
     <packaging>pom</packaging>
     <version>1.0</version>
 
