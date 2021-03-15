@@ -13,7 +13,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-mail</artifactId>
     <name>spring-boot-mail</name>
-    <description>mail</description>
+    <description>发送邮件</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -22,6 +22,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <skipTests>true</skipTests>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -50,13 +53,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
