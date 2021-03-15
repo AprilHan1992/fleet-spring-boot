@@ -7,7 +7,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-eureka</artifactId>
     <name>spring-boot-eureka</name>
-    <description>Eukeka 微服务注册与发现</description>
+    <description>Eureka 微服务注册与发现</description>
     <packaging>pom</packaging>
     <version>1.0</version>
 

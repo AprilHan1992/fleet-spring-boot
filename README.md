@@ -9,7 +9,7 @@
 - [spring-boot-hello](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hello)：Spring Boot 快速入门 Hello world 示例
 - [spring-boot-starter](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-starter)：Spring Boot 自定义 Banner （启动图案）
 - [spring-boot-simple](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-simple)：Spring Boot 简单的服务提供者、消费者
-- [spring-boot-eureka](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-eureka)：Spring Boot Eukeka 微服务注册与发现
+- [spring-boot-eureka](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-eureka)：Spring Boot Eureka 微服务注册与发现
 - [spring-boot-consul](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-consul)：Spring Boot Consul 微服务注册与发现
 - [spring-boot-nacos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-nacos)：Spring Boot Nacos 微服务注册与发现
 - [spring-boot-zookeeper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zookeeper)：Spring Boot ZooKeeper 微服务注册与发现

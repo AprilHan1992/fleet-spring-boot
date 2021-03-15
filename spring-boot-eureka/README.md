@@ -1,6 +1,6 @@
 # spring-boot-eureka
 
-> Eukeka 微服务注册与发现
+> Eureka 微服务注册与发现
 
 ## 步骤
 
