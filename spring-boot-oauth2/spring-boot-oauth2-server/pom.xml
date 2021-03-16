@@ -14,7 +14,7 @@
     <groupId>com.fleet</groupId>
     <artifactId>spring-boot-oauth2-server</artifactId>
     <name>spring-boot-oauth2-server</name>
-    <description>oauth2-server</description>
+    <description>服务提供者</description>
     <packaging>jar</packaging>
     <version>1.0</version>
 
@@ -23,6 +23,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <skipTests>true</skipTests>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
