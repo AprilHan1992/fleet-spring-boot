@@ -1,7 +1,0 @@
-#spring:
-#  security:
-#    user:
-#      password:
-#security:
-#  basic:
-#    enabled: true

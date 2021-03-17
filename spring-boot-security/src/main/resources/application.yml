@@ -1,7 +1,2 @@
 server:
   port: 8000
-spring:
-  application:
-    name: service-security
-  profiles:
-    active: dev
