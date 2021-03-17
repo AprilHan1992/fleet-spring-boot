@@ -1,5 +1,6 @@
 package com.fleet.oauth2.resource.controller;
 
+import com.fleet.oauth2.resource.json.R;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @RequestMapping("/hello")
-    public String hello() {
-        return "你好，ADMIN 角色用户！";
+    public R hello() {
+        return R.ok("你好，ADMIN 角色用户！");
     }
 }

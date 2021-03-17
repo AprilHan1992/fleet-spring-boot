@@ -40,9 +40,10 @@ public class UserServiceImpl implements UserService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         if ("user".equals(username)) {
             authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            authorities.add(new SimpleGrantedAuthority("USER:GET"));
+//            authorities.add(new SimpleGrantedAuthority("USER:GET"));
         } else if ("admin".equals(username)) {
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//            authorities.add(new SimpleGrantedAuthority("USER:GET"));
         } else {
             return null;
         }
