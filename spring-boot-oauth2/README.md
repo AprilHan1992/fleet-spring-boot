@@ -83,7 +83,20 @@
 	
 	@Configuration
 	@EnableWebSecurity
+	@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	    @Resource
+	    private AuthenticationSuccess authenticationSuccess;
+	
+	    @Resource
+	    private AuthenticationFailure authenticationFailure;
+	
+	    @Resource
+	    private LogoutSuccess logoutSuccess;
+	
+	    @Resource
+	    private AccessDenied accessDenied;
 	
 	    @Resource
 	    private UserService userService;
@@ -109,6 +122,20 @@
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http.authorizeRequests()
 	                .anyRequest().authenticated()
+	                .and()
+	                .formLogin()
+	                .loginProcessingUrl("/login").permitAll()
+	                .usernameParameter("username")
+	                .passwordParameter("password")
+	                .successHandler(authenticationSuccess).permitAll()
+	                .failureHandler(authenticationFailure).permitAll()
+	                .and()
+	                .logout()
+	                .logoutUrl("/logout")
+	                .logoutSuccessHandler(logoutSuccess).permitAll()
+	                .and()
+	                .exceptionHandling()
+	                .accessDeniedHandler(accessDenied)
 	                .and()
 	                .httpBasic()
 	                .and()
@@ -164,8 +191,18 @@
 	                .withClient("client_id_1002")
 	                .secret(new BCryptPasswordEncoder().encode("client_secret_1002"))
 	                // 设置授权模式
+	                .authorizedGrantTypes("implicit")
+	                .resourceIds("resource_id")
+	                .scopes("app", "web")
+	                // 设置 access_token 有效期为30天
+	                .accessTokenValiditySeconds(2592000)
+	                .redirectUris("http://localhost:8001/callback")
+	                .and()
+	                .withClient("client_id_1003")
+	                .secret(new BCryptPasswordEncoder().encode("client_secret_1003"))
+	                // 设置授权模式
 	                .authorizedGrantTypes("password", "refresh_token")
-	                .resourceIds("resource_id_1002")
+	                .resourceIds("resource_id")
 	                .scopes("app", "web")
 	                // 设置 access_token 有效期为15分钟
 	                .accessTokenValiditySeconds(900)
@@ -235,7 +272,7 @@
 	@Service
 	public class UserServiceImpl implements UserService {
 	
-		/**
+	    /**
 	     * 模拟用户
 	     *
 	     * @param username
@@ -257,6 +294,7 @@
 	            authorities.add(new SimpleGrantedAuthority("USER:GET"));
 	        } else if ("admin".equals(username)) {
 	            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+	            authorities.add(new SimpleGrantedAuthority("USER:GET"));
 	        } else {
 	            return null;
 	        }
@@ -304,7 +342,14 @@
 	
 	@Configuration
 	@EnableResourceServer
+	@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 	public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+	
+	    @Resource
+	    private AccessDenied accessDenied;
+	
+	    @Resource
+	    private AuthEntryPoint authEntryPoint;
 	
 	    @Bean
 	    public PasswordEncoder passwordEncoder() {
@@ -325,6 +370,9 @@
 	    public void configure(ResourceServerSecurityConfigurer resources) {
 	        resources.resourceId("resource_id")
 	                .stateless(true);
+	
+	        resources.authenticationEntryPoint(authEntryPoint);
+	        resources.accessDeniedHandler(accessDenied);
 	    }
 	
 	    @Override
@@ -351,8 +399,8 @@
 	public class AdminController {
 	
 	    @RequestMapping("/hello")
-	    public String hello() {
-	        return "你好，ADMIN 角色用户！";
+	    public R hello() {
+	        return R.ok("你好，ADMIN 角色用户！");
 	    }
 	}
 	
@@ -368,14 +416,14 @@
 	
 	    @PreAuthorize("hasRole('USER')")
 	    @RequestMapping("/hello")
-	    public String get() {
-	        return "你好，USER 角色用户！";
+	    public R get() {
+	        return R.ok("你好，USER 角色用户！");
 	    }
 	
 	    @PreAuthorize("hasAuthority('USER:GET')")
 	    @GetMapping("/get/{id}")
-	    public String get(@PathVariable String id) {
-	        return "id : " + id;
+	    public R get(@PathVariable String id) {
+	        return R.ok("id : " + id);
 	    }
 	}
 
@@ -390,8 +438,8 @@
 	public class GuestController {
 	
 	    @RequestMapping("/hello")
-	    public String hello() {
-	        return "你好，游客！";
+	    public R hello() {
+	        return R.ok("你好，游客！");
 	    }
 	}
 

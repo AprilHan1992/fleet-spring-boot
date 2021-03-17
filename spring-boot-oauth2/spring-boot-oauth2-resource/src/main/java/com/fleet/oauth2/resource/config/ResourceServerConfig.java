@@ -2,7 +2,6 @@ package com.fleet.oauth2.resource.config;
 
 import com.fleet.oauth2.resource.config.handler.AccessDenied;
 import com.fleet.oauth2.resource.config.handler.AuthEntryPoint;
-import com.fleet.oauth2.resource.config.handler.LogoutSuccess;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -30,9 +29,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Resource
     private AuthEntryPoint authEntryPoint;
-
-    @Resource
-    private LogoutSuccess logoutSuccess;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
