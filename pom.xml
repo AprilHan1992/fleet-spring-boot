@@ -163,6 +163,7 @@
         <module>spring-boot-https</module>
         <module>spring-boot-spock</module>
         <module>spring-boot-common</module>
+        <module>spring-boot-file</module>
         <module>spring-boot-excel</module>
         <module>spring-boot-easyexcel</module>
         <module>spring-boot-pdf</module>
@@ -172,7 +173,6 @@
         <module>spring-boot-openoffice</module>
         <module>spring-boot-libreoffice</module>
         <module>spring-boot-minio</module>
-        <module>spring-boot-file</module>
         <module>spring-boot-fastdfs</module>
         <module>spring-boot-gridfs</module>
         <module>spring-boot-javafx</module>
