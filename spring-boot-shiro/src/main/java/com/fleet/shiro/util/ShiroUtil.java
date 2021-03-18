@@ -4,7 +4,11 @@ import com.fleet.shiro.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+/**
+ * @author April Han
+ */
 public class ShiroUtil {
+
     public static Subject getSubject() {
         return SecurityUtils.getSubject();
     }

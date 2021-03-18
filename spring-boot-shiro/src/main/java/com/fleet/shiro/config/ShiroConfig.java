@@ -1,11 +1,13 @@
-package com.fleet.shiro.config.shiro;
+package com.fleet.shiro.config;
 
+import com.fleet.shiro.config.filter.FormAuthentication;
+import com.fleet.shiro.config.filter.Logout;
+import com.fleet.shiro.config.filter.PermissionsAuthorization;
+import com.fleet.shiro.config.filter.RolesAuthorization;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
-import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
@@ -16,14 +18,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @Configuration
 public class ShiroConfig {
 
     /**
-     * 配置shiro过滤器
-     *
-     * @param securityManager
-     * @return
+     * 配置 shiro 过滤器
      */
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
@@ -31,10 +33,6 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/notIn", "anon");
-        filterChainDefinitionMap.put("/in", "anon");
-        filterChainDefinitionMap.put("/out", "anon");
-        filterChainDefinitionMap.put("/unauth", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/guest/**", "anon");
@@ -42,21 +40,13 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
-        shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
-        shiroFilterFactoryBean.setLoginUrl("/notIn");
-        shiroFilterFactoryBean.setSuccessUrl("/in");
-
         Map<String, Filter> filters = new HashMap<>();
-        FormAuthenticationFilter formAuthenticationFilter = new FormAuthenticationFilter();
-        formAuthenticationFilter.setUsernameParam("name");
-        formAuthenticationFilter.setPasswordParam("password");
-        filters.put("authc", formAuthenticationFilter);
-
-        LogoutFilter logoutFilter = new LogoutFilter();
-        logoutFilter.setRedirectUrl("/out");
-        filters.put("logout", logoutFilter);
-
+        filters.put("authc", new FormAuthentication());
+        filters.put("roles", new RolesAuthorization());
+        filters.put("perms", new PermissionsAuthorization());
+        filters.put("logout", new Logout());
         shiroFilterFactoryBean.setFilters(filters);
+
         return shiroFilterFactoryBean;
     }
 
@@ -66,18 +56,18 @@ public class ShiroConfig {
      * @return
      */
     @Bean
-    public SecurityManager securityManager() {
+    public SecurityManager securityManager(CustomAuthorizingRealm customAuthorizingRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(customRealm());
+        securityManager.setRealm(customAuthorizingRealm);
         return securityManager;
     }
 
     /**
-     * 自定义身份认证 realm
+     * 自定义身份认证 Realm
      */
     @Bean
-    public CustomRealm customRealm() {
-        return new CustomRealm();
+    public CustomAuthorizingRealm customAuthorizingRealm() {
+        return new CustomAuthorizingRealm();
     }
 
     @Bean

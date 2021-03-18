@@ -1,16 +1,18 @@
 package com.fleet.shiro.controller;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import com.fleet.shiro.json.R;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author April Han
+ */
 @RestController
-@RequiresRoles("ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
 
-    @RequestMapping("/get")
-    public String get() {
-        return "欢迎进入，admin用户！";
+    @RequestMapping("/hello")
+    public R hello() {
+        return R.ok("你好，ADMIN 角色用户！");
     }
 }
