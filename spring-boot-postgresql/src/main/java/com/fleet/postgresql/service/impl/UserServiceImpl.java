@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * @author April Han
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
