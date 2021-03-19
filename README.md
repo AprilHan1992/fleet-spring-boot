@@ -147,6 +147,7 @@
 - [spring-boot-hutool](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hutool)：Spring Boot Hutool Java 工具类库
 - [spring-boot-https](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-https)：Spring Boot HTTPS
 - [spring-boot-spock](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-spock)：Spring Boot Spock 测试框架
+- [spring-boot-postgis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgis)：Spring Boot PostGis 经纬度
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：

@@ -162,6 +162,7 @@
         <module>spring-boot-hutool</module>
         <module>spring-boot-https</module>
         <module>spring-boot-spock</module>
+        <module>spring-boot-postgis</module>
         <module>spring-boot-common</module>
         <module>spring-boot-file</module>
         <module>spring-boot-excel</module>
