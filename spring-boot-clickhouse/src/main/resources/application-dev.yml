@@ -1,0 +1,10 @@
+clickhouse:
+  url: jdbc:clickhouse://192.168.99.100:8123
+  properties:
+    database: default
+    user: default
+    password:
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
