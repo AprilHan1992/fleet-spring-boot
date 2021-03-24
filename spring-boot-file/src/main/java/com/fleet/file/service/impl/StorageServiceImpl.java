@@ -79,23 +79,23 @@ public class StorageServiceImpl implements StorageService {
             fileDir.mkdirs();
         }
 
-        //第一步
+        // 第一步
         RandomAccessFile raf = new RandomAccessFile(tempFile, "rw");
-        //第二步
+        // 第二步
         FileChannel fileChannel = raf.getChannel();
-        //第三步
+        // 第三步
         long offset = param.getChunk() * param.getChunkSize();
-        //第四步
+        // 第四步
         byte[] fileData = param.getFile().getBytes();
-        //第五步
+        // 第五步
         MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, offset, fileData.length);
-        //第六步
+        // 第六步
         mappedByteBuffer.put(fileData);
-        //第七步
+        // 第七步
         FileUtil.mappedByteBuffer(mappedByteBuffer);
         fileChannel.close();
         raf.close();
-        //第八步
+        // 第八步
         boolean completed = checkStatus(param);
         if (completed) {
             rename(tempFile, filename);
