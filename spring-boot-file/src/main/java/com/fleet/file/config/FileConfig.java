@@ -3,6 +3,9 @@ package com.fleet.file.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author April Han
+ */
 @Component
 @ConfigurationProperties(prefix = "file")
 public class FileConfig {

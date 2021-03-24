@@ -15,6 +15,9 @@ import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * @author April Han
+ */
 @Service
 public class StorageServiceImpl implements StorageService {
 
@@ -26,14 +29,17 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public void uploadFileByRandomAccessFile(MultipartFileParam param) throws Exception {
         String filePath = fileConfig.getBigFilePath() + param.getMd5();
-        String fileName = param.getName();
-        String tempFileName = fileName + "_tmp";
-
         File fileDir = new File(filePath);
-        File tempFile = new File(filePath, tempFileName);
         if (!fileDir.exists()) {
             fileDir.mkdirs();
         }
+
+        String filename = param.getName();
+        String tempFilename = filename + "_tmp";
+
+
+        File tempFile = new File(filePath, tempFilename);
+
 
         RandomAccessFile raf = new RandomAccessFile(tempFile, "rw");
         long offset = param.getChunk() * param.getChunkSize();
@@ -44,9 +50,9 @@ public class StorageServiceImpl implements StorageService {
         // 释放
         raf.close();
 
-        boolean isComplete = checkUploadStatus(param);
-        if (isComplete) {
-            renameFile(tempFile, fileName);
+        boolean completed = checkStatus(param);
+        if (completed) {
+            rename(tempFile, filename);
         }
     }
 
@@ -64,11 +70,11 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public void uploadFileByMappedByteBuffer(MultipartFileParam param) throws Exception {
         String filePath = fileConfig.getBigFilePath() + param.getMd5();
-        String fileName = param.getName();
-        String tempFileName = fileName + "_tmp";
+        String filename = param.getName();
+        String tempFilename = filename + "_tmp";
 
         File fileDir = new File(filePath);
-        File tempFile = new File(filePath, tempFileName);
+        File tempFile = new File(filePath, tempFilename);
         if (!fileDir.exists()) {
             fileDir.mkdirs();
         }
@@ -90,57 +96,44 @@ public class StorageServiceImpl implements StorageService {
         fileChannel.close();
         raf.close();
         //第八步
-        boolean isComplete = checkUploadStatus(param);
-        if (isComplete) {
-            renameFile(tempFile, fileName);
+        boolean completed = checkStatus(param);
+        if (completed) {
+            rename(tempFile, filename);
         }
     }
 
-
     /**
-     * 检查文件上传进度
-     *
-     * @return
+     * 检查文件上传是否完成
      */
-    public boolean checkUploadStatus(MultipartFileParam param) throws Exception {
-        File confFile = new File(fileConfig.getBigFilePath() + param.getMd5(), "status");
-        RandomAccessFile raf = new RandomAccessFile(confFile, "rw");
-        //设置文件长度
+    public boolean checkStatus(MultipartFileParam param) throws Exception {
+        File status = new File(fileConfig.getBigFilePath() + param.getMd5(), "status");
+        RandomAccessFile raf = new RandomAccessFile(status, "rw");
         raf.setLength(param.getChunks());
-        //设置起始偏移量
         raf.seek(param.getChunk());
-        //将指定的一个字节写入文件中 127
         raf.write(Byte.MAX_VALUE);
-        byte[] completeStatusList = FileUtils.readFileToByteArray(confFile);
-        byte isComplete = Byte.MAX_VALUE;
-        //这一段逻辑有点复杂，看的时候思考了好久，创建conf文件文件长度为总分片数，每上传一个分块即向conf文件中写入一个127，那么没上传的位置就是默认的0,已上传的就是Byte.MAX_VALUE 127
-        for (int i = 0; i < completeStatusList.length && isComplete == Byte.MAX_VALUE; i++) {
-            // 按位与运算，将&两边的数转为二进制进行比较，有一个为0结果为0，全为1结果为1  eg.3&5  即 0000 0011 & 0000 0101 = 0000 0001   因此，3&5的值得1。
-            isComplete = (byte) (isComplete & completeStatusList[i]);
-            System.out.println("check part " + i + " complete?:" + completeStatusList[i]);
+        byte[] bytes = FileUtils.readFileToByteArray(status);
+        byte completed = Byte.MAX_VALUE;
+        for (int i = 0; i < bytes.length && completed == Byte.MAX_VALUE; i++) {
+            completed = (byte) (completed & bytes[i]);
         }
         raf.close();
-        if (isComplete == Byte.MAX_VALUE) {
-            return true;
-        }
-        return false;
+        return completed == Byte.MAX_VALUE;
     }
 
     /**
      * 文件重命名
      *
-     * @param file    将要修改名字的文件
-     * @param newName 新的名字
+     * @param file        将要修改名字的文件
+     * @param newFilename 新文件名
      * @return
      */
-    private boolean renameFile(File file, String newName) {
-        // 检查要重命名的文件是否存在，是否是文件
+    private boolean rename(File file, String newFilename) {
         if (!file.exists() || file.isDirectory()) {
-            logger.info("File does not exist: " + file.getName());
+            logger.info("file does not exist: " + file.getName());
             return false;
         }
-        String p = file.getParent();
-        File newFile = new File(p + File.separatorChar + newName);
+        String parent = file.getParent();
+        File newFile = new File(parent + File.separatorChar + newFilename);
         // 修改文件名
         return file.renameTo(newFile);
     }

@@ -4,6 +4,8 @@ import java.util.UUID;
 
 /**
  * UUID工具类
+ *
+ * @author April Han
  */
 public class UUIDUtil {
 

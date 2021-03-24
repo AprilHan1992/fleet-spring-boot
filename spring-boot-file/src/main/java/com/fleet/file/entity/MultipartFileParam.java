@@ -2,6 +2,9 @@ package com.fleet.file.entity;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author April Han
+ */
 public class MultipartFileParam {
 
     /**

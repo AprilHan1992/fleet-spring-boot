@@ -11,6 +11,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping("/file")
 public class FileController {
@@ -62,28 +65,28 @@ public class FileController {
     /**
      * 查看图片
      */
-    @RequestMapping("/image/view/{fileName:.+}")
-    public void imageView(@PathVariable("fileName") String fileName, HttpServletResponse response) throws Exception {
-        if (fileName == null) {
+    @RequestMapping("/image/view/{filename:.+}")
+    public void imageView(@PathVariable("filename") String filename, HttpServletResponse response) throws Exception {
+        if (filename == null) {
             return;
         }
-        FileUtil.image(fileConfig.getImgPath(), fileName, response);
+        FileUtil.image(fileConfig.getImgPath(), filename, response);
     }
 
     /**
      * 下载文件
      */
-    @RequestMapping("/download/{fileName:.+}")
-    public void downLoadFile(@PathVariable("fileName") String fileName, HttpServletResponse response) throws Exception {
-        FileUtil.download(fileConfig.getFilePath(), fileName, response);
+    @RequestMapping("/download/{filename:.+}")
+    public void downLoadFile(@PathVariable("filename") String filename, HttpServletResponse response) throws Exception {
+        FileUtil.download(fileConfig.getFilePath(), filename, response);
     }
 
     /**
      * 下载图片文件
      */
-    @RequestMapping("/image/download/{fileName:.+}")
-    public void imageDownLoad(@PathVariable("fileName") String fileName, HttpServletResponse response) throws Exception {
-        FileUtil.download(fileConfig.getImgPath(), fileName, response);
+    @RequestMapping("/image/download/{filename:.+}")
+    public void imageDownLoad(@PathVariable("filename") String filename, HttpServletResponse response) throws Exception {
+        FileUtil.download(fileConfig.getImgPath(), filename, response);
     }
 
     /**

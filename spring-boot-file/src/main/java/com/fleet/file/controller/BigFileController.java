@@ -2,6 +2,7 @@ package com.fleet.file.controller;
 
 import com.fleet.file.config.FileConfig;
 import com.fleet.file.entity.MultipartFileParam;
+import com.fleet.file.json.R;
 import com.fleet.file.service.StorageService;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -17,6 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @RestController
 @RequestMapping(value = "/bigFile")
 public class BigFileController {
@@ -32,8 +36,8 @@ public class BigFileController {
     /**
      * 秒传判断，断点判断
      */
-    @RequestMapping(value = "checkFileMd5", method = RequestMethod.POST)
-    public Map<Integer, Object> checkFileMd5(String md5) throws Exception {
+    @RequestMapping("/checkFile")
+    public R checkFile(String md5) throws Exception {
         Map<Integer, Object> map = new HashMap<>();
         File md5Dir = new File(fileConfig.getBigFilePath() + md5);
         if (!md5Dir.exists()) {
@@ -54,7 +58,28 @@ public class BigFileController {
             return map;
         }
         map.put(102, missChunkList);
-        return map;
+        return R.ok();
+    }
+
+
+    @RequestMapping( MODEL+ "/upload")
+    public void bigFile(HttpServletRequest request, HttpServletResponse response, String guid, Integer chunk, MultipartFile file, Integer chunks){
+        try {
+            boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+            if (isMultipart) {
+                // 临时目录用来存放所有分片文件
+                String tempFileDir = filePath + guid;
+                File parentFileDir = new File(tempFileDir);
+                if (!parentFileDir.exists()) {
+                    parentFileDir.mkdirs();
+                }
+                // 分片处理时，前台会多次调用上传接口，每次都会上传文件的一部分到后台
+                File tempPartFile = new File(parentFileDir, guid + "_" + chunk + ".part");
+                FileUtils.copyInputStreamToFile(file.getInputStream(), tempPartFile);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
