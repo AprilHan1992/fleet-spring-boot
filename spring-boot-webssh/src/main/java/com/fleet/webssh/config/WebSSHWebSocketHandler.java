@@ -134,7 +134,6 @@ public class WebSSHWebSocketHandler implements WebSocketHandler {
         Channel channel = s.openChannel("shell");
         channel.connect(3000);
         connection.setChannel(channel);
-//        send(channel, "\r");
         try (InputStream is = channel.getInputStream()) {
             byte[] buffer = new byte[1024];
             int i;
