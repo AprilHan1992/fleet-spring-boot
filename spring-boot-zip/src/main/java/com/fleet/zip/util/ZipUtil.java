@@ -164,9 +164,10 @@ public class ZipUtil {
     }
 
     public static boolean mkdirs(File fileDirs) {
-        if (!fileDirs.exists() && !fileDirs.isDirectory()) {
+        if (fileDirs.exists()) {
+            return fileDirs.isDirectory();
+        } else {
             return fileDirs.mkdirs();
         }
-        return true;
     }
 }
