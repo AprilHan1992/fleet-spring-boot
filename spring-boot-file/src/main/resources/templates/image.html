@@ -1,50 +1,52 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>WebSSH</title>
+    <title>图片上传</title>
     <link rel="stylesheet" type="text/css" href="/css/webuploader.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css"/>
+    <style>
+        #filePicker {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
-<div id="uploader-demo">
-    <div id="fileList" class="uploader-list"></div>
+<div id="uploader" class="wu-example">
     <div id="filePicker">选择图片</div>
+    <div id="fileList" class="uploader-list"></div>
 </div>
 
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/webuploader.js"></script>
 <script>
-    jQuery(function () {
-        var $ = jQuery,
-            $list = $('#fileList'),
+    $(function () {
+        var $list = $('#fileList'),
             ratio = window.devicePixelRatio || 1,
             thumbnailWidth = 100 * ratio,
             thumbnailHeight = 100 * ratio,
             uploader;
 
         uploader = WebUploader.create({
+            pick: '#filePicker',
             swf: '/js/Uploader.swf',
             server: 'http://localhost:8000/file/image/upload',
-            pick: '#filePicker',
             auto: true,
+            resize: false,
             accept: {
                 title: 'Images',
                 extensions: 'gif,jpg,jpeg,bmp,png',
                 mimeTypes: 'image/*'
-            }
+            },
+            disableGlobalDnd: true
         });
 
         uploader.on('fileQueued', function (file) {
-            var $li = $(
-                '<div id="' + file.id + '" class="file-item thumbnail">' +
+            var $li = $('<div id="' + file.id + '" class="item thumbnail">' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="state">等待上传...</p>' +
                 '<img>' +
-                '<div class="info">' + file.name + '</div>' +
-                '</div>'
-                ),
+                '</div>'),
                 $img = $li.find('img');
-
             $list.append($li);
 
             uploader.makeThumb(file, function (error, src) {
@@ -58,35 +60,18 @@
         });
 
         uploader.on('uploadProgress', function (file, percentage) {
-            var $li = $('#' + file.id),
-                $percent = $li.find('.progress span');
-
-            if (!$percent.length) {
-                $percent = $('<p class="progress"><span></span></p>')
-                    .appendTo($li)
-                    .find('span');
-            }
-
-            $percent.css('width', percentage * 100 + '%');
+            $('#' + file.id).find('p.state').text('上传中：' + parseInt(percentage * 100) + '%');
         });
 
         uploader.on('uploadSuccess', function (file) {
-            $('#' + file.id).addClass('upload-state-done');
+            $('#' + file.id).find('p.state').text('已上传');
         });
 
         uploader.on('uploadError', function (file) {
-            var $li = $('#' + file.id),
-                $error = $li.find('div.error');
-
-            if (!$error.length) {
-                $error = $('<div class="error"></div>').appendTo($li);
-            }
-
-            $error.text('上传失败');
+            $('#' + file.id).find('p.state').text('上传出错');
         });
 
         uploader.on('uploadComplete', function (file) {
-            $('#' + file.id).find('.progress').remove();
         });
     });
 </script>

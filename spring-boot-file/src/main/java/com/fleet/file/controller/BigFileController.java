@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author April Han
@@ -38,21 +36,17 @@ public class BigFileController {
     public R checkFile(String md5) throws Exception {
         File md5Dir = new File(fileConfig.getBigFilePath() + md5);
         if (!md5Dir.exists()) {
-            return R.ok(101, "文件不存在");
+            return R.ok(101, "未上传");
         }
-        // status 文件记录文件上传进度
+        // status 进度文件分片记录上传进度
         File status = new File(fileConfig.getBigFilePath() + md5 + File.separatorChar + "status");
         byte[] bytes = FileUtils.readFileToByteArray(status);
-        List<String> missChunkList = new LinkedList<>();
-        for (int i = 0; i < bytes.length; i++) {
-            if (bytes[i] != Byte.MAX_VALUE) {
-                missChunkList.add(i + "");
+        for (byte b : bytes) {
+            if (b != Byte.MAX_VALUE) {
+                return R.ok(101, "未上传");
             }
         }
-        if (missChunkList.isEmpty()) {
-            return R.ok(100, "文件已存在");
-        }
-        return R.ok(102, missChunkList);
+        return R.ok(100, "已上传");
     }
 
     /**
