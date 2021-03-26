@@ -19,7 +19,7 @@ public class ZipApplicationTests {
     @Test
     public void read() throws IOException {
         File zipFile = new File("D:\\test.zip");
-        System.out.println(JSON.toJSON(ZipUtil.read(zipFile)));
+        System.out.println(JSON.toJSONString(ZipUtil.read(zipFile)));
     }
 
     @Test
