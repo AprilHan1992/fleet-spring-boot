@@ -1,5 +1,6 @@
 package com.fleet.zip;
 
+import com.alibaba.fastjson.JSON;
 import com.fleet.zip.util.ZipUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,12 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ZipApplicationTests {
+
+    @Test
+    public void read() throws IOException {
+        File zipFile = new File("D:\\test.zip");
+        System.out.println(JSON.toJSON(ZipUtil.read(zipFile)));
+    }
 
     @Test
     public void zip() throws IOException {

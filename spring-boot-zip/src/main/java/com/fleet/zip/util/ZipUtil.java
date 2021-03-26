@@ -7,8 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.zip.ZipInputStream;
 
 /**
  * Zip 工具类
@@ -18,6 +21,24 @@ import java.util.List;
 public class ZipUtil {
 
     private final static Logger logger = LoggerFactory.getLogger(ZipUtil.class);
+
+    /**
+     * 读取 .zip 文件内容
+     *
+     * @param zipFile 压缩文件
+     */
+    public static List<String> read(File zipFile) throws IOException {
+        List<String> list = new ArrayList<>();
+        InputStream is = new FileInputStream(zipFile);
+        ZipInputStream zis = new ZipInputStream(new BufferedInputStream(is), Charset.forName("GBK"));
+        java.util.zip.ZipEntry zipEntry;
+        while ((zipEntry = zis.getNextEntry()) != null) {
+            list.add(zipEntry.getName());
+        }
+        zis.closeEntry();
+        is.close();
+        return list;
+    }
 
     /**
      * 压缩成 .zip 文件
@@ -81,8 +102,8 @@ public class ZipUtil {
             }
         } else {
             InputStream is = new FileInputStream(srcFile);
-            ZipEntry entry = new ZipEntry(path + srcFile.getName());
-            zos.putNextEntry(entry);
+            ZipEntry zipEntry = new ZipEntry(path + srcFile.getName());
+            zos.putNextEntry(zipEntry);
 
             byte[] b = new byte[1024];
             int len;
