@@ -24,9 +24,8 @@ import java.util.List;
 public class Combine {
 
     public static void main(String[] args) {
-        System.out.println(JSON.toJSON(combine(4, 3)));
+        System.out.println(JSON.toJSONString(combine(4, 3)));
     }
-
 
     public static List<List<Integer>> combine(int n, int k) {
         return combine(1, n, k);
