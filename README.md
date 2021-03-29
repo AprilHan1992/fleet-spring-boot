@@ -96,6 +96,7 @@
 - [spring-boot-hystrix-turbine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-turbine)：Spring Boot Hystrix Turbine 聚合监控
 - [spring-boot-sentinel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sentinel)：Spring Boot Sentinel 容错处理
 - [spring-boot-webflux](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webflux)：Spring Boot Webflux 响应式编程
+- [spring-boot-rxjava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rxjava)：Spring Boot RxJava 响应式编程
 - [spring-boot-cache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache)：Spring Boot 默认 ConcurrentMapCacheManager 本地缓存
 - [spring-boot-ehcache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ehcache)：Spring Boot EhCache 本地缓存
 - [spring-boot-caffeine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-caffeine)：Spring Boot Caffeine 本地缓存
@@ -149,6 +150,7 @@
 - [spring-boot-spock](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-spock)：Spring Boot Spock 测试框架
 - [spring-boot-postgis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgis)：Spring Boot PostGis 经纬度
 - [spring-boot-returnvalue](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-returnvalue)：Spring Boot 统一 API 接口响应格式
+- [spring-boot-test](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-test)：Spring Boot 单元测试
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：
