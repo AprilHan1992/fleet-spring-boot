@@ -1,7 +1,6 @@
 package com.fleet.cxf.config;
 
 import com.fleet.cxf.service.UserService;
-import com.fleet.cxf.service.impl.UserServiceImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.Resource;
 import javax.xml.ws.Endpoint;
 
+/**
+ * @author April Han
+ */
 @Configuration
 public class CxfConfig {
 

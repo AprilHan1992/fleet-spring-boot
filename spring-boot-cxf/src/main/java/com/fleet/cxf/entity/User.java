@@ -2,6 +2,9 @@ package com.fleet.cxf.entity;
 
 import java.io.Serializable;
 
+/**
+ * @author April Han
+ */
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

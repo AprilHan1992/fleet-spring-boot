@@ -8,6 +8,9 @@ import javax.jws.WebService;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 @Component
 @WebService(serviceName = "userService", targetNamespace = "http://service.cxf.fleet.com")
 public class UserServiceImpl implements UserService {
@@ -17,17 +20,17 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl() {
         User user = new User();
         user.setId(1L);
-        user.setName("test1");
+        user.setName("fleet-1");
         users.put(user.getId(), user);
 
         user = new User();
         user.setId(2L);
-        user.setName("test2");
+        user.setName("fleet-2");
         users.put(user.getId(), user);
 
         user = new User();
         user.setId(3L);
-        user.setName("test3");
+        user.setName("fleet-3");
         users.put(user.getId(), user);
     }
 

@@ -7,6 +7,9 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
+/**
+ * @author April Han
+ */
 @WebService(serviceName = "userService", targetNamespace = "http://service.cxf.fleet.com")
 public interface UserService {
 
