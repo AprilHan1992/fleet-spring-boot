@@ -1,6 +1,3 @@
-logging:
-  level:
-    com.fleet.bitronix.dao: debug
 spring:
   # 配置数据源
   datasource:

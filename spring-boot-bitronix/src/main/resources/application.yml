@@ -4,6 +4,6 @@ spring:
   profiles:
     active: dev
   jta:
-    bitronix:
-      properties:
-        server-id: serverId
+    # 每个 Bitronix 实例必须设置一个唯一的 ID
+    transaction-manager-id: tmid
+
