@@ -71,6 +71,7 @@
 - [spring-boot-mongodb](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mongodb)：Spring Boot Mongodb 基于分布式文件存储的数据库
 - [spring-boot-cassandra](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cassandra)：Spring Boot Cassandra 开源分布式 NoSQL 数据库
 - [spring-boot-solr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-solr)：Spring Boot Solr 搜索
+- [spring-boot-gemfire](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gemfire)：Spring Boot Pivotal GemFire 数据库
 - [spring-boot-zuul](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zuul)：Spring Boot Zuul 微服务网关
 - [spring-boot-gateway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gateway)：Spring Boot Gateway 微服务网关
 - [spring-boot-feign](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-feign)：Spring Boot Feign 实现声明式 REST 调用
