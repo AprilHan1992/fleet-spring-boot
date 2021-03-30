@@ -172,6 +172,7 @@
 - [spring-boot-gridfs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gridfs)：Spring Boot MongoDB GridFS 文件存储
 - [spring-boot-javafx](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-javafx)：Spring Boot Javafx 桌面GUI开发
 - [spring-boot-cxf](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cxf)：Spring Boot CXF 实现 WebService
+- [spring-boot-axis2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-axis2)：Spring Boot Axis2 实现 WebService
 - [spring-boot-webssh](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webssh)：Spring Boot SSH 网页版
 
 ### 高级部分：
