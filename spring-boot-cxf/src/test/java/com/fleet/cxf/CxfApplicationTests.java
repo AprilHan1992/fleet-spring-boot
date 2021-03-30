@@ -31,7 +31,7 @@ public class CxfApplicationTests {
     @Test
     public void test1() throws Exception {
         JaxWsDynamicClientFactory jaxWsDynamicClientFactory = JaxWsDynamicClientFactory.newInstance();
-        Client client = jaxWsDynamicClientFactory.createClient("http://127.0.0.1:8000/service/user?wsdl");
+        Client client = jaxWsDynamicClientFactory.createClient("http://127.0.0.1:8000/services/userService?wsdl");
         Object[] objects = client.invoke("getName", 1L);
         System.out.println("查询到用户名:" + objects[0].toString());
         objects = client.invoke("get", 1L);
@@ -44,7 +44,7 @@ public class CxfApplicationTests {
     @Test
     public void test2() {
         JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
-        jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8000/service/user?wsdl");
+        jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8000/services/userService?wsdl");
         jaxWsProxyFactoryBean.setServiceClass(UserService.class);
         UserService userService = (UserService) jaxWsProxyFactoryBean.create();
         String name = userService.getName(1L);
@@ -60,7 +60,7 @@ public class CxfApplicationTests {
     @Test
     public void test3() {
         JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
-        jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8000/service/user?wsdl");
+        jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8000/services/userService?wsdl");
         jaxWsProxyFactoryBean.setServiceClass(UserService.class);
         UserService userService = (UserService) jaxWsProxyFactoryBean.create();
 
@@ -84,7 +84,7 @@ public class CxfApplicationTests {
      */
     @Test
     public void test4() throws Exception {
-        String address = "http://127.0.0.1:8000/service/user";
+        String address = "http://127.0.0.1:8000/services/userService";
         HttpPost request = new HttpPost(address);
         request.setHeader("Content-Type", "application/soap+xml; charset=utf-8");
         String requestXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
@@ -113,7 +113,7 @@ public class CxfApplicationTests {
      */
     @Test
     public void test5() throws Exception {
-        String address = "http://127.0.0.1:8000/service/user";
+        String address = "http://127.0.0.1:8000/services/userService";
         HttpPost request = new HttpPost(address);
         request.setHeader("Content-Type", "application/soap+xml; charset=utf-8");
         String requestXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +

@@ -34,7 +34,7 @@ public class CxfConfig {
     @Bean
     public Endpoint endpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, userService);
-        endpoint.publish("/user");
+        endpoint.publish("/userService");
         return endpoint;
     }
 }
