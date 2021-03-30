@@ -144,6 +144,7 @@
 - [spring-boot-transaction](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-transaction)：Spring Boot 事务管理
 - [spring-boot-seata](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seata)：Spring Boot Seata 分布式事务管理
 - [spring-boot-atomikos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-atomikos)：Spring Boot Atomikos 分布式事务管理
+- [spring-boot-bitronix](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-bitronix)：Spring Boot Bitronix 分布式事务管理
 - [spring-boot-oshi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-oshi)：Spring Boot 基于JNA的免费的本地操作系统和Java的硬件信息库
 - [spring-boot-hutool](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hutool)：Spring Boot Hutool Java 工具类库
 - [spring-boot-https](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-https)：Spring Boot HTTPS

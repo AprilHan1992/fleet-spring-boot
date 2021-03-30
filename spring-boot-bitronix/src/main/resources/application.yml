@@ -1,0 +1,9 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  jta:
+    bitronix:
+      properties:
+        server-id: serverId
