@@ -160,6 +160,7 @@
         <module>spring-boot-seata</module>
         <module>spring-boot-atomikos</module>
         <module>spring-boot-bitronix</module>
+        <module>spring-boot-narayana</module>
         <module>spring-boot-oshi</module>
         <module>spring-boot-hutool</module>
         <module>spring-boot-https</module>
