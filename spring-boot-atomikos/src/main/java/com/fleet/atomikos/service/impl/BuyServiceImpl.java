@@ -29,6 +29,7 @@ public class BuyServiceImpl implements BuyService {
     @Resource
     UserService userService;
 
+    @Override
     @Transactional
     public void buy(Integer userId, Integer goodsId, Integer amount, Integer money) {
         goodsService.decrease(goodsId, amount);

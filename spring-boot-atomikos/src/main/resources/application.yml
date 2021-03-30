@@ -4,9 +4,5 @@ spring:
   profiles:
     active: dev
   jta:
-    atomikos:
-      properties:
-        max-actives: 50
-        max-timeout: 300000
-        default-jta-timeout: 10000
-        enable-logging: true
+    # 每个 Atomikos 实例必须设置一个唯一的 ID
+    transaction-manager-id: tmid
