@@ -60,7 +60,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
         org.apache.axis2.context.ConfigurationContext configurationContext)
         throws org.apache.axis2.AxisFault {
         this(configurationContext,
-            "http://127.0.0.1:8000/services/userService.userServiceHttpSoap12Endpoint/");
+            "http://127.0.0.1:8001/services/userService.userServiceHttpSoap12Endpoint/");
     }
 
     /**
@@ -68,7 +68,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
      */
     public UserServiceStub() throws org.apache.axis2.AxisFault {
         this(
-            "http://127.0.0.1:8000/services/userService.userServiceHttpSoap12Endpoint/");
+            "http://127.0.0.1:8001/services/userService.userServiceHttpSoap12Endpoint/");
     }
 
     /**
@@ -769,7 +769,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
         return null;
     }
 
-    //http://127.0.0.1:8000/services/userService.userServiceHttpSoap12Endpoint/
+    //http://127.0.0.1:8001/services/userService.userServiceHttpSoap12Endpoint/
     public static class GetName implements org.apache.axis2.databinding.ADBBean {
         public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://service.axis2.fleet.com",
                 "getName", "ns2");
