@@ -3,8 +3,6 @@ package com.fleet.mybatis.generator.entity;
 import java.io.Serializable;
 
 /**
- * 角色信息
- *
  * @author April Han
  * @date 2021-04-01
  */
@@ -31,7 +29,7 @@ public class Role implements Serializable {
      * 上一级角色id
      * role.upper_id
      */
-    private Integer upper_id;
+    private Integer upperId;
 
     private static final long serialVersionUID = 1L;
 
@@ -59,12 +57,12 @@ public class Role implements Serializable {
         this.sort = sort;
     }
 
-    public Integer getUpper_id() {
-        return upper_id;
+    public Integer getUpperId() {
+        return upperId;
     }
 
-    public void setUpper_id(Integer upper_id) {
-        this.upper_id = upper_id;
+    public void setUpperId(Integer upperId) {
+        this.upperId = upperId;
     }
 
     @Override
@@ -76,7 +74,7 @@ public class Role implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", sort=").append(sort);
-        sb.append(", upper_id=").append(upper_id);
+        sb.append(", upperId=").append(upperId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
@@ -97,7 +95,7 @@ public class Role implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getSort() == null ? other.getSort() == null : this.getSort().equals(other.getSort()))
-            && (this.getUpper_id() == null ? other.getUpper_id() == null : this.getUpper_id().equals(other.getUpper_id()));
+            && (this.getUpperId() == null ? other.getUpperId() == null : this.getUpperId().equals(other.getUpperId()));
     }
 
     @Override
@@ -107,7 +105,7 @@ public class Role implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getSort() == null) ? 0 : getSort().hashCode());
-        result = prime * result + ((getUpper_id() == null) ? 0 : getUpper_id().hashCode());
+        result = prime * result + ((getUpperId() == null) ? 0 : getUpperId().hashCode());
         return result;
     }
 }

@@ -294,63 +294,63 @@ public class RoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idIsNull() {
+        public Criteria andUpperIdIsNull() {
             addCriterion("upper_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idIsNotNull() {
+        public Criteria andUpperIdIsNotNull() {
             addCriterion("upper_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idEqualTo(Integer value) {
-            addCriterion("upper_id =", value, "upper_id");
+        public Criteria andUpperIdEqualTo(Integer value) {
+            addCriterion("upper_id =", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idNotEqualTo(Integer value) {
-            addCriterion("upper_id <>", value, "upper_id");
+        public Criteria andUpperIdNotEqualTo(Integer value) {
+            addCriterion("upper_id <>", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idGreaterThan(Integer value) {
-            addCriterion("upper_id >", value, "upper_id");
+        public Criteria andUpperIdGreaterThan(Integer value) {
+            addCriterion("upper_id >", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idGreaterThanOrEqualTo(Integer value) {
-            addCriterion("upper_id >=", value, "upper_id");
+        public Criteria andUpperIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("upper_id >=", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idLessThan(Integer value) {
-            addCriterion("upper_id <", value, "upper_id");
+        public Criteria andUpperIdLessThan(Integer value) {
+            addCriterion("upper_id <", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idLessThanOrEqualTo(Integer value) {
-            addCriterion("upper_id <=", value, "upper_id");
+        public Criteria andUpperIdLessThanOrEqualTo(Integer value) {
+            addCriterion("upper_id <=", value, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idIn(List<Integer> values) {
-            addCriterion("upper_id in", values, "upper_id");
+        public Criteria andUpperIdIn(List<Integer> values) {
+            addCriterion("upper_id in", values, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idNotIn(List<Integer> values) {
-            addCriterion("upper_id not in", values, "upper_id");
+        public Criteria andUpperIdNotIn(List<Integer> values) {
+            addCriterion("upper_id not in", values, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idBetween(Integer value1, Integer value2) {
-            addCriterion("upper_id between", value1, value2, "upper_id");
+        public Criteria andUpperIdBetween(Integer value1, Integer value2) {
+            addCriterion("upper_id between", value1, value2, "upperId");
             return (Criteria) this;
         }
 
-        public Criteria andUpper_idNotBetween(Integer value1, Integer value2) {
-            addCriterion("upper_id not between", value1, value2, "upper_id");
+        public Criteria andUpperIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("upper_id not between", value1, value2, "upperId");
             return (Criteria) this;
         }
     }

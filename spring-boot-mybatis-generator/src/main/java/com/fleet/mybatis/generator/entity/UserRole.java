@@ -3,8 +3,6 @@ package com.fleet.mybatis.generator.entity;
 import java.io.Serializable;
 
 /**
- * 用户与角色对应信息
- *
  * @author April Han
  * @date 2021-04-01
  */
@@ -19,7 +17,7 @@ public class UserRole implements Serializable {
      * 角色id
      * user_role.role_id
      */
-    private Integer roleId;
+    private String roleId;
 
     private static final long serialVersionUID = 1L;
 
@@ -31,11 +29,11 @@ public class UserRole implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

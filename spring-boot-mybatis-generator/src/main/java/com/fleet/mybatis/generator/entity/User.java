@@ -3,8 +3,6 @@ package com.fleet.mybatis.generator.entity;
 import java.io.Serializable;
 
 /**
- * 用户信息
- *
  * @author April Han
  * @date 2021-04-01
  */
