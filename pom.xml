@@ -42,6 +42,7 @@
         <module>spring-boot-undertow</module>
         <module>spring-boot-jdbc</module>
         <module>spring-boot-mybatis</module>
+        <module>spring-boot-mybatis-generator</module>
         <module>spring-boot-mybatis-plus</module>
         <module>spring-boot-mybatis-pagehelper</module>
         <module>spring-boot-mybatis-dynamic-sql</module>
@@ -169,6 +170,7 @@
         <module>spring-boot-postgis</module>
         <module>spring-boot-returnvalue</module>
         <module>spring-boot-test</module>
+        <module>spring-boot-data-rest</module>
         <module>spring-boot-common</module>
         <module>spring-boot-file</module>
         <module>spring-boot-excel</module>

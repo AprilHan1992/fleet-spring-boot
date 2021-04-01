@@ -27,6 +27,7 @@
 - [spring-boot-undertow](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-undertow)：Spring Boot 使用 Undertow 作为 Servlet 引擎
 - [spring-boot-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jdbc)：Spring Boot JDBC 操作数据库
 - [spring-boot-mybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis)：Spring Boot 结合 Mybatis
+- [spring-boot-mybatis-generator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-generator)：Spring Boot Mybatis 代码生成
 - [spring-boot-mybatis-plus](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-plus)：Spring Boot 结合 Mybatis Plus
 - [spring-boot-mybatis-pagehelper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-pagehelper)：Spring Boot 结合 Mybatis PageHelper
 - [spring-boot-mybatis-dynamic-sql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-dynamic-sql)：Spring Boot 结合 Mybatis Dynamic SQL
@@ -154,6 +155,7 @@
 - [spring-boot-postgis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgis)：Spring Boot PostGis 经纬度
 - [spring-boot-returnvalue](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-returnvalue)：Spring Boot 统一 API 接口响应格式
 - [spring-boot-test](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-test)：Spring Boot 单元测试
+- [spring-boot-data-rest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-data-rest)：Spring Boot 通过 REST 暴露 Spring Data 数据仓库
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：
