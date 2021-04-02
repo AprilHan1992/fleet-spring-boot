@@ -69,25 +69,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/mybatis-generator.xml</configurationFile>
-                    <!-- 每次覆盖自动生成的文件 -->
-                    <overwrite>true</overwrite>
-                    <!-- 运行时显示详细的信息 -->
-                    <verbose>true</verbose>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.17</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
     </build>
 </project>
