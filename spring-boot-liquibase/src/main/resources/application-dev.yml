@@ -11,6 +11,5 @@ spring:
     drop-first: false
 mybatis:
   mapper-locations: mybatis/*Mapper.xml
-  check-config-location: true
   configuration:
     map-underscore-to-camel-case: true

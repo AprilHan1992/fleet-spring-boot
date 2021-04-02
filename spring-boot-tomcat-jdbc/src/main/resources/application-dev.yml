@@ -15,6 +15,5 @@ spring:
       validation-query: SELECT 1
 mybatis:
   mapper-locations: mybatis/*Mapper.xml
-  check-config-location: true
   configuration:
     map-underscore-to-camel-case: true
