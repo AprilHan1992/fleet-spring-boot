@@ -156,6 +156,7 @@
 - [spring-boot-returnvalue](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-returnvalue)：Spring Boot 统一 API 接口响应格式
 - [spring-boot-test](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-test)：Spring Boot 单元测试
 - [spring-boot-data-rest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-data-rest)：Spring Boot 通过 REST 暴露 Spring Data 数据仓库
+- [spring-boot-hateoas](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hateoas)：Spring Boot 基于 HATEOAS 的 RESTful Web 服务
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：
