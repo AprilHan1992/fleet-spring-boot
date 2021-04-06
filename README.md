@@ -178,6 +178,7 @@
 - [spring-boot-cxf](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cxf)：Spring Boot CXF 实现 WebService
 - [spring-boot-axis2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-axis2)：Spring Boot Axis2 实现 WebService
 - [spring-boot-webssh](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webssh)：Spring Boot SSH 网页版
+- [spring-boot-remote-shell](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-remote-shell)：Spring Boot Remote Shell 自定义命令
 
 ### 高级部分：
 

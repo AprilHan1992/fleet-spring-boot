@@ -1,0 +1,11 @@
+server:
+  port: 8000
+management:
+  shell:
+    auth:
+      simple:
+        user:
+          name: user
+          password: user
+    ssh:
+      port: 2000
