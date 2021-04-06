@@ -187,6 +187,7 @@
         <module>spring-boot-fastdfs</module>
         <module>spring-boot-gridfs</module>
         <module>spring-boot-javafx</module>
+        <module>spring-boot-ws</module>
         <module>spring-boot-cxf</module>
         <module>spring-boot-axis2</module>
         <module>spring-boot-webssh</module>
