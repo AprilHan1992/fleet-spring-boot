@@ -89,7 +89,7 @@ public class CxfApplicationTests {
         request.setHeader("Content-Type", "application/soap+xml; charset=utf-8");
         String requestXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
                 "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
-                " xmlns:sam=\"http://service.cxf.fleet.com\" " +
+                " xmlns:sam=\"http://services.cxf.fleet.com\" " +
                 " xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"" +
                 " xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                 "<soap:Body>" +
@@ -118,7 +118,7 @@ public class CxfApplicationTests {
         request.setHeader("Content-Type", "application/soap+xml; charset=utf-8");
         String requestXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
                 "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
-                " xmlns:sam=\"http://service.cxf.fleet.com\" " +
+                " xmlns:sam=\"http://services.cxf.fleet.com\" " +
                 " xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"" +
                 " xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                 "<soap:Body>" +

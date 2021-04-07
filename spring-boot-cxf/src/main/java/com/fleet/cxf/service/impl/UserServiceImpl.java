@@ -12,7 +12,7 @@ import java.util.Map;
  * @author April Han
  */
 @Component
-@WebService(serviceName = "userService", targetNamespace = "http://service.cxf.fleet.com")
+@WebService(name = "UserService", serviceName = "UserServiceImpl", targetNamespace = "http://services.cxf.fleet.com")
 public class UserServiceImpl implements UserService {
 
     private Map<Long, User> users = new HashMap<>();
