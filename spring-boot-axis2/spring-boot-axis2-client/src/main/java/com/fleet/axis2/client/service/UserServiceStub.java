@@ -105,7 +105,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://service.axis2.fleet.com", "getName"));
+                "http://services.axis2.fleet.com", "getName"));
         _service.addOperation(__operation);
 
         _operations[0] = __operation;
@@ -113,7 +113,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://service.axis2.fleet.com", "get"));
+                "http://services.axis2.fleet.com", "get"));
         _service.addOperation(__operation);
 
         _operations[1] = __operation;
@@ -151,9 +151,9 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                     getName0,
                     optimizeContent(
                         new javax.xml.namespace.QName(
-                            "http://service.axis2.fleet.com", "getName")),
+                            "http://services.axis2.fleet.com", "getName")),
                     new javax.xml.namespace.QName(
-                        "http://service.axis2.fleet.com", "getName"));
+                        "http://services.axis2.fleet.com", "getName"));
 
             //adding SOAP soap_headers
             _serviceClient.addHeadersToEnvelope(env);
@@ -261,9 +261,9 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                 getName0,
                 optimizeContent(
                     new javax.xml.namespace.QName(
-                        "http://service.axis2.fleet.com", "getName")),
+                        "http://services.axis2.fleet.com", "getName")),
                 new javax.xml.namespace.QName(
-                    "http://service.axis2.fleet.com", "getName"));
+                    "http://services.axis2.fleet.com", "getName"));
 
         // adding SOAP soap_headers
         _serviceClient.addHeadersToEnvelope(env);
@@ -407,9 +407,9 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                     get2,
                     optimizeContent(
                         new javax.xml.namespace.QName(
-                            "http://service.axis2.fleet.com", "get")),
+                            "http://services.axis2.fleet.com", "get")),
                     new javax.xml.namespace.QName(
-                        "http://service.axis2.fleet.com", "get"));
+                        "http://services.axis2.fleet.com", "get"));
 
             //adding SOAP soap_headers
             _serviceClient.addHeadersToEnvelope(env);
@@ -517,9 +517,9 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                 get2,
                 optimizeContent(
                     new javax.xml.namespace.QName(
-                        "http://service.axis2.fleet.com", "get")),
+                        "http://services.axis2.fleet.com", "get")),
                 new javax.xml.namespace.QName(
-                    "http://service.axis2.fleet.com", "get"));
+                    "http://services.axis2.fleet.com", "get"));
 
         // adding SOAP soap_headers
         _serviceClient.addHeadersToEnvelope(env);
@@ -771,7 +771,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
     //http://127.0.0.1:8001/services/userService.userServiceHttpSoap12Endpoint/
     public static class GetName implements org.apache.axis2.databinding.ADBBean {
-        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://service.axis2.fleet.com",
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.axis2.fleet.com",
                 "getName", "ns2");
 
         /**
@@ -830,7 +830,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
             if (serializeType) {
                 java.lang.String namespacePrefix = registerPrefix(xmlWriter,
-                        "http://service.axis2.fleet.com");
+                        "http://services.axis2.fleet.com");
 
                 if ((namespacePrefix != null) &&
                         (namespacePrefix.trim().length() > 0)) {
@@ -844,7 +844,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                 }
             }
 
-            namespace = "http://service.axis2.fleet.com";
+            namespace = "http://services.axis2.fleet.com";
             writeStartElement(null, namespace, "id", xmlWriter);
 
             if (localId == java.lang.Long.MIN_VALUE) {
@@ -862,7 +862,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
         private static java.lang.String generatePrefix(
             java.lang.String namespace) {
-            if (namespace.equals("http://service.axis2.fleet.com")) {
+            if (namespace.equals("http://services.axis2.fleet.com")) {
                 return "ns2";
             }
 
@@ -1136,7 +1136,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
                     if (reader.isStartElement() &&
                             new javax.xml.namespace.QName(
-                                "http://service.axis2.fleet.com", "id").equals(
+                                "http://services.axis2.fleet.com", "id").equals(
                                 reader.getName())) {
                         nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
                                 "nil");
@@ -1179,7 +1179,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
     }
 
     public static class GetNameResponse implements org.apache.axis2.databinding.ADBBean {
-        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://service.axis2.fleet.com",
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.axis2.fleet.com",
                 "getNameResponse", "ns2");
 
         /**
@@ -1250,7 +1250,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
             if (serializeType) {
                 java.lang.String namespacePrefix = registerPrefix(xmlWriter,
-                        "http://service.axis2.fleet.com");
+                        "http://services.axis2.fleet.com");
 
                 if ((namespacePrefix != null) &&
                         (namespacePrefix.trim().length() > 0)) {
@@ -1265,7 +1265,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
             }
 
             if (local_returnTracker) {
-                namespace = "http://service.axis2.fleet.com";
+                namespace = "http://services.axis2.fleet.com";
                 writeStartElement(null, namespace, "return", xmlWriter);
 
                 if (local_return == null) {
@@ -1285,7 +1285,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
         private static java.lang.String generatePrefix(
             java.lang.String namespace) {
-            if (namespace.equals("http://service.axis2.fleet.com")) {
+            if (namespace.equals("http://services.axis2.fleet.com")) {
                 return "ns2";
             }
 
@@ -1560,7 +1560,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
                     if (reader.isStartElement() &&
                             new javax.xml.namespace.QName(
-                                "http://service.axis2.fleet.com", "return").equals(
+                                "http://services.axis2.fleet.com", "return").equals(
                                 reader.getName())) {
                         nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
                                 "nil");
@@ -1613,7 +1613,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
     }
 
     public static class GetResponse implements org.apache.axis2.databinding.ADBBean {
-        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://service.axis2.fleet.com",
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.axis2.fleet.com",
                 "getResponse", "ns2");
 
         /**
@@ -1684,7 +1684,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
             if (serializeType) {
                 java.lang.String namespacePrefix = registerPrefix(xmlWriter,
-                        "http://service.axis2.fleet.com");
+                        "http://services.axis2.fleet.com");
 
                 if ((namespacePrefix != null) &&
                         (namespacePrefix.trim().length() > 0)) {
@@ -1700,7 +1700,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
             if (local_returnTracker) {
                 if (local_return == null) {
-                    writeStartElement(null, "http://service.axis2.fleet.com",
+                    writeStartElement(null, "http://services.axis2.fleet.com",
                         "return", xmlWriter);
 
                     // write the nil attribute
@@ -1710,7 +1710,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                     xmlWriter.writeEndElement();
                 } else {
                     local_return.serialize(new javax.xml.namespace.QName(
-                            "http://service.axis2.fleet.com", "return"),
+                            "http://services.axis2.fleet.com", "return"),
                         xmlWriter);
                 }
             }
@@ -1720,7 +1720,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
         private static java.lang.String generatePrefix(
             java.lang.String namespace) {
-            if (namespace.equals("http://service.axis2.fleet.com")) {
+            if (namespace.equals("http://services.axis2.fleet.com")) {
                 return "ns2";
             }
 
@@ -1995,7 +1995,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
                     if (reader.isStartElement() &&
                             new javax.xml.namespace.QName(
-                                "http://service.axis2.fleet.com", "return").equals(
+                                "http://services.axis2.fleet.com", "return").equals(
                                 reader.getName())) {
                         nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
                                 "nil");
@@ -2534,7 +2534,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
     }
 
     public static class Get implements org.apache.axis2.databinding.ADBBean {
-        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://service.axis2.fleet.com",
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.axis2.fleet.com",
                 "get", "ns2");
 
         /**
@@ -2593,7 +2593,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
             if (serializeType) {
                 java.lang.String namespacePrefix = registerPrefix(xmlWriter,
-                        "http://service.axis2.fleet.com");
+                        "http://services.axis2.fleet.com");
 
                 if ((namespacePrefix != null) &&
                         (namespacePrefix.trim().length() > 0)) {
@@ -2607,7 +2607,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
                 }
             }
 
-            namespace = "http://service.axis2.fleet.com";
+            namespace = "http://services.axis2.fleet.com";
             writeStartElement(null, namespace, "id", xmlWriter);
 
             if (localId == java.lang.Long.MIN_VALUE) {
@@ -2625,7 +2625,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
         private static java.lang.String generatePrefix(
             java.lang.String namespace) {
-            if (namespace.equals("http://service.axis2.fleet.com")) {
+            if (namespace.equals("http://services.axis2.fleet.com")) {
                 return "ns2";
             }
 
@@ -2899,7 +2899,7 @@ public class UserServiceStub extends org.apache.axis2.client.Stub {
 
                     if (reader.isStartElement() &&
                             new javax.xml.namespace.QName(
-                                "http://service.axis2.fleet.com", "id").equals(
+                                "http://services.axis2.fleet.com", "id").equals(
                                 reader.getName())) {
                         nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
                                 "nil");

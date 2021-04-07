@@ -87,6 +87,7 @@
 	    String getName(@WebParam(name = "id") Long id);
 	}
 	
+	@Service
 	@WebService
 	public class UserServiceImpl implements UserService {
 	
@@ -147,10 +148,10 @@
 	
 	<?xml version="1.0" encoding="UTF-8"?>
 	<serviceGroup>
-	    <service name="userService" targetNamespace="http://service.axis2.fleet.com"> 
+	    <service name="userService" targetNamespace="http://services.axis2.fleet.com"> 
 	        <description>Axis2 实现 WebService</description>
 	        <parameter name="ServiceClass">com.fleet.axis2.services.service.impl.UserServiceImpl</parameter>
-	        <schema schemaNamespace="http://service.axis2.fleet.com"/>
+	        <schema schemaNamespace="http://services.axis2.fleet.com"/>
 	        <operation name="get">       
 	            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/> 
 	        </operation>
@@ -168,11 +169,11 @@
 	
 	```
 
-	6. 以上配置成功后，启动 SpringbootApplication
+	7. 以上配置成功后，启动 SpringbootApplication
 	
-	7. 访问 service 的 url：http://127.0.0.1:8001/services/userService?wsdl，查看效果
+	8. 访问 service 的 url：http://127.0.0.1:8001/services/userService?wsdl，查看效果
 	
-	8. 编写单元测试类，查看接口是否能访问成功
+	9. 编写单元测试类，查看接口是否能访问成功
 	
 	```
 	
@@ -182,7 +183,7 @@
         Options options = rpcServiceClient.getOptions();
         EndpointReference endpointReference = new EndpointReference("http://localhost:8001/services/userService");
         options.setTo(endpointReference);
-        QName opName = new QName("http://service.axis2.fleet.com", "get");
+        QName opName = new QName("http://services.axis2.fleet.com", "get");
         Object[] args = new Object[]{1};
         Class[] returnTypes = new Class[]{User.class};
         Object[] objects = rpcServiceClient.invokeBlocking(opName, args, returnTypes);
@@ -195,7 +196,7 @@
         Options options = rpcServiceClient.getOptions();
         EndpointReference endpointReference = new EndpointReference("http://localhost:8001/services/userService");
         options.setTo(endpointReference);
-        QName opName = new QName("http://service.axis2.fleet.com", "getName");
+        QName opName = new QName("http://services.axis2.fleet.com", "getName");
         Object[] args = new Object[]{1};
         Class[] returnTypes = new Class[]{String.class};
         Object[] objects = rpcServiceClient.invokeBlocking(opName, args, returnTypes);
@@ -217,11 +218,9 @@
 
 	```
 
-	2. 命令行 `wsdl2java -uri http://127.0.0.1:8001/services/userService?wsdl -p com.fleet.axis2.client.service -o D:\service` 生成客户端
-
-	3. 在父 maven 项目下，创建一个新的 Spring Boot 客户端项目 `spring-boot-axis2-client`
+	2. 在父 maven 项目下，创建一个新的 Spring Boot 客户端项目 `spring-boot-axis2-client`
 	
-	4. 配置 pom.xml 文件
+	3. 配置 pom.xml 文件
 	
 	```
 	
@@ -265,7 +264,7 @@
 	
 	```
 
-	4. 复制生成的文件到创建的项目中
+	4. 命令行 `wsdl2java -uri http://127.0.0.1:8001/services/userService?wsdl -p com.fleet.axis2.client.service -o D:\service` 生成服务，复制生成的文件到创建的项目中
 
 	5. 编写单元测试类，查看接口是否能访问成功
 	

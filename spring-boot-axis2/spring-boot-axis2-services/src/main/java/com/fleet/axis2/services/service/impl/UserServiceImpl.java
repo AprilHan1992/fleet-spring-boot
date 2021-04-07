@@ -2,6 +2,7 @@ package com.fleet.axis2.services.service.impl;
 
 import com.fleet.axis2.services.entity.User;
 import com.fleet.axis2.services.service.UserService;
+import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 /**
  * @author April Han
  */
+@Service
 @WebService
 public class UserServiceImpl implements UserService {
 

@@ -41,7 +41,7 @@ public class Axis2ClientApplicationTests {
         getNameResponseHandler.receiveResultgetName(getNameResponse);
         userServiceStub.startgetName(getName, getNameResponseHandler);
         String name = getNameResponse.get_return();
-        System.out.println("查询到用户:" + name);
+        System.out.println("查询到用户名:" + name);
     }
 
     static class GetNameResponseHandler extends UserServiceCallbackHandler {

@@ -22,7 +22,7 @@ public class Axis2ServicesApplicationTests {
         Options options = rpcServiceClient.getOptions();
         EndpointReference endpointReference = new EndpointReference("http://localhost:8001/services/userService");
         options.setTo(endpointReference);
-        QName opName = new QName("http://service.axis2.fleet.com", "get");
+        QName opName = new QName("http://services.axis2.fleet.com", "get");
         Object[] args = new Object[]{1};
         Class[] returnTypes = new Class[]{User.class};
         Object[] objects = rpcServiceClient.invokeBlocking(opName, args, returnTypes);
@@ -35,7 +35,7 @@ public class Axis2ServicesApplicationTests {
         Options options = rpcServiceClient.getOptions();
         EndpointReference endpointReference = new EndpointReference("http://localhost:8001/services/userService");
         options.setTo(endpointReference);
-        QName opName = new QName("http://service.axis2.fleet.com", "getName");
+        QName opName = new QName("http://services.axis2.fleet.com", "getName");
         Object[] args = new Object[]{1};
         Class[] returnTypes = new Class[]{String.class};
         Object[] objects = rpcServiceClient.invokeBlocking(opName, args, returnTypes);
