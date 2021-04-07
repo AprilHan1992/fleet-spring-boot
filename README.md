@@ -187,3 +187,4 @@
 - [spring-boot-elk](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elk)：Spring Boot ELK 日志收集系统
 - [spring-boot-aliyunoss](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aliyunoss)：Spring Boot Aliyun OSS 对象存储
 - [spring-boot-clickhouse](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-clickhouse)：Spring Boot ClickHouse 数据库
+- [spring-boot-ik](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ik)：Spring Boot IK 分词器
