@@ -8,6 +8,8 @@ import java.util.Properties;
 
 /**
  * Stanford 分词器
+ * 使用前，需要访问 https://nlp.stanford.edu/software/segmenter.shtml，下载 stanford-segmenter-4.2.0.zip 文件
+ * 解压文件后，取 data 文件夹，放在 src/main/resources 下
  *
  * @author April Han
  */

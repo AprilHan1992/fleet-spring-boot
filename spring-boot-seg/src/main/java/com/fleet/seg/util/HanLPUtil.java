@@ -14,6 +14,9 @@ import java.util.List;
 
 /**
  * HanLP 分词器
+ * 使用前，需要访问 http://download.hanlp.com/，下载 data-for-1.7.5.zip，hanlp-1.8.1-release.zip 文件
+ * 解压 hanlp-1.8.1-release.zip 文件后，取 hanlp.properties 文件，放在 src/main/resources 下，并且配置 'root' 参数指定存放路径
+ * 解压 data-for-1.7.5.zip 文件后，取 data 文件夹，放在上一步配置的 'root' 参数指定存放路径下
  *
  * @author April Han
  */
