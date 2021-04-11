@@ -188,3 +188,4 @@
 - [spring-boot-aliyunoss](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aliyunoss)：Spring Boot Aliyun OSS 对象存储
 - [spring-boot-clickhouse](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-clickhouse)：Spring Boot ClickHouse 数据库
 - [spring-boot-seg](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seg)：Spring Boot 中文分词器
+- [spring-boot-webmagic](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webmagic)：Spring Boot WebMagic 爬虫

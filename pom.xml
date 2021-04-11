@@ -197,5 +197,6 @@
         <module>spring-boot-aliyunoss</module>
         <module>spring-boot-clickhouse</module>
         <module>spring-boot-seg</module>
+        <module>spring-boot-webmagic</module>
     </modules>
 </project>
