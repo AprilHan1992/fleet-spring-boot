@@ -36,15 +36,17 @@ public class ContentPageProcessor implements PageProcessor {
             }
             page.putField("contentList", contentList);
         }
-        page.addTargetRequests(getTargetRequests());
-    }
 
-    public List<String> getTargetRequests() {
-        List<String> list = new ArrayList<>();
-        for (int i = 2; i < 3; i++) {
-            list.add(PAGE_URL + "?page=" + i);
+        String[] pages = page.getUrl().toString().split("page=");
+        if (pages.length == 2) {
+            int p = Integer.parseInt(pages[1]);
+            if (p < 10) {
+                p += 1;
+                page.addTargetRequest(PAGE_URL + "?page=" + p);
+            }
+        } else {
+            page.addTargetRequest(PAGE_URL + "?page=" + 2);
         }
-        return list;
     }
 
     @Override
