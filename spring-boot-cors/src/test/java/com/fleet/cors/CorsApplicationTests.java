@@ -12,5 +12,4 @@ public class CorsApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }

@@ -110,5 +110,4 @@ public class Protocol implements Serializable {
 	public void setPropertyList(List<Property> propertyList) {
 		this.propertyList = propertyList;
 	}
-
 }
