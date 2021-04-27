@@ -200,5 +200,6 @@
         <module>spring-boot-webmagic</module>
         <module>spring-boot-crawler4j</module>
         <module>spring-boot-jpush</module>
+        <module>spring-boot-chat</module>
     </modules>
 </project>

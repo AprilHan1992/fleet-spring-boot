@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天</title>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<textarea name="content" clos="20" rows="5" id="content"></textarea>
+<button onclick="send()">发送</button>
+
+<script type="text/javascript">
+    var websocket;
+    if (typeof (WebSocket) == "undefined") {
+        console.log("您的浏览器不支持WebSocket");
+    } else {
+        console.log("您的浏览器支持WebSocket");
+
+        websocket = new WebSocket('ws://localhost:8000/websocket');
+
+        //成功连接
+        websocket.onopen = function () {
+            console.log("会话打开");
+        };
+
+        // 接收服务端消息
+        websocket.onmessage = function (msg) {
+            console.log(msg.data);
+        };
+
+        // 关闭连接
+        websocket.onclose = function () {
+            console.log("会话关闭");
+        };
+
+        // 连接发生错误
+        websocket.onerror = function () {
+            console.log("发生错误");
+        };
+
+        //发送消息
+        function send() {
+            var message = document.getElementById('content').value;
+            websocket.send(message);
+        }
+
+        //关闭会话
+        function exit() {
+            websocket.close();
+        };
+    }
+</script>
+</body>
+</html>
