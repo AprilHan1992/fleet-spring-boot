@@ -1,4 +1,4 @@
-	# fleet-spring-boot
+# fleet-spring-boot
 
 > Spring Boot 教程，Spring Boot 的各种简单示例，快速入门使用 Spring Boot 各种组件
 
@@ -42,6 +42,7 @@
 - [spring-boot-velocity](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-velocity)：Spring Boot 结合 Velocity 模板引擎（Spring Boot 1.4版本之后弃用）
 - [spring-boot-mustache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mustache)：Spring Boot 结合 Mustache 模板引擎
 - [spring-boot-groovy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-groovy)：Spring Boot 结合 Groovy 模板引擎
+- [spring-boot-jsp](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jsp)：Spring Boot 结合 JSP 模板引擎
 - [spring-boot-properties](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-properties)：Spring Boot 读取配置文件中的内容
 - [spring-boot-logback](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-logback)：Spring Boot 集成 Logback 日志
 - [spring-boot-log4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-log4j)：Spring Boot 集成 Log4j 日志

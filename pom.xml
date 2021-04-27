@@ -23,6 +23,7 @@
     <modules>
         <module>spring-boot-hello</module>
         <module>spring-boot-starter</module>
+        <module>spring-boot-theme</module>
         <module>spring-boot-simple</module>
         <module>spring-boot-eureka</module>
         <module>spring-boot-consul</module>
@@ -57,6 +58,7 @@
         <module>spring-boot-velocity</module>
         <module>spring-boot-mustache</module>
         <module>spring-boot-groovy</module>
+        <module>spring-boot-jsp</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-logback</module>
         <module>spring-boot-log4j</module>
