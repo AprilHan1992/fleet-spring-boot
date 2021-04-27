@@ -190,3 +190,4 @@
 - [spring-boot-seg](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seg)：Spring Boot 中文分词器
 - [spring-boot-webmagic](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webmagic)：Spring Boot WebMagic 爬虫
 - [spring-boot-crawler4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-crawler4j)：Spring Boot Crawler4j 爬虫
+- [spring-boot-jpush](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jpush)：Spring Boot 极光推送
