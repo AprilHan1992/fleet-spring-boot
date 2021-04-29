@@ -1,0 +1,15 @@
+server:
+  port: 8000
+  ssl:
+    # 开启 https
+    enabled: true
+    # 证书
+    key-store: classpath:localhost.jks
+    key-store-type: JKS
+    # 别名
+    key-alias: tomcat
+    # 密码
+    key-password: fleetsoft
+    key-store-password: fleetsoft
+http:
+  port: 8001
