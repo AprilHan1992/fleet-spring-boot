@@ -19,7 +19,7 @@ public class RedisLockController {
 
     private int unLockNum = 20;
 
-    @RequestMapping(path = "/testUnLock")
+    @RequestMapping("/testUnLock")
     public void testUnLock() {
         String s = Thread.currentThread().getName();
         if (unLockNum > 0) {
@@ -31,7 +31,7 @@ public class RedisLockController {
     }
 
     @RedisLock
-    @RequestMapping(path = "/testLock")
+    @RequestMapping("/testLock")
     public void testLock() throws Exception {
         // 模拟业务处理时间
         Thread.sleep(500);
