@@ -14,17 +14,17 @@ public class RedisController {
     @Resource
     RedisUtil redisUtil;
 
-    @RequestMapping(path = "/set")
+    @RequestMapping("/set")
     public void set(@RequestParam("key") String key, @RequestParam("value") Object value) {
         redisUtil.set(key, value);
     }
 
-    @RequestMapping(path = "/delete")
+    @RequestMapping("/delete")
     public void delete(String key) {
         redisUtil.delete(key);
     }
 
-    @RequestMapping(path = "/get")
+    @RequestMapping("/get")
     public Object get(String key) {
         return redisUtil.get(key);
     }

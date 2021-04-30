@@ -104,6 +104,7 @@
         <module>spring-boot-mqtt</module>
         <module>spring-boot-redis-lock</module>
         <module>spring-boot-redisson</module>
+        <module>spring-boot-redisson-delayqueue</module>
         <module>spring-boot-websocket</module>
         <module>spring-boot-socketio</module>
         <module>spring-boot-shiro</module>
