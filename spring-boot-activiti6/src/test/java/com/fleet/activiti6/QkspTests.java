@@ -18,7 +18,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class QjsqTests {
+public class QkspTests {
 
     @Resource
     ProcessService processService;
@@ -56,9 +56,9 @@ public class QjsqTests {
     @Test
     public void start() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -70,8 +70,11 @@ public class QjsqTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.start(processDetail)));
     }
@@ -79,9 +82,9 @@ public class QjsqTests {
     @Test
     public void apply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -93,8 +96,11 @@ public class QjsqTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.apply(processDetail)));
     }
@@ -102,9 +108,9 @@ public class QjsqTests {
     @Test
     public void reApply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -116,10 +122,13 @@ public class QjsqTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
-        System.out.println(JSON.toJSONString(processService.reApply("2508", processDetail)));
+        System.out.println(JSON.toJSONString(processService.reApply("2511", processDetail)));
     }
 
     @Test
@@ -127,23 +136,23 @@ public class QjsqTests {
         Approval approval = new Approval();
 
 //        approval.setHandle("提交");
-//        approval.setTaskId("47");
+//        approval.setTaskId("34");
 //        approval.setRemark("提交");
 
         approval.setHandle("同意");
-        approval.setTaskId("57");
+        approval.setTaskId("74");
         approval.setRemark("同意");
 
 //        approval.setHandle("驳回");
-//        approval.setTaskId("2509");
+//        approval.setTaskId("2561");
 //        approval.setRemark("驳回");
 
 //        approval.setHandle("退回");
-//        approval.setTaskId("2509");
+//        approval.setTaskId("5011");
 //        approval.setRemark("退回");
 
 //        approval.setHandle("结案");
-//        approval.setTaskId("5008");
+//        approval.setTaskId("2508");
 //        approval.setRemark("结案");
 
         System.out.println(JSON.toJSONString(processService.completeTask(approval)));
@@ -152,23 +161,23 @@ public class QjsqTests {
     @Test
     public void resetAssignees() {
         Map<String, Object> assignees = new HashMap<>();
-        assignees.put("jl", "4");
+        assignees.put("bmjl", "4");
         processService.resetAssignees("43", assignees);
     }
 
     @Test
     public void stop() {
-        processService.stop("qjsq:1");
+        processService.stop("qksq:1");
     }
 
     @Test
     public void delete() {
-        processService.delete("qjsq:1");
+        processService.delete("qksq:1");
     }
 
     @Test
     public void getByBusinessKey() {
-        ProcessDetail<?> processDetail = processService.getByBusinessKey("qjsq:1");
+        ProcessDetail<?> processDetail = processService.getByBusinessKey("qksq:1");
         System.out.println(JSON.toJSONString(processDetail));
     }
 
@@ -192,7 +201,7 @@ public class QjsqTests {
 
     @Test
     public void getApprovalLog() {
-        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qjsq:1");
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qksq:1");
         System.out.println(JSON.toJSONString(approvalLogList));
     }
 
@@ -224,11 +233,11 @@ public class QjsqTests {
 
     @Test
     public void suspendProcess() {
-        processService.suspendProcess("qjsq:1");
+        processService.suspendProcess("qksq:1");
     }
 
     @Test
     public void activateProcess() {
-        processService.activateProcess("qjsq:1");
+        processService.activateProcess("qksq:1");
     }
 }

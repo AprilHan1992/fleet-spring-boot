@@ -1,46 +1,52 @@
 package com.fleet.activiti6.entity;
 
+import java.io.Serializable;
+
 /**
  * 转交、指定、委派信息
+ *
+ * @author April Han
  */
-public class Turn {
+public class Turn implements Serializable {
 
-	/**
-	 * 任务ID
-	 */
-	private String taskId;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 转交人
-	 */
-	private String assignee;
+    /**
+     * 任务ID
+     */
+    private String taskId;
 
-	/**
-	 * 审批意见
-	 */
-	private String remark;
+    /**
+     * 转交人
+     */
+    private String assignee;
 
-	public String getTaskId() {
-		return taskId;
-	}
+    /**
+     * 审批意见
+     */
+    private String remark;
 
-	public void setTaskId(String taskId) {
-		this.taskId = taskId;
-	}
+    public String getTaskId() {
+        return taskId;
+    }
 
-	public String getAssignee() {
-		return assignee;
-	}
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
 
-	public void setAssignee(String assignee) {
-		this.assignee = assignee;
-	}
+    public String getAssignee() {
+        return assignee;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

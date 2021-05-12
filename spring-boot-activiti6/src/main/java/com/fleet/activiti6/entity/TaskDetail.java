@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author April Han
  */
-public class TaskInfo implements Serializable {
+public class TaskDetail<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,10 +50,9 @@ public class TaskInfo implements Serializable {
     private String email;
 
     /**
-     * 流程发起时间
+     * 流程详情
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date startTime;
+    T details;
 
     /**
      * 流程备注
@@ -61,9 +60,20 @@ public class TaskInfo implements Serializable {
     private String remark;
 
     /**
+     * 流程发起时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date startTime;
+
+    /**
      * 任务标识
      */
     private String taskId;
+
+    /**
+     * 任务节点key
+     */
+    private String taskDefinitionKey;
 
     /**
      * 任务节点名称
@@ -137,12 +147,12 @@ public class TaskInfo implements Serializable {
         this.email = email;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public T getDetails() {
+        return details;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setDetails(T details) {
+        this.details = details;
     }
 
     public String getRemark() {
@@ -153,12 +163,28 @@ public class TaskInfo implements Serializable {
         this.remark = remark;
     }
 
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
     public String getTaskId() {
         return taskId;
     }
 
     public void setTaskId(String taskId) {
         this.taskId = taskId;
+    }
+
+    public String getTaskDefinitionKey() {
+        return taskDefinitionKey;
+    }
+
+    public void setTaskDefinitionKey(String taskDefinitionKey) {
+        this.taskDefinitionKey = taskDefinitionKey;
     }
 
     public String getTaskName() {

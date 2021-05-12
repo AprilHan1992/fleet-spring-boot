@@ -1,11 +1,13 @@
 package com.fleet.activiti6.listener;
 
-import com.fleet.activiti6.entity.ProcessInfo;
 import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.TaskListener;
 
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 public class AssigneeTaskListener implements TaskListener {
 
     private static final long serialVersionUID = 1L;
@@ -15,8 +17,7 @@ public class AssigneeTaskListener implements TaskListener {
      */
     @Override
     public void notify(DelegateTask delegateTask) {
-        ProcessInfo<?> processInfo = (ProcessInfo<?>) delegateTask.getVariable("info");
-        Map<String, String> assignees = processInfo.getAssignees();
-        delegateTask.setAssignee(assignees.get(delegateTask.getName()));
+        Map<String, Object> assignees = (Map<String, Object>) delegateTask.getVariable("assignees");
+        delegateTask.setAssignee(assignees.get(delegateTask.getTaskDefinitionKey()).toString());
     }
 }

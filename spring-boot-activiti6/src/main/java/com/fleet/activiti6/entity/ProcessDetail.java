@@ -8,8 +8,10 @@ import java.util.Map;
 
 /**
  * 流程信息
+ *
+ * @author April Han
  */
-public class ProcessInfo<T> implements Serializable {
+public class ProcessDetail<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -59,14 +61,9 @@ public class ProcessInfo<T> implements Serializable {
     private String remark;
 
     /**
-     * 当前节点审批人
-     */
-    private String assignee;
-
-    /**
      * 审批人
      */
-    private Map<String, String> assignees;
+    private Map<String, Object> assignees;
 
     /**
      * 流程发起时间
@@ -157,19 +154,11 @@ public class ProcessInfo<T> implements Serializable {
         this.remark = remark;
     }
 
-    public String getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
-    }
-
-    public Map<String, String> getAssignees() {
+    public Map<String, Object> getAssignees() {
         return assignees;
     }
 
-    public void setAssignees(Map<String, String> assignees) {
+    public void setAssignees(Map<String, Object> assignees) {
         this.assignees = assignees;
     }
 

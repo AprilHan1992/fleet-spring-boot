@@ -11,14 +11,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class QjsqTests {
+public class XjsqTests {
 
     @Resource
     ProcessService processService;
@@ -55,69 +54,66 @@ public class QjsqTests {
 
     @Test
     public void start() {
-        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        ProcessDetail<Integer> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("xjsq");
+        processDetail.setBusinessKey("xjsq:1");
+        processDetail.setTitle("销假流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
-        List<Integer> details = new ArrayList<>();
-        details.add(1);
-        details.add(3);
-        processDetail.setDetails(details);
+        Integer days = 8;
+        processDetail.setDetails(days);
         processDetail.setRemark("这是测试");
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        assignees.put("kz", "2");
+        assignees.put("jl", "3");
+        assignees.put("rs", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.start(processDetail)));
     }
 
     @Test
     public void apply() {
-        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        ProcessDetail<Integer> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("xjsq");
+        processDetail.setBusinessKey("xjsq:1");
+        processDetail.setTitle("销假流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
-        List<Integer> details = new ArrayList<>();
-        details.add(1);
-        details.add(3);
-        processDetail.setDetails(details);
+        Integer days = 8;
+        processDetail.setDetails(days);
         processDetail.setRemark("这是测试");
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        assignees.put("kz", "2");
+        assignees.put("jl", "3");
+        assignees.put("rs", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.apply(processDetail)));
     }
 
     @Test
     public void reApply() {
-        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("qjsq");
-        processDetail.setBusinessKey("qjsq:1");
-        processDetail.setTitle("请假流程一");
+        ProcessDetail<Integer> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("xjsq");
+        processDetail.setBusinessKey("xjsq:1");
+        processDetail.setTitle("销假流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
-        List<Integer> details = new ArrayList<>();
-        details.add(1);
-        details.add(3);
-        processDetail.setDetails(details);
+        Integer days = 8;
+        processDetail.setDetails(days);
         processDetail.setRemark("这是测试");
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("jl", "2");
-        assignees.put("rs", "3");
+        assignees.put("kz", "2");
+        assignees.put("jl", "3");
+        assignees.put("rs", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.reApply("2508", processDetail)));
     }
@@ -127,23 +123,23 @@ public class QjsqTests {
         Approval approval = new Approval();
 
 //        approval.setHandle("提交");
-//        approval.setTaskId("47");
+//        approval.setTaskId("34");
 //        approval.setRemark("提交");
 
         approval.setHandle("同意");
-        approval.setTaskId("57");
+        approval.setTaskId("74");
         approval.setRemark("同意");
 
 //        approval.setHandle("驳回");
-//        approval.setTaskId("2509");
+//        approval.setTaskId("2561");
 //        approval.setRemark("驳回");
 
 //        approval.setHandle("退回");
-//        approval.setTaskId("2509");
+//        approval.setTaskId("5011");
 //        approval.setRemark("退回");
 
 //        approval.setHandle("结案");
-//        approval.setTaskId("5008");
+//        approval.setTaskId("2508");
 //        approval.setRemark("结案");
 
         System.out.println(JSON.toJSONString(processService.completeTask(approval)));
@@ -153,22 +149,22 @@ public class QjsqTests {
     public void resetAssignees() {
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("jl", "4");
-        processService.resetAssignees("43", assignees);
+        processService.resetAssignees("48", assignees);
     }
 
     @Test
     public void stop() {
-        processService.stop("qjsq:1");
+        processService.stop("xjsq:1");
     }
 
     @Test
     public void delete() {
-        processService.delete("qjsq:1");
+        processService.delete("xjsq:1");
     }
 
     @Test
     public void getByBusinessKey() {
-        ProcessDetail<?> processDetail = processService.getByBusinessKey("qjsq:1");
+        ProcessDetail<?> processDetail = processService.getByBusinessKey("xjsq:1");
         System.out.println(JSON.toJSONString(processDetail));
     }
 
@@ -180,26 +176,26 @@ public class QjsqTests {
 
     @Test
     public void getByTaskId() {
-        ProcessDetail<?> processDetail = processService.getByTaskId("43");
+        ProcessDetail<?> processDetail = processService.getByTaskId("48");
         System.out.println(JSON.toJSONString(processDetail));
     }
 
     @Test
     public void getTaskHandleList() {
-        List<String> taskHandleList = processService.getTaskHandleList("43");
+        List<String> taskHandleList = processService.getTaskHandleList("48");
         System.out.println(JSON.toJSONString(taskHandleList));
     }
 
     @Test
     public void getApprovalLog() {
-        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qjsq:1");
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("xjsq:1");
         System.out.println(JSON.toJSONString(approvalLogList));
     }
 
     @Test
     public void turnTask() {
         Turn turn = new Turn();
-        turn.setTaskId("43");
+        turn.setTaskId("48");
         turn.setAssignee("4");
         turn.setRemark("转交");
         processService.turnTask(turn);
@@ -208,7 +204,7 @@ public class QjsqTests {
     @Test
     public void delegateTask() {
         Turn turn = new Turn();
-        turn.setTaskId("43");
+        turn.setTaskId("48");
         turn.setAssignee("5");
         turn.setRemark("委派");
         processService.delegateTask(turn);
@@ -217,18 +213,18 @@ public class QjsqTests {
     @Test
     public void resolveTask() {
         Turn turn = new Turn();
-        turn.setTaskId("43");
+        turn.setTaskId("48");
         turn.setRemark("委派完成");
         processService.resolveTask(turn);
     }
 
     @Test
     public void suspendProcess() {
-        processService.suspendProcess("qjsq:1");
+        processService.suspendProcess("xjsq:1");
     }
 
     @Test
     public void activateProcess() {
-        processService.activateProcess("qjsq:1");
+        processService.activateProcess("xjsq:1");
     }
 }
