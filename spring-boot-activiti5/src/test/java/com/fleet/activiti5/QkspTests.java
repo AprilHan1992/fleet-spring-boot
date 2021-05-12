@@ -18,7 +18,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HtspTests {
+public class QkspTests {
 
     @Resource
     ProcessService processService;
@@ -56,9 +56,9 @@ public class HtspTests {
     @Test
     public void start() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("htsp");
-        processDetail.setBusinessKey("htsp:1");
-        processDetail.setTitle("合同流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -70,9 +70,11 @@ public class HtspTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("bmjl", "2");
-        assignees.put("fw", "3");
-        assignees.put("zjl", "4");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.start(processDetail)));
     }
@@ -80,9 +82,9 @@ public class HtspTests {
     @Test
     public void apply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("htsp");
-        processDetail.setBusinessKey("htsp:1");
-        processDetail.setTitle("合同流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -94,9 +96,11 @@ public class HtspTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("bmjl", "2");
-        assignees.put("fw", "3");
-        assignees.put("zjl", "4");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
         System.out.println(JSON.toJSONString(processService.apply(processDetail)));
     }
@@ -104,9 +108,9 @@ public class HtspTests {
     @Test
     public void reApply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
-        processDetail.setDefinitionKey("htsp");
-        processDetail.setBusinessKey("htsp:1");
-        processDetail.setTitle("合同流程一");
+        processDetail.setDefinitionKey("qksq");
+        processDetail.setBusinessKey("qksq:1");
+        processDetail.setTitle("请款流程一");
         processDetail.setInitiator("1");
         processDetail.setPhone("11111");
         processDetail.setEmail("1222");
@@ -118,11 +122,13 @@ public class HtspTests {
 
         Map<String, Object> assignees = new HashMap<>();
         assignees.put("apply", "1");
-        assignees.put("bmjl", "2");
-        assignees.put("fw", "3");
-        assignees.put("zjl", "4");
+        List<String> signerList = new ArrayList<>();
+        signerList.add("2");
+        signerList.add("3");
+        assignees.put("signerList", signerList);
+        assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
-        System.out.println(JSON.toJSONString(processService.reApply("2513", processDetail)));
+        System.out.println(JSON.toJSONString(processService.reApply("2511", processDetail)));
     }
 
     @Test
@@ -161,17 +167,17 @@ public class HtspTests {
 
     @Test
     public void stop() {
-        processService.stop("htsp:1");
+        processService.stop("qksq:1");
     }
 
     @Test
     public void delete() {
-        processService.delete("htsp:1");
+        processService.delete("qksq:1");
     }
 
     @Test
     public void getByBusinessKey() {
-        ProcessDetail<?> processDetail = processService.getByBusinessKey("htsp:1");
+        ProcessDetail<?> processDetail = processService.getByBusinessKey("qksq:1");
         System.out.println(JSON.toJSONString(processDetail));
     }
 
@@ -195,7 +201,7 @@ public class HtspTests {
 
     @Test
     public void getApprovalLog() {
-        List<ApprovalLog> approvalLogList = processService.getApprovalLog("htsp:1");
+        List<ApprovalLog> approvalLogList = processService.getApprovalLog("qksq:1");
         System.out.println(JSON.toJSONString(approvalLogList));
     }
 
@@ -227,11 +233,11 @@ public class HtspTests {
 
     @Test
     public void suspendProcess() {
-        processService.suspendProcess("htsp:1");
+        processService.suspendProcess("qksq:1");
     }
 
     @Test
     public void activateProcess() {
-        processService.activateProcess("htsp:1");
+        processService.activateProcess("qksq:1");
     }
 }

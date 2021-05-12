@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 /**
- * 任务信息
+ * 流程信息
  *
  * @author April Han
  */
-public class TaskInfo implements Serializable {
+public class ProcessDetail<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,10 +51,9 @@ public class TaskInfo implements Serializable {
     private String email;
 
     /**
-     * 流程发起时间
+     * 流程详情
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date startTime;
+    T details;
 
     /**
      * 流程备注
@@ -61,25 +61,26 @@ public class TaskInfo implements Serializable {
     private String remark;
 
     /**
-     * 任务标识
+     * 审批人
      */
-    private String taskId;
+    private Map<String, Object> assignees;
 
     /**
-     * 任务节点名称
-     */
-    private String taskName;
-
-    /**
-     * 任务到达时间
+     * 流程发起时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
+    private Date startTime;
 
     /**
-     * 当前节点审批人
+     * 流程结束时间
      */
-    private String assignee;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date endTime;
+
+    /**
+     * 流程状态（1：审批中，2：已结案，3：已终止）
+     */
+    private Integer state;
 
     public String getInstanceId() {
         return instanceId;
@@ -137,12 +138,12 @@ public class TaskInfo implements Serializable {
         this.email = email;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public T getDetails() {
+        return details;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setDetails(T details) {
+        this.details = details;
     }
 
     public String getRemark() {
@@ -153,35 +154,35 @@ public class TaskInfo implements Serializable {
         this.remark = remark;
     }
 
-    public String getTaskId() {
-        return taskId;
+    public Map<String, Object> getAssignees() {
+        return assignees;
     }
 
-    public void setTaskId(String taskId) {
-        this.taskId = taskId;
+    public void setAssignees(Map<String, Object> assignees) {
+        this.assignees = assignees;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public String getAssignee() {
-        return assignee;
+    public Integer getState() {
+        return state;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

@@ -1,6 +1,10 @@
 package com.fleet.activiti5.controller;
 
-import com.fleet.activiti5.entity.*;
+import com.fleet.activiti5.entity.Approval;
+import com.fleet.activiti5.entity.ProcessDetail;
+import com.fleet.activiti5.entity.TaskDetail;
+import com.fleet.activiti5.entity.Turn;
+import com.fleet.activiti5.json.R;
 import com.fleet.activiti5.page.Page;
 import com.fleet.activiti5.page.PageUtil;
 import com.fleet.activiti5.service.ProcessService;
@@ -11,7 +15,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,7 +31,7 @@ public class ProcessController {
      * 我的待办列表
      */
     @PostMapping("/myTaskList/{userId}")
-    public PageUtil<TaskInfo> myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
+    public PageUtil<TaskDetail<?>> myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
         return processService.myTaskList(userId, page);
     }
 
@@ -36,7 +39,7 @@ public class ProcessController {
      * 我的申请列表
      */
     @PostMapping("/myAppliedList/{userId}")
-    public PageUtil<ProcessInfo<?>> myAppliedList(@PathVariable("userId") String userId, @RequestBody Page page) {
+    public PageUtil<ProcessDetail<?>> myAppliedList(@PathVariable("userId") String userId, @RequestBody Page page) {
         return processService.myAppliedList(userId, page);
     }
 
@@ -44,7 +47,7 @@ public class ProcessController {
      * 我的审批列表
      */
     @PostMapping("/myApprovedList/{userId}")
-    public PageUtil<ProcessInfo<?>> myApprovedList(@PathVariable("userId") String userId, @RequestBody Page page) {
+    public PageUtil<ProcessDetail<?>> myApprovedList(@PathVariable("userId") String userId, @RequestBody Page page) {
         return processService.myApprovedList(userId, page);
     }
 
@@ -52,96 +55,97 @@ public class ProcessController {
      * 获取同一类型流程数量
      */
     @GetMapping(value = "/getTotal")
-    public long getTotal(@RequestParam String definitionKey) {
-        return processService.getTotal(definitionKey);
+    public R getTotal(@RequestParam String definitionKey) {
+        Long total = processService.getTotal(definitionKey);
+        return R.ok(total);
     }
 
     /**
      * 创建流程实例
      */
     @PostMapping("/start")
-    public TaskInfo start(@RequestBody ProcessInfo<?> processInfo) {
-        return processService.start(processInfo);
+    public R start(@RequestBody ProcessDetail<?> processDetail) {
+        return R.ok(processService.start(processDetail));
     }
 
     /**
      * 流程申请（创建流程实例并且自动完成 apply 填写申请单节点）
      */
     @PostMapping("/apply")
-    public String apply(@RequestBody ProcessInfo<?> processInfo) {
-        return processService.apply(processInfo);
+    public R apply(@RequestBody ProcessDetail<?> processDetail) {
+        return R.ok(processService.apply(processDetail));
     }
 
     /**
      * 重新流程申请
      */
     @PostMapping("/reApply/{taskId}")
-    public String reApply(@PathVariable("taskId") String taskId, @RequestBody ProcessInfo<?> processInfo) {
-        return processService.reApply(taskId, processInfo);
+    public R reApply(@PathVariable("taskId") String taskId, @RequestBody ProcessDetail<?> processDetail) {
+        return R.ok(processService.reApply(taskId, processDetail));
     }
 
     /**
      * 完成当前节点审批（并行网关在驳回后，用户重新提交会产生多条 task 任务）
      */
     @PostMapping("/completeTask")
-    public String completeTask(@RequestBody Approval approval) {
-        return processService.completeTask(approval);
+    public R completeTask(@RequestBody Approval approval) {
+        return R.ok(processService.completeTask(approval));
     }
 
     /**
      * 重新设置流程审批人
      */
-    @PostMapping("/resetAssignees/{businessKey}")
-    public String resetAssignees(@PathVariable("businessKey") String businessKey, @RequestBody Map<String, String> assignees) {
-        return processService.resetAssignees(businessKey, assignees);
+    @PostMapping("/resetAssignees/{taskId}")
+    public R resetAssignees(@PathVariable("taskId") String taskId, @RequestBody Map<String, Object> assignees) {
+        return R.ok(processService.resetAssignees(taskId, assignees));
     }
 
     /**
      * 流程终止（只允许在申请“apply”节点终止流程）
      */
     @GetMapping("/stop")
-    public void stop(@RequestParam String businessKey) {
-        processService.stop(businessKey);
+    public R stop(@RequestParam String businessKey) {
+        return R.ok(processService.stop(businessKey));
     }
 
     /**
      * 流程删除
      */
     @GetMapping("/delete")
-    public void delete(@RequestParam String businessKey) {
-        processService.delete(businessKey);
+    public R delete(@RequestParam String businessKey) {
+        return R.ok(processService.delete(businessKey));
     }
 
     /**
      * 获取流程详情
      */
     @GetMapping(value = "/getByBusinessKey")
-    public ProcessInfo<?> getByBusinessKey(@RequestParam String businessKey) {
-        return processService.getByBusinessKey(businessKey);
+    public R getByBusinessKey(@RequestParam String businessKey) {
+        return R.ok(processService.getByBusinessKey(businessKey));
     }
 
     /**
      * 获取流程详情
      */
     @GetMapping(value = "/getByInstanceId")
-    public ProcessInfo<?> getByInstanceId(@RequestParam String instanceId) {
-        return processService.getByInstanceId(instanceId);
+    public R getByInstanceId(@RequestParam String instanceId) {
+        return R.ok(processService.getByInstanceId(instanceId));
     }
 
     /**
      * 获取流程详情
      */
     @GetMapping(value = "/getByTaskId")
-    public ProcessInfo<?> getByTaskId(@RequestParam String taskId) {
-        return processService.getByTaskId(taskId);
+    public R getByTaskId(@RequestParam String taskId) {
+        return R.ok(processService.getByTaskId(taskId));
     }
 
     /**
      * 获取流程节点操作
      */
-    @GetMapping("/getTaskOperation")
-    public List<String> getTaskOperation(@RequestParam String taskId) {
-        return processService.getTaskOperation(taskId);
+    @GetMapping("/getTaskHandleList")
+    public R getTaskHandleList(@RequestParam String taskId) {
+        return R.ok(processService.getTaskHandleList(taskId));
     }
 
     /**
@@ -188,47 +192,47 @@ public class ProcessController {
      * 获取流程审批记录
      */
     @GetMapping(value = "/getApprovalLog")
-    public List<ApprovalLog> getApprovalLog(@RequestParam String businessKey) {
-        return processService.getApprovalLog(businessKey);
+    public R getApprovalLog(@RequestParam String businessKey) {
+        return R.ok(processService.getApprovalLog(businessKey));
     }
 
     /**
      * 转交任务
      */
     @PostMapping(value = "/turnTask")
-    public String turnTask(@RequestBody Turn turn) {
-        return processService.turnTask(turn);
+    public R turnTask(@RequestBody Turn turn) {
+        return R.ok(processService.turnTask(turn));
     }
 
     /**
      * 委派任务
      */
     @PostMapping(value = "/delegateTask")
-    public String delegateTask(@RequestBody Turn turn) {
-        return processService.delegateTask(turn);
+    public R delegateTask(@RequestBody Turn turn) {
+        return R.ok(processService.delegateTask(turn));
     }
 
     /**
      * 委派人处理任务
      */
     @PostMapping(value = "/resolveTask")
-    public String resolveTask(@RequestBody Turn turn) {
-        return processService.resolveTask(turn);
+    public R resolveTask(@RequestBody Turn turn) {
+        return R.ok(processService.resolveTask(turn));
     }
 
     /**
      * 流程挂起
      */
     @GetMapping(value = "/suspendProcess")
-    public String suspendProcess(@RequestParam String businessKey) {
-        return processService.suspendProcess(businessKey);
+    public R suspendProcess(@RequestParam String businessKey) {
+        return R.ok(processService.suspendProcess(businessKey));
     }
 
     /**
      * 流程激活
      */
     @GetMapping(value = "/activateProcess")
-    public String activateProcess(@RequestParam String businessKey) {
-        return processService.activateProcess(businessKey);
+    public R activateProcess(@RequestParam String businessKey) {
+        return R.ok(processService.activateProcess(businessKey));
     }
 }

@@ -25,11 +25,11 @@ public class QjsqTests {
 
     @Test
     public void myTaskList() {
-        String userId = "2";
+        String userId = "1";
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        PageUtil<TaskInfo> pageUtil = processService.myTaskList(userId, page);
+        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
 
@@ -39,7 +39,8 @@ public class QjsqTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        processService.myAppliedList(userId, page);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, page);
+        System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
@@ -48,80 +49,111 @@ public class QjsqTests {
         Page page = new Page();
         page.setPageIndex(1);
         page.setPageRows(10);
-        processService.myApprovedList(userId, page);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, page);
+        System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
     public void start() {
-        ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setDefinitionKey("qjsq");
-        processInfo.setBusinessKey("qjsq:1");
-        processInfo.setTitle("请假流程一");
-        processInfo.setInitiator("1");
-        processInfo.setPhone("11111");
-        processInfo.setEmail("1222");
+        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("qjsq");
+        processDetail.setBusinessKey("qjsq:1");
+        processDetail.setTitle("请假流程一");
+        processDetail.setInitiator("1");
+        processDetail.setPhone("11111");
+        processDetail.setEmail("1222");
         List<Integer> details = new ArrayList<>();
         details.add(1);
         details.add(3);
-        processInfo.setDetails(details);
-        processInfo.setRemark("这是测试");
+        processDetail.setDetails(details);
+        processDetail.setRemark("这是测试");
 
-        Map<String, String> assignees = new HashMap<>();
-        assignees.put("填写申请单", "1");
-        assignees.put("经理审批", "2");
-        assignees.put("人事记录", "3");
-        processInfo.setAssignees(assignees);
-        processService.start(processInfo);
+        Map<String, Object> assignees = new HashMap<>();
+        assignees.put("apply", "1");
+        assignees.put("jl", "2");
+        assignees.put("rs", "3");
+        processDetail.setAssignees(assignees);
+        System.out.println(JSON.toJSONString(processService.start(processDetail)));
     }
 
     @Test
     public void apply() {
-        ProcessInfo<List<Integer>> processInfo = new ProcessInfo<>();
-        processInfo.setDefinitionKey("qjsq");
-        processInfo.setBusinessKey("qjsq:1");
-        processInfo.setTitle("请假流程一");
-        processInfo.setInitiator("1");
-        processInfo.setPhone("11111");
-        processInfo.setEmail("1222");
+        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("qjsq");
+        processDetail.setBusinessKey("qjsq:1");
+        processDetail.setTitle("请假流程一");
+        processDetail.setInitiator("1");
+        processDetail.setPhone("11111");
+        processDetail.setEmail("1222");
         List<Integer> details = new ArrayList<>();
         details.add(1);
         details.add(3);
-        processInfo.setDetails(details);
-        processInfo.setRemark("这是测试");
+        processDetail.setDetails(details);
+        processDetail.setRemark("这是测试");
 
-        Map<String, String> assignees = new HashMap<>();
-        assignees.put("填写申请单", "1");
-        assignees.put("经理审批", "2");
-        assignees.put("人事记录", "3");
-        processInfo.setAssignees(assignees);
-        processService.apply(processInfo);
+        Map<String, Object> assignees = new HashMap<>();
+        assignees.put("apply", "1");
+        assignees.put("jl", "2");
+        assignees.put("rs", "3");
+        processDetail.setAssignees(assignees);
+        System.out.println(JSON.toJSONString(processService.apply(processDetail)));
+    }
+
+    @Test
+    public void reApply() {
+        ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
+        processDetail.setDefinitionKey("qjsq");
+        processDetail.setBusinessKey("qjsq:1");
+        processDetail.setTitle("请假流程一");
+        processDetail.setInitiator("1");
+        processDetail.setPhone("11111");
+        processDetail.setEmail("1222");
+        List<Integer> details = new ArrayList<>();
+        details.add(1);
+        details.add(3);
+        processDetail.setDetails(details);
+        processDetail.setRemark("这是测试");
+
+        Map<String, Object> assignees = new HashMap<>();
+        assignees.put("apply", "1");
+        assignees.put("jl", "2");
+        assignees.put("rs", "3");
+        processDetail.setAssignees(assignees);
+        System.out.println(JSON.toJSONString(processService.reApply("2508", processDetail)));
     }
 
     @Test
     public void completeTask() {
-//        Approval approval = new Approval();
-//        approval.setFlag("提交");
-//        approval.setTaskId("7510");
-//        approval.setRemark("这是提交");
-//        processService.completeTask(approval);
-
-//         Approval approval = new Approval();
-//         approval.setFlag("重新提交");
-//         approval.setTaskId("5007");
-//         approval.setRemark("重新提交");
-//         processService.completeTask(approval);
-
-//        Approval approval = new Approval();
-//        approval.setFlag("驳回");
-//        approval.setTaskId("2519");
-//        approval.setRemark("驳回");
-//        processService.completeTask(approval);
-
         Approval approval = new Approval();
-        approval.setFlag("同意");
-        approval.setTaskId("7506");
+
+//        approval.setHandle("提交");
+//        approval.setTaskId("47");
+//        approval.setRemark("提交");
+
+        approval.setHandle("同意");
+        approval.setTaskId("2509");
         approval.setRemark("同意");
-        processService.completeTask(approval);
+
+//        approval.setHandle("驳回");
+//        approval.setTaskId("2509");
+//        approval.setRemark("驳回");
+
+//        approval.setHandle("退回");
+//        approval.setTaskId("2509");
+//        approval.setRemark("退回");
+
+//        approval.setHandle("结案");
+//        approval.setTaskId("5008");
+//        approval.setRemark("结案");
+
+        System.out.println(JSON.toJSONString(processService.completeTask(approval)));
+    }
+
+    @Test
+    public void resetAssignees() {
+        Map<String, Object> assignees = new HashMap<>();
+        assignees.put("jl", "4");
+        processService.resetAssignees("43", assignees);
     }
 
     @Test
@@ -136,26 +168,26 @@ public class QjsqTests {
 
     @Test
     public void getByBusinessKey() {
-        ProcessInfo<?> processInfo = processService.getByBusinessKey("qjsq:1");
-        System.out.println(JSON.toJSONString(processInfo));
+        ProcessDetail<?> processDetail = processService.getByBusinessKey("qjsq:1");
+        System.out.println(JSON.toJSONString(processDetail));
     }
 
     @Test
     public void getByInstanceId() {
-        ProcessInfo<?> processInfo = processService.getByInstanceId("5007");
-        System.out.println(JSON.toJSONString(processInfo));
+        ProcessDetail<?> processDetail = processService.getByInstanceId("8");
+        System.out.println(JSON.toJSONString(processDetail));
     }
 
     @Test
     public void getByTaskId() {
-        ProcessInfo<?> processInfo = processService.getByTaskId("23");
-        System.out.println(JSON.toJSONString(processInfo));
+        ProcessDetail<?> processDetail = processService.getByTaskId("43");
+        System.out.println(JSON.toJSONString(processDetail));
     }
 
     @Test
-    public void getTaskOperation() {
-        List<String> taskOperationList = processService.getTaskOperation("23");
-        System.out.println(JSON.toJSONString(taskOperationList));
+    public void getTaskHandleList() {
+        List<String> taskHandleList = processService.getTaskHandleList("43");
+        System.out.println(JSON.toJSONString(taskHandleList));
     }
 
     @Test
@@ -167,8 +199,8 @@ public class QjsqTests {
     @Test
     public void turnTask() {
         Turn turn = new Turn();
-        turn.setTaskId("23");
-        turn.setAssignee("2");
+        turn.setTaskId("43");
+        turn.setAssignee("4");
         turn.setRemark("转交");
         processService.turnTask(turn);
     }
@@ -176,8 +208,8 @@ public class QjsqTests {
     @Test
     public void delegateTask() {
         Turn turn = new Turn();
-        turn.setTaskId("17507");
-        turn.setAssignee("2");
+        turn.setTaskId("43");
+        turn.setAssignee("5");
         turn.setRemark("委派");
         processService.delegateTask(turn);
     }
@@ -185,7 +217,7 @@ public class QjsqTests {
     @Test
     public void resolveTask() {
         Turn turn = new Turn();
-        turn.setTaskId("17507");
+        turn.setTaskId("43");
         turn.setRemark("委派完成");
         processService.resolveTask(turn);
     }
