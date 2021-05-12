@@ -7,10 +7,17 @@ import java.util.Date;
 
 /**
  * 转交、委派记录
+ *
+ * @author April Han
  */
 public class TurnLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 任务节点key
+     */
+    private String taskDefinitionKey;
 
     /**
      * 任务节点名称
@@ -25,7 +32,7 @@ public class TurnLog implements Serializable {
     /**
      * 审批操作（同意，驳回，退回，终止，结案，转交，委派，委派完成，退出，挂起）
      */
-    private String flag;
+    private String handle;
 
     /**
      * 备注
@@ -36,7 +43,15 @@ public class TurnLog implements Serializable {
      * 操作时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date operTime;
+    private Date handleTime;
+
+    public String getTaskDefinitionKey() {
+        return taskDefinitionKey;
+    }
+
+    public void setTaskDefinitionKey(String taskDefinitionKey) {
+        this.taskDefinitionKey = taskDefinitionKey;
+    }
 
     public String getTaskName() {
         return taskName;
@@ -50,16 +65,16 @@ public class TurnLog implements Serializable {
         return assignee;
     }
 
-    public void setOperTime(Date operTime) {
-        this.operTime = operTime;
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 
-    public String getFlag() {
-        return flag;
+    public String getHandle() {
+        return handle;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setHandle(String handle) {
+        this.handle = handle;
     }
 
     public String getRemark() {
@@ -70,11 +85,11 @@ public class TurnLog implements Serializable {
         this.remark = remark;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public Date getHandleTime() {
+        return handleTime;
     }
 
-    public Date getOperTime() {
-        return operTime;
+    public void setHandleTime(Date handleTime) {
+        this.handleTime = handleTime;
     }
 }

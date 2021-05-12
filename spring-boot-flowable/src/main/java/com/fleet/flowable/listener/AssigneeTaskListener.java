@@ -1,6 +1,5 @@
 package com.fleet.flowable.listener;
 
-import com.fleet.flowable.entity.ProcessInfo;
 import org.flowable.engine.delegate.TaskListener;
 import org.flowable.task.service.delegate.DelegateTask;
 
@@ -18,8 +17,7 @@ public class AssigneeTaskListener implements TaskListener {
      */
     @Override
     public void notify(DelegateTask delegateTask) {
-        ProcessInfo<?> processInfo = (ProcessInfo<?>) delegateTask.getVariable("info");
-        Map<String, String> assignees = processInfo.getAssignees();
-        delegateTask.setAssignee(assignees.get(delegateTask.getName()));
+        Map<String, Object> assignees = (Map<String, Object>) delegateTask.getVariable("assignees");
+        delegateTask.setAssignee(assignees.get(delegateTask.getTaskDefinitionKey()).toString());
     }
 }

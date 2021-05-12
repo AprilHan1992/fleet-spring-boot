@@ -2,6 +2,8 @@ package com.fleet.flowable.entity;
 
 /**
  * 审批信息
+ *
+ * @author April Han
  */
 public class Approval {
 
@@ -13,7 +15,7 @@ public class Approval {
     /**
      * 审批操作（同意，驳回，退回，终止，结案，转交，退出，挂起）
      */
-    private String flag;
+    private String handle;
 
     /**
      * 审批意见
@@ -28,12 +30,12 @@ public class Approval {
         this.taskId = taskId;
     }
 
-    public String getFlag() {
-        return flag;
+    public String getHandle() {
+        return handle;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setHandle(String handle) {
+        this.handle = handle;
     }
 
     public String getRemark() {
