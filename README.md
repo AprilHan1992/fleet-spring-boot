@@ -120,6 +120,7 @@
 - [spring-boot-druid](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-druid)：Spring Boot Druid 连接池
 - [spring-boot-tomcat-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tomcat-jdbc)：Spring Boot Tomcat-Jdbc 连接池
 - [spring-boot-dbcp2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dbcp2)：Spring Boot Dbcp2 连接池
+- [spring-boot-c3p0](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-c3p0)：Spring Boot c3p0 连接池
 - [spring-boot-dubbo](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dubbo)：Spring Boot Dubbo 框架
 - [spring-boot-mysql-multi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi)：Spring Boot Mysql 多数据源
 - [spring-boot-mysql-multi-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi-aop)：Spring Boot Mysql 多数据源 AOP 实现
