@@ -162,6 +162,7 @@
 - [spring-boot-hateoas](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hateoas)：Spring Boot 基于 HATEOAS 的 RESTful Web 服务
 - [spring-boot-retry](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retry)：Spring Boot 重试机制
 - [spring-boot-initializr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-initializr)：Spring Boot 脚手架
+- [spring-boot-sonar](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sonar)：Spring Boot 代码质量管理
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：

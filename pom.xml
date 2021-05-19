@@ -177,6 +177,7 @@
         <module>spring-boot-hateoas</module>
         <module>spring-boot-retry</module>
         <module>spring-boot-initializr</module>
+        <module>spring-boot-sonar</module>
         <module>spring-boot-common</module>
         <module>spring-boot-file</module>
         <module>spring-boot-excel</module>
