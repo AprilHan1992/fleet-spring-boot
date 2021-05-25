@@ -94,6 +94,7 @@
         <module>spring-boot-gateway</module>
         <module>spring-boot-feign</module>
         <module>spring-boot-dataway</module>
+        <module>spring-boot-magic-api</module>
         <module>spring-boot-ribbon</module>
         <module>spring-boot-artemis</module>
         <module>spring-boot-activemq</module>

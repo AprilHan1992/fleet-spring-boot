@@ -79,6 +79,7 @@
 - [spring-boot-gateway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gateway)：Spring Boot Gateway 微服务网关
 - [spring-boot-feign](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-feign)：Spring Boot Feign 实现声明式 REST 调用
 - [spring-boot-dataway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dataway)：Spring Boot Dataway 数据接口配置服务
+- [spring-boot-magic-api](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-magic-api)：Spring Boot 基于Java的接口快速开发框架
 - [spring-boot-ribbon](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ribbon)：Spring Boot Ribbon 负载均衡
 - [spring-boot-artemis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-artemis)：Spring Boot Artemis 消息中间件
 - [spring-boot-activemq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activemq)：Spring Boot ActiveMQ 消息中间件
@@ -164,6 +165,7 @@
 - [spring-boot-retry](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retry)：Spring Boot 重试机制
 - [spring-boot-initializr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-initializr)：Spring Boot 脚手架
 - [spring-boot-sonar](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sonar)：Spring Boot 代码质量管理
+- [spring-boot-map](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-map)：Spring Boot 地图操作
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：
