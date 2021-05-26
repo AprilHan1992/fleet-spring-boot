@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author April Han
+ */
 public interface ProcessService {
 
     /**
@@ -64,6 +67,16 @@ public interface ProcessService {
      * 流程删除
      */
     Boolean delete(String businessKey);
+
+    /**
+     * 任务列表
+     */
+    List<TaskDetail<?>> getTaskListByBusinessKey(String userId, String businessKey);
+
+    /**
+     * 任务id列表
+     */
+    List<String> getTaskIdListByBusinessKey(String userId, String businessKey);
 
     /**
      * 流程详情

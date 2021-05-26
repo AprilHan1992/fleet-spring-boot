@@ -163,6 +163,18 @@ public class XjsqTests {
     }
 
     @Test
+    public void getTaskListByBusinessKey() {
+        List<TaskDetail<?>> taskList = processService.getTaskListByBusinessKey("1", "xjsq:1");
+        System.out.println(JSON.toJSONString(taskList));
+    }
+
+    @Test
+    public void getTaskIdListByBusinessKey() {
+        List<String> taskIdList = processService.getTaskIdListByBusinessKey("1", "xjsq:1");
+        System.out.println(JSON.toJSONString(taskIdList));
+    }
+
+    @Test
     public void getByBusinessKey() {
         ProcessDetail<?> processDetail = processService.getByBusinessKey("xjsq:1");
         System.out.println(JSON.toJSONString(processDetail));

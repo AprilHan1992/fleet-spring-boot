@@ -550,6 +550,37 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
+    public List<TaskDetail<?>> getTaskListByBusinessKey(String userId, String businessKey) {
+        List<TaskDetail<?>> taskDetailList = new ArrayList<>();
+        List<Task> taskList = taskService.createTaskQuery()
+                .processInstanceBusinessKey(businessKey)
+                .taskAssignee(userId)
+                .list();
+        if (taskList != null) {
+            for (Task task : taskList) {
+                TaskDetail<?> taskDetail = getTaskDetail(task);
+                taskDetailList.add(taskDetail);
+            }
+        }
+        return taskDetailList;
+    }
+
+    @Override
+    public List<String> getTaskIdListByBusinessKey(String userId, String businessKey) {
+        List<String> taskIdList = new ArrayList<>();
+        List<Task> taskList = taskService.createTaskQuery()
+                .processInstanceBusinessKey(businessKey)
+                .taskAssignee(userId)
+                .list();
+        if (taskList != null) {
+            for (Task task : taskList) {
+                taskIdList.add(task.getId());
+            }
+        }
+        return taskIdList;
+    }
+
+    @Override
     public ProcessDetail<?> getByBusinessKey(String businessKey) {
         HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
