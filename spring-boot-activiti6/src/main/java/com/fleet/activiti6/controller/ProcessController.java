@@ -117,6 +117,22 @@ public class ProcessController {
     }
 
     /**
+     * 获取任务列表
+     */
+    @GetMapping(value = "/getTaskListByBusinessKey/{userId}")
+    public R getTaskListByBusinessKey(@PathVariable("userId") String userId, @RequestParam String businessKey) {
+        return R.ok(processService.getTaskListByBusinessKey(userId, businessKey));
+    }
+
+    /**
+     * 获取任务id列表
+     */
+    @GetMapping(value = "/getTaskIdListByBusinessKey/{userId}")
+    public R getTaskIdListByBusinessKey(@PathVariable("userId") String userId, @RequestParam String businessKey) {
+        return R.ok(processService.getTaskIdListByBusinessKey(userId, businessKey));
+    }
+
+    /**
      * 获取流程详情
      */
     @GetMapping(value = "/getByBusinessKey")

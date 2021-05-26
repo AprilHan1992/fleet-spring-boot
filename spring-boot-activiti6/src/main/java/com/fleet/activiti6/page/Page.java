@@ -90,7 +90,12 @@ public class Page extends HashMap<String, Object> {
     }
 
     public int getFromPageIndex() {
-        return (int) super.get("fromPageIndex");
+        int fromPageIndex = (int) super.get("fromPageIndex");
+        if (fromPageIndex == 0) {
+            fromPageIndex = (getPageIndex() - 1) * getPageRows();
+            setFromPageIndex(fromPageIndex);
+        }
+        return fromPageIndex;
     }
 
     public void setFromPageIndex(int fromPageIndex) {
@@ -100,7 +105,12 @@ public class Page extends HashMap<String, Object> {
     }
 
     public int getToPageIndex() {
-        return (int) super.get("toPageIndex");
+        int toPageIndex = (int) super.get("toPageIndex");
+        if (toPageIndex == 0) {
+            toPageIndex = getPageIndex() * getPageRows();
+            setToPageIndex(toPageIndex);
+        }
+        return toPageIndex;
     }
 
     public void setToPageIndex(int toPageIndex) {

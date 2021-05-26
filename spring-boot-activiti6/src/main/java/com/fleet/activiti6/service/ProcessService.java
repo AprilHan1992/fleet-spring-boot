@@ -69,6 +69,16 @@ public interface ProcessService {
     Boolean delete(String businessKey);
 
     /**
+     * 任务列表
+     */
+    List<TaskDetail<?>> getTaskListByBusinessKey(String userId, String businessKey);
+
+    /**
+     * 任务id列表
+     */
+    List<String> getTaskIdListByBusinessKey(String userId, String businessKey);
+
+    /**
      * 流程详情
      */
     ProcessDetail<?> getByBusinessKey(String businessKey);
