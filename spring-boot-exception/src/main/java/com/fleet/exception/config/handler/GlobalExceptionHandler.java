@@ -1,5 +1,6 @@
 package com.fleet.exception.config.handler;
 
+import com.fleet.exception.config.exception.BaseException;
 import com.fleet.exception.json.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

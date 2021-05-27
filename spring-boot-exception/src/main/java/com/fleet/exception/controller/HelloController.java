@@ -1,6 +1,6 @@
 package com.fleet.exception.controller;
 
-import com.fleet.exception.config.handler.BaseException;
+import com.fleet.exception.config.exception.BaseException;
 import com.fleet.exception.json.R;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
