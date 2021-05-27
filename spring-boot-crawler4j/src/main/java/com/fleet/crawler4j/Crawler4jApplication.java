@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author April Han
  */
 @SpringBootApplication
-public class WebMagicApplication {
+public class Crawler4jApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebMagicApplication.class, args);
+        SpringApplication.run(Crawler4jApplication.class, args);
     }
 }

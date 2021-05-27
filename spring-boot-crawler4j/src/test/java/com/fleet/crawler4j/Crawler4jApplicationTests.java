@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WebMagicApplicationTests {
+public class Crawler4jApplicationTests {
 
     @Test
     public void spider() throws Exception {
