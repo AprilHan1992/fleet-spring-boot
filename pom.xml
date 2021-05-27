@@ -116,6 +116,7 @@
         <module>spring-boot-hystrix-dashboard</module>
         <module>spring-boot-hystrix-turbine</module>
         <module>spring-boot-sentinel</module>
+        <module>spring-boot-reactor</module>
         <module>spring-boot-webflux</module>
         <module>spring-boot-rxjava</module>
         <module>spring-boot-cache</module>
