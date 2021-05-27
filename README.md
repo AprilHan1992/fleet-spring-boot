@@ -167,6 +167,7 @@
 - [spring-boot-initializr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-initializr)：Spring Boot 脚手架
 - [spring-boot-sonar](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sonar)：Spring Boot 代码质量管理
 - [spring-boot-map](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-map)：Spring Boot 地图操作
+- [spring-boot-jasypt](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jasypt)：Spring Boot 配置信息加密
 - [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
 
 ### 中级部分：

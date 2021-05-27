@@ -182,6 +182,7 @@
         <module>spring-boot-initializr</module>
         <module>spring-boot-sonar</module>
         <module>spring-boot-map</module>
+        <module>spring-boot-jasypt</module>
         <module>spring-boot-common</module>
         <module>spring-boot-file</module>
         <module>spring-boot-excel</module>
