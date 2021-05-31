@@ -246,4 +246,10 @@ public class HtspTests {
     public void activateProcess() {
         processService.activateProcess("htsp:1");
     }
+
+    @Test
+    public void getUserTaskList() {
+        List<UserTaskInfo> userTaskList = processService.getUserTaskList("htsp");
+        System.out.println(JSON.toJSONString(userTaskList));
+    }
 }

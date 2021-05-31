@@ -1017,4 +1017,31 @@ public class ProcessServiceImpl implements ProcessService {
         }
         return true;
     }
+
+    @Override
+    public List<UserTaskInfo> getUserTaskList(String definitionKey) {
+        List<UserTaskInfo> userTaskList = new ArrayList<>();
+        ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
+                .processDefinitionKey(definitionKey)
+                .latestVersion()
+                .singleResult();
+        String definitionId = processDefinition.getId();
+        BpmnModel bpmnModel = repositoryService.getBpmnModel(definitionId);
+        Collection<FlowElement> flowElements = bpmnModel.getMainProcess().getFlowElements();
+        for (FlowElement flowElement : flowElements) {
+            if (flowElement instanceof UserTask) {
+                UserTask userTask = (UserTask) flowElement;
+                if ("apply".equals(userTask.getId())) {
+                    continue;
+                }
+
+                UserTaskInfo userTaskInfo = new UserTaskInfo();
+                userTaskInfo.setTaskDefinitionKey(userTask.getId());
+                userTaskInfo.setTaskName(userTask.getName());
+                userTaskInfo.setAssignee(userTask.getAssignee());
+                userTaskList.add(userTaskInfo);
+            }
+        }
+        return userTaskList;
+    }
 }

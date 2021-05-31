@@ -1,9 +1,6 @@
 package com.fleet.activiti5.controller;
 
-import com.fleet.activiti5.entity.Approval;
-import com.fleet.activiti5.entity.ProcessDetail;
-import com.fleet.activiti5.entity.TaskDetail;
-import com.fleet.activiti5.entity.Turn;
+import com.fleet.activiti5.entity.*;
 import com.fleet.activiti5.json.R;
 import com.fleet.activiti5.page.Page;
 import com.fleet.activiti5.page.PageUtil;
@@ -15,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -250,5 +248,13 @@ public class ProcessController {
     @GetMapping(value = "/activateProcess")
     public R activateProcess(@RequestParam String businessKey) {
         return R.ok(processService.activateProcess(businessKey));
+    }
+
+    /**
+     * 获取用户任务
+     */
+    @GetMapping("/getUserTaskList")
+    List<UserTaskInfo> getUserTaskList(@RequestParam String definitionKey) {
+        return processService.getUserTaskList(definitionKey);
     }
 }

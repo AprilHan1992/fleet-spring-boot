@@ -137,4 +137,9 @@ public interface ProcessService {
      * 流程激活
      */
     Boolean activateProcess(String businessKey);
+
+    /**
+     * 获取用户任务
+     */
+    List<UserTaskInfo> getUserTaskList(String definitionKey);
 }
