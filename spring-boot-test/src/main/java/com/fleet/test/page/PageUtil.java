@@ -1,4 +1,6 @@
-package com.fleet.gridfs.page;
+package com.fleet.test.page;
+
+import com.fleet.test.page.entity.Page;
 
 import java.util.List;
 

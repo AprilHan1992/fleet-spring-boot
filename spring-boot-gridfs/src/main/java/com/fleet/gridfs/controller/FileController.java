@@ -1,7 +1,6 @@
 package com.fleet.gridfs.controller;
 
 import com.fleet.gridfs.entity.FileInfo;
-import com.fleet.gridfs.page.Page;
 import com.fleet.gridfs.util.UUIDUtil;
 import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSDownloadStream;
@@ -136,10 +135,10 @@ public class FileController {
      * 文件列表
      */
     @RequestMapping("/list")
-    public List<FileInfo> list(@RequestBody Page page) {
+    public List<FileInfo> list(@RequestParam("pageIndex") int pageIndex, @RequestParam("pageRows") int pageRows) {
         Query query = new Query().with(new Sort(Sort.Direction.DESC, "date"));
-        query.skip(page.getFromPageIndex());
-        query.limit(page.getPageRows());
+        query.skip((pageIndex - 1) * pageRows);
+        query.limit(pageRows);
         return mongoTemplate.find(query, FileInfo.class, COLLECTION_NAME);
     }
 }
