@@ -17,7 +17,6 @@ public class UserTests {
     @Resource
     private UserService userService;
 
-
     @Test
     public void insertUser() {
         User user = new User(1L, "fleet");
