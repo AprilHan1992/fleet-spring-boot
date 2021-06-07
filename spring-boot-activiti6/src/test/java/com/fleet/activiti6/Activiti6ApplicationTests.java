@@ -1,7 +1,7 @@
 package com.fleet.activiti6;
 
 import com.alibaba.fastjson.JSON;
-import com.fleet.activiti6.page.Page;
+import com.fleet.activiti6.page.entity.Page;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

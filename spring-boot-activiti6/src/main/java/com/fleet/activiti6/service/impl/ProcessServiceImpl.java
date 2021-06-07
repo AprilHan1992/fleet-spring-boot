@@ -2,7 +2,7 @@ package com.fleet.activiti6.service.impl;
 
 import com.fleet.activiti6.entity.*;
 import com.fleet.activiti6.handler.BaseException;
-import com.fleet.activiti6.page.Page;
+import com.fleet.activiti6.page.entity.Page;
 import com.fleet.activiti6.page.PageUtil;
 import com.fleet.activiti6.service.ProcessService;
 import org.activiti.bpmn.model.Process;
@@ -362,7 +362,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean reApply(String taskId, ProcessDetail<?> processDetail) {
+    public Boolean reapply(String taskId, ProcessDetail<?> processDetail) {
         Task task = taskService.createTaskQuery()
                 .taskId(taskId)
                 .singleResult();
@@ -984,7 +984,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean suspendProcess(String businessKey) {
+    public Boolean suspend(String businessKey) {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();
@@ -999,7 +999,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean activateProcess(String businessKey) {
+    public Boolean activate(String businessKey) {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();
