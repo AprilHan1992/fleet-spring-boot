@@ -32,21 +32,13 @@ public class PageAspect {
 
         if (page != null) {
             PageHelper.startPage(page.getPageIndex(), page.getPageRows());
-            try {
-                PageUtil<?> pageUtil = (PageUtil<?>) pjp.proceed();
-                PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
-                page.setTotalRows((int) pageInfo.getTotal());
-                pageUtil.setPage(page);
-                return pageUtil;
-            } catch (Exception e) {
-                throw e;
-            }
+            PageUtil<?> pageUtil = (PageUtil<?>) pjp.proceed();
+            PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
+            page.setTotalRows((int) pageInfo.getTotal());
+            pageUtil.setPage(page);
+            return pageUtil;
         } else {
-            try {
-                return pjp.proceed();
-            } catch (Exception e) {
-                throw e;
-            }
+            return pjp.proceed();
         }
     }
 }
