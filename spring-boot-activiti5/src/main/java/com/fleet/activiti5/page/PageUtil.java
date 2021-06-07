@@ -1,5 +1,7 @@
 package com.fleet.activiti5.page;
 
+import com.fleet.activiti5.page.entity.Page;
+
 import java.util.List;
 
 /**

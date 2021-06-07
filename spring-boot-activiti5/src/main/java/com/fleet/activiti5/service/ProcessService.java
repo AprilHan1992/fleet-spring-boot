@@ -1,8 +1,8 @@
 package com.fleet.activiti5.service;
 
 import com.fleet.activiti5.entity.*;
-import com.fleet.activiti5.page.Page;
 import com.fleet.activiti5.page.PageUtil;
+import com.fleet.activiti5.page.entity.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -34,6 +34,11 @@ public interface ProcessService {
     Long getTotal(String definitionKey);
 
     /**
+     * 生成同一类型流程 businessKey，（需要注意，同时调用会有相同结果）
+     */
+    String generateBusinessKey(String definitionKey);
+
+    /**
      * 创建流程实例
      */
     TaskDetail<?> start(ProcessDetail<?> processDetail);
@@ -46,7 +51,7 @@ public interface ProcessService {
     /**
      * 重新流程申请
      */
-    Boolean reApply(String taskId, ProcessDetail<?> processDetail);
+    Boolean reapply(String taskId, ProcessDetail<?> processDetail);
 
     /**
      * 完成当前节点审批
@@ -62,6 +67,11 @@ public interface ProcessService {
      * 流程终止（只允许在申请“apply”节点终止流程）
      */
     Boolean stop(String businessKey);
+
+    /**
+     * 流程撤回（并行网关流程撤回，会产生多个）
+     */
+    Boolean withdraw(String businessKey);
 
     /**
      * 流程删除
@@ -92,6 +102,11 @@ public interface ProcessService {
      * 流程详情
      */
     ProcessDetail<?> getByTaskId(String taskId);
+
+    /**
+     * 任务详情
+     */
+    TaskDetail<?> getTaskByTaskId(String taskId);
 
     /**
      * 获取节点操作
@@ -131,15 +146,20 @@ public interface ProcessService {
     /**
      * 流程挂起
      */
-    Boolean suspendProcess(String businessKey);
+    Boolean suspend(String businessKey);
 
     /**
      * 流程激活
      */
-    Boolean activateProcess(String businessKey);
+    Boolean activate(String businessKey);
 
     /**
-     * 获取用户任务
+     * 获取流程用户任务
      */
     List<UserTaskInfo> getUserTaskList(String definitionKey);
+
+    /**
+     * 获取用户参与流程 businessKey 列表
+     */
+    List<String> getBusinessKeyList(String userId);
 }

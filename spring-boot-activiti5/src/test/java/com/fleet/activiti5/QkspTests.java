@@ -2,8 +2,8 @@ package com.fleet.activiti5;
 
 import com.alibaba.fastjson.JSON;
 import com.fleet.activiti5.entity.*;
-import com.fleet.activiti5.page.Page;
 import com.fleet.activiti5.page.PageUtil;
+import com.fleet.activiti5.page.entity.Page;
 import com.fleet.activiti5.service.ProcessService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -106,7 +106,7 @@ public class QkspTests {
     }
 
     @Test
-    public void reApply() {
+    public void reapply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
         processDetail.setDefinitionKey("qksq");
         processDetail.setBusinessKey("qksq:1");
@@ -128,7 +128,7 @@ public class QkspTests {
         assignees.put("signerList", signerList);
         assignees.put("cw", "4");
         processDetail.setAssignees(assignees);
-        System.out.println(JSON.toJSONString(processService.reApply("2511", processDetail)));
+        System.out.println(JSON.toJSONString(processService.reapply("2511", processDetail)));
     }
 
     @Test
@@ -244,12 +244,12 @@ public class QkspTests {
     }
 
     @Test
-    public void suspendProcess() {
-        processService.suspendProcess("qksq:1");
+    public void suspend() {
+        processService.suspend("qksq:1");
     }
 
     @Test
-    public void activateProcess() {
-        processService.activateProcess("qksq:1");
+    public void activate() {
+        processService.activate("qksq:1");
     }
 }
