@@ -2,7 +2,7 @@ package com.fleet.flowable.service.impl;
 
 import com.fleet.flowable.entity.*;
 import com.fleet.flowable.handler.BaseException;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
 import com.fleet.flowable.service.ProcessService;
 import org.apache.commons.lang3.StringUtils;
@@ -367,7 +367,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean reApply(String taskId, ProcessDetail<?> processDetail) {
+    public Boolean reapply(String taskId, ProcessDetail<?> processDetail) {
         Task task = taskService.createTaskQuery()
                 .taskId(taskId)
                 .singleResult();
@@ -943,7 +943,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean suspendProcess(String businessKey) {
+    public Boolean suspend(String businessKey) {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();
@@ -958,7 +958,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public Boolean activateProcess(String businessKey) {
+    public Boolean activate(String businessKey) {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();

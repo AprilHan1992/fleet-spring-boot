@@ -1,4 +1,4 @@
-package com.fleet.test.page.entity;
+package com.fleet.flowable.page.entity;
 
 import java.util.HashMap;
 

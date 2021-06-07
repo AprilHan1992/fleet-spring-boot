@@ -5,7 +5,7 @@ import com.fleet.flowable.entity.ProcessDetail;
 import com.fleet.flowable.entity.TaskDetail;
 import com.fleet.flowable.entity.Turn;
 import com.fleet.flowable.json.R;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
 import com.fleet.flowable.service.ProcessService;
 import org.springframework.http.ResponseEntity;
@@ -79,9 +79,9 @@ public class ProcessController {
     /**
      * 重新流程申请
      */
-    @PostMapping("/reApply/{taskId}")
-    public R reApply(@PathVariable("taskId") String taskId, @RequestBody ProcessDetail<?> processDetail) {
-        return R.ok(processService.reApply(taskId, processDetail));
+    @PostMapping("/reapply/{taskId}")
+    public R reapply(@PathVariable("taskId") String taskId, @RequestBody ProcessDetail<?> processDetail) {
+        return R.ok(processService.reapply(taskId, processDetail));
     }
 
     /**
@@ -239,16 +239,16 @@ public class ProcessController {
     /**
      * 流程挂起
      */
-    @GetMapping(value = "/suspendProcess")
-    public R suspendProcess(@RequestParam String businessKey) {
-        return R.ok(processService.suspendProcess(businessKey));
+    @GetMapping(value = "/suspend")
+    public R suspend(@RequestParam String businessKey) {
+        return R.ok(processService.suspend(businessKey));
     }
 
     /**
      * 流程激活
      */
-    @GetMapping(value = "/activateProcess")
-    public R activateProcess(@RequestParam String businessKey) {
-        return R.ok(processService.activateProcess(businessKey));
+    @GetMapping(value = "/activate")
+    public R activate(@RequestParam String businessKey) {
+        return R.ok(processService.activate(businessKey));
     }
 }

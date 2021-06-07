@@ -1,7 +1,7 @@
 package com.fleet.flowable.service;
 
 import com.fleet.flowable.entity.*;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
 import org.springframework.http.ResponseEntity;
 
@@ -46,7 +46,7 @@ public interface ProcessService {
     /**
      * 重新流程申请
      */
-    Boolean reApply(String taskId, ProcessDetail<?> processDetail);
+    Boolean reapply(String taskId, ProcessDetail<?> processDetail);
 
     /**
      * 完成当前节点审批
@@ -131,10 +131,10 @@ public interface ProcessService {
     /**
      * 流程挂起
      */
-    Boolean suspendProcess(String businessKey);
+    Boolean suspend(String businessKey);
 
     /**
      * 流程激活
      */
-    Boolean activateProcess(String businessKey);
+    Boolean activate(String businessKey);
 }

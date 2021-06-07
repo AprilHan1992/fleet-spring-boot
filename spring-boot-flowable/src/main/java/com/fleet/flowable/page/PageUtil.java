@@ -1,5 +1,7 @@
 package com.fleet.flowable.page;
 
+import com.fleet.flowable.page.entity.Page;
+
 import java.util.List;
 
 /**

@@ -2,7 +2,7 @@ package com.fleet.flowable;
 
 import com.alibaba.fastjson.JSON;
 import com.fleet.flowable.entity.*;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
 import com.fleet.flowable.service.ProcessService;
 import org.junit.Test;
@@ -100,7 +100,7 @@ public class QjsqTests {
     }
 
     @Test
-    public void reApply() {
+    public void reapply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
         processDetail.setDefinitionKey("qjsq");
         processDetail.setBusinessKey("qjsq:1");
@@ -119,7 +119,7 @@ public class QjsqTests {
         assignees.put("jl", "2");
         assignees.put("rs", "3");
         processDetail.setAssignees(assignees);
-        System.out.println(JSON.toJSONString(processService.reApply("2508", processDetail)));
+        System.out.println(JSON.toJSONString(processService.reapply("2508", processDetail)));
     }
 
     @Test
@@ -235,12 +235,12 @@ public class QjsqTests {
     }
 
     @Test
-    public void suspendProcess() {
-        processService.suspendProcess("qjsq:1");
+    public void suspend() {
+        processService.suspend("qjsq:1");
     }
 
     @Test
-    public void activateProcess() {
-        processService.activateProcess("qjsq:1");
+    public void activate() {
+        processService.activate("qjsq:1");
     }
 }

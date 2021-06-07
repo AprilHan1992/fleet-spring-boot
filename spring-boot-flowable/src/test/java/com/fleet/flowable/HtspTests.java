@@ -2,7 +2,7 @@ package com.fleet.flowable;
 
 import com.alibaba.fastjson.JSON;
 import com.fleet.flowable.entity.*;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
 import com.fleet.flowable.service.ProcessService;
 import org.junit.Test;
@@ -102,7 +102,7 @@ public class HtspTests {
     }
 
     @Test
-    public void reApply() {
+    public void reapply() {
         ProcessDetail<List<Integer>> processDetail = new ProcessDetail<>();
         processDetail.setDefinitionKey("htsp");
         processDetail.setBusinessKey("htsp:1");
@@ -122,7 +122,7 @@ public class HtspTests {
         assignees.put("fw", "3");
         assignees.put("zjl", "4");
         processDetail.setAssignees(assignees);
-        System.out.println(JSON.toJSONString(processService.reApply("2513", processDetail)));
+        System.out.println(JSON.toJSONString(processService.reapply("2513", processDetail)));
     }
 
     @Test
@@ -238,12 +238,12 @@ public class HtspTests {
     }
 
     @Test
-    public void suspendProcess() {
-        processService.suspendProcess("htsp:1");
+    public void suspend() {
+        processService.suspend("htsp:1");
     }
 
     @Test
-    public void activateProcess() {
-        processService.activateProcess("htsp:1");
+    public void activate() {
+        processService.activate("htsp:1");
     }
 }

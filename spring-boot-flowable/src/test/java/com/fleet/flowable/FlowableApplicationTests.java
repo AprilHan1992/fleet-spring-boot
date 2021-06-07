@@ -1,7 +1,7 @@
 package com.fleet.flowable;
 
 import com.alibaba.fastjson.JSON;
-import com.fleet.flowable.page.Page;
+import com.fleet.flowable.page.entity.Page;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
