@@ -42,18 +42,6 @@ public class Page extends HashMap<String, Object> {
         }
     }
 
-    public int getFromPageIndex() {
-        int fromPageIndex = (getPageIndex() - 1) * getPageRows();
-        fromPageIndex = Math.min(fromPageIndex, getTotalRows());
-        return fromPageIndex;
-    }
-
-    public int getToPageIndex() {
-        int toPageIndex = getPageIndex() * getPageRows();
-        toPageIndex = Math.min(toPageIndex, getTotalRows());
-        return toPageIndex;
-    }
-
     public int getPageRows() {
         int pageRows = (int) super.get("pageRows");
         if (pageRows > 0) {
@@ -66,6 +54,18 @@ public class Page extends HashMap<String, Object> {
         if (pageRows > 0) {
             super.put("pageRows", pageRows);
         }
+    }
+
+    public int getFromPageIndex() {
+        int fromPageIndex = (getPageIndex() - 1) * getPageRows();
+        fromPageIndex = Math.min(fromPageIndex, getTotalRows());
+        return fromPageIndex;
+    }
+
+    public int getToPageIndex() {
+        int toPageIndex = getPageIndex() * getPageRows();
+        toPageIndex = Math.min(toPageIndex, getTotalRows());
+        return toPageIndex;
     }
 
     public int getTotalRows() {
