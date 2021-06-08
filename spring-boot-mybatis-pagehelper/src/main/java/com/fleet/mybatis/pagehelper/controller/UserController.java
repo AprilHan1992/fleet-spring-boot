@@ -1,7 +1,7 @@
 package com.fleet.mybatis.pagehelper.controller;
 
-import com.fleet.mybatis.pagehelper.entity.Page;
-import com.fleet.mybatis.pagehelper.entity.PageUtil;
+import com.fleet.mybatis.pagehelper.page.entity.Page;
+import com.fleet.mybatis.pagehelper.page.PageUtil;
 import com.fleet.mybatis.pagehelper.entity.User;
 import com.fleet.mybatis.pagehelper.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;

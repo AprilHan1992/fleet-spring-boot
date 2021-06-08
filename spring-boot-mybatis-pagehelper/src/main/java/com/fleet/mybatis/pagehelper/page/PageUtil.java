@@ -1,4 +1,6 @@
-package com.fleet.mybatis.pagehelper.entity;
+package com.fleet.mybatis.pagehelper.page;
+
+import com.fleet.mybatis.pagehelper.page.entity.Page;
 
 import java.util.List;
 
