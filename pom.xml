@@ -211,5 +211,6 @@
         <module>spring-boot-crawler4j</module>
         <module>spring-boot-jpush</module>
         <module>spring-boot-chat</module>
+        <module>spring-boot-qywx</module>
     </modules>
 </project>

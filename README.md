@@ -202,3 +202,4 @@
 - [spring-boot-crawler4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-crawler4j)：Spring Boot Crawler4j 爬虫
 - [spring-boot-jpush](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jpush)：Spring Boot 极光推送
 - [spring-boot-chat](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-chat)：Spring Boot 机器人
+- [spring-boot-qywx](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-qywx)：Spring Boot 企业微信

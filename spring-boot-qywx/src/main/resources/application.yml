@@ -1,0 +1,6 @@
+server:
+  port: 8000
+qywx:
+  corp-id:
+  corp-secret:
+  agent-id:
