@@ -13,6 +13,14 @@ public class PageUtil<T> {
 
     private Page page;
 
+    public PageUtil() {
+    }
+
+    public PageUtil(List<T> list, Page page) {
+        this.list = list;
+        this.page = page;
+    }
+
     public List<T> getList() {
         return list;
     }
