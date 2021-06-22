@@ -20,12 +20,12 @@ public class Pager {
     /**
      * 请求的页数的开始偏移量（包含），不设则默认为0
      */
-    private int fromPageIndex = 0;
+    private int fromIndex = 0;
 
     /**
      * 请求的页数的结束偏移量（不包含），不设则默认为20
      */
-    private int toPageIndex = 20;
+    private int toIndex = 20;
 
     /**
      * 总行数
@@ -57,8 +57,8 @@ public class Pager {
                 this.hasPrevPage = true;
             }
         }
-        this.fromPageIndex = (this.pageIndex - 1) * this.pageRows;
-        this.toPageIndex = this.pageIndex * this.pageRows;
+        this.fromIndex = (this.pageIndex - 1) * this.pageRows;
+        this.toIndex = this.pageIndex * this.pageRows;
     }
 
     public Pager(int pageIndex, int pageRows) {
@@ -71,8 +71,8 @@ public class Pager {
         if (pageRows > 0) {
             this.pageRows = pageRows;
         }
-        this.fromPageIndex = (this.pageIndex - 1) * this.pageRows;
-        this.toPageIndex = this.pageIndex * this.pageRows;
+        this.fromIndex = (this.pageIndex - 1) * this.pageRows;
+        this.toIndex = this.pageIndex * this.pageRows;
     }
 
     public int getPageIndex() {
@@ -95,23 +95,23 @@ public class Pager {
         }
     }
 
-    public int getFromPageIndex() {
-        return fromPageIndex;
+    public int getFromIndex() {
+        return fromIndex;
     }
 
-    public void setFromPageIndex(int fromPageIndex) {
-        if (fromPageIndex >= 0) {
-            this.fromPageIndex = fromPageIndex;
+    public void setFromIndex(int fromIndex) {
+        if (fromIndex >= 0) {
+            this.fromIndex = fromIndex;
         }
     }
 
-    public int getToPageIndex() {
-        return toPageIndex;
+    public int getToIndex() {
+        return toIndex;
     }
 
-    public void setToPageIndex(int toPageIndex) {
-        if (toPageIndex >= 0) {
-            this.toPageIndex = toPageIndex;
+    public void setToIndex(int toIndex) {
+        if (toIndex >= 0) {
+            this.toIndex = toIndex;
         }
     }
 
@@ -120,11 +120,19 @@ public class Pager {
     }
 
     public void setTotalRows(int totalRows) {
-        if (totalRows >= 0) {
-            this.totalRows = totalRows;
+        if (totalRows == 0) {
+            this.pageIndex = 1;
+            this.fromIndex = 0;
+            this.toIndex = 0;
+            this.totalRows = 0;
+            this.totalPages = 1;
+            this.hasPrevPage = false;
+            this.hasNextPage = false;
+        } else {
+            if (totalRows > 0) {
+                this.totalRows = totalRows;
 
-            int totalPages = (int) Math.ceil((float) totalRows / this.pageRows);
-            if (totalPages > 0) {
+                int totalPages = (int) Math.ceil((float) totalRows / this.pageRows);
                 this.totalPages = totalPages;
 
                 if (this.pageIndex < totalPages) {
@@ -137,10 +145,10 @@ public class Pager {
                         }
                     }
 
-                    int fromPageIndex = (this.pageIndex - 1) * this.pageRows;
-                    this.fromPageIndex = Math.min(fromPageIndex, totalRows);
-                    int toPageIndex = this.pageIndex * this.pageRows;
-                    this.toPageIndex = Math.min(toPageIndex, totalRows);
+                    int fromIndex = (this.pageIndex - 1) * this.pageRows;
+                    this.fromIndex = Math.min(fromIndex, totalRows);
+                    int toIndex = this.pageIndex * this.pageRows;
+                    this.toIndex = Math.min(toIndex, totalRows);
                 }
             }
         }
