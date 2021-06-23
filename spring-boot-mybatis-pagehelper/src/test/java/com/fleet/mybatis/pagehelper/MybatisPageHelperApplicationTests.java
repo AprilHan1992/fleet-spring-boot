@@ -2,9 +2,7 @@ package com.fleet.mybatis.pagehelper;
 
 import com.fleet.mybatis.pagehelper.entity.User;
 import com.fleet.mybatis.pagehelper.page.PageUtil;
-import com.fleet.mybatis.pagehelper.page.PagerUtil;
 import com.fleet.mybatis.pagehelper.page.entity.Page;
-import com.fleet.mybatis.pagehelper.page.entity.Pager;
 import com.fleet.mybatis.pagehelper.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,16 +22,9 @@ public class MybatisPageHelperApplicationTests {
 
     @Test
     public void listPage() {
-        Page page = new Page(3, 5);
-        PageUtil<User> pageUtil = userService.listPage(page);
-        System.out.println(pageUtil);
-    }
-
-    @Test
-    public void listPager() {
-        Pager pager = new Pager(3, 10);
+        Page page = new Page(1, 5);
         Map<String, Object> map = new HashMap<>();
-        PagerUtil<User> pagerUtil = userService.listPager(map, pager);
-        System.out.println(pagerUtil);
+        PageUtil<User> pageUtil = userService.listPage(map, page);
+        System.out.println(pageUtil);
     }
 }

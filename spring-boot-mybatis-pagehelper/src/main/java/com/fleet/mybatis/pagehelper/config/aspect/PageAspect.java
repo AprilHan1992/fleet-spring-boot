@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 /**
- * 自动分页AOP拦截器（service方法名要带后缀Page，参数中要带Page page，否则会按照正常处理）
+ * 自动分页AOP拦截器（service方法名要带后缀Pager，参数中要带Pager pager，否则会按照正常处理）
  */
 @Aspect
 @Component
@@ -32,11 +32,16 @@ public class PageAspect {
 
         if (page != null) {
             PageHelper.startPage(page.getPageIndex(), page.getPageRows());
-            PageUtil<?> pageUtil = (PageUtil<?>) pjp.proceed();
-            PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
-            page.setTotalRows((int) pageInfo.getTotal());
-            pageUtil.setPage(page);
-            return pageUtil;
+            Object object = pjp.proceed();
+            if (object instanceof PageUtil<?>) {
+                PageUtil<?> pageUtil = (PageUtil<?>) object;
+                PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
+                page.setTotalRows((int) pageInfo.getTotal());
+                pageUtil.setPage(page);
+                return pageUtil;
+            } else {
+                return object;
+            }
         } else {
             return pjp.proceed();
         }

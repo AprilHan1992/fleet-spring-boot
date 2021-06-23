@@ -1,99 +1,182 @@
 package com.fleet.mybatis.pagehelper.page.entity;
 
-import java.util.HashMap;
-
 /**
- * 分页信息（可以设置查询条件）
+ * 分页信息
  *
  * @author April Han
  */
-public class Page extends HashMap<String, Object> {
+public class Page {
 
-    {
-        // 请求的页数（从1开始），不设则默认为1
-        super.put("pageIndex", 1);
-        // 请求的每页行数，不设则默认为20
-        super.put("pageRows", 20);
-        // 总行数
-        super.put("totalRows", 0);
-        // 总页数
-        super.put("totalPages", 1);
-    }
+    /**
+     * 请求的页数（从1开始），不设则默认为1
+     */
+    private int pageIndex = 1;
+
+    /**
+     * 请求的每页行数，不设则默认为20
+     */
+    private int pageRows = 20;
+
+    /**
+     * 请求的页数的开始偏移量（包含），不设则默认为0
+     */
+    private int fromIndex = 0;
+
+    /**
+     * 请求的页数的结束偏移量（不包含），不设则默认为20
+     */
+    private int toIndex = 20;
+
+    /**
+     * 总行数
+     */
+    private int totalRows = 0;
+
+    /**
+     * 总页数
+     */
+    private int totalPages = 1;
+
+    /**
+     * 是否有上一页
+     */
+    private boolean hasPrevPage = false;
+
+    /**
+     * 是否有下一页
+     */
+    private boolean hasNextPage = false;
 
     public Page() {
     }
 
+    public Page(int pageIndex) {
+        if (pageIndex > 0) {
+            this.pageIndex = pageIndex;
+            if (pageIndex > 1) {
+                this.hasPrevPage = true;
+            }
+        }
+        this.fromIndex = (this.pageIndex - 1) * this.pageRows;
+        this.toIndex = this.pageIndex * this.pageRows;
+    }
+
     public Page(int pageIndex, int pageRows) {
-        setPageIndex(pageIndex);
-        setPageRows(pageRows);
+        if (pageIndex > 0) {
+            this.pageIndex = pageIndex;
+            if (pageIndex > 1) {
+                this.hasPrevPage = true;
+            }
+        }
+        if (pageRows > 0) {
+            this.pageRows = pageRows;
+        }
+        this.fromIndex = (this.pageIndex - 1) * this.pageRows;
+        this.toIndex = this.pageIndex * this.pageRows;
     }
 
     public int getPageIndex() {
-        int pageIndex = (int) super.get("pageIndex");
-        if (pageIndex > 0) {
-            return pageIndex;
-        }
-        return 1;
+        return pageIndex;
     }
 
     public void setPageIndex(int pageIndex) {
         if (pageIndex > 0) {
-            super.put("pageIndex", pageIndex);
+            this.pageIndex = pageIndex;
         }
     }
 
     public int getPageRows() {
-        int pageRows = (int) super.get("pageRows");
-        if (pageRows > 0) {
-            return pageRows;
-        }
-        return 20;
+        return pageRows;
     }
 
     public void setPageRows(int pageRows) {
         if (pageRows > 0) {
-            super.put("pageRows", pageRows);
+            this.pageRows = pageRows;
         }
     }
 
-    public int getFromPageIndex() {
-        int fromPageIndex = (getPageIndex() - 1) * getPageRows();
-        fromPageIndex = Math.min(fromPageIndex, getTotalRows());
-        return fromPageIndex;
+    public int getFromIndex() {
+        return fromIndex;
     }
 
-    public int getToPageIndex() {
-        int toPageIndex = getPageIndex() * getPageRows();
-        toPageIndex = Math.min(toPageIndex, getTotalRows());
-        return toPageIndex;
+    public void setFromIndex(int fromIndex) {
+        if (fromIndex >= 0) {
+            this.fromIndex = fromIndex;
+        }
+    }
+
+    public int getToIndex() {
+        return toIndex;
+    }
+
+    public void setToIndex(int toIndex) {
+        if (toIndex >= 0) {
+            this.toIndex = toIndex;
+        }
     }
 
     public int getTotalRows() {
-        return (int) super.get("totalRows");
+        return totalRows;
     }
 
     public void setTotalRows(int totalRows) {
-        if (totalRows >= 0) {
-            super.put("totalRows", totalRows);
+        if (totalRows == 0) {
+            this.pageIndex = 1;
+            this.fromIndex = 0;
+            this.toIndex = 0;
+            this.totalRows = 0;
+            this.totalPages = 1;
+            this.hasPrevPage = false;
+            this.hasNextPage = false;
+        } else {
+            if (totalRows > 0) {
+                this.totalRows = totalRows;
 
-            int totalPages = (int) Math.ceil((float) totalRows / getPageRows());
-            if (totalPages > 0) {
-                setTotalPages(totalPages);
+                int totalPages = (int) Math.ceil((float) totalRows / this.pageRows);
+                this.totalPages = totalPages;
 
-                if (getPageIndex() > totalPages) {
-                    setPageIndex(totalPages);
+                if (this.pageIndex < totalPages) {
+                    this.hasNextPage = true;
+                } else {
+                    if (this.pageIndex > totalPages) {
+                        this.pageIndex = totalPages;
+                        if (this.pageIndex > 1) {
+                            this.hasPrevPage = true;
+                        }
+                    }
+
+                    int fromIndex = (this.pageIndex - 1) * this.pageRows;
+                    this.fromIndex = Math.min(fromIndex, totalRows);
+                    int toIndex = this.pageIndex * this.pageRows;
+                    this.toIndex = Math.min(toIndex, totalRows);
                 }
             }
         }
     }
 
     public int getTotalPages() {
-        return (int) super.get("totalPages");
+        return totalPages;
     }
 
     public void setTotalPages(int totalPages) {
         if (totalPages > 0) {
-            super.put("totalPages", totalPages);
+            this.totalPages = totalPages;
         }
+    }
+
+    public boolean getHasPrevPage() {
+        return hasPrevPage;
+    }
+
+    public void setHasPrevPage(boolean hasPrevPage) {
+        this.hasPrevPage = hasPrevPage;
+    }
+
+    public boolean getHasNextPage() {
+        return hasNextPage;
+    }
+
+    public void setHasNextPage(boolean hasNextPage) {
+        this.hasNextPage = hasNextPage;
     }
 }

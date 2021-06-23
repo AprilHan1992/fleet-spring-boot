@@ -3,9 +3,7 @@ package com.fleet.mybatis.pagehelper.service.impl;
 import com.fleet.mybatis.pagehelper.dao.UserDao;
 import com.fleet.mybatis.pagehelper.entity.User;
 import com.fleet.mybatis.pagehelper.page.PageUtil;
-import com.fleet.mybatis.pagehelper.page.PagerUtil;
 import com.fleet.mybatis.pagehelper.page.entity.Page;
-import com.fleet.mybatis.pagehelper.page.entity.Pager;
 import com.fleet.mybatis.pagehelper.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -54,18 +52,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageUtil<User> listPage(Page page) {
+    public PageUtil<User> listPage(Map<String, Object> map, Page page) {
         PageUtil<User> pageUtil = new PageUtil<>();
-        List<User> list = userDao.list(page);
+        List<User> list = userDao.list(map);
         pageUtil.setList(list);
         return pageUtil;
-    }
-
-    @Override
-    public PagerUtil<User> listPager(Map<String, Object> map, Pager pager) {
-        PagerUtil<User> pagerUtil = new PagerUtil<>();
-        List<User> list = userDao.list(map);
-        pagerUtil.setList(list);
-        return pagerUtil;
     }
 }
