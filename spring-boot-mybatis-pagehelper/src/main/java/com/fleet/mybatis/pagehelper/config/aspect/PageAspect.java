@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 /**
- * 自动分页AOP拦截器（service方法名要带后缀Pager，参数中要带Pager pager，否则会按照正常处理）
+ * 自动分页AOP拦截器（service方法名要带后缀Page，参数中要带Page page，否则会按照正常处理）
  */
 @Aspect
 @Component
