@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.mybatis.dynamic.sql.SqlBuilder.isIn;
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageUtil<User> listPage(Page page) {
+    public PageUtil<User> listPage(Map<String, Object> map, Page page) {
         PageUtil<User> pageUtil = new PageUtil<>();
         // Lambda条件查询
         List<User> list = userMapper.select(c -> c.where(UserDynamicSqlSupport.name, isLikeWhenPresent("%fleet%"))

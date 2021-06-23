@@ -5,6 +5,7 @@ import com.fleet.mybatis.dynamic.sql.page.PageUtil;
 import com.fleet.mybatis.dynamic.sql.page.entity.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -18,5 +19,5 @@ public interface UserService {
 
     List<User> list();
 
-    PageUtil<User> listPage(Page page);
+    PageUtil<User> listPage(Map<String, Object> map, Page page);
 }

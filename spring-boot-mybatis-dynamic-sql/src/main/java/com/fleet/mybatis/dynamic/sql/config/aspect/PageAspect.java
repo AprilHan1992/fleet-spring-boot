@@ -32,11 +32,16 @@ public class PageAspect {
 
         if (page != null) {
             PageHelper.startPage(page.getPageIndex(), page.getPageRows());
-            PageUtil<?> pageUtil = (PageUtil<?>) pjp.proceed();
-            PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
-            page.setTotalRows((int) pageInfo.getTotal());
-            pageUtil.setPage(page);
-            return pageUtil;
+            Object object = pjp.proceed();
+            if (object instanceof PageUtil<?>) {
+                PageUtil<?> pageUtil = (PageUtil<?>) object;
+                PageInfo<?> pageInfo = new PageInfo<>(pageUtil.getList());
+                page.setTotalRows((int) pageInfo.getTotal());
+                pageUtil.setPage(page);
+                return pageUtil;
+            } else {
+                return object;
+            }
         } else {
             return pjp.proceed();
         }

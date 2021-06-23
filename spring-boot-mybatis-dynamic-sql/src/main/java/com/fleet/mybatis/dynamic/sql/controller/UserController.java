@@ -6,10 +6,12 @@ import com.fleet.mybatis.dynamic.sql.page.entity.Page;
 import com.fleet.mybatis.dynamic.sql.service.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -44,7 +46,10 @@ public class UserController {
     }
 
     @RequestMapping("/listPage")
-    public PageUtil<User> listPage(@RequestBody Page page) {
-        return userService.listPage(page);
+    public PageUtil<User> listPage(@RequestParam Map<String, Object> map,
+                                   @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                                   @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        return userService.listPage(map, page);
     }
 }
