@@ -1,8 +1,8 @@
 package com.fleet.flowable.service;
 
 import com.fleet.flowable.entity.*;
-import com.fleet.flowable.page.entity.Page;
 import com.fleet.flowable.page.PageUtil;
+import com.fleet.flowable.page.entity.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -16,22 +16,27 @@ public interface ProcessService {
     /**
      * 我的待办列表
      */
-    PageUtil<TaskDetail<?>> myTaskList(String userId, Page page);
+    PageUtil<TaskDetail<?>> myTaskList(String userId, String initiator, String title, String definitionKey, String definitionName, Page page);
 
     /**
      * 我的申请列表
      */
-    PageUtil<ProcessDetail<?>> myAppliedList(String userId, Page page);
+    PageUtil<ProcessDetail<?>> myAppliedList(String userId, String assignee, String title, String definitionKey, String definitionName, String state, Page page);
 
     /**
      * 我的审批列表
      */
-    PageUtil<ProcessDetail<?>> myApprovedList(String userId, Page page);
+    PageUtil<ProcessDetail<?>> myApprovedList(String userId, String initiator, String title, String definitionKey, String definitionName, String state, Page page);
 
     /**
      * 获取同一类型流程数量
      */
     Long getTotal(String definitionKey);
+
+    /**
+     * 生成同一类型流程 businessKey，（需要注意，同时调用会有相同结果）
+     */
+    String generateBusinessKey(String definitionKey);
 
     /**
      * 创建流程实例
@@ -94,6 +99,11 @@ public interface ProcessService {
     ProcessDetail<?> getByTaskId(String taskId);
 
     /**
+     * 任务详情
+     */
+    TaskDetail<?> getTaskByTaskId(String taskId);
+
+    /**
      * 获取节点操作
      */
     List<String> getTaskHandleList(String taskId);
@@ -137,4 +147,14 @@ public interface ProcessService {
      * 流程激活
      */
     Boolean activate(String businessKey);
+
+    /**
+     * 获取流程用户任务
+     */
+    List<UserTaskInfo> getUserTaskList(String definitionKey);
+
+    /**
+     * 获取用户参与流程 businessKey 列表
+     */
+    List<String> getBusinessKeyList(String userId);
 }

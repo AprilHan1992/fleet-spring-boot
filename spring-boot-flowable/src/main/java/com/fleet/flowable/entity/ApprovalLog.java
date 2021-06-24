@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 审批记录
@@ -37,7 +38,7 @@ public class ApprovalLog implements Serializable {
     /**
      * 备注
      */
-    private String remark;
+    private List<String> remarks;
 
     /**
      * 操作时间
@@ -77,12 +78,12 @@ public class ApprovalLog implements Serializable {
         this.handle = handle;
     }
 
-    public String getRemark() {
-        return remark;
+    public List<String> getRemarks() {
+        return remarks;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setRemarks(List<String> remarks) {
+        this.remarks = remarks;
     }
 
     public Date getHandleTime() {
