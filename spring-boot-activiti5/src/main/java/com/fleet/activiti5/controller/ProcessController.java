@@ -29,8 +29,15 @@ public class ProcessController {
      * 我的待办列表
      */
     @PostMapping("/myTaskList/{userId}")
-    public R myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, page);
+    public R myTaskList(@PathVariable("userId") String userId,
+                        @RequestParam(value = "initiator", required = false) String initiator,
+                        @RequestParam(value = "title", required = false) String title,
+                        @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                        @RequestParam(value = "definitionName", required = false) String definitionName,
+                        @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                        @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, initiator, title, definitionKey, definitionName, page);
         return R.ok(pageUtil);
     }
 
@@ -38,8 +45,16 @@ public class ProcessController {
      * 我的申请列表
      */
     @PostMapping("/myAppliedList/{userId}")
-    public R myAppliedList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, page);
+    public R myAppliedList(@PathVariable("userId") String userId,
+                           @RequestParam(value = "assignee", required = false) String assignee,
+                           @RequestParam(value = "title", required = false) String title,
+                           @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                           @RequestParam(value = "definitionName", required = false) String definitionName,
+                           @RequestParam(value = "state", required = false) String state,
+                           @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                           @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, assignee, title, definitionKey, definitionName, state, page);
         return R.ok(pageUtil);
     }
 
@@ -47,8 +62,16 @@ public class ProcessController {
      * 我的审批列表
      */
     @PostMapping("/myApprovedList/{userId}")
-    public R myApprovedList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, page);
+    public R myApprovedList(@PathVariable("userId") String userId,
+                            @RequestParam(value = "initiator", required = false) String initiator,
+                            @RequestParam(value = "title", required = false) String title,
+                            @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                            @RequestParam(value = "definitionName", required = false) String definitionName,
+                            @RequestParam(value = "state", required = false) String state,
+                            @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                            @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, initiator, title, definitionKey, definitionName, state, page);
         return R.ok(pageUtil);
     }
 

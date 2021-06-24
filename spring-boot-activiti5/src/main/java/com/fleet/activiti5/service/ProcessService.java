@@ -16,17 +16,17 @@ public interface ProcessService {
     /**
      * 我的待办列表
      */
-    PageUtil<TaskDetail<?>> myTaskList(String userId, Page page);
+    PageUtil<TaskDetail<?>> myTaskList(String userId, String initiator, String title, String definitionKey, String definitionName, Page page);
 
     /**
      * 我的申请列表
      */
-    PageUtil<ProcessDetail<?>> myAppliedList(String userId, Page page);
+    PageUtil<ProcessDetail<?>> myAppliedList(String userId, String assignee, String title, String definitionKey, String definitionName, String state, Page page);
 
     /**
      * 我的审批列表
      */
-    PageUtil<ProcessDetail<?>> myApprovedList(String userId, Page page);
+    PageUtil<ProcessDetail<?>> myApprovedList(String userId, String initiator, String title, String definitionKey, String definitionName, String state, Page page);
 
     /**
      * 获取同一类型流程数量

@@ -55,30 +55,29 @@ public class ProcessServiceImpl implements ProcessService {
     private ProcessEngineConfiguration processEngineConfiguration;
 
     @Override
-    public PageUtil<TaskDetail<?>> myTaskList(String userId, Page page) {
+    public PageUtil<TaskDetail<?>> myTaskList(String userId, String initiator, String title, String definitionKey, String definitionName, Page page) {
         PageUtil<TaskDetail<?>> pageUtil = new PageUtil<>();
         TaskQuery taskQuery = taskService.createTaskQuery();
         taskQuery.taskAssignee(userId);
-        String initiator = Objects.toString(page.get("initiator"), "");
         if (StringUtils.isNotEmpty(initiator)) {
             taskQuery.processVariableValueEquals("initiator", initiator);
         }
-        String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             taskQuery.processVariableValueLike("title", "%" + title + "%");
         }
-        String definitionKey = Objects.toString(page.get("definitionKey"), "");
         if (StringUtils.isNotEmpty(definitionKey)) {
             taskQuery.processDefinitionKey(definitionKey);
         }
-        String definitionName = Objects.toString(page.get("definitionName"), "");
         if (StringUtils.isNotEmpty(definitionName)) {
             taskQuery.processDefinitionName(definitionName);
         }
         taskQuery.orderByTaskCreateTime().asc();
-        List<Task> taskList = taskQuery.listPage(page.getFromPageIndex(), page.getPageRows());
+
+        long count = taskQuery.count();
+        page.setTotalRows((int) count);
 
         List<TaskDetail<?>> taskDetailList = new ArrayList<>();
+        List<Task> taskList = taskQuery.listPage(page.getFromIndex(), page.getPageRows());
         if (taskList != null) {
             for (Task task : taskList) {
                 TaskDetail<?> taskDetail = getTaskDetail(task);
@@ -86,10 +85,7 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
 
-        long count = taskQuery.count();
-
         pageUtil.setList(taskDetailList);
-        page.setTotalRows((int) count);
         pageUtil.setPage(page);
         return pageUtil;
     }
@@ -127,27 +123,22 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public PageUtil<ProcessDetail<?>> myAppliedList(String userId, Page page) {
+    public PageUtil<ProcessDetail<?>> myAppliedList(String userId, String assignee, String title, String definitionKey, String definitionName, String state, Page page) {
         PageUtil<ProcessDetail<?>> pageUtil = new PageUtil<>();
         HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
         historicProcessInstanceQuery.variableValueEquals("initiator", userId);
-        String assignee = Objects.toString(page.get("assignee"), "");
         if (StringUtils.isNotEmpty(assignee)) {
             historicProcessInstanceQuery.involvedUser(assignee);
         }
-        String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
         }
-        String definitionKey = Objects.toString(page.get("definitionKey"), "");
         if (StringUtils.isNotEmpty(definitionKey)) {
             historicProcessInstanceQuery.processDefinitionKey(definitionKey);
         }
-        String definitionName = Objects.toString(page.get("definitionName"), "");
         if (StringUtils.isNotEmpty(definitionName)) {
             historicProcessInstanceQuery.processDefinitionName(definitionName);
         }
-        String state = Objects.toString(page.get("state"), "");
         if (StringUtils.isNotEmpty(state)) {
             if ("1".equals(state)) {
                 historicProcessInstanceQuery.unfinished();
@@ -160,9 +151,12 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
         historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
-        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
+
+        long count = historicProcessInstanceQuery.count();
+        page.setTotalRows((int) count);
 
         List<ProcessDetail<?>> processDetailList = new ArrayList<>();
+        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromIndex(), page.getPageRows());
         if (historicProcessInstanceList != null) {
             for (HistoricProcessInstance historicProcessInstance : historicProcessInstanceList) {
                 ProcessDetail<?> processDetail = getProcessDetail(historicProcessInstance);
@@ -170,36 +164,28 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
 
-        long count = historicProcessInstanceQuery.count();
-
         pageUtil.setList(processDetailList);
-        page.setTotalRows((int) count);
         pageUtil.setPage(page);
         return pageUtil;
     }
 
     @Override
-    public PageUtil<ProcessDetail<?>> myApprovedList(String userId, Page page) {
+    public PageUtil<ProcessDetail<?>> myApprovedList(String userId, String initiator, String title, String definitionKey, String definitionName, String state, Page page) {
         PageUtil<ProcessDetail<?>> pageUtil = new PageUtil<>();
         HistoricProcessInstanceQuery historicProcessInstanceQuery = historyService.createHistoricProcessInstanceQuery();
         historicProcessInstanceQuery.involvedUser(userId);
-        String initiator = Objects.toString(page.get("initiator"), "");
         if (StringUtils.isNotEmpty(initiator)) {
             historicProcessInstanceQuery.variableValueEquals("initiator", initiator);
         }
-        String title = Objects.toString(page.get("title"), "");
         if (StringUtils.isNotEmpty(title)) {
             historicProcessInstanceQuery.variableValueLike("title", "%" + title + "%");
         }
-        String definitionKey = Objects.toString(page.get("definitionKey"), "");
         if (StringUtils.isNotEmpty(definitionKey)) {
             historicProcessInstanceQuery.processDefinitionKey(definitionKey);
         }
-        String definitionName = Objects.toString(page.get("definitionName"), "");
         if (StringUtils.isNotEmpty(definitionName)) {
             historicProcessInstanceQuery.processDefinitionName(definitionName);
         }
-        String state = Objects.toString(page.get("state"), "");
         if (StringUtils.isNotEmpty(state)) {
             if ("1".equals(state)) {
                 historicProcessInstanceQuery.unfinished();
@@ -212,9 +198,12 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
         historicProcessInstanceQuery.orderByProcessInstanceStartTime().desc();
-        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromPageIndex(), page.getPageRows());
+
+        long count = historicProcessInstanceQuery.count();
+        page.setTotalRows((int) count);
 
         List<ProcessDetail<?>> processDetailList = new ArrayList<>();
+        List<HistoricProcessInstance> historicProcessInstanceList = historicProcessInstanceQuery.listPage(page.getFromIndex(), page.getPageRows());
         if (historicProcessInstanceList != null) {
             for (HistoricProcessInstance historicProcessInstance : historicProcessInstanceList) {
                 ProcessDetail<?> processDetail = getProcessDetail(historicProcessInstance);
@@ -222,10 +211,7 @@ public class ProcessServiceImpl implements ProcessService {
             }
         }
 
-        long count = historicProcessInstanceQuery.count();
-
         pageUtil.setList(processDetailList);
-        page.setTotalRows((int) count);
         pageUtil.setPage(page);
         return pageUtil;
     }
