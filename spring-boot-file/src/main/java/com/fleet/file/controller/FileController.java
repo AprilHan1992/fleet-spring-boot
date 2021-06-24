@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author April Han
@@ -24,8 +26,8 @@ public class FileController {
     /**
      * 上传文件
      */
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public R upload(@RequestParam(value = "file") MultipartFile file) throws Exception {
+    @RequestMapping(value = "/file/upload", method = RequestMethod.POST)
+    public R fileUpload(@RequestParam(value = "file") MultipartFile file) {
         if (file == null) {
             return R.error("上传文件为空");
         }
@@ -37,9 +39,35 @@ public class FileController {
             fileInfo.setDir(fileConfig.getFilePath());
             fileInfo.setPath(fileConfig.getFilePath() + newFilename);
             fileInfo.setSize(file.getSize());
-
             FileUtil.upload(file, fileConfig.getFilePath(), newFilename);
             return R.ok(fileInfo);
+        } catch (Exception e) {
+            return R.error("失败");
+        }
+    }
+
+    /**
+     * 上传多个文件
+     */
+    @RequestMapping(value = "/files/upload", method = RequestMethod.POST)
+    public R filesUploads(@RequestParam(value = "files") MultipartFile[] files) {
+        if (files == null || files.length == 0) {
+            return R.error("上传文件为空");
+        }
+        try {
+            List<FileInfo> list = new ArrayList<>();
+            for (MultipartFile file : files) {
+                String newFilename = FileUtil.rename(file.getOriginalFilename());
+                FileInfo fileInfo = new FileInfo();
+                fileInfo.setOriginalFilename(file.getOriginalFilename());
+                fileInfo.setNewFilename(newFilename);
+                fileInfo.setDir(fileConfig.getFilePath());
+                fileInfo.setPath(fileConfig.getFilePath() + newFilename);
+                fileInfo.setSize(file.getSize());
+                FileUtil.upload(file, fileConfig.getFilePath(), newFilename);
+                list.add(fileInfo);
+            }
+            return R.ok(list);
         } catch (Exception e) {
             return R.error("失败");
         }
