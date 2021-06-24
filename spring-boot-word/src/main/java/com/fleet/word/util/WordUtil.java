@@ -3,16 +3,20 @@ package com.fleet.word.util;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.hwpf.usermodel.*;
 import org.apache.poi.ooxml.POIXMLDocument;
 import org.apache.poi.ooxml.extractor.POIXMLTextExtractor;
 import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Word 工具类
@@ -36,12 +40,12 @@ public class WordUtil {
         String text = "";
         try {
             String fileName = file.getName();
-            if (fileName.endsWith(".doc")) {
+            if (fileName.toLowerCase().endsWith(".doc")) {
                 InputStream is = new FileInputStream(file);
                 WordExtractor extractor = new WordExtractor(is);
                 text = extractor.getText();
                 extractor.close();
-            } else if (fileName.endsWith(".docx")) {
+            } else if (fileName.toLowerCase().endsWith(".docx")) {
                 OPCPackage opcPackage = POIXMLDocument.openPackage(file.getPath());
                 POIXMLTextExtractor extractor = new XWPFWordExtractor(opcPackage);
                 text = extractor.getText();
@@ -89,5 +93,79 @@ public class WordUtil {
         writer.flush();
         writer.close();
         return file;
+    }
+
+    /**
+     * 读取文档中表格
+     * 返回数据格式（表=>行=>列）
+     */
+    public Map<Integer, Map<Integer, List<String>>> readExcelInWord(File file) {
+        Map<Integer, Map<Integer, List<String>>> map = new HashMap<>();
+        try {
+            String fileName = file.getName();
+            if (fileName.toLowerCase().endsWith(".doc")) {
+                InputStream is = new FileInputStream(file);
+                POIFSFileSystem pfs = new POIFSFileSystem(is);
+                HWPFDocument document = new HWPFDocument(pfs);
+                Range range = document.getRange();
+                TableIterator iterator = new TableIterator(range);
+                int t = 0;
+                while (iterator.hasNext()) {
+                    Table table = iterator.next();
+                    Map<Integer, List<String>> rows = new HashMap<>();
+                    for (int i = 0; i < table.numRows(); i++) {
+                        TableRow tableRow = table.getRow(i);
+                        List<String> cells = new ArrayList<>();
+                        for (int j = 0; j < tableRow.numCells(); j++) {
+                            TableCell tableCell = tableRow.getCell(j);
+                            StringBuilder sb = new StringBuilder();
+                            for (int k = 0; k < tableCell.numParagraphs(); k++) {
+                                Paragraph paragraph = tableCell.getParagraph(k);
+                                sb.append(paragraph.text());
+                            }
+                            if (StringUtils.isNotEmpty(sb.toString())) {
+                                cells.add(sb.substring(0, sb.length() - 1));
+                            } else {
+                                cells.add("");
+                            }
+                        }
+                        rows.put(i, cells);
+                    }
+                    map.put(t++, rows);
+                }
+            } else if (fileName.toLowerCase().endsWith(".docx")) {
+                InputStream is = new FileInputStream(file);
+                XWPFDocument document = new XWPFDocument(is);
+                Iterator<XWPFTable> iterator = document.getTablesIterator();
+                int t = 0;
+                while (iterator.hasNext()) {
+                    XWPFTable table = iterator.next();
+                    Map<Integer, List<String>> rows = new HashMap<>();
+                    List<XWPFTableRow> tableRows = table.getRows();
+                    for (int i = 0; i < tableRows.size(); i++) {
+                        XWPFTableRow tableRow = tableRows.get(i);
+                        List<String> cells = new ArrayList<>();
+                        List<XWPFTableCell> tableCells = tableRow.getTableCells();
+                        for (XWPFTableCell tableCell : tableCells) {
+                            StringBuilder sb = new StringBuilder();
+                            List<XWPFParagraph> paragraphs = tableCell.getParagraphs();
+                            for (int j = 0; j < paragraphs.size(); j++) {
+                                XWPFParagraph paragraph = paragraphs.get(j);
+                                sb.append(paragraph.getText());
+                                if (j != paragraphs.size() - 1) {
+                                    sb.append("\r");
+                                }
+                            }
+                            cells.add(sb.toString());
+                        }
+                        rows.put(i, cells);
+                    }
+                    map.put(t++, rows);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 }
