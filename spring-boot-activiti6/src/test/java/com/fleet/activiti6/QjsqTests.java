@@ -2,8 +2,8 @@ package com.fleet.activiti6;
 
 import com.alibaba.fastjson.JSON;
 import com.fleet.activiti6.entity.*;
-import com.fleet.activiti6.page.entity.Page;
 import com.fleet.activiti6.page.PageUtil;
+import com.fleet.activiti6.page.entity.Page;
 import com.fleet.activiti6.service.ProcessService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,30 +26,24 @@ public class QjsqTests {
     @Test
     public void myTaskList() {
         String userId = "1";
-        Page page = new Page();
-        page.setPageIndex(1);
-        page.setPageRows(10);
-        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, page);
+        Page page = new Page(1, 10);
+        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, null, null, null, null, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
     public void myAppliedList() {
         String userId = "1";
-        Page page = new Page();
-        page.setPageIndex(1);
-        page.setPageRows(10);
-        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, page);
+        Page page = new Page(1, 10);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, null, null, null, null, null, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
 
     @Test
     public void myApprovedList() {
         String userId = "1";
-        Page page = new Page();
-        page.setPageIndex(1);
-        page.setPageRows(10);
-        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, page);
+        Page page = new Page(1, 10);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, null, null, null, null, null, page);
         System.out.println(JSON.toJSONString(pageUtil));
     }
 

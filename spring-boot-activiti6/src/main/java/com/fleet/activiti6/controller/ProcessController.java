@@ -1,12 +1,9 @@
 package com.fleet.activiti6.controller;
 
-import com.fleet.activiti6.entity.Approval;
-import com.fleet.activiti6.entity.ProcessDetail;
-import com.fleet.activiti6.entity.TaskDetail;
-import com.fleet.activiti6.entity.Turn;
+import com.fleet.activiti6.entity.*;
 import com.fleet.activiti6.json.R;
-import com.fleet.activiti6.page.entity.Page;
 import com.fleet.activiti6.page.PageUtil;
+import com.fleet.activiti6.page.entity.Page;
 import com.fleet.activiti6.service.ProcessService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,24 +29,50 @@ public class ProcessController {
      * 我的待办列表
      */
     @PostMapping("/myTaskList/{userId}")
-    public PageUtil<TaskDetail<?>> myTaskList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        return processService.myTaskList(userId, page);
+    public R myTaskList(@PathVariable("userId") String userId,
+                        @RequestParam(value = "initiator", required = false) String initiator,
+                        @RequestParam(value = "title", required = false) String title,
+                        @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                        @RequestParam(value = "definitionName", required = false) String definitionName,
+                        @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                        @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<TaskDetail<?>> pageUtil = processService.myTaskList(userId, initiator, title, definitionKey, definitionName, page);
+        return R.ok(pageUtil);
     }
 
     /**
      * 我的申请列表
      */
     @PostMapping("/myAppliedList/{userId}")
-    public PageUtil<ProcessDetail<?>> myAppliedList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        return processService.myAppliedList(userId, page);
+    public R myAppliedList(@PathVariable("userId") String userId,
+                           @RequestParam(value = "assignee", required = false) String assignee,
+                           @RequestParam(value = "title", required = false) String title,
+                           @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                           @RequestParam(value = "definitionName", required = false) String definitionName,
+                           @RequestParam(value = "state", required = false) String state,
+                           @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                           @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myAppliedList(userId, assignee, title, definitionKey, definitionName, state, page);
+        return R.ok(pageUtil);
     }
 
     /**
      * 我的审批列表
      */
     @PostMapping("/myApprovedList/{userId}")
-    public PageUtil<ProcessDetail<?>> myApprovedList(@PathVariable("userId") String userId, @RequestBody Page page) {
-        return processService.myApprovedList(userId, page);
+    public R myApprovedList(@PathVariable("userId") String userId,
+                            @RequestParam(value = "initiator", required = false) String initiator,
+                            @RequestParam(value = "title", required = false) String title,
+                            @RequestParam(value = "definitionKey", required = false) String definitionKey,
+                            @RequestParam(value = "definitionName", required = false) String definitionName,
+                            @RequestParam(value = "state", required = false) String state,
+                            @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
+                            @RequestParam(value = "pageRows", required = false, defaultValue = "20") int pageRows) {
+        Page page = new Page(pageIndex, pageRows);
+        PageUtil<ProcessDetail<?>> pageUtil = processService.myApprovedList(userId, initiator, title, definitionKey, definitionName, state, page);
+        return R.ok(pageUtil);
     }
 
     /**
@@ -61,11 +85,21 @@ public class ProcessController {
     }
 
     /**
+     * 生成同一类型流程 businessKey，（需要注意，同时调用会有相同结果）
+     */
+    @GetMapping(value = "/generateBusinessKey")
+    public R generateBusinessKey(@RequestParam String definitionKey) {
+        String businessKey = processService.generateBusinessKey(definitionKey);
+        return R.ok(businessKey);
+    }
+
+    /**
      * 创建流程实例
      */
     @PostMapping("/start")
     public R start(@RequestBody ProcessDetail<?> processDetail) {
-        return R.ok(processService.start(processDetail));
+        TaskDetail<?> task = processService.start(processDetail);
+        return R.ok(task);
     }
 
     /**
@@ -73,7 +107,11 @@ public class ProcessController {
      */
     @PostMapping("/apply")
     public R apply(@RequestBody ProcessDetail<?> processDetail) {
-        return R.ok(processService.apply(processDetail));
+        Boolean b = processService.apply(processDetail);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -81,7 +119,11 @@ public class ProcessController {
      */
     @PostMapping("/reapply/{taskId}")
     public R reapply(@PathVariable("taskId") String taskId, @RequestBody ProcessDetail<?> processDetail) {
-        return R.ok(processService.reapply(taskId, processDetail));
+        Boolean b = processService.reapply(taskId, processDetail);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -89,7 +131,11 @@ public class ProcessController {
      */
     @PostMapping("/completeTask")
     public R completeTask(@RequestBody Approval approval) {
-        return R.ok(processService.completeTask(approval));
+        Boolean b = processService.completeTask(approval);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -97,7 +143,11 @@ public class ProcessController {
      */
     @PostMapping("/resetAssignees/{taskId}")
     public R resetAssignees(@PathVariable("taskId") String taskId, @RequestBody Map<String, Object> assignees) {
-        return R.ok(processService.resetAssignees(taskId, assignees));
+        Boolean b = processService.resetAssignees(taskId, assignees);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -105,7 +155,11 @@ public class ProcessController {
      */
     @GetMapping("/stop")
     public R stop(@RequestParam String businessKey) {
-        return R.ok(processService.stop(businessKey));
+        Boolean b = processService.stop(businessKey);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -113,7 +167,11 @@ public class ProcessController {
      */
     @GetMapping("/delete")
     public R delete(@RequestParam String businessKey) {
-        return R.ok(processService.delete(businessKey));
+        Boolean b = processService.delete(businessKey);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -121,7 +179,8 @@ public class ProcessController {
      */
     @GetMapping(value = "/getTaskListByBusinessKey/{userId}")
     public R getTaskListByBusinessKey(@PathVariable("userId") String userId, @RequestParam String businessKey) {
-        return R.ok(processService.getTaskListByBusinessKey(userId, businessKey));
+        List<TaskDetail<?>> taskList = processService.getTaskListByBusinessKey(userId, businessKey);
+        return R.ok(taskList);
     }
 
     /**
@@ -129,7 +188,8 @@ public class ProcessController {
      */
     @GetMapping(value = "/getTaskIdListByBusinessKey/{userId}")
     public R getTaskIdListByBusinessKey(@PathVariable("userId") String userId, @RequestParam String businessKey) {
-        return R.ok(processService.getTaskIdListByBusinessKey(userId, businessKey));
+        List<String> taskIdList = processService.getTaskIdListByBusinessKey(userId, businessKey);
+        return R.ok(taskIdList);
     }
 
     /**
@@ -137,7 +197,8 @@ public class ProcessController {
      */
     @GetMapping(value = "/getByBusinessKey")
     public R getByBusinessKey(@RequestParam String businessKey) {
-        return R.ok(processService.getByBusinessKey(businessKey));
+        ProcessDetail<?> process = processService.getByBusinessKey(businessKey);
+        return R.ok(process);
     }
 
     /**
@@ -145,7 +206,8 @@ public class ProcessController {
      */
     @GetMapping(value = "/getByInstanceId")
     public R getByInstanceId(@RequestParam String instanceId) {
-        return R.ok(processService.getByInstanceId(instanceId));
+        ProcessDetail<?> process = processService.getByInstanceId(instanceId);
+        return R.ok(process);
     }
 
     /**
@@ -153,7 +215,17 @@ public class ProcessController {
      */
     @GetMapping(value = "/getByTaskId")
     public R getByTaskId(@RequestParam String taskId) {
-        return R.ok(processService.getByTaskId(taskId));
+        ProcessDetail<?> process = processService.getByTaskId(taskId);
+        return R.ok(process);
+    }
+
+    /**
+     * 获取任务详情
+     */
+    @GetMapping(value = "/getTaskByTaskId")
+    public R getTaskByTaskId(@RequestParam String taskId) {
+        TaskDetail<?> task = processService.getTaskByTaskId(taskId);
+        return R.ok(task);
     }
 
     /**
@@ -161,7 +233,8 @@ public class ProcessController {
      */
     @GetMapping("/getTaskHandleList")
     public R getTaskHandleList(@RequestParam String taskId) {
-        return R.ok(processService.getTaskHandleList(taskId));
+        List<String> taskHandleList = processService.getTaskHandleList(taskId);
+        return R.ok(taskHandleList);
     }
 
     /**
@@ -209,7 +282,8 @@ public class ProcessController {
      */
     @GetMapping(value = "/getApprovalLog")
     public R getApprovalLog(@RequestParam String businessKey) {
-        return R.ok(processService.getApprovalLog(businessKey));
+        List<ApprovalLog> approvalLog = processService.getApprovalLog(businessKey);
+        return R.ok(approvalLog);
     }
 
     /**
@@ -217,7 +291,11 @@ public class ProcessController {
      */
     @PostMapping(value = "/turnTask")
     public R turnTask(@RequestBody Turn turn) {
-        return R.ok(processService.turnTask(turn));
+        Boolean b = processService.turnTask(turn);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -225,7 +303,11 @@ public class ProcessController {
      */
     @PostMapping(value = "/delegateTask")
     public R delegateTask(@RequestBody Turn turn) {
-        return R.ok(processService.delegateTask(turn));
+        Boolean b = processService.delegateTask(turn);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -233,7 +315,11 @@ public class ProcessController {
      */
     @PostMapping(value = "/resolveTask")
     public R resolveTask(@RequestBody Turn turn) {
-        return R.ok(processService.resolveTask(turn));
+        Boolean b = processService.resolveTask(turn);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -241,7 +327,11 @@ public class ProcessController {
      */
     @GetMapping(value = "/suspend")
     public R suspend(@RequestParam String businessKey) {
-        return R.ok(processService.suspend(businessKey));
+        Boolean b = processService.suspend(businessKey);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
     }
 
     /**
@@ -249,6 +339,28 @@ public class ProcessController {
      */
     @GetMapping(value = "/activate")
     public R activate(@RequestParam String businessKey) {
-        return R.ok(processService.activate(businessKey));
+        Boolean b = processService.activate(businessKey);
+        if (!b) {
+            return R.error();
+        }
+        return R.ok();
+    }
+
+    /**
+     * 获取流程用户任务
+     */
+    @GetMapping("/getUserTaskList")
+    public R getUserTaskList(@RequestParam String definitionKey) {
+        List<UserTaskInfo> userTaskList = processService.getUserTaskList(definitionKey);
+        return R.ok(userTaskList);
+    }
+
+    /**
+     * 获取用户参与流程 businessKey 列表
+     */
+    @GetMapping("/{userId}/getBusinessKeyList")
+    public R getBusinessKeyList(@PathVariable("userId") String userId) {
+        List<String> businessKeyList = processService.getBusinessKeyList(userId);
+        return R.ok(businessKeyList);
     }
 }
