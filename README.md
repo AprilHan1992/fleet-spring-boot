@@ -96,6 +96,7 @@
 - [spring-boot-shiro](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro)：Spring Boot Shiro 权限管理
 - [spring-boot-security](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-security)：Spring Boot Security 权限管理
 - [spring-boot-oauth2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-oauth2)：Spring Boot Oauth2 授权管理
+- [spring-boot-keycloak](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-keycloak)：Spring Boot Keycloak 一种面向现代应用程序和服务的开源的IAM(身份识别与访问管理)解决方案
 - [spring-boot-neo4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-neo4j)：Spring Boot Neo4j 图形数据库
 - [spring-boot-hystrix](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix)：Spring Boot Hystrix 容错处理
 - [spring-boot-hystrix-dashboard](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-dashboard)：Spring Boot Hystrix Dashboard 监控
