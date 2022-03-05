@@ -1,0 +1,10 @@
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-name: custom-es
+      cluster-nodes: 127.0.0.1:9300 #Elasticsearch服务地址
+  elasticsearch:
+    rest:
+      uris: 127.0.0.1:9200

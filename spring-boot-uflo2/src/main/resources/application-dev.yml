@@ -1,0 +1,16 @@
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-uflo2?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=true
+    username: root
+    password:
+uflo2:
+  process:
+    provider:
+      prefix: uflo2-
+      disabled: false
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

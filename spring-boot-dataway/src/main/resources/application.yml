@@ -1,0 +1,20 @@
+server:
+  port: 9040
+spring:
+  application:
+    name: service-dataway
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+
+# 启用 Dataway 功能（默认不启用）
+HASOR_DATAQL_DATAWAY: true
+# 开启 ui 管理功能（注意生产环境必须要设置为 false，否则会造成严重的生产安全事故）
+HASOR_DATAQL_DATAWAY_ADMIN: true
+# （可选）API工作路径
+HASOR_DATAQL_DATAWAY_API_URL: /api/
+# （可选）ui 的工作路径，只有开启 ui 管理功能后才有效
+HASOR_DATAQL_DATAWAY_UI_URL: /interface-ui/
+# （可选）SQL执行器方言设置
+HASOR_DATAQL_FX_PAGE_DIALECT: mysql

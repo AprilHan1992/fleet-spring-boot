@@ -1,0 +1,12 @@
+server:
+  port: 8000
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+    in-memory: false
+    pool:
+      enabled: false
+      max-connections: 5
+      idle-timeout: 30000

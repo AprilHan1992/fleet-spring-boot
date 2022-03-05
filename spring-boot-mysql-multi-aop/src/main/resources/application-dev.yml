@@ -1,0 +1,17 @@
+spring:
+  # 配置数据源
+  datasource:
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/fleet-master?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      username: root
+      password:
+    slaver:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/fleet-slaver?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      username: root
+      password:
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

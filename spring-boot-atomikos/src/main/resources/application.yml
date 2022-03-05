@@ -1,0 +1,8 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  jta:
+    # 每个 Atomikos 实例必须设置一个唯一的 ID
+    transaction-manager-id: tmid

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>大文件上传</title>
+    <link rel="stylesheet" type="text/css" href="/css/webuploader.css"/>
+    <style>
+        #filePicker {
+            display: inline-block;
+        }
+
+        #ctlBtn {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background: #EFEFEF;
+            padding: 10px 15px;
+            color: #2E2E2E;
+            text-align: center;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        #ctlBtn:hover {
+            background: #DDDDDD;
+        }
+    </style>
+</head>
+
+<body>
+<div id="uploader" class="wu-example">
+    <div class="btns">
+        <div id="filePicker">选择文件</div>
+        <div id="ctlBtn" class="btn btn-default">开始上传</div>
+    </div>
+    <div id="fileList" class="uploader-list"></div>
+</div>
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/webuploader.js"></script>
+<script>
+    $(function () {
+        var $list = $('#fileList'),
+            $btn = $('#ctlBtn'),
+            state = 'pending',
+            chunkSize = 5 * 1024 * 1024,
+            uploader;
+
+        WebUploader.Uploader.register({
+            'before-send-file': 'beforeSendFile'
+        }, {
+            beforeSendFile: function (file) {
+                var deferred = WebUploader.Deferred();
+                $.post("http://localhost:8000/bigFile/checkFile", {md5: file.md5},
+                    function (data) {
+                        console.log(data);
+                        var code = data.code;
+                        if (code === 101) {
+                        } else if (code === 100) {
+                            this.owner.skipFile(file);
+                        }
+                        deferred.resolve();
+                    });
+                return deferred.promise();
+            }
+        });
+
+        uploader = WebUploader.create({
+            pick: '#filePicker',
+            swf: '/js/Uploader.swf',
+            server: 'http://localhost:8000/bigFile/upload',
+            auto: false,
+            resize: false,
+            formData: {
+                md5: '',
+                chunkSize: chunkSize
+            },
+            chunked: true,
+            chunkSize: chunkSize,
+            threads: 3,
+            disableGlobalDnd: true
+        });
+
+        uploader.on('fileQueued', function (file) {
+            $list.append('<div id="' + file.id + '" class="item">' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="md5">等待计算文件MD5值...</p>' +
+                '<p class="state">等待上传...</p>' +
+                '</div>');
+            uploader.md5File(file).then(function (val) {
+                file.md5 = val;
+                $('#' + file.id).find('p.md5').text('MD5值：' + file.md5);
+            });
+        });
+
+        uploader.onUploadBeforeSend = function (obj, data) {
+            var file = obj.file;
+            data.md5 = file.md5 || '';
+        };
+
+        uploader.on('uploadProgress', function (file, percentage) {
+            $('#' + file.id).find('p.state').text('上传中：' + parseInt(percentage * 100) + '%');
+        });
+
+        uploader.on('uploadSuccess', function (file) {
+            $('#' + file.id).find('p.state').text('已上传');
+        });
+
+        uploader.on('uploadError', function (file) {
+            $('#' + file.id).find('p.state').text('上传出错');
+        });
+
+        uploader.on('uploadComplete', function (file) {
+        });
+
+        uploader.on('all', function (type) {
+            if (type === 'startUpload') {
+                state = 'uploading';
+            } else if (type === 'stopUpload') {
+                state = 'paused';
+            } else if (type === 'uploadFinished') {
+                state = 'done';
+            }
+
+            if (state === 'uploading') {
+                $btn.text('暂停上传');
+            } else {
+                $btn.text('开始上传');
+            }
+        });
+
+        $btn.on('click', function () {
+            if (state === 'uploading') {
+                uploader.stop(true);
+            } else {
+                uploader.upload();
+            }
+        });
+    });
+</script>
+</body>
+</html>

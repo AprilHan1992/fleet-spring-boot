@@ -1,0 +1,19 @@
+# 加载所有的端点，默认只加载了info、health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    # 可以关闭指定的端点
+    shutdown:
+      enabled: false
+info:
+  blog-url: www.fleetsoft.com.cn
+  author: fleet
+  version: 1.0
+  app:
+    name: hystrix
+    port: 8000

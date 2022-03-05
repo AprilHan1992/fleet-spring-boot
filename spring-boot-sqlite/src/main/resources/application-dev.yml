@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    # 开发
+    url: jdbc:sqlite::resource:db/sqlite.db
+    username:
+    password:
+  # jpa配置
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+

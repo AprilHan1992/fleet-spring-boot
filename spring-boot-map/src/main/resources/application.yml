@@ -1,0 +1,8 @@
+server:
+  port: 8000
+gaode:
+  key: 4c24a7fad8b9b5feb78310667bfb02c8
+baidu:
+  key: C8ND9Q8DAOtIHT4LO9gXoY92HLMWxNgb
+tencent:
+  key: MWZBZ-66ZWX-L5I4Z-ZTQVQ-OAANJ-VZBBP

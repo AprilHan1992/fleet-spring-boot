@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fleet.mybatis.plus.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.fleet.mybatis.plus.entity.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updater_id" property="updaterId"/>
+        <result column="updater_name" property="updaterName"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		`id`, `name`, `sex`, `creator_id`, `creator_name`, `create_time`, `updater_id`, `updater_name`, `update_time`, `status`, `deleted`
+	</sql>
+
+    <delete id="deleteByName" parameterType="java.lang.String">
+		delete from `user` where `name` = #{name}
+	</delete>
+
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+        <where>
+            <if test="map.id != null">and `id` = #{map.id}</if>
+            <if test="map.name != null">and `name` = #{map.name}</if>
+            <if test="map.sex != null">and `sex` = #{map.sex}</if>
+            <if test="map.status != null">and `sex` = #{map.status}</if>
+        </where>
+    </select>
+</mapper>
+

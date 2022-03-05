@@ -1,0 +1,26 @@
+spring:
+  mail:
+    host: smtp.sina.com
+    port: 25
+    protocol: smtp
+    username: fleetsoft@sina.com
+    password: 9959107d56cc819d
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.sina.com
+          timeout: 10000
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html

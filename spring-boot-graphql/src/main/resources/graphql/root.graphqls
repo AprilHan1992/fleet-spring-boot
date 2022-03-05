@@ -1,0 +1,4 @@
+# 查询
+type Query {}
+# 增删改
+type Mutation {}

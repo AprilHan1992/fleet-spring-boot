@@ -1,0 +1,6 @@
+jodconverter:
+  local:
+    enabled: true
+    office-home: D:\Program Files\LibreOffice 6
+    port-numbers: 8100
+    max-tasks-per-process: 10

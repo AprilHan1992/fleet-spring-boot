@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="database.properties"/>
+
+    <context id="default" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 生成序列化 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 生成 toString()方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 生成 生成 equals() 和 hashcode() 方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!-- 生成mapper.xml时覆盖原文件 -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+        <!-- 使用 CommentGenerator 来生成自定义注释 -->
+        <commentGenerator type="com.fleet.mybatis.generator.config.CommentGenerator">
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+            <!-- 解决 mysql 驱动升级到 8.0 后不生成指定数据库代码的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+            <!-- 设置获取 tables remarks 信息 -->
+            <property name="useInformationSchema" value="true"/>
+            <!-- 设置获取 remarks 信息 -->
+            <property name="remarks" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <!--
+                true：使用 BigDecimal 对应 DECIMAL 和 NUMERIC 数据类型
+                false：默认,
+                    scale>0;length>18：使用 BigDecimal;
+                    scale=0;length[10,18]：使用 Long;
+                    scale=0;length[5,9]：使用 Integer;
+                    scale=0;length<5：使用 Short;
+             -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成 entity -->
+        <javaModelGenerator targetPackage="com.fleet.mybatis.generator.entity"
+                            targetProject="spring-boot-mybatis-generator\src\main\java"/>
+        <!-- 生成 mybatis -->
+        <sqlMapGenerator targetPackage="mybatis"
+                         targetProject="spring-boot-mybatis-generator\src\main\resources"/>
+        <!-- 生成 dao -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fleet.mybatis.generator.dao"
+                             targetProject="spring-boot-mybatis-generator\src\main\java"/>
+
+        <!--生成全部表tableName设为%-->
+        <table tableName="user"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="user_role"
+               enableSelectByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="role">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

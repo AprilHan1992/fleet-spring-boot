@@ -1,0 +1,13 @@
+# 书籍信息查询
+extend type Query {
+    # 通过 id 查询书籍信息
+    getBookById(id: Int!): Book
+    # 查询书籍信息列表
+    getBookList: [Book]
+}
+
+# 书籍信息修改
+extend type Mutation {
+	# 新增书籍信息
+	insertBook(bookInput: BookInput!): Book
+}

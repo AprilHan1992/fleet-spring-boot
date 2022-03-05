@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocolList>
+	<protocol>
+		<name>开关</name>
+		<identifier>onoff</identifier>
+		<unit>字节</unit>
+		<type>1</type>
+		<length>1</length>
+		<propertyList>
+			<property>
+				<value>1</value>
+				<desc>开</desc>
+			</property>
+			<property>
+				<value>2</value>
+				<desc>关</desc>
+			</property>
+		</propertyList>
+		<reservedWord>0</reservedWord>
+		<remark>保留字（0：否，1：是）</remark>
+	</protocol>
+	<protocol>
+		<name>模式</name>
+		<identifier>mode</identifier>
+		<unit>字节</unit>
+		<type>1</type>
+		<length>1</length>
+		<reservedWord>1</reservedWord>
+		<remark>保留字（0：否，1：是）</remark>
+	</protocol>
+</protocolList>

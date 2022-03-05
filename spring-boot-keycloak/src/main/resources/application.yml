@@ -1,0 +1,29 @@
+server:
+  port: 8000
+keycloak:
+  # 表示是一个 public 的 client
+  public-client: true
+  # keycloak 安装服务器的 IP 和 端口
+  auth-server-url: http://localhost:8080/auth
+  # realm 名称
+  realm: fleet-realm
+  # client ID 名称
+  resource: fleet-client
+  # 安全约束
+  security-constraints:
+    - authRoles:
+        # 以下路径需要 role_admin 角色才能访问
+        - role_admin
+      securityCollections:
+        # name可以随便写
+        - name: patterns_admin
+          patterns:
+            - /admin/*
+    - authRoles:
+        # 以下路径需要 role_user 角色才能访问
+        - role_user
+      securityCollections:
+        # name可以随便写
+        - name: patterns_user
+          patterns:
+            - /user/*

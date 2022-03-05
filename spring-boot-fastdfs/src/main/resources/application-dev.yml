@@ -1,0 +1,9 @@
+fdfs:
+  so-timeout: 1500
+  connect-timeout: 600
+  pool:
+    jmx-enabled: false
+  thumb-image:
+    width: 150
+    height: 150
+  tracker-list: 10.17.191.55:22122

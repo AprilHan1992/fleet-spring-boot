@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title th:text="#{login.title}">用户登陆</title>
+    <script th:src="@{/webjars/jquery-i18n-properties/jquery.i18n.properties.min.js}"></script>
+</head>
+
+<body>
+
+<div>
+    <h3 th:text="#{login.welcome}">欢迎登陆</h3>
+    <form>
+        <div>
+            <input name="username" type="text" th:placeholder="#{login.username}">
+        </div>
+        <div>
+            <input name="password" type="password" th:placeholder="#{login.password}">
+        </div>
+        <div>
+            <button type="button" th:text="#{login.login}">登录</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+

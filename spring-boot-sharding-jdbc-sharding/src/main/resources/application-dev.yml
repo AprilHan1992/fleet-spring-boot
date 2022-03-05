@@ -1,0 +1,56 @@
+spring:
+  # jpa配置
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  shardingsphere:
+    datasource:
+      names: ds0,ds1 #配置多个数据源
+      ds0:
+        type: org.apache.commons.dbcp2.BasicDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds0?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        username: root
+        password:
+      ds1:
+        type: org.apache.commons.dbcp2.BasicDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds1?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        username: root
+        password:
+    sharding:
+      tables:
+        user:
+          actual-data-nodes: ds$->{0..1}.user$->{0..1}
+          databaseStrategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: ds$->{id % 2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: user$->{id % 2}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+        user_order:
+          actual-data-nodes: ds$->{0..1}.user_order$->{0..1}
+          databaseStrategy:
+            inline:
+              sharding-column: user_order_id
+              algorithmExpression: ds$->{user_order_id % 2}
+          table-strategy:
+            inline:
+              sharding-column: user_order_id
+              algorithm-expression: user_order$->{user_order_id % 2}
+          key-generator:
+            column: user_order_id
+            type: SNOWFLAKE
+      binding-tables: user, user_order
+      broadcast-tables: t_config
+      default-database-strategy:
+        inline:
+          sharding-column: id
+          algorithm-expression: ds$->{id % 2}

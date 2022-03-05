@@ -1,0 +1,7 @@
+server:
+  port: 8000
+# 极光推送
+jpush:
+  appKey: c1eb0f9219fdbad3dc4c3f40
+  masterSecret: 94c7eb92f46eb084bd8946f4
+  liveTime: 300000

@@ -1,0 +1,19 @@
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    username: root
+    password:
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    tomcat:
+      initial-size: 0
+      min-idle: 0
+      max-idle: 8
+      max-active: 8
+      max-wait: 10000
+      validation-query: SELECT 1
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>图片上传</title>
+    <link rel="stylesheet" type="text/css" href="/css/webuploader.css"/>
+    <style>
+        #filePicker {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+<div id="uploader" class="wu-example">
+    <div id="filePicker">选择图片</div>
+    <div id="fileList" class="uploader-list"></div>
+</div>
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/webuploader.js"></script>
+<script>
+    $(function () {
+        var $list = $('#fileList'),
+            ratio = window.devicePixelRatio || 1,
+            thumbnailWidth = 100 * ratio,
+            thumbnailHeight = 100 * ratio,
+            uploader;
+
+        uploader = WebUploader.create({
+            pick: '#filePicker',
+            swf: '/js/Uploader.swf',
+            server: 'http://localhost:8000/file/image/upload',
+            auto: true,
+            resize: false,
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            },
+            disableGlobalDnd: true
+        });
+
+        uploader.on('fileQueued', function (file) {
+            var $li = $('<div id="' + file.id + '" class="item thumbnail">' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="state">等待上传...</p>' +
+                '<img>' +
+                '</div>'),
+                $img = $li.find('img');
+            $list.append($li);
+
+            uploader.makeThumb(file, function (error, src) {
+                if (error) {
+                    $img.replaceWith('<span>不能预览</span>');
+                    return;
+                }
+
+                $img.attr('src', src);
+            }, thumbnailWidth, thumbnailHeight);
+        });
+
+        uploader.on('uploadProgress', function (file, percentage) {
+            $('#' + file.id).find('p.state').text('上传中：' + parseInt(percentage * 100) + '%');
+        });
+
+        uploader.on('uploadSuccess', function (file) {
+            $('#' + file.id).find('p.state').text('已上传');
+        });
+
+        uploader.on('uploadError', function (file) {
+            $('#' + file.id).find('p.state').text('上传出错');
+        });
+
+        uploader.on('uploadComplete', function (file) {
+        });
+    });
+</script>
+</body>
+</html>

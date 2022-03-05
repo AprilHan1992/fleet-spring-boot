@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fleet.postgresql.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.fleet.postgresql.entity.User">
+        <result column="user_id" property="id"/>
+        <result column="user_name" property="name"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		user_id, user_name
+	</sql>
+
+    <insert id="insert" parameterType="com.fleet.postgresql.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into test_user (
+        <trim suffixOverrides=",">
+            <if test="name != null">user_name,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+        </trim>
+        )
+    </insert>
+
+    <select id="get" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_user where user_id = #{id}
+    </select>
+</mapper>
+

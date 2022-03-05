@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fleet.uflo2.dao.Uflo2FileDao">
+    <resultMap id="BaseResultMap" type="com.fleet.uflo2.entity.Uflo2File">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="content" jdbcType="BLOB" property="content"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        `id`, `name`, `content`, `create_time`, `update_time`
+    </sql>
+
+    <select id="checkExistByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(*) from uflo2_file where `name` = #{name}
+	</select>
+
+    <select id="getUflo2FileList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from uflo2_file
+    </select>
+
+    <select id="getUflo2FileByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from uflo2_file where `name` = #{name}
+    </select>
+
+    <delete id="deleteUflo2FileByName" parameterType="java.lang.String">
+		delete from uflo2_file where `name` = #{name}
+	</delete>
+
+    <insert id="insertUflo2File" parameterType="com.fleet.uflo2.entity.Uflo2File">
+		insert into uflo2_file (`name`, content, create_time, update_time) values
+		 (#{name}, #{content}, #{createTime}, #{updateTime})
+	</insert>
+
+    <update id="updateUflo2File" parameterType="com.fleet.uflo2.entity.Uflo2File">
+		update uflo2_file set
+			`name` = #{name},
+			content = #{content},
+			create_time = #{createTime},
+			update_time = #{updateTime}
+		    where  `id` = #{id}
+	</update>
+</mapper>
+

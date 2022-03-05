@@ -1,0 +1,26 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: zookeeper-consumer
+  profiles:
+    active: dev
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        enabled: true
+        register: false
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: zookeeper-provider
+          uri: lb://zookeeper-provider
+          predicates:
+            - Path=/api/provider/**
+          filters:
+            # 去除掉前面两个前缀
+            - StripPrefix=2

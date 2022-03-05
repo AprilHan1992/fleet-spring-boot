@@ -1,0 +1,14 @@
+spring:
+  mqtt:
+    ## 推送信息的连接地址，如果有多个，用逗号隔开
+    url: tcp://127.0.0.1:1883
+    username: admin
+    password: admin
+    # 默认的主题，可在调用接口时指定主题
+    topic: topic
+    sender:
+      # 推送时连接服务器默认客户端id
+      client-id: sender-clientId
+    receiver:
+      # 接收时连接服务器默认客户端id
+      client-id: receiver-clientId

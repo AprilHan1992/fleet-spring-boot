@@ -1,0 +1,43 @@
+# 书籍信息
+type Book {
+    # id
+    id: Int
+    # 标题
+    title: String
+    # 作者信息
+    author: Author
+    # 出版商
+    publisher: String
+}
+
+# 作者信息
+type Author {
+    # id
+    id: Int
+    # 作者名
+    name: String
+    # 年龄
+    age: Int
+}
+
+# 书籍信息
+input BookInput {
+    # id
+    id: Int
+    # 标题
+    title: String
+    # 作者信息
+    authorInput: AuthorInput
+    # 出版商
+    publisher: String
+}
+
+# 作者信息
+input AuthorInput {
+  # id
+  id: Int
+  # 作者名
+  name: String
+  # 年龄
+  age: Int
+}

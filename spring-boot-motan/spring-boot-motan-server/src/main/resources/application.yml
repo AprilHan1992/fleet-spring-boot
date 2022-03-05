@@ -1,0 +1,18 @@
+server:
+  port: 8001
+motan:
+  # 注册中心配置
+  registry:
+    regProtocol: zookeeper
+    address: localhost:2181
+  # 协议配置
+  protocol:
+    name: motan
+  # 指定需要解析的包名
+  annotation:
+    package: com.fleet
+  # 服务端配置
+  server:
+    export: 'motan:8888'
+    group: fleet
+    registry: registryConfig

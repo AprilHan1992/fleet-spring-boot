@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fleet.postgis.dao.GisDao">
+    <resultMap id="BaseResultMap" type="com.fleet.postgis.entity.Gis">
+        <result column="gis_id" property="id"/>
+        <result column="gis_name" property="name"/>
+        <result column="gis_longitude" property="longitude"/>
+        <result column="gis_latitude" property="latitude"/>
+        <result column="gis_location" property="geometry"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		gis_id, gis_name, gis_longitude, gis_latitude, ST_AsGeoJson(gis_location) as gis_location
+	</sql>
+
+    <insert id="insert" parameterType="com.fleet.postgis.entity.Gis" useGeneratedKeys="true" keyProperty="id">
+        insert into test_gis (
+        <trim suffixOverrides=",">
+            <if test="name != null">gis_name,</if>
+            <if test="longitude != null">gis_longitude,</if>
+            <if test="latitude != null">gis_latitude,</if>
+            <if test="geometry != null">gis_location,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="geometry != null">ST_GeomFromText(#{geometry}, 4326),</if>
+        </trim>
+        )
+    </insert>
+
+    <select id="get" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_gis where gis_id = #{id}
+    </select>
+
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_gis
+    </select>
+
+    <select id="circle" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_gis
+        where ST_DWithin(gis_location :: geography, ST_GeomFromText(#{geometry}, 4326) :: geography, #{radius}) is true
+    </select>
+
+    <select id="polygon" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test_gis
+        where ST_Contains(ST_MakePolygon(ST_GeomFromText(#{geometry}, 4326)), gis_location)
+    </select>
+</mapper>
+

@@ -1,0 +1,7 @@
+server:
+  port: 8000
+spring:
+  freemarker:
+    suffix: .ftl
+    cache: false
+    charset: UTF-8

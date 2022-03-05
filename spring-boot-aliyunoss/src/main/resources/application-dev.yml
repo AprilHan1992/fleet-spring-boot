@@ -1,0 +1,24 @@
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI4G7XsZ9DYcuypm4ophuX
+    accessKeySecret: GejJum1b3DAluhlKH8EXWeLCtMJMFA
+    bucketName: fleetsoft-bucket
+    fileHost: test
+# 文件
+file:
+  file-path: D:/files/
+  big-file-path: D:/files/big/
+  # 存储图片资源的目录
+  img-path: D:/files/img/
+  template-path: D:/files/template/
+  zip-path: D:/files/zip/
+spring:
+  servlet:
+    multipart:
+      # 开启文件上传
+      enabled: true
+      # 单个文件上传大小
+      max-file-size: 100MB
+      # 设置总上传大小
+      max-request-size: 200MB

@@ -1,0 +1,31 @@
+spring:
+  # jpa配置
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  shardingsphere:
+    datasource:
+      names: ds-master,ds-slaver #配置多个数据源
+      ds-master:
+        type: org.apache.commons.dbcp2.BasicDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/fleet-master?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        username: root
+        password:
+      ds-slaver:
+        type: org.apache.commons.dbcp2.BasicDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/fleet-slaver?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+        username: root
+        password:
+    masterslave: # 配置读写分离
+      name: ms
+      master-data-source-name: ds-master
+      slave-data-source-names: ds-master, ds-slaver
+      load-balance-algorithm-type: round_robin # 从库查询时选择策略，round_robin（轮询）和 random（随机）
+    # 开启SQL显示，默认值: false
+    props:
+      sql:
+        show: true

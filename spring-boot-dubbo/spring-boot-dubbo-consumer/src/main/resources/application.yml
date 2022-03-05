@@ -1,0 +1,14 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: dubbo-consumer
+dubbo:
+  application:
+    name: dubbo-consumer
+  registry:
+    protocol: zookeeper
+    address: localhost:2181
+    client: curator
+  consumer:
+    check: false

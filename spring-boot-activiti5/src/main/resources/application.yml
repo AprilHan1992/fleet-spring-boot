@@ -1,0 +1,12 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  activiti:
+    database-schema-update: true
+    async-executor-activate: true
+    check-process-definitions: true
+    process-definition-location-prefix: classpath:/processes/
+    history-level: full
+    db-history-used: true

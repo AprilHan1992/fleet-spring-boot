@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WebSSH</title>
+    <link rel="stylesheet" type="text/css" href="/css/xterm.css"/>
+</head>
+
+<body>
+<div id="terminal" style="width: 100%; height: 100%"></div>
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/xterm.js"></script>
+<script src="/js/webssh.js"></script>
+<script>
+    openTerminal({
+        operate: 'connect',
+        host: '',// IP
+        port: '22',// 端口号
+        username: '',// 用户名
+        password: ''// 密码
+    });
+
+    function openTerminal(options) {
+        const client = new WSSHClient();
+        const term = new Terminal({
+            cursorStyle: "block", // 光标样式
+            cursorBlink: true, // 光标闪烁
+        });
+
+        term.on('data', function (data) {
+            // 键盘输入时的回调函数
+            client.sendCommandData(data);
+        });
+
+        term.open(document.getElementById('terminal'));
+        // 在页面上显示连接中...
+        term.write('');
+        // 执行连接操作
+        client.connect({
+            onConnect: function () {
+                // 连接成功回调
+                client.sendConnectData(options);
+            },
+            onData: function (data) {
+                // 收到数据时回调
+                term.write(data);
+            },
+            onClose: function () {
+                // 连接关闭回调
+                term.write("\r\nconnection closed");
+            },
+            onError: function (error) {
+                // 连接失败回调
+                term.write('Error: ' + error + '\r\n');
+            }
+        });
+    }
+</script>
+</body>
+</html>

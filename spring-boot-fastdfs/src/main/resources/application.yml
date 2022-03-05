@@ -1,0 +1,13 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      # 开启文件上传
+      enabled: true
+      # 单个文件上传大小
+      max-file-size: 100MB
+      # 设置总上传大小
+      max-request-size: 200MB

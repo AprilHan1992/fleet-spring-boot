@@ -1,0 +1,35 @@
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 0
+      min-idle: 0
+      max-active: 8
+      max-wait: 10000
+      validation-query: SELECT 1
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        enabled: true
+        url-pattern: "/druid/*"
+        # IP白名单(没有配置或者为空，则允许所有访问)
+        #        allow: 127.0.0.1,192.168.163.1
+        # IP黑名单 (存在共同时，deny优先于allow)
+        #        deny: 192.168.1.73
+        #  是否启用HTML页面上的“Reset All”功能
+        reset-enable: true
+        # 登录名
+        login-username: admin
+        # 登录密码
+        login-password: 123456
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

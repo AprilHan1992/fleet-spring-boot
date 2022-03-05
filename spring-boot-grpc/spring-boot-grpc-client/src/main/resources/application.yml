@@ -1,0 +1,9 @@
+server:
+  port: 8000
+grpc:
+  client:
+    user:
+      address: 'static://127.0.0.1:9898'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext

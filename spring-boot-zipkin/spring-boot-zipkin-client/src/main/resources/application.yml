@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: zipkin-clent
+  zipkin:
+    base-url: http://localhost:9411  # zipkin server 的地址
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 每秒速率，即每秒最多能跟踪的请求，rate 优先
+      rate: 500
+      # 跟踪信息收集采样比例，默认 0.1，为 1 是即 100%，收集所有
+      probability: 1

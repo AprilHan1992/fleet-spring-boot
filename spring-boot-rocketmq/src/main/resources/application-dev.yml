@@ -1,0 +1,4 @@
+apache:
+  rocketmq:
+    group: jms-rocketmq
+    namesrv-addr: localhost:9876

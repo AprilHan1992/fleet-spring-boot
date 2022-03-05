@@ -1,0 +1,21 @@
+server:
+  port: 8000
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+    prefix: classpath:/static/
+    suffix: .html
+  profiles:
+    active: dev
+  activiti:
+    database-schema-update: true
+    mail-server-use-ssl: true
+    async-executor-activate: true
+    check-process-definitions: false
+    process-definition-location-prefix: classpath:/processes/
+    history-level: full
+    db-history-used: true

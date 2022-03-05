@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SocketIO</title>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+</head>
+
+<body>
+<button onclick="emit()">发送消息</button>
+<div id="log-container" style="height: 450px; overflow-y: scroll; background: #333; color: #aaa; padding: 10px;">
+    <div></div>
+</div>
+</body>
+<script>
+    var socket;
+    // 加载完浏览器后，调用connect()
+    $(function () {
+        connect()
+    })
+
+    function connect() {
+        var opts = {
+            query: 'userId=1'
+        };
+        socket = io.connect('http://localhost:8089', opts);
+        socket.on('connect', function () {
+            console.log("连接成功");
+        });
+        socket.on('push_to_user_event', function (data) {
+            showResponse(data);
+        });
+        socket.on('disconnect', function () {
+            console.log("连接关闭");
+        });
+    }
+
+    function emit() {
+        socket.emit('receive_user_event', '你好');
+    }
+
+    function showResponse(message) {
+        $("#log-container div").append(message.timestamp + " " + message.msg).append("<br/>");
+        $("#log-container").scrollTop($("#log-container div").height() - $("#log-container").height());
+    }
+</script>
+</html>

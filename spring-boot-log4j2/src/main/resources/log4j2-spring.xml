@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="5">
+
+    <Properties>
+        <property name="FILE_PATH" value="./applog/log4j2"/>
+        <property name="LOG_PATTERN" value="%d{HH:mm:ss.SSS} [%p] %l%n%m%n"/>
+    </Properties>
+
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </console>
+
+        <RollingFile name="debug" fileName="${FILE_PATH}/debug.log"
+                     filePattern="${FILE_PATH}/%d{yyyy-MM-dd}/debug-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="1024MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="info" fileName="${FILE_PATH}/info.log"
+                     filePattern="${FILE_PATH}/%d{yyyy-MM-dd}/info-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="1024MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="error" fileName="${FILE_PATH}/error.log"
+                     filePattern="${FILE_PATH}/%d{yyyy-MM-dd}/error-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="1024MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <root level="DEBUG">
+            <appender-ref ref="console"/>
+            <appender-ref ref="debug"/>
+        </root>
+
+        <!--        <root level="INFO">-->
+        <!--            <appender-ref ref="console"/>-->
+        <!--            <appender-ref ref="info"/>-->
+        <!--        </root>-->
+
+        <!--        <root level="ERROR">-->
+        <!--            <appender-ref ref="console"/>-->
+        <!--            <appender-ref ref="error"/>-->
+        <!--        </root>-->
+    </loggers>
+</configuration>

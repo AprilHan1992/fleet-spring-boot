@@ -1,0 +1,29 @@
+# 加载所有的端点，默认只加载了info、health
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: prometheus
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+    # 可以关闭指定的端点
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  blog-url: www.fleetsoft.com.cn
+  author: fleet
+  version: 1.0
+  app:
+    name: prometheus
+    port: 8000

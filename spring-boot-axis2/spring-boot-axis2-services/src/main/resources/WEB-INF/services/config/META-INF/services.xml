@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+    <service name="userService" targetNamespace="http://services.axis2.fleet.com">
+        <description>Axis2 实现 WebService</description>
+        <parameter name="ServiceClass">com.fleet.axis2.services.service.impl.UserServiceImpl</parameter>
+        <schema schemaNamespace="http://services.axis2.fleet.com"/>
+        <operation name="get">
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </operation>
+        <operation name="getName">
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </operation>
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only"
+                             class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out"
+                             class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </messageReceivers>
+    </service>
+</serviceGroup>

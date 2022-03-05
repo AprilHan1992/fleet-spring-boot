@@ -1,0 +1,18 @@
+logging:
+  level:
+    com.fleet.guava.dao: debug
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fleet-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    username: root
+    password:
+  cache:
+    # 配置缓存，初始缓存容量为10，最大容量为500，过期时间为10秒
+    guava:
+      spec: initialCapacity=10,maximumSize=500,expireAfterAccess=10s
+mybatis:
+  mapper-locations: mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

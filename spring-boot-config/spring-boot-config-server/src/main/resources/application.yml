@@ -1,0 +1,20 @@
+server:
+  port: 8001
+# 本地配置文件
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+
+# 远程配置文件
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/AprilHan1992/fleet-spring-boot-config.git
+#          search-paths: /**

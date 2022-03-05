@@ -1,0 +1,8 @@
+server:
+  port: 8000
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+  messages:
+    basename: static/i18n/messages

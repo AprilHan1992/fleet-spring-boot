@@ -1,0 +1,15 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  activiti:
+    database-schema-update: true
+    async-executor-activate: true
+    # 是否校验流程文件，默认校验 resources 下的 processes 文件夹里的流程文件
+    check-process-definitions: true
+    # 流程文件存储位置
+    process-definition-location-prefix: classpath:/processes/
+    # 保存历史数据得级别，分为none、activity、audit（默认）、full
+    history-level: full
+    db-history-used: true

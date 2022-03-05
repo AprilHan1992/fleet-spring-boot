@@ -1,0 +1,6 @@
+jodconverter:
+  local:
+    enabled: true
+    office-home: D:\Program Files\OpenOffice 4
+    port-numbers: 8100
+    max-tasks-per-process: 10

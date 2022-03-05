@@ -1,0 +1,30 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: eureka-consumer
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: eureka-provider
+          uri: lb://eureka-provider
+          predicates:
+            - Path=/api/provider/**
+          filters:
+            # 去除掉前面两个前缀
+            - StripPrefix=2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+

@@ -1,0 +1,9 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+flowable:
+  database-schema-update: true
+  async-executor-activate: true
+  history-level: full

@@ -1,0 +1,3 @@
+server:
+  port: 8000
+version: native-1.0-pro

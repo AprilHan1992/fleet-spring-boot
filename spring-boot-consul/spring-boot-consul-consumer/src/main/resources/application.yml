@@ -1,0 +1,27 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: consul-consumer
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      # 设置不需要注册到 consul 中
+      discovery:
+        register: false
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+      - id: consul-provider
+        uri: lb://consul-provider
+        predicates:
+        - Path=/api/provider/**
+        filters:
+        # 去除掉前面两个前缀
+        - StripPrefix=2

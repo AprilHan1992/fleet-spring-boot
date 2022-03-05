@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WebSocket</title>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+
+<body>
+<div id="log-container" style="height: 450px; overflow-y: scroll; background: #333; color: #aaa; padding: 10px;">
+    <div></div>
+</div>
+</body>
+<script>
+    var stomp = null;
+    // 加载完浏览器后，调用connect()，打开双通道
+    $(function () {
+        //打开双通道
+        connect()
+    })
+
+    // 强制关闭浏览器，调用websocket.close()，进行正常关闭
+    window.onunload = function () {
+        disconnect()
+    }
+
+    function connect() {
+        var socket = new SockJS('http://localhost:8000/socket');
+        stomp = Stomp.over(socket);
+        stomp.connect({}, function (frame) {
+            stomp.subscribe('/user/1/queue/getResponse', function (response) {
+                showResponse(JSON.parse(response.body));
+            });
+        });
+    }
+
+    //关闭双通道
+    function disconnect() {
+        if (stomp != null) {
+            stomp.disconnect();
+            stomp = null;
+        }
+    }
+
+    function showResponse(message) {
+        $("#log-container div").append(message.timestamp + " " + message.msg).append("<br/>");
+        $("#log-container").scrollTop($("#log-container div").height() - $("#log-container").height());
+    }
+</script>
+</html>

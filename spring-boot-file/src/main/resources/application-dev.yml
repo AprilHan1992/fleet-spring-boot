@@ -1,0 +1,21 @@
+#server:
+#  tomcat:
+#    # 配置 Tomcat 运行日志和临时文件的目录
+#    basedir: D:/files/temp/
+# 文件
+file:
+  file-path: D:/files/
+  big-file-path: D:/files/big/
+  # 存储图片资源的目录
+  img-path: D:/files/img/
+  template-path: D:/files/template/
+  zip-path: D:/files/zip/
+spring:
+  servlet:
+    multipart:
+      # 开启文件上传
+      enabled: true
+      # 上传的单个文件大小
+      max-file-size: 100MB
+      # 上传的总文件大小
+      max-request-size: 200MB

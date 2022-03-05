@@ -1,0 +1,24 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: nacos-consumer
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: nacos-provider
+          uri: lb://nacos-provider
+          predicates:
+            - Path=/api/provider/**
+          filters:
+            # 去除掉前面两个前缀
+            - StripPrefix=2

@@ -1,0 +1,20 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: dubbo-provider
+  profiles:
+    active: dev
+dubbo:
+  application:
+    name: dubbo-provider
+  scan:
+    base-packages:
+      - com.fleet.dubbo.provider.service.impl
+  registry:
+    protocol: zookeeper
+    address: localhost:2181
+    client: curator
+  protocol:
+    name: dubbo
+    port: 20880
