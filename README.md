@@ -1,0 +1,205 @@
+# fleet-spring-boot
+
+> Spring Boot 教程，Spring Boot 的各种简单示例，快速入门使用 Spring Boot 各种组件
+
+## 示例项目
+
+### 基础部分：
+
+- [spring-boot-hello](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hello)：Spring Boot 快速入门 Hello world 示例
+- [spring-boot-starter](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-starter)：Spring Boot 自定义 Banner （启动图案）
+- [spring-boot-theme](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-theme)：Spring Boot 主题切换
+- [spring-boot-simple](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-simple)：Spring Boot 简单的服务提供者、消费者
+- [spring-boot-eureka](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-eureka)：Spring Boot Eureka 微服务注册与发现
+- [spring-boot-consul](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-consul)：Spring Boot Consul 微服务注册与发现
+- [spring-boot-nacos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-nacos)：Spring Boot Nacos 微服务注册与发现
+- [spring-boot-zookeeper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zookeeper)：Spring Boot ZooKeeper 微服务注册与发现
+- [spring-boot-retrofit2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retrofit2)：Spring Boot Retrofit2 Http 请求
+- [spring-boot-rmi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rmi)：Spring Boot RMI 远程调用框架
+- [spring-boot-hessian](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hessian)：Spring Boot Hessian 远程调用框架
+- [spring-boot-forest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-forest)：Spring Boot Forest Http 请求
+- [spring-boot-cors](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cors)：Spring Boot HTTP 访问控制
+- [spring-boot-graphql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-graphql)：Spring Boot GraphQL 构建 API
+- [spring-boot-config](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-config)：Spring Boot 配置中心
+- [spring-boot-lombok](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-lombok)：Spring Boot Lombok 消除样板式代码
+- [spring-boot-filter](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-filter)：Spring Boot 过滤器
+- [spring-boot-tomcat](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tomcat)：Spring Boot 使用 Tomcat （默认） 作为 Servlet 引擎应用
+- [spring-boot-jetty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jetty)：Spring Boot 使用 Jetty 作为 Servlet 引擎
+- [spring-boot-undertow](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-undertow)：Spring Boot 使用 Undertow 作为 Servlet 引擎
+- [spring-boot-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jdbc)：Spring Boot JDBC 操作数据库
+- [spring-boot-mybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis)：Spring Boot 结合 Mybatis
+- [spring-boot-mybatis-generator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-generator)：Spring Boot Mybatis 代码生成
+- [spring-boot-mybatis-plus](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-plus)：Spring Boot 结合 Mybatis Plus
+- [spring-boot-mybatis-pagehelper](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-pagehelper)：Spring Boot 结合 Mybatis PageHelper
+- [spring-boot-mybatis-dynamic-sql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mybatis-dynamic-sql)：Spring Boot 结合 Mybatis Dynamic SQL
+- [spring-boot-tkmybatis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tkmybatis)：Spring Boot 结合 TKMybatis
+- [spring-boot-jpa](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jpa)：Spring Boot 结合 JPA
+- [spring-boot-jooq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jooq)：Spring Boot 结合 JOOQ
+- [spring-boot-thymeleaf](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-thymeleaf)：Spring Boot 结合 Thymeleaf 模板引擎
+- [spring-boot-freemarker](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-freemarker)：Spring Boot 结合 Freemarker 模板引擎
+- [spring-boot-beetl](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-beetl)：Spring Boot 结合 Beetl 模板引擎
+- [spring-boot-enjoy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-enjoy)：Spring Boot 结合 Enjoy 模板引擎
+- [spring-boot-markdown](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-markdown)：Spring Boot 结合 Markdown 模板引擎
+- [spring-boot-velocity](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-velocity)：Spring Boot 结合 Velocity 模板引擎（Spring Boot 1.4版本之后弃用）
+- [spring-boot-mustache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mustache)：Spring Boot 结合 Mustache 模板引擎
+- [spring-boot-groovy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-groovy)：Spring Boot 结合 Groovy 模板引擎
+- [spring-boot-jsp](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jsp)：Spring Boot 结合 JSP 模板引擎
+- [spring-boot-properties](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-properties)：Spring Boot 读取配置文件中的内容
+- [spring-boot-logback](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-logback)：Spring Boot 集成 Logback 日志
+- [spring-boot-log4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-log4j)：Spring Boot 集成 Log4j 日志
+- [spring-boot-log4j2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-log4j2)：Spring Boot 集成 Log4j2 日志
+- [spring-boot-logstash](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-logstash)：Spring Boot Logstash 日志管理工具
+- [spring-boot-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aop)：Spring Boot AOP 切面
+- [spring-boot-exception](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-exception)：Spring Boot 统一异常处理
+- [spring-boot-actuator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-actuator)：Spring Boot Actuator 监控与管理
+- [spring-boot-admin](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-admin)：Spring Boot Admin 应用信息可视化
+- [spring-boot-swagger](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-swagger)：Spring Boot Swagger 自动生成接口文档
+- [spring-boot-springfox](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-springfox)：Spring Boot SpringFox 自动生成接口文档
+- [spring-boot-knife4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-knife4j)：Spring Boot Knife4j 自动生成接口文档
+- [spring-boot-apidoc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-apidoc)：Spring Boot Apidoc 自动生成接口文档
+- [spring-boot-japidocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-japidocs)：Spring Boot JApiDocs 自动生成接口文档
+- [spring-boot-restdocs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-restdocs)：Spring Boot Restdocs 自动生成接口文档
+- [spring-boot-smart-doc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-smart-doc)：Spring Boot Smart-Doc 自动生成接口文档
+- [spring-boot-async](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-async)：Spring Boot 线程池配置
+- [spring-boot-mail](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mail)：Spring Boot 发送邮件
+- [spring-boot-couchbase](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-couchbase)：Spring Boot Couchbase 数据库
+- [spring-boot-h2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-h2)：Spring Boot H2 数据库
+- [spring-boot-sqlite](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sqlite)：Spring Boot Sqlite 数据库
+- [spring-boot-postgresql](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgresql)：Spring Boot Postgresql 数据库
+- [spring-boot-jndi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jndi)：Spring Boot JNDI 数据源
+- [spring-boot-redis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redis)：Spring Boot Redis 缓存
+- [spring-boot-memcached](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-memcached)：Spring Boot Memcached 缓存
+- [spring-boot-session](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-session)：Spring Boot Session 共享
+- [spring-boot-elasticsearch](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elasticsearch)：Spring Boot Elasticsearch 全文搜索引擎
+- [spring-boot-mongodb](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mongodb)：Spring Boot Mongodb 基于分布式文件存储的数据库
+- [spring-boot-cassandra](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cassandra)：Spring Boot Cassandra 开源分布式 NoSQL 数据库
+- [spring-boot-solr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-solr)：Spring Boot Solr 搜索
+- [spring-boot-zuul](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zuul)：Spring Boot Zuul 微服务网关
+- [spring-boot-gateway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gateway)：Spring Boot Gateway 微服务网关
+- [spring-boot-feign](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-feign)：Spring Boot Feign 实现声明式 REST 调用
+- [spring-boot-dataway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dataway)：Spring Boot Dataway 数据接口配置服务
+- [spring-boot-magic-api](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-magic-api)：Spring Boot 基于Java的接口快速开发框架
+- [spring-boot-ribbon](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ribbon)：Spring Boot Ribbon 负载均衡
+- [spring-boot-artemis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-artemis)：Spring Boot Artemis 消息中间件
+- [spring-boot-activemq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activemq)：Spring Boot ActiveMQ 消息中间件
+- [spring-boot-kafka](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-kafka)：Spring Boot Kafka 消息中间件
+- [spring-boot-rabbitmq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rabbitmq)：Spring Boot RabbitMQ 消息中间件
+- [spring-boot-rocketmq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rocketmq)：Spring Boot RocketMQ 消息中间件
+- [spring-boot-redismq](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redismq)：Spring Boot RedisMQ 消息中间件
+- [spring-boot-mqtt](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mqtt)：Spring Boot MQTT 消息中间件
+- [spring-boot-redis-lock](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redis-lock)：Spring Boot Redis 分布式锁
+- [spring-boot-redisson](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redisson)：Spring Boot Redisson 分布式锁
+- [spring-boot-redisson-delayqueue](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-redisson-delayqueue)：Spring Boot Redisson 延迟队列
+- [spring-boot-websocket](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-websocket)：Spring Boot WebSocket 前后端通信
+- [spring-boot-socketio](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-socketio)：Spring Boot SocketIO 前后端通信
+- [spring-boot-shiro](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro)：Spring Boot Shiro 权限管理
+- [spring-boot-security](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-security)：Spring Boot Security 权限管理
+- [spring-boot-oauth2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-oauth2)：Spring Boot Oauth2 授权管理
+- [spring-boot-keycloak](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-keycloak)：Spring Boot Keycloak 一种面向现代应用程序和服务的开源的IAM(身份识别与访问管理)解决方案
+- [spring-boot-neo4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-neo4j)：Spring Boot Neo4j 图形数据库
+- [spring-boot-hystrix](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix)：Spring Boot Hystrix 容错处理
+- [spring-boot-hystrix-dashboard](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-dashboard)：Spring Boot Hystrix Dashboard 监控
+- [spring-boot-hystrix-turbine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hystrix-turbine)：Spring Boot Hystrix Turbine 聚合监控
+- [spring-boot-sentinel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sentinel)：Spring Boot Sentinel 容错处理
+- [spring-boot-reactor](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-reactor)：Spring Boot Reactor 响应式编程
+- [spring-boot-webflux](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webflux)：Spring Boot Webflux 响应式编程
+- [spring-boot-rxjava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rxjava)：Spring Boot RxJava 响应式编程
+- [spring-boot-cache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cache)：Spring Boot 默认 ConcurrentMapCacheManager 本地缓存
+- [spring-boot-ehcache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ehcache)：Spring Boot EhCache 本地缓存
+- [spring-boot-caffeine](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-caffeine)：Spring Boot Caffeine 本地缓存
+- [spring-boot-guava](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-guava)：Spring Boot Guava 本地缓存
+- [spring-boot-rediscache](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-rediscache)：Spring Boot RedisCache 本地缓存
+- [spring-boot-liquibase](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-liquibase)：Spring Boot Liquibase 数据库管理与迁移工具
+- [spring-boot-flyway](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-flyway)：Spring Boot Flyway 数据库管理与迁移工具
+- [spring-boot-batch](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-batch)：Spring Boot Batch 批处理
+- [spring-boot-prometheus](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-prometheus)：Spring Boot Prometheus 监控
+- [spring-boot-schedule](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-schedule)：Spring Boot 定时任务
+- [spring-boot-quartz](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-quartz)：Spring Boot Quartz 定时任务
+- [spring-boot-xxl-job](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-xxl-job)：Spring Boot xxl-job 分布式任务调度平台
+- [spring-boot-elastic-job](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elastic-job)：Spring Boot elastic-job 分布式任务调度平台
+- [spring-boot-jsoup](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jsoup)：Spring Boot Jsoup 拦截 XSS
+- [spring-boot-hikari](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hikari)：Spring Boot Hikari 连接池（默认连接池）
+- [spring-boot-druid](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-druid)：Spring Boot Druid 连接池
+- [spring-boot-tomcat-jdbc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-tomcat-jdbc)：Spring Boot Tomcat-Jdbc 连接池
+- [spring-boot-dbcp2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dbcp2)：Spring Boot Dbcp2 连接池
+- [spring-boot-c3p0](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-c3p0)：Spring Boot c3p0 连接池
+- [spring-boot-dubbo](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-dubbo)：Spring Boot Dubbo 框架
+- [spring-boot-mysql-multi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi)：Spring Boot Mysql 多数据源
+- [spring-boot-mysql-multi-aop](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mysql-multi-aop)：Spring Boot Mysql 多数据源 AOP 实现
+- [spring-boot-mycat-mysql-proxy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mycat-mysql-proxy)：Spring Boot Mycat Mysql 读写分离
+- [spring-boot-mycat-mysql-sharding](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mycat-mysql-sharding)：Spring Boot Mycat Mysql 分库分表
+- [spring-boot-sharding-jdbc-proxy](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sharding-jdbc-proxy)：Spring Boot Sharding Jdbc 读写分离
+- [spring-boot-sharding-jdbc-sharding](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sharding-jdbc-sharding)：Spring Boot Sharding Jdbc 分库分表
+- [spring-boot-ldap](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ldap)：Spring Boot LDAP 轻型目录访问协议
+- [spring-boot-influxdb](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-influxdb)：Spring Boot InfluxDB 时序数据库
+- [spring-boot-activiti5](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti5)：Spring Boot Activiti 5 工作流引擎
+- [spring-boot-activiti-modeler5](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti-modeler5)：Spring Boot Activiti Modeler 5 在线流程编辑器
+- [spring-boot-activiti6](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-activiti6)：Spring Boot Activiti 6 工作流引擎
+- [spring-boot-flowable](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-flowable)：Spring Boot Flowable 工作流引擎
+- [spring-boot-uflo2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-uflo2)：Spring Boot Uflo2 工作流引擎
+- [spring-boot-ureport2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ureport2)：Spring Boot Ureport2 报表引擎
+- [spring-boot-mapstruct](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-mapstruct)：Spring Boot MapStruct 简化属性复制
+- [spring-boot-i18n](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-i18n)：Spring Boot i18n 支持国际化语言
+- [spring-boot-online](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-online)：Spring Boot 统计在线人数
+- [spring-boot-shiro-online](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-shiro-online)：Spring Boot Shiro 统计在线人数
+- [spring-boot-validator](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-validator)：Spring Boot Validator 参数校验
+- [spring-boot-submit](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-submit)：Spring Boot 防重复提交
+- [spring-boot-zipkin](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zipkin)：Spring Boot Zipkin 分布式跟踪系统
+- [spring-boot-netty](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-netty)：Spring Boot Netty 基于 NIO 开发的网络通信框架
+- [spring-boot-thrift](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-thrift)：Spring Boot Thrift RPC 框架
+- [spring-boot-grpc](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-grpc)：Spring Boot gRPC RPC 框架
+- [spring-boot-motan](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-motan)：Spring Boot Motan RPC 框架
+- [spring-boot-transaction](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-transaction)：Spring Boot 事务管理
+- [spring-boot-seata](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seata)：Spring Boot Seata 分布式事务管理
+- [spring-boot-atomikos](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-atomikos)：Spring Boot Atomikos 分布式事务管理
+- [spring-boot-bitronix](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-bitronix)：Spring Boot Bitronix 分布式事务管理
+- [spring-boot-narayana](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-narayana)：Spring Boot Narayana 分布式事务管理
+- [spring-boot-oshi](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-oshi)：Spring Boot 基于JNA的免费的本地操作系统和Java的硬件信息库
+- [spring-boot-hutool](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hutool)：Spring Boot Hutool Java 工具类库
+- [spring-boot-https](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-https)：Spring Boot HTTPS
+- [spring-boot-spock](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-spock)：Spring Boot Spock 测试框架
+- [spring-boot-postgis](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-postgis)：Spring Boot PostGis 经纬度
+- [spring-boot-returnvalue](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-returnvalue)：Spring Boot 统一 API 接口响应格式
+- [spring-boot-test](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-test)：Spring Boot 单元测试
+- [spring-boot-data-rest](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-data-rest)：Spring Boot 通过 REST 暴露 Spring Data 数据仓库
+- [spring-boot-hateoas](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-hateoas)：Spring Boot 基于 HATEOAS 的 RESTful Web 服务
+- [spring-boot-retry](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-retry)：Spring Boot 重试机制
+- [spring-boot-initializr](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-initializr)：Spring Boot 脚手架
+- [spring-boot-sonar](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-sonar)：Spring Boot 代码质量管理
+- [spring-boot-map](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-map)：Spring Boot 地图操作
+- [spring-boot-jasypt](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jasypt)：Spring Boot 配置信息加密
+- [spring-boot-common](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-common)：Spring Boot 公共类
+
+### 中级部分：
+
+- [spring-boot-file](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-file)：Spring Boot 文件操作
+- [spring-boot-excel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-excel)：Spring Boot Excel 操作
+- [spring-boot-easyexcel](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-easyexcel)：Spring Boot EasyExcel 操作
+- [spring-boot-pdf](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-pdf)：Spring Boot PDF 操作
+- [spring-boot-word](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-word)：Spring Boot Word 操作
+- [spring-boot-xml](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-xml)：Spring Boot Xml 操作
+- [spring-boot-zip](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-zip)：Spring Boot Zip 操作
+- [spring-boot-openoffice](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-openoffice)：Spring Boot OpenOffice 文件转换 pdf 操作
+- [spring-boot-libreoffice](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-libreoffice)：Spring Boot LibreOffice 文件转换 pdf 操作
+- [spring-boot-minio](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-minio)：Spring Boot Minio 对象存储服务
+- [spring-boot-fastdfs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-fastdfs)：Spring Boot FastDFS 分布式文件系统
+- [spring-boot-gridfs](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-gridfs)：Spring Boot MongoDB GridFS 文件存储
+- [spring-boot-javafx](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-javafx)：Spring Boot Javafx 桌面GUI开发
+- [spring-boot-jersey](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jersey)：Spring Boot Jersey Restful 框架
+- [spring-boot-ws](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-ws)：Spring Boot 实现 WebService
+- [spring-boot-cxf](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-cxf)：Spring Boot CXF 实现 WebService
+- [spring-boot-axis2](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-axis2)：Spring Boot Axis2 实现 WebService
+- [spring-boot-webssh](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webssh)：Spring Boot SSH 网页版
+- [spring-boot-remote-shell](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-remote-shell)：Spring Boot Remote Shell 自定义命令
+
+### 高级部分：
+
+- [spring-boot-elk](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-elk)：Spring Boot ELK 日志收集系统
+- [spring-boot-aliyunoss](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-aliyunoss)：Spring Boot Aliyun OSS 对象存储
+- [spring-boot-clickhouse](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-clickhouse)：Spring Boot ClickHouse 数据库
+- [spring-boot-seg](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-seg)：Spring Boot 中文分词器
+- [spring-boot-webmagic](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-webmagic)：Spring Boot WebMagic 爬虫
+- [spring-boot-crawler4j](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-crawler4j)：Spring Boot Crawler4j 爬虫
+- [spring-boot-jpush](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-jpush)：Spring Boot 极光推送
+- [spring-boot-chat](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-chat)：Spring Boot 机器人
+- [spring-boot-qywx](https://github.com/AprilHan1992/fleet-spring-boot/tree/master/spring-boot-qywx)：Spring Boot 企业微信
